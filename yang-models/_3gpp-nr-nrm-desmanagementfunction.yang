@@ -1,0 +1,261 @@
+module _3gpp-nr-nrm-desmanagementfunction {
+  yang-version 1.1;
+  namespace "urn:3gpp:sa5:_3gpp-nr-nrm-desmanagementfunction";
+  prefix "desmanagementfunction3gpp";
+
+
+  import _3gpp-common-top { prefix top3gpp; }
+  import _3gpp-nr-nrm-gnbcucpfunction { prefix gnbcucp3gpp; }
+  import _3gpp-common-managed-element { prefix me3gpp; }
+  import _3gpp-nr-nrm-nrcellcu { prefix nrcellcu3gpp; }
+  import _3gpp-common-subnetwork { prefix subnet3gpp; }
+
+
+  organization "3GPP SA5";
+  contact "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "Defines the YANG mapping of the DESManagementFunction Information Object Class
+    (IOC) that is part of the NR Network Resource Model (NRM).";
+  reference "3GPP TS 28.541 5G Network Resource Model (NRM)";
+
+  revision 2020-05-08 { reference S5-203316; }
+
+
+  grouping DESManagementFunctionGrp {
+    description "Represents the DESManagementFunction IOC.";
+    reference "3GPP TS 28.541";
+    uses top3gpp:Top_Grp;
+
+    leaf desSwitch {
+        description "This attribute determines whether the Distributed SON or Domain-Centralized SON energy saving function is enabled or disabled.";
+         type boolean;
+    }
+
+  list intraRatEsActivationOriginalCellLoadParameters {
+    key loadThreshold;
+      description "This attributes is relevant, if the cell acts as an original cell.This attribute indicates the traffic load threshold and the time duration, which are used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+      uses IntraRatEsActivationOriginalCellLoadParametersGrp;
+     }
+    }
+
+
+  list intraRatEsActivationCandidateCellsLoadParameters {
+    key loadThreshold;
+      description "This attribute indicates the traffic load threshold and the time duration, which are used by distributed ES algorithms level to allow a n 'original' cell to enter the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+        uses IntraRatEsActivationCandidateCellsLoadParametersGrp;
+     }
+    }
+
+  list intraRatEsDeactivationCandidateCellsLoadParameters {
+    key loadThreshold;
+      description "This attributes is relevant, if the cell acts as a candidate cell.This attribute indicates the traffic load threshold  and the time duration which is used by distributed ES algorithms to allow a cell to leave the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+        uses IntraRatEsDeactivationCandidateCellsLoadParametersGrp;
+     }
+    }
+
+  list esNotAllowedTimePeriod {
+    key startTimeandendTime;
+      description "This attribute indicates a list of time periods during which inter-RAT energy saving is not allowed.";
+    leaf startTimeandendTime {type string;}
+    container attributes {
+        uses EsNotAllowedTimePeriodGrp;
+     }
+    }
+
+  list interRatEsActivationOriginalCellParameters {
+    key loadThreshold;
+      description "This attribute indicates the traffic load threshold and the time duration, which are used by distributed inter-RAT ES algorithms to allow an original cell to enter the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+        uses InterRatEsActivationOriginalCellParametersGrp;
+     }
+    }
+
+  list interRatEsActivationCandidateCellParameters {
+    key loadThreshold;
+      description "This attribute indicates the traffic load threshold and the time duration, which are used by distributed inter-RAT ES algorithms to allow an original cell to enter the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+        uses InterRatEsActivationCandidateCellParametersGrp;
+     }
+    }
+
+  list interRatEsDeactivationCandidateCellParameters {
+    key loadThreshold;
+      description "This attribute indicates the traffic load threshold and the time duration which is used by distributed inter-RAT ES algorithms to allow an original cell to leave the energySaving state.";
+    leaf loadThreshold {type int32;}
+    container attributes {
+        uses InterRatEsDeactivationCandidateCellParametersGrp;
+     }
+    }
+
+    leaf energySavingState {
+        description "Specifies the status regarding the energy saving in the cell.";
+        type enumeration {
+          enum isNotEnergySaving;
+          enum isEnergySaving;
+		  }
+    }
+
+    leaf isProbingCapable {
+        description " This attribute indicates whether this cell is capable of performing the ES probing procedure.";
+        type enumeration{
+		  enum yes;
+          enum no;
+		}  
+    }
+    
+  }
+
+  grouping IntraRatEsActivationOriginalCellLoadParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description " The time duration indicates how long the load needs to have been below the threshold.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+  grouping IntraRatEsActivationCandidateCellsLoadParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description " The time duration indicates how long the load needs to have been below the threshold.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+  grouping IntraRatEsDeactivationCandidateCellsLoadParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description " The time duration indicates how long the load needs to have been below the threshold.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+  grouping EsNotAllowedTimePeriodGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf startTimeandendTime {
+        description "This field indicate valid UTC time.";
+        type string;
+    }
+
+
+    leaf periodOfDay {
+        description "This field indicate the period of day.";
+        type string;
+    }
+
+    leaf daysOfWeekList {
+        description "This field indicate the list of weekday.";
+        type string;
+    }
+
+    leaf listoftimeperiods {
+        description "This field indicate the list of time periods.";
+        type string;
+    }
+
+  }
+
+  grouping InterRatEsActivationOriginalCellParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "The time duration indicates how long the traffic load (both for UL and DL) needs to have been below the threshold.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description " The time duration indicates how long the load needs to have been below the threshold.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+  grouping InterRatEsActivationCandidateCellParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description "The time duration indicates how long the traffic load (both for UL and DL) in the candidate cell needs to have been below the threshold before any original cells which will be provided backup coverage by the candidate cell enters energySaving state.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+  grouping InterRatEsDeactivationCandidateCellParametersGrp {
+    description "Represents the the traffic load threshold and the time duration.";
+
+    leaf loadThreshold {
+        description "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.";
+        type int32 { range "0..10000"; }
+		units "1";
+    }
+
+
+    leaf timeDuration {
+        description "The time duration indicates how long the traffic load (either for UL or DL) in the candidate cell needs to have been above the threshold to wake up one or more original cells which have been provided backup coverage by the candidate cell.";
+        type int32 { range "0..900"; }
+		units "1";
+    }
+  }
+
+
+  augment "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU" {
+    if-feature nrcellcu3gpp:DESManagementFunction;
+    uses DESManagementFunctionGrp;
+    }
+  augment "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction" {
+    if-feature gnbcucp3gpp:DESManagementFunction;
+    uses DESManagementFunctionGrp;
+    }
+  augment "/me3gpp:ManagedElement" {
+    if-feature me3gpp:DESManagementFunction;
+    uses DESManagementFunctionGrp;
+    }
+  augment "/subnet3gpp:SubNetwork" {
+    if-feature subnet3gpp:DESManagementFunction;
+    uses DESManagementFunctionGrp;
+    }
+
+}

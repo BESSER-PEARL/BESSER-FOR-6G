@@ -1,0 +1,120 @@
+module _3gpp-nr-nrm-drachoptimizationfunction {
+  yang-version 1.1;
+  namespace "urn:3gpp:sa5:_3gpp-nr-nrm-drachoptimizationfunction";
+  prefix "drachoptimizationfunction3gpp";
+
+  import _3gpp-common-subnetwork { prefix subnet3gpp; }
+  import _3gpp-common-top { prefix top3gpp; }
+  import _3gpp-common-managed-element { prefix me3gpp; }
+  import _3gpp-nr-nrm-nrcelldu { prefix nrcelldu3gpp; }
+  import _3gpp-nr-nrm-gnbdufunction { prefix gnbdu3gpp; }
+
+  organization "3GPP SA5";
+  contact "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "Defines the YANG mapping of the DRACHOptimizationFunction Information Object Class
+    (IOC) that is part of the NR Network Resource Model (NRM).";
+  reference "3GPP TS 28.541 5G Network Resource Model (NRM)";
+
+  revision 2021-01-25 { reference CR-0454 ; }
+  revision 2020-10-02 { reference "CR-0384, CR-0382" ; }
+  revision 2020-05-08 { reference S5-203316; }
+
+  grouping DRACHOptimizationFunctionGrp {
+    description "Represents the DRACHOptimizationFunction IOC.";
+    reference "3GPP TS 28.541";
+    uses top3gpp:Top_Grp;
+
+    list ueAccProbilityDist {
+      key targetProbability;
+      description "This is a list of target Access Probability (APn) for the RACH optimization function.";
+      leaf targetProbability {type TargetProbability;}
+      container attributes {
+         uses UeAccProbilityDistGrp;
+     }
+    }
+
+    list ueAccDelayProbilityDist {
+      key targetProbability;
+      description "This is a list of target Access Delay probability (ADP) for the RACH optimization function.";
+      leaf targetProbability {type TargetProbability;}
+      container attributes {
+         uses UeAccDelayProbilityDistGrp;
+     }
+    }
+
+    leaf drachOptimizationControl {
+        description "This attribute determines whether the RACH Optimization function is enabled or disabled.";
+        type boolean;
+    }
+  }
+  typedef TargetProbability { 
+    type enumeration  {
+      enum 25;
+      enum 50;
+      enum 75;
+      enum 90;
+    }
+  }
+
+    typedef Numberofpreamblessent { 
+      type int32  { range "1..200"; }
+        units "1";
+  }
+
+    typedef Accessdelay { 
+      type int32  { range "10..560"; }
+        units "1";
+  }
+
+
+  grouping UeAccProbilityDistGrp {
+    description "Represents the target Access Probability (APn) for the RACH optimization function.";
+
+    leaf targetProbability {
+        description "This attribute determines the target Probability.";
+        mandatory true;
+        type TargetProbability;
+    }
+
+
+    leaf numberofpreamblessent {
+        description "This attribute determines the number of preambles sent.";
+        mandatory true;
+        type Numberofpreamblessent;
+    }
+  }
+
+  grouping UeAccDelayProbilityDistGrp {
+    description "Represents the target Access Delay probability (ADP) for the RACH optimization function.";
+
+    leaf targetProbability {
+        description "This attribute determines the target Probability.";
+      mandatory true;
+        type TargetProbability;
+    }
+
+
+    leaf accessdelay {
+        description "This attribute determines the access delay.";
+        mandatory true;
+        type Accessdelay;
+    }
+  }
+
+  augment "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction/nrcelldu3gpp:NRCellDU" {
+    if-feature nrcelldu3gpp:DRACHOptimizationFunction;
+    uses DRACHOptimizationFunctionGrp;
+    }
+  augment "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction" {
+    if-feature gnbdu3gpp:DRACHOptimizationFunction;
+    uses DRACHOptimizationFunctionGrp;
+    }
+  augment "/me3gpp:ManagedElement" {
+    if-feature me3gpp:DRACHOptimizationFunction;
+    uses DRACHOptimizationFunctionGrp;
+    }
+  augment "/subnet3gpp:SubNetwork" {
+    if-feature nrcelldu3gpp:DRACHOptimizationFunction;
+    uses DRACHOptimizationFunctionGrp;
+    }
+}

@@ -1,0 +1,206 @@
+module _3gpp-ns-nrm-networkslicesubnet {
+  yang-version 1.1;
+  
+  namespace urn:3gpp:sa5:_3gpp-ns-nrm-networkslicesubnet;
+  prefix nss3gpp;
+  
+  import _3gpp-common-yang-types { prefix types3gpp; }
+  import _3gpp-common-subnetwork { prefix subnet3gpp; }
+  import _3gpp-common-measurements { prefix meas3gpp; }
+  import _3gpp-common-top { prefix top3gpp; }
+  
+  include _3gpp-ns-nrm-sliceprofile;
+  
+  organization "3GPP SA5";
+  contact 
+    "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "This IOC represents the properties of a network slice subnet 
+    instance in a 5G network.";
+  reference "3GPP TS 28.541
+    Management and orchestration; 
+    5G Network Resource Model (NRM);
+    Information model definitions for network slice NRM (chapter 6)
+    ";
+
+  revision 2020-02-19 {
+    description "Introduction of YANG definitions for network slice NRM";
+    reference "CR-0458";
+  }
+  
+  revision 2019-06-07 {
+    description "initial revision";
+    reference "Based on
+      3GPP TS 28.541 V15.X.XX";
+  }
+  
+  feature MeasurementsUnderNetworkSliceSubnet {
+    description "The MeasurementSubtree shall be contained under 
+      NetworkSliceSubnet.";
+  }
+
+  typedef ETSI-GS-NFV-Identifier {
+    type string;
+    reference "ETSI GS NFV-IFA 013";
+  }
+
+  grouping EPTransportGrp {
+    leaf ipAddress {
+      description "This parameter specifies the IP address assigned to a 
+        logical transport interface/endpoint. It can be an IPv4 address 
+        (See RFC 791) or an IPv6 address (See RFC 2373).";
+      mandatory true;
+      type string;
+    }
+    leaf logicInterfaceId {
+      description "This parameter specifies the identify of a logical 
+        transport interface. It could be VLAN ID (See IEEE 802.1Q), 
+        MPLS Tag or Segment ID.";
+      mandatory true;
+      type string;
+    }
+    leaf-list nextHopInfo {
+      description "This parameter is used to identify ingress transport 
+        node. Each node can be identified by any of combination of IP 
+        address of next-hop router of transport network, system name, 
+        port name, IP management address of transport nodes.";
+      type string;
+    }
+    leaf-list qosProfile {
+      description "This parameter specifies reference to QoS Profile for 
+      a logical transport interface. A QoS profile includes a set of 
+      parameters which are locally provisioned on both sides of a logical 
+      transport interface.";
+      type string;
+    }
+    leaf-list epApplicationRef {
+      description "This parameter specifies a list of application level 
+        EPs associated with the logical transport interface.";
+      min-elements 1;
+      type types3gpp:DistinguishedName;
+    }
+    uses top3gpp:Top_Grp;
+  }
+
+  grouping NsInfoGrp {
+    description "The NsInfo of the NS instance corresponding to the network 
+      slice subnet instance.";
+    //suport condition: It shall be supported if the NSS instance is 
+    //realized in the virtualized environment. 
+    // Otherwise this attribute shall be absent.
+    reference "ETSI GS NFV-IFA 013 clause 8.3.3.2.2, which can be found at
+      https://www.etsi.org/deliver/etsi_gs/NFV-IFA/001_099/013
+      /03.04.01_60/gs_NFV-IFA013v030401p.pdf page 123-124";
+    leaf nSInstanceId {
+      description "Uniquely identifies the NS instance.";
+      config false;
+      type ETSI-GS-NFV-Identifier;
+    }
+    leaf nsName {
+      description "Human readable name of the NS instance.";
+      type string;
+      config false;
+    }
+    leaf description {
+      description "Human readable description of the NS instance.";
+      config false;
+      type string;
+    }
+  }
+
+  grouping NetworkSliceSubnetGrp {
+
+    uses subnet3gpp:SubNetworkGrp;
+    uses EPTransportGrp;
+    
+    leaf operationalState {
+      description "The operational state of the network slice instance. 
+        It describes whether or not the resource is physically installed 
+        and working.";
+      mandatory true;
+      config false;
+      type types3gpp:OperationalState;
+    }
+    
+    leaf administrativeState {
+      description "The administrative state of the network slice instance.
+        It describes the permission to use or prohibition against
+        using the instance, imposed through the OAM services.";
+      mandatory true;
+      type types3gpp:AdministrativeState;
+    }
+    
+    list nsInfo {
+      description "This list represents the properties of network service 
+        information corresponding to the network slice subnet instance.";
+      reference "ETSI GS NFV-IFA 013 clause 8.3.3.2.2";
+      config false;
+      key nSInstanceId;
+      max-elements 1;
+      uses NsInfoGrp;
+    }
+
+    list sliceProfileList {
+      description "List of SliceProfiles supported by the network slice 
+        subnet instance";
+      key sliceProfileId;
+      uses SliceProfileGrp;
+    }
+    
+    list managedFunctionRef {
+      description "The managed functions that the NetworkSliceSubnet is 
+        associated with.";
+      key aggregatedManagedFunction;
+      leaf aggregatedManagedFunction { 
+        type instance-identifier; 
+      }
+    }
+
+    leaf-list networkSliceSubnetRef {
+      type leafref {
+        path /NetworkSliceSubnet/id;
+      }
+      description "Lists the NetworkSliceSubnet instances associated with 
+        this NetworkSliceSubnet.";
+    }
+  }
+  
+  list NetworkSliceSubnet {
+    description "Represents the properties of a network slice subnet 
+      instance in a 5G network.";
+    key id;
+
+    container attributes {
+
+      uses NetworkSliceSubnetGrp;
+
+      leaf-list parents {
+        description "Reference to direct parent NetworkSliceSubnet 
+          instances.
+          If NetworkSliceSubnets form a containment hierarchy this is 
+          modeled using references between the child NetworkSliceSubnet 
+          and the parent NetworkSliceSubnet. 
+          This reference MUST NOT be present for the top level 
+          NetworkSliceSubnet and MUST be present for other 
+          NetworkSliceSubnets.";
+        type leafref {
+          path "/NetworkSliceSubnet/id";
+        }
+      }
+      
+      leaf-list containedChildren {
+        description "Reference to all directly contained NetworkSliceSubnet 
+          instances.  If NetworkSliceSubnets form a containment hierarchy 
+          this is modeled using references between the child 
+          NetworkSliceSubnet and the parent NetworkSliceSubnet.";
+        type leafref {
+          path "/NetworkSliceSubnet/id";
+        } 
+      }
+    }
+
+    uses top3gpp:Top_Grp;
+    uses meas3gpp:MeasurementSubtree {
+      if-feature MeasurementsUnderNetworkSliceSubnet;
+    }
+  }
+}

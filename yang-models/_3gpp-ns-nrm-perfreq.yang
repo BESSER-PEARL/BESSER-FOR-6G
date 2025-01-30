@@ -1,0 +1,170 @@
+module _3gpp-ns-nrm-perfreq {
+  yang-version 1.1;
+  namespace urn:3gpp:sa5:_3gpp-ns-nrm-perfreq;
+  prefix perf3gpp;
+
+  organization "3GPP SA5";
+  contact 
+    "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "The performance requirements for the NSI in terms of the 
+    scenarios defined in the 3GPP TS 22.261, such as experienced data rate, 
+    area traffic capacity (density) information of UE density.";
+  reference "3GPP TS 28.541
+    Management and orchestration; 
+    5G Network Resource Model (NRM);
+    Information model definitions for network slice NRM (chapter 6)
+    ";
+
+  revision 2020-02-19 {
+    description "Introduction of YANG definitions for network slice NRM";
+    reference "CR-0458";
+  }
+
+  typedef data-rate {
+    type uint32; 
+    units kbits/s;
+  }
+  typedef integer-percentage {
+    type uint8 {
+      range 0..100;
+    }
+    units percent;
+  }
+  typedef reliability-string {
+    description "Mean time between failures.
+      E.g. '1 day', or '3 months'";
+    type string {
+      pattern "[0-9]+ (day|week|month|year)s?";
+    }
+    reference "3GPP TS 22.104 clause 5.2-5.5";
+  }
+  typedef message-size-string {
+    description "Message size in bytes.
+      E.g. '80', or '250-2000'";
+    type string {
+      pattern '[0-9]+(-[0-9]+)?';
+    }
+    units bytes;
+    reference "3GPP TS 22.104 clause 5.2-5.5";
+  }
+  typedef transfer-interval-string {
+    description "Transfer interval time.  If multiple values are given, 
+    the first value is the application requirement, the other values are 
+    the requirement with multiple transmission of the same information 
+    two or three times, respectively).
+    E.g. '40ms', or '0ms-5ms,0ms-2.5ms,0ms-1.7ms'";
+    type string {
+      pattern '[0-9]+(\.[0-9]+)?m?s-[0-9]+(\.[0-9]+)?m?s' +
+        '(,[0-9]+(\.[0-9]+)?m?s-[0-9]+(\.[0-9]+)?){0,2}';
+    }
+    reference "3GPP TS 22.104 clause 5.2-5.5";
+  }
+  typedef survival-time-string {
+    description "Survival time in milliseconds (ms) or in multiples of 
+      the transfer interval (x).  If multiple values are given, 
+    the first value is the application requirement, the other values are 
+    the requirement with multiple transmission of the same information 
+    two or three times, respectively). 
+    E.g. '12ms', or '0x,2x'";
+    type string {
+      pattern '[0-9]+(x|ms)(,[0-9]+(x|ms)){0,2}';
+    }
+    reference "3GPP TS 22.104 clause 5.2-5.5";
+  }
+
+  grouping PerfReqGrp {
+    //Stage2 issue: The perfReq object does not have any proper definition 
+    //              in 28.541 chapter 6.
+    //Stage2 issue: The text that exists on the perfReq mentions an sST
+    //              element. There is potentially several sST elements in 
+    //              the SliceProfile/sNSSAIList which could be used as basis
+    //              for deciding which perfReq elements are relevant.
+    //              Operators can construct their own sST values. It is not
+    //              clear which of the perfReq elements below would be
+    //              relevant in such a case. Leaving all perfReq elements
+    //              available in all use cases for now.
+
+    // eMBB leafs, SST = 1
+    leaf expDataRateDL {
+      description "User experienced data rate over downlink";
+      //TODO: add when 'somepath/sST = 1';
+      type data-rate;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+    leaf expDataRateUL {
+      description "User experienced data rate over uplink";
+      //TODO: add when 'somepath/sST = 1';
+      type data-rate;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+    leaf areaTrafficCapDL { 
+      description "Area traffic capacity over downlink";
+      //TODO: add when 'somepath/sST = 1';
+      type data-rate;
+      units kbits/s/km2;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+    leaf areaTrafficCapUL { 
+      description "Area traffic capacity over uplink";
+      //TODO: add when 'somepath/sST = 1';
+      type data-rate;
+      units kbits/s/km2;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+    leaf overallUserDensity { 
+      description "Overall user density";
+      //TODO: add when 'somepath/sST = 1';
+      type uint32; 
+      units users/km2;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+    leaf activityFactor {
+      description "Percentage value of the amount of simultaneous active 
+        UEs to the total number of UEs where active means the UEs are 
+        exchanging data with the network.";
+      //TODO: add when 'somepath/sST = 1';
+      type integer-percentage;
+      reference "3GPP TS 22.261 clause 7.1, table 7.1-1";
+    }
+
+    // uRLLC leafs, SST = 2
+    leaf cSAvailabilityTarget {
+      description "Reliability uptime target";
+      //TODO: add when 'somepath/sST = 2';
+      type decimal64 { 
+        fraction-digits 6; // E.g. 99.999999
+        range 0..100;
+      }
+      reference "3GPP TS 22.104 clause 5.2-5.5";
+    }
+    leaf cSReliabilityMeanTime {
+      description "Mean time between failures";
+      //TODO: add when 'somepath/sST = 2';
+      type reliability-string;
+    }
+    leaf expDataRate {
+      description "User experienced data rate";
+      //TODO: add when 'somepath/sST = 2';
+      type data-rate;
+      reference "3GPP TS 22.104 clause 5.2-5.5";
+    }
+    leaf msgSizeByte {
+      description "PDU size";
+      //TODO: add when 'somepath/sST = 2';
+      type message-size-string; 
+    }
+    leaf transferIntervalTarget {
+      description "Time difference between two consecutive transfers 
+        of application data from an application via the service interface 
+        to 3GPP system";
+      //TODO: add when 'somepath/sST = 2';
+      type transfer-interval-string; 
+    }
+    leaf survivalTime {
+      description "The time that an application consuming a communication 
+        service may continue without an anticipated message";
+      //TODO: add when 'somepath/sST = 2';
+      type survival-time-string; 
+    }
+  }
+}

@@ -1,0 +1,50 @@
+module _3gpp-5gc-nrm-dynamic5qiset {
+  yang-version 1.1;
+  
+  namespace urn:3gpp:sa5:_3gpp-5gc-nrm-dynamic5qiset;
+  prefix dyn5QIs3gpp;
+  
+  import _3gpp-common-top { prefix top3gpp; }
+  import _3gpp-common-subnetwork { prefix subnet3gpp; }
+  import _3gpp-common-managed-element { prefix me3gpp; }
+  import _3gpp-5gc-nrm-configurable5qiset { prefix Conf5QIs3gpp; }
+  
+  organization "3gpp SA5";
+  contact "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "This IOC represents the dynamic 5QIs including their QoS 
+    characteristics.";
+  reference "3GPP TS 28.541";
+
+  revision 2020-09-30 { reference "CR-0393"; }
+  revision 2020-08-06 { reference "CR-0333"; }
+
+  grouping Dynamic5QISetGrp {
+    description "Represents the Dynamic5QISet IOC.";
+    list dynamic5QIs {
+      key "fiveQIValue";
+      description "Represents the Dynamic5QISet IOC.";
+      uses Conf5QIs3gpp:FiveQICharacteristics;
+    }
+  }    
+
+  grouping Dynamic5QISetSubtree {
+    description "Helps augmenting Dynamic5QISet into multiple places.";
+    list Dynamic5QISet {
+      description "Specifies the dynamic 5QIs including their QoS 
+        characteristics, see 3GPP TS 23.501.";
+      key "id";
+      uses top3gpp:Top_Grp;
+      container attributes {
+        uses Dynamic5QISetGrp;
+      }
+    }  
+  }
+  
+  augment "/subnet3gpp:SubNetwork" {
+    uses Dynamic5QISetSubtree;
+  }
+
+  augment "/me3gpp:ManagedElement" {
+    uses Dynamic5QISetSubtree;
+  }
+}

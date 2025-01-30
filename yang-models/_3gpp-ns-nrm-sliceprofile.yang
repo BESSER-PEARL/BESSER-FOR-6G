@@ -1,0 +1,124 @@
+submodule _3gpp-ns-nrm-sliceprofile {
+  yang-version 1.1;
+  belongs-to _3gpp-ns-nrm-networkslicesubnet { prefix nss3gpp; }
+
+  import _3gpp-common-yang-types { prefix types3gpp; }
+  import _3gpp-5g-common-yang-types { prefix types5g3gpp; }
+  import _3gpp-ns-nrm-perfreq { prefix perf3gpp; }
+
+  organization "3GPP SA5";
+  contact 
+    "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "Represents the properties of network slice subnet related 
+    requirement that should be supported by the network slice subnet 
+    instance in a 5G network.";
+  reference "3GPP TS 28.541
+    Management and orchestration; 
+    5G Network Resource Model (NRM);
+    Information model definitions for network slice NRM (chapter 6)
+    ";
+
+  revision 2020-02-19 {
+    description "Introduction of YANG definitions for network slice NRM";
+    reference "CR-0458";
+  }
+  
+  revision 2019-05-27 {
+    description "initial revision.";
+    reference "Based on
+      3GPP TS 28.541 V15.X.XX";
+  }
+  
+  grouping SliceProfileGrp {
+    leaf sliceProfileId {
+      description "A unique identifier of the property of network slice 
+        subnet related requirement should be supported by the network 
+        slice subnet instance.";
+      type types3gpp:DistinguishedName;
+    }
+    
+    list sNSSAIList {
+      description "List of S-NSSAIs the managed object is capable of 
+        supporting. (Single Network Slice Selection Assistance Information)
+        An S-NSSAI has an SST (Slice/Service type) and an optional SD
+        (Slice Differentiator) field.";
+      key idx;
+      unique "sst sd";
+      leaf idx {
+        description "Synthetic index for the element.";
+        type uint32;
+      }
+      uses types5g3gpp:SNssai;
+    }
+    
+    list pLMNIdList {
+      description "List of at most six entries of PLMN Identifiers, but at 
+        least one (the primary PLMN Id).  The PLMN Identifier is composed 
+        of a Mobile Country Code (MCC) and a Mobile Network Code (MNC).";
+      min-elements 1;
+      max-elements 6;
+      key "mcc mnc";
+      ordered-by user;
+      uses types3gpp:PLMNId;
+    }
+    
+    //Stage2 issue: The perfReq object does not have any proper definition 
+    //              in 28.541 chapter 6.
+    //Stage2 issue: The text that exists on the perfReq mentions an sST
+    //              element. There is no sST element in SliceProfile which
+    //              references perfReq, nor in perfReq itself. There are
+    //              potentially several in the sNSSAIList. Should we take the
+    //              union of those to control whivh perfReq elements are 
+    //              relevant? For now, making all perfReq elements available
+    //              in all slice profiles.
+    list perfReq {
+      description "The performance requirements for the NSI in terms of the 
+        scenarios defined in the 3GPP TS 22.261, such as experienced data 
+        rate, area traffic capacity (density) information of UE density.";
+      key idx; //this list uses a grouping/choice and has no obvious key
+      leaf idx { type uint32; }
+      uses perf3gpp:PerfReqGrp;
+    }
+    
+    leaf maxNumberofUEs {
+      description "Specifies the maximum number of UEs may simultaneously 
+        access the network slice instance.";
+      //optional support
+      mandatory true;
+      type uint64;
+    }
+    
+    leaf-list coverageAreaTAList {
+      description "A list of TrackingAreas where the NSI can be selected.";
+      //optional support
+      min-elements 1;
+      type types3gpp:Tac;
+    }
+    
+    leaf latency {
+      description "The packet transmission latency (milliseconds) through 
+        the RAN, CN, and TN part of 5G network, used to evaluate 
+        utilization performance of the end-to-end network slice instance.";
+      reference "3GPP TS 28.554 clause 6.3.1";
+      //optional support
+      mandatory true;
+      type uint16;
+      units milliseconds;
+    }
+    
+    leaf uEMobilityLevel {
+      description "The mobility level of UE accessing the network slice 
+        instance.";
+      //optional support
+      type types3gpp:UeMobilityLevel;
+    }
+    
+    leaf resourceSharingLevel {
+      description "Specifies whether the resources to be allocated to the 
+        network slice subnet instance may be shared with another network 
+        slice subnet instance(s).";
+      //optional support
+      type types3gpp:ResourceSharingLevel;
+    }
+  }
+}

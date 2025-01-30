@@ -1,0 +1,67 @@
+module _3gpp-nr-nrm-cpciconfigurationfunction {
+  yang-version 1.1;
+  namespace "urn:3gpp:sa5:_3gpp-nr-nrm-cpciconfigurationfunction";
+  prefix "cpciconfigurationfunction3gpp";
+
+  import _3gpp-common-subnetwork { prefix subnet3gpp; }
+  import _3gpp-common-top { prefix top3gpp; }
+  import _3gpp-nr-nrm-nrcelldu { prefix nrcelldu3gpp; }
+  import _3gpp-nr-nrm-gnbdufunction { prefix gnbdu3gpp; }
+  import _3gpp-common-managed-element { prefix me3gpp; }
+
+  organization "3GPP SA5";
+  contact "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464";
+  description "Defines the YANG mapping of the CPCIConfigurationFunction Information Object Class
+    (IOC) that is part of the NR Network Resource Model (NRM).";
+  reference "3GPP TS 28.541 5G Network Resource Model (NRM)";
+
+  revision 2020-05-08 { reference S5-203316; }
+
+
+  grouping CPCIConfigurationFunctionGrp {
+    description "Represents the CPCICONFIGURATIONFunction IOC.";
+    reference "3GPP TS 28.541";
+    uses top3gpp:Top_Grp;
+
+
+    list cSonPciList {
+      key NRPci;
+      description " This holds a list of physical cell identities that can be assigned to the pci attribute by gNB. The assignment algorithm is not specified. This attribute shall be supported if and only if the C-SON PCI configuration is supported.";
+	  leaf NRPci {type int32;}
+      container attributes {
+         uses CSonPciListGrp;
+     }
+    }
+
+
+    leaf cPciConfigurationControl {
+        description "This attribute determines whether the Cross Domain-Centralized SON PCI configuration function is enabled or disabled.";
+        type boolean;
+    }
+
+  }
+
+  grouping CSonPciListGrp {
+    description "Represents the C-SON PCI list for the PCI configuration function.";
+
+    leaf NRPci {
+        description "This attribute determines the NR PCI.";
+        type int32 { range "0..1007"; }
+        units "1";
+    }
+  }
+
+
+  augment "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction/nrcelldu3gpp:NRCellDU" {
+    if-feature nrcelldu3gpp:CPCIConfigurationFunction;
+    uses CPCIConfigurationFunctionGrp;
+    }
+  augment "/me3gpp:ManagedElement" {
+    if-feature me3gpp:CPCIConfigurationFunction;
+    uses CPCIConfigurationFunctionGrp;
+    }
+  augment "/subnet3gpp:SubNetwork" {
+    if-feature subnet3gpp:CPCIConfigurationFunction;
+    uses CPCIConfigurationFunctionGrp;
+    }
+}
