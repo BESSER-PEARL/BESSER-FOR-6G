@@ -1,0 +1,177 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-dmrofunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:dmrofunction3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-dmrofunction",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-dmrofunction"
+        },
+        "prefix": {
+            "@value": "dmrofunction3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcellcu",
+                "prefix": {
+                    "@value": "nrcellcu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the DMROFunction Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2020-05-08",
+            "reference": {
+                "text": "S5-203316"
+            }
+        },
+        "grouping": {
+            "@name": "DMROFunctionGrp",
+            "description": {
+                "text": "Represents the DMROFunction IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            },
+            "leaf": [
+                {
+                    "@name": "maximumDeviationHoTrigger",
+                    "description": {
+                        "text": "This parameter defines the maximum allowed absolute deviation of the Handover Trigger, from the default point of operation."
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-20..20"
+                        }
+                    },
+                    "units": {
+                        "@name": "0.5"
+                    }
+                },
+                {
+                    "@name": "minimumTimeBetweenHoTriggerChange",
+                    "description": {
+                        "text": "This parameter defines the minimum allowed time interval between two Handover Trigger change performed by MRO. This is used to control the stability and convergence of the algorithm."
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..604800"
+                        }
+                    },
+                    "units": {
+                        "@name": "1"
+                    }
+                },
+                {
+                    "@name": "tstoreUEcntxt",
+                    "description": {
+                        "text": "The timer used for detection of too early HO, too late HO and HO to wrong cell."
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..1023"
+                        }
+                    },
+                    "units": {
+                        "@name": "100"
+                    }
+                },
+                {
+                    "@name": "dmroControl",
+                    "description": {
+                        "text": "This attribute determines whether the MRO function is enabled or disabled."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                }
+            ]
+        },
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU",
+                "if-feature": {
+                    "@name": "nrcellcu3gpp:DMROFunction"
+                },
+                "uses": {
+                    "@name": "DMROFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction",
+                "if-feature": {
+                    "@name": "gnbcucp3gpp:DMROFunction"
+                },
+                "uses": {
+                    "@name": "DMROFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "if-feature": {
+                    "@name": "me3gpp:DMROFunction"
+                },
+                "uses": {
+                    "@name": "DMROFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:DMROFunction"
+                },
+                "uses": {
+                    "@name": "DMROFunctionGrp"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,590 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-nfservice",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nfs3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfservice",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:yang": "urn:ietf:params:xml:ns:yang:ietf-yang-types",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfservice"
+        },
+        "prefix": {
+            "@value": "nfs3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "ietf-yang-types",
+                "prefix": {
+                    "@value": "yang"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "NF service class."
+        },
+        "reference": {
+            "text": "3GPP TS 29.510"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0454"
+                }
+            },
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "NFServiceGrp",
+                "description": {
+                    "text": "Represents the NFService IOC"
+                },
+                "leaf": [
+                    {
+                        "@name": "serviceInstanceID",
+                        "description": {
+                            "text": "Unique ID of the service instance within a given NF Instance."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "serviceName",
+                        "description": {
+                            "text": "Name of the service instance (e.g. 'nudm-sdm')."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "ServiceName"
+                        }
+                    },
+                    {
+                        "@name": "scheme",
+                        "description": {
+                            "text": "URI scheme (e.g. 'http', 'https')."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "UriScheme"
+                        }
+                    },
+                    {
+                        "@name": "nfServiceStatus",
+                        "description": {
+                            "text": "Status of the NF Service Instance."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "NFServiceStatus"
+                        }
+                    },
+                    {
+                        "@name": "fqdn",
+                        "description": {
+                            "text": "FQDN of the NF Service Instance."
+                        },
+                        "type": {
+                            "@name": "inet:domain-name"
+                        }
+                    },
+                    {
+                        "@name": "interPlmnFqdn",
+                        "description": {
+                            "text": "If the NF service needs to be discoverable by other NFs in a\ndifferent PLMN, then an FQDN that is used for inter PLMN routing."
+                        },
+                        "type": {
+                            "@name": "inet:domain-name"
+                        }
+                    },
+                    {
+                        "@name": "apiPrefix",
+                        "description": {
+                            "text": "Optional path segment(s) used to construct the {apiRoot}\nvariable of the different API URIs."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "priority",
+                        "description": {
+                            "text": "Priority (relative to other services of the same type)\nin the range of 0-65535, to be used for NF Service selection; lower\nvalues indicate a higher priority."
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "capacity",
+                        "description": {
+                            "text": "Static capacity information in the range of 0-65535,\nexpressed as a weight relative to other services of the same type."
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "load",
+                        "description": {
+                            "text": "Dynamic load information, ranged from 0 to 100, indicates\nthe current load percentage of the NF Service."
+                        },
+                        "type": {
+                            "@name": "types3gpp:Load"
+                        }
+                    },
+                    {
+                        "@name": "recoveryTime",
+                        "description": {
+                            "text": "Timestamp when the NF was (re)started."
+                        },
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        }
+                    },
+                    {
+                        "@name": "supportedFeatures",
+                        "description": {
+                            "text": "Supported Features of the NF Service instance."
+                        },
+                        "type": {
+                            "@name": "SupportedFeatures"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "versions",
+                        "description": {
+                            "text": "API versions supported by the NF Service and if available,\nthe corresponding retirement date of the NF Service."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "apiVersionInUri apiFullVersion"
+                        },
+                        "uses": {
+                            "@name": "NFServiceVersion"
+                        }
+                    },
+                    {
+                        "@name": "ipEndPoints",
+                        "description": {
+                            "text": "IP address(es) and port information of the Network Function\n(including IPv4 and/or IPv6 address)where the service is listening\nfor incoming service requests."
+                        },
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "leaf": {
+                            "@name": "idx",
+                            "type": {
+                                "@name": "string"
+                            }
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "ipEndPoint"
+                        }
+                    },
+                    {
+                        "@name": "defaultNotificationSubscriptions",
+                        "description": {
+                            "text": "Notification endpoints for different notification types."
+                        },
+                        "key": {
+                            "@value": "notificationType"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:DefaultNotificationSubscription"
+                        }
+                    },
+                    {
+                        "@name": "allowedPlmns",
+                        "description": {
+                            "text": "PLMNs allowed to access the service instance.\nThe absence of this attribute indicates that any PLMN is allowed to\naccess the service instance."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "allowedNssais",
+                        "description": {
+                            "text": "S-NSSAI of the allowed slices to access the service instance.\nThe absence of this attribute indicates that any slice is allowed to\naccess the service instance."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sd sst"
+                        },
+                        "uses": {
+                            "@name": "types5g3gpp:SNssai"
+                        }
+                    },
+                    {
+                        "@name": "chfServiceInfo",
+                        "description": {
+                            "text": "Specific data for a CHF service instance."
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "primaryChfServiceInstance secondaryChfServiceInstance"
+                        },
+                        "uses": {
+                            "@name": "ChfServiceInfo"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "allowedNfTypes",
+                        "description": {
+                            "text": "Type of the NFs allowed to access the service instance.\nThe absence of this attribute indicates that any NF type is allowed\nto access the service instance."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "types3gpp:NfType"
+                        }
+                    },
+                    {
+                        "@name": "allowedNfDomains",
+                        "description": {
+                            "text": "Pattern representing the NF domain names allowed to access the service instance."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ipEndPoint",
+                "choice": {
+                    "@name": "address",
+                    "leaf": [
+                        {
+                            "@name": "ipv4Address",
+                            "type": {
+                                "@name": "inet:ipv4-address"
+                            }
+                        },
+                        {
+                            "@name": "ipv6Address",
+                            "type": {
+                                "@name": "inet:ipv6-address"
+                            }
+                        },
+                        {
+                            "@name": "ipv6Prefix",
+                            "type": {
+                                "@name": "inet:ipv6-prefix"
+                            }
+                        }
+                    ]
+                },
+                "leaf": [
+                    {
+                        "@name": "transport",
+                        "type": {
+                            "@name": "TransportProtocol"
+                        }
+                    },
+                    {
+                        "@name": "port",
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "NFServiceVersion",
+                "leaf": [
+                    {
+                        "@name": "apiVersionInUri",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "apiFullVersion",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "expiry",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ChfServiceInfo",
+                "leaf": [
+                    {
+                        "@name": "primaryChfServiceInstance",
+                        "description": {
+                            "text": "Shall be present if the CHF service instance serves as a\nsecondary CHF instance of another primary CHF service instance."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "secondaryChfServiceInstance",
+                        "description": {
+                            "text": "Shall be present if the CHF service instance serves as a\nprimary CHF instance of another secondary CHF service instance."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typedef": [
+            {
+                "@name": "SupportedFeatures",
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[A-Fa-f0-9]*"
+                    }
+                }
+            },
+            {
+                "@name": "TransportProtocol",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "TCP"
+                        },
+                        {
+                            "@name": "STCP"
+                        },
+                        {
+                            "@name": "UDP"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "ServiceName",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "NNRF_NFM"
+                        },
+                        {
+                            "@name": "NNRF_DISC"
+                        },
+                        {
+                            "@name": "NUDM_SDM"
+                        },
+                        {
+                            "@name": "NUDM_UECM"
+                        },
+                        {
+                            "@name": "NUDM_UEAU"
+                        },
+                        {
+                            "@name": "NUDM_EE"
+                        },
+                        {
+                            "@name": "NUDM_PP"
+                        },
+                        {
+                            "@name": "NAMF_COMM"
+                        },
+                        {
+                            "@name": "NAMF_EVTS"
+                        },
+                        {
+                            "@name": "NAMF_MT"
+                        },
+                        {
+                            "@name": "NAMF_LOC"
+                        },
+                        {
+                            "@name": "NSMF_PDUSESSION"
+                        },
+                        {
+                            "@name": "NSMF_EVENT-EXPOSURE"
+                        },
+                        {
+                            "@name": "NAUSF_AUTH"
+                        },
+                        {
+                            "@name": "NAUSF_SORPROTECTION"
+                        },
+                        {
+                            "@name": "NNEF_PFDMANAGEMENT"
+                        },
+                        {
+                            "@name": "NPCF_AM-POLICY-CONTROL"
+                        },
+                        {
+                            "@name": "NPCF_SMPOLICYCONTROL"
+                        },
+                        {
+                            "@name": "NPCF_POLICYAUTHORIZATION"
+                        },
+                        {
+                            "@name": "NPCF_BDTPOLICYCONTROL"
+                        },
+                        {
+                            "@name": "NPCF_EVENTEXPOSURE"
+                        },
+                        {
+                            "@name": "NPCF_UE_POLICY_CONTROL"
+                        },
+                        {
+                            "@name": "NSMSF_SMS"
+                        },
+                        {
+                            "@name": "NNSSF_NSSELECTION"
+                        },
+                        {
+                            "@name": "NNSSF_NSSAIAVAILABILITY"
+                        },
+                        {
+                            "@name": "NUDR_DR"
+                        },
+                        {
+                            "@name": "NLMF_LOC"
+                        },
+                        {
+                            "@name": "N5G_EIR_EIC"
+                        },
+                        {
+                            "@name": "NBSF_MANAGEMENT"
+                        },
+                        {
+                            "@name": "NCHF_SPENDINGLIMITCONTROL"
+                        },
+                        {
+                            "@name": "NCHF_CONVERGEDCHARGING"
+                        },
+                        {
+                            "@name": "NNWDAF_EVENTSSUBSCRIPTION"
+                        },
+                        {
+                            "@name": "NNWDAF_ANALYTICSINFO"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "UriScheme",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "HTTP"
+                        },
+                        {
+                            "@name": "HTTPS"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "NFServiceStatus",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "REGISTERED"
+                        },
+                        {
+                            "@name": "SUSPENDED"
+                        },
+                        {
+                            "@name": "UNDISCOVERABLE"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

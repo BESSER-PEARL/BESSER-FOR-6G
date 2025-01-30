@@ -1,0 +1,263 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrsectorcarrier",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrsectcarr3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-nrsectorcarrier",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-nrsectorcarrier"
+        },
+        "prefix": {
+            "@value": "nrsectcarr3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRSectorCarrier Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-05-28",
+                "reference": {
+                    "text": "CR-0316"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NRSectorCarrierGrp",
+            "description": {
+                "text": "Represents the NRSectorCarrier IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "leaf": [
+                {
+                    "@name": "txDirection",
+                    "description": {
+                        "text": "Indicates if the transmission direction is downlink,\nuplink, or both downlink and uplink."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "types3gpp:TxDirection"
+                    }
+                },
+                {
+                    "@name": "configuredMaxTxPower",
+                    "description": {
+                        "text": "Maximum transmisssion power at the antenna port for all\ndownlink channels, used simultaneously in a cell, added together.\nCondition:  The sector-carrier has a downlink and the\nconfiguration of Tx power at antenna port reference point is supported."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    },
+                    "units": {
+                        "@name": "mW"
+                    }
+                },
+                {
+                    "@name": "configuredMaxTxEIRP",
+                    "type": {
+                        "@name": "int64"
+                    },
+                    "units": {
+                        "@name": "dBm"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "description": {
+                        "text": "The maximum emitted isotroptic radiated power (EIRP) in dBm\nfor all downlink channels, used simultaneously in a cell, added together.\nCondition: the sector-carrier has a downlink and the\nconfiguration of emitted isotropic radiated power is supported"
+                    }
+                },
+                {
+                    "@name": "arfcnDL",
+                    "description": {
+                        "text": "NR Absolute Radio Frequency Channel Number (NR-ARFCN)\nfor downlink.\nCondition:  The sector-carrier has a downlink AND the value\ndiffers from the referring cell's value of arfcnDL."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..3279165"
+                        }
+                    }
+                },
+                {
+                    "@name": "arfcnUL",
+                    "description": {
+                        "text": "NR Absolute Radio Frequency Channel Number (NR-ARFCN)\nfor uplink.\nCondition: The sector-carrier has an uplink AND the value\ndiffers from the referring cell's value of arfcnUL."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..3279165"
+                        }
+                    }
+                },
+                {
+                    "@name": "bSChannelBwDL",
+                    "description": {
+                        "text": "Base station channel bandwitdth for downlink.\nCondition: The sector-carrier has a downlink AND the value\ndiffers from the referring cell's value of bSChannelBwDL."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "5 | 10 | 15 | 20 | 30 | 40 | 50 | 60 | 70 | 80 |\n90 | 100"
+                        }
+                    },
+                    "units": {
+                        "@name": "MHz"
+                    }
+                },
+                {
+                    "@name": "bSChannelBwUL",
+                    "description": {
+                        "text": "Base station channel bandwitdth for uplink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "5 | 10 | 15 | 20 | 30 | 40 | 50 | 60 | 70 | 80 |\n90 | 100"
+                        }
+                    },
+                    "units": {
+                        "@name": "MHz"
+                    }
+                },
+                {
+                    "@name": "sectorEquipmentFunctionRef",
+                    "description": {
+                        "text": "Reference to corresponding SectorEquipmentFunction\ninstance."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.622"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction",
+            "list": {
+                "@name": "NRSectorCarrier",
+                "description": {
+                    "text": "Represents the resources of each transmission point\nincluded in the cell."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRSectorCarrierGrp"
+                    }
+                }
+            }
+        }
+    }
+}

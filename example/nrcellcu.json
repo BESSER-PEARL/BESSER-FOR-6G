@@ -1,0 +1,233 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrcellcu",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu"
+        },
+        "prefix": {
+            "@value": "nrcellcu3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRCellCU Information Object\nClass (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0454"
+                }
+            },
+            {
+                "@date": "2020-11-25",
+                "reference": {
+                    "text": "CR-0386"
+                }
+            },
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-10-02",
+                "reference": {
+                    "text": "CR-0384"
+                }
+            },
+            {
+                "@date": "2020-05-08",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            },
+            {
+                "@date": "2020-02-14",
+                "reference": {
+                    "text": "S5-20XXXX"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "DPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nfunction of PCI configuration feature"
+                }
+            },
+            {
+                "@name": "DESManagementFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nEnergy Saving feature"
+                }
+            },
+            {
+                "@name": "DMROFunction",
+                "description": {
+                    "text": "Class representing D-SON function of MRO feature"
+                }
+            },
+            {
+                "@name": "CESManagementFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON Energy Saving\nfeature"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NRCellCUGrp",
+            "description": {
+                "text": "Represents the NRCellCU IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "leaf": [
+                {
+                    "@name": "cellLocalId",
+                    "description": {
+                        "text": "Identifies an NR cell of a gNB. Together with corresponding\ngNB ID it forms the NR Cell Identifier (NCI)."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..16383"
+                        }
+                    }
+                },
+                {
+                    "@name": "nRFrequencyRef",
+                    "description": {
+                        "text": "Reference to corresponding NRFrequency instance."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            ],
+            "list": {
+                "@name": "pLMNInfoList",
+                "description": {
+                    "text": "The PLMNInfoList is a list of PLMNInfo data type. It defines\nwhich PLMNs that can be served by the NR cell, and which S-NSSAIs that\ncan be supported by the NR cell for corresponding PLMN in case of\nnetwork slicing feature is supported."
+                },
+                "key": {
+                    "@value": "mcc mnc sd sst"
+                },
+                "min-elements": {
+                    "@value": "1"
+                },
+                "uses": {
+                    "@name": "types5g3gpp:PLMNInfo"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction",
+            "list": {
+                "@name": "NRCellCU",
+                "description": {
+                    "text": "Represents the information required by CU that is\nresponsible for the management of inter-cell mobility and neighbour\nrelations via ANR."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRCellCUGrp"
+                    }
+                }
+            }
+        }
+    }
+}

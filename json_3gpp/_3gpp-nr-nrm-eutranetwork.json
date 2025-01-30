@@ -1,0 +1,112 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-eutranetwork",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:eutranet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranetwork"
+        },
+        "prefix": {
+            "@value": "eutranet3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the EUtraNetwork Information Object\nClass (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2019-06-17",
+            "description": {
+                "text": "Initial revision"
+            }
+        },
+        "feature": {
+            "@name": "ExternalsUnderEUtraNetwork",
+            "description": {
+                "text": "Classes representing external entities like EUtranFrequency,\nExternalENBFunction are contained under a EUtraNetwork list/class."
+            }
+        },
+        "grouping": {
+            "@name": "EUtraNetworkGrp",
+            "description": {
+                "text": "Represents the EUtraNetwork IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "subnet3gpp:SubNetworkGrp"
+            }
+        },
+        "list": {
+            "@name": "EUtraNetwork",
+            "description": {
+                "text": "A subnetwork containing gNB external E-UTRAN entities."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "key": {
+                "@value": "id"
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            },
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "EUtraNetworkGrp"
+                },
+                "leaf-list": [
+                    {
+                        "@name": "parents",
+                        "description": {
+                            "text": "Reference to all containg EUtraNetwork instances\nin strict order from the root EUtraNetwork down to the immediate\nparent EUtraNetwork.\nIf EUtraNetworks form a containment hierarchy this is\nmodeled using references between the child EUtraNetwork and the parent\nEUtraNetworks.\nThis reference MUST NOT be present for the top level EUtraNetwork and\nMUST be present for other EUtraNetworks."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "../../../EUtraNetwork/id"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "containedChildren",
+                        "description": {
+                            "text": "Reference to all directly contained EUtraNetwork instances.\nIf EUtraNetworks form a containment hierarchy this is\nmodeled using references between the child EUtraNetwork and the parent\nEUtraNetwork."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "../../../EUtraNetwork/id"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

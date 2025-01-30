@@ -1,0 +1,395 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-gnbcuupfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:gnbcuup3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcuupfunction",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:nrrrmpolicy3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcuupfunction"
+        },
+        "prefix": {
+            "@value": "gnbcuup3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-rrmpolicy",
+                "prefix": {
+                    "@value": "nrrrmpolicy3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the GNBCUUPFunction Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0333"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-06-03",
+                "reference": {
+                    "text": "CR-0286"
+                }
+            },
+            {
+                "@date": "2020-05-28",
+                "reference": {
+                    "text": "CR-0318"
+                }
+            },
+            {
+                "@date": "2020-03-12",
+                "reference": {
+                    "text": "SP-200233 S5-201547"
+                }
+            },
+            {
+                "@date": "2020-02-14",
+                "reference": {
+                    "text": "S5-20XXXX"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-08-21",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "TAIGrp",
+                "description": {
+                    "text": "Tracking Area Identity"
+                },
+                "list": {
+                    "@name": "pLMNId",
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "description": {
+                        "text": "PLMN IDs for the Tracking area"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                "leaf": {
+                    "@name": "nRTAC",
+                    "type": {
+                        "@name": "int64"
+                    },
+                    "description": {
+                        "text": "Identity of the common Tracking Area Code for the PLMNs\nallowedValues:\na) It is the TAC or Extended-TAC.\nb) A cell can only broadcast one TAC or Extended-TAC.\nSee TS 36.300, subclause 10.1.7 (PLMNID and TAC relation).\nc) TAC is defined in subclause 19.4.2.3 of 3GPP TS 23.003 and\nExtended-TAC is defined in subclause 9.3.1.29 of 3GPP TS 38.473.\nd) For a 5G SA (Stand Alone), it has a non-null value."
+                    }
+                }
+            },
+            {
+                "@name": "BackhaulAddressGrp",
+                "description": {
+                    "text": "Indicates the backhauladdress of gNB."
+                },
+                "leaf": {
+                    "@name": "gNBId",
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "0..4294967295"
+                        }
+                    },
+                    "description": {
+                        "text": "It identifies a gNB within a PLMN. The gNB ID is part of\nthe NR Cell Identifier (NCI) of the gNB cells."
+                    },
+                    "reference": {
+                        "text": "gNB Identifier (gNB ID) of subclause 8.2 of TS 38.300.\nGlobal gNB ID in subclause 9.3.1.6 of TS 38.413"
+                    }
+                },
+                "list": {
+                    "@name": "tAI",
+                    "key": {
+                        "@value": "nRTAC"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "Tracking Area Identity"
+                    },
+                    "reference": {
+                        "text": "subclause 9.3.3.11 in TS 38.413"
+                    },
+                    "uses": {
+                        "@name": "TAIGrp"
+                    }
+                }
+            },
+            {
+                "@name": "MappingSetIDBackhaulAddressGrp",
+                "description": {
+                    "text": "Mapping relationship between setID and backhaulAddress of gNB"
+                },
+                "leaf": [
+                    {
+                        "@name": "idx",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "description": {
+                            "text": "ID value"
+                        }
+                    },
+                    {
+                        "@name": "setID",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Indicates the setID of gNB."
+                        },
+                        "reference": {
+                            "text": "Subclause 7.4.1.6 in TS 38.211"
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "backhaulAddress",
+                    "key": {
+                        "@value": "gNBId"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "Indicates the backhauladdress of gNB."
+                    },
+                    "uses": {
+                        "@name": "BackhaulAddressGrp"
+                    }
+                }
+            },
+            {
+                "@name": "GNBCUUPFunctionGrp",
+                "description": {
+                    "text": "Represents the GNBCUUPFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": [
+                    {
+                        "@name": "mf3gpp:ManagedFunctionGrp"
+                    },
+                    {
+                        "@name": "nrrrmpolicy3gpp:RRMPolicy_Grp"
+                    }
+                ],
+                "leaf": [
+                    {
+                        "@name": "gNBCUUPId",
+                        "type": {
+                            "@name": "uint64",
+                            "range": {
+                                "@value": "0..68719476735"
+                            }
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Identifies the gNB-CU-UP at least within a gNB-CU-CP"
+                        },
+                        "reference": {
+                            "text": "'gNB-CU-UP ID' in subclause 9.3.1.15 of 3GPP TS 38.463"
+                        }
+                    },
+                    {
+                        "@name": "gNBId",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Identifies a gNB within a PLMN. The gNB ID is part of the\nNR Cell Identifier (NCI) of the gNB cells."
+                        },
+                        "reference": {
+                            "text": "gNB Identifier (gNB ID) of subclause 8.2 of TS 38.300.\nGlobal gNB ID in subclause 9.3.1.6 of TS 38.413"
+                        }
+                    },
+                    {
+                        "@name": "gNBIdLength",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "22..32"
+                            }
+                        },
+                        "description": {
+                            "text": "Indicates the number of bits for encoding the gNB Id."
+                        },
+                        "reference": {
+                            "text": "gNB Id in 3GPP TS 38.300, Global gNB ID in 3GPP TS 38.413"
+                        }
+                    },
+                    {
+                        "@name": "configurable5QISetRef",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        },
+                        "description": {
+                            "text": "DN of the Configurable5QISet that the GNBCUUPFunction\nsupports (is associated to)."
+                        }
+                    },
+                    {
+                        "@name": "dynamic5QISetRef",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        },
+                        "description": {
+                            "text": "DN of the Dynamic5QISet that the GNBCUUPFunction\nsupports (is associated to)."
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "pLMNInfoList",
+                        "description": {
+                            "text": "The PLMNInfoList is a list of PLMNInfo data type. It\ndefines which PLMNs that can be served by the GNBCUUPFunction and\nwhich S-NSSAIs can be supported by the GNBCUUPFunction for\ncorresponding PLMN in case of network slicing feature is supported"
+                        },
+                        "key": {
+                            "@value": "mcc mnc sd sst"
+                        },
+                        "uses": {
+                            "@name": "types5g3gpp:PLMNInfo"
+                        }
+                    },
+                    {
+                        "@name": "mappingSetIDBackhaulAddressList",
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "description": {
+                            "text": "Specifies a list of mappingSetIDBackhaulAddress used to\nretrieve the backhaul address of the victim set.\nMust be present if Remote Interference Management function is\nsupported."
+                        },
+                        "uses": {
+                            "@name": "MappingSetIDBackhaulAddressGrp"
+                        }
+                    }
+                ]
+            }
+        ],
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "GNBCUUPFunction",
+                "key": {
+                    "@value": "id"
+                },
+                "description": {
+                    "text": "Represents the logical function CU-UP of gNB or en-gNB."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "GNBCUUPFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

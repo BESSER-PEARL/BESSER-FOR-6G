@@ -1,0 +1,134 @@
+{
+    "module": {
+        "@name": "_3gpp-common-ep-rp",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:eprp3gpp": "urn:3gpp:sa5:_3gpp-common-ep-rp",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-ep-rp"
+        },
+        "prefix": {
+            "@value": "eprp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "_3gpp-common-measurements",
+                "prefix": {
+                    "@value": "meas3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Common/basic class/grouping to be inherited/reused.\nThis IOC represents an end point of a link used across a reference\npoint between two network entities."
+        },
+        "reference": {
+            "text": "3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)\n\n3GPP TS 28.620\nUmbrella Information Model (UIM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-06-08",
+                "reference": {
+                    "text": "CR-0092"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "EP_RPGrp",
+                "description": {
+                    "text": "Abstract class, represents an end point of a link used\nacross a reference point between two network entities.\n\nFor naming the subclasses of EP_RP, the following rules shall apply:\n-\tThe name of the subclassed IOC shall have the form 'EP_<rp>',\nwhere <rp> is a string that represents the name of the reference point.\nThus, two valid examples of EP_RP subclassed IOC names would be:\nEP_S1 and EP_X2."
+                },
+                "leaf": [
+                    {
+                        "@name": "userLabel",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "A user-friendly (and user assignable) name of this object."
+                        }
+                    },
+                    {
+                        "@name": "farEndEntity",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "EP_Common",
+                "uses": [
+                    {
+                        "@name": "EP_RPGrp"
+                    },
+                    {
+                        "@name": "meas3gpp:SupportedPerfMetricGroupGrp"
+                    }
+                ],
+                "list": {
+                    "@name": "localAddress",
+                    "description": {
+                        "text": "Local IP address and VLAN ID."
+                    },
+                    "key": {
+                        "@value": "ipAddress vlanId"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:AddressWithVlan"
+                    }
+                },
+                "leaf": {
+                    "@name": "remoteAddress",
+                    "description": {
+                        "text": "Remote IP address."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "inet:ip-address"
+                    }
+                }
+            }
+        ]
+    }
+}

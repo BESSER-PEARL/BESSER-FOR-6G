@@ -1,0 +1,573 @@
+{
+    "module": {
+        "@name": "_3gpp-common-managed-function",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "@xmlns:trace3gpp": "urn:3gpp:sa5:_3gpp-common-trace",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-managed-function"
+        },
+        "prefix": {
+            "@value": "mf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-measurements",
+                "prefix": {
+                    "@value": "meas3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-trace",
+                "prefix": {
+                    "@value": "trace3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "The module defines a base class/grouping for major 3GPP\nfunctions."
+        },
+        "reference": {
+            "text": "3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)\n\n3GPP TS 28.620\nUmbrella Information Model (UIM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0122"
+                }
+            },
+            {
+                "@date": "2020-09-30",
+                "reference": {
+                    "text": "CR-bbbb"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0102"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0095"
+                }
+            },
+            {
+                "@date": "2020-06-23",
+                "reference": {
+                    "text": "CR-085"
+                }
+            },
+            {
+                "@date": "2020-06-08",
+                "reference": {
+                    "text": "CR-0092"
+                }
+            },
+            {
+                "@date": "2019-11-21",
+                "reference": {
+                    "text": "S5-197275, S5-197735"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-18",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "MeasurementsUnderManagedFunction",
+                "description": {
+                    "text": "The MeasurementSubtree shall be contained under ManageElement"
+                }
+            },
+            {
+                "@name": "TraceUnderManagedFunction",
+                "description": {
+                    "text": "The TraceSubtree shall be contained under ManagedFunction"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "Operation",
+                "description": {
+                    "text": "This data type represents an Operation."
+                },
+                "reference": {
+                    "text": "3gpp TS 28.622"
+                },
+                "leaf": [
+                    {
+                        "@name": "name",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    },
+                    {
+                        "@name": "operationSemantics",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "REQUEST_RESPONSE"
+                                },
+                                {
+                                    "@name": "SUBSCRIBE_NOTIFY"
+                                }
+                            ]
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Semantics type of the operation."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 23.502"
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "allowedNFTypes",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "The type of the managed NF service instance\nThe specifc values allowed are described in TS 23.501"
+                    }
+                }
+            },
+            {
+                "@name": "ManagedNFServiceGrp",
+                "description": {
+                    "text": "A ManagedNFService represents a Network Function (NF) service."
+                },
+                "reference": {
+                    "text": "Clause 7 of 3GPP TS 23.501."
+                },
+                "leaf": [
+                    {
+                        "@name": "userLabel",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "A user-friendly (and user assignable) name of this object."
+                        }
+                    },
+                    {
+                        "@name": "nFServiceType",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "The type of the managed NF service instance\nThe specifc values allowed are described in clause 7.2 of TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "administrativeState",
+                        "type": {
+                            "@name": "types3gpp:AdministrativeState"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Permission to use or prohibition against using the instance"
+                        }
+                    },
+                    {
+                        "@name": "operationalState",
+                        "type": {
+                            "@name": "types3gpp:OperationalState"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Describes whether the resource is installed and working"
+                        }
+                    },
+                    {
+                        "@name": "usageState",
+                        "type": {
+                            "@name": "types3gpp:usageState"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Describes whether the resource is actively in use at a\nspecific instant, and if so, whether or not it has spare\ncapacity for additional users."
+                        }
+                    },
+                    {
+                        "@name": "registrationState",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "REGISTERED"
+                                },
+                                {
+                                    "@name": "DEREGISTERED"
+                                }
+                            ]
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "sAP",
+                        "key": {
+                            "@value": "host port"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "The service access point of the managed NF service instance"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:SAP"
+                        }
+                    },
+                    {
+                        "@name": "operations",
+                        "key": {
+                            "@value": "name"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "Operation"
+                        },
+                        "description": {
+                            "text": "Set of operations supported by the managed NF\nservice instance"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "Function_Grp",
+                "description": {
+                    "text": "A base grouping for 3GPP functions."
+                },
+                "leaf": {
+                    "@name": "userLabel",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "A user-friendly (and user assignable) name of this object."
+                    }
+                }
+            },
+            {
+                "@name": "ManagedFunctionGrp",
+                "description": {
+                    "text": "Abstract root class to be inherited/reused by classes\nrepresenting 3GPP functions.\n\nAnywhere this grouping is used by classes inheriting from ManagedFunction\nthe list representing the inheriting class needs to include all\ncontained classes of ManagedFunction too. Contained classes are\neither\n- augmented into the Function class or\n- shall be included in the list representing the inheriting class\nusing the grouping  ManagedFunctionContainedClasses:\n1) EP_RP solved using augment\n2) uses mf3gpp:ManagedFunctionContainedClasses;"
+                },
+                "uses": [
+                    {
+                        "@name": "Function_Grp"
+                    },
+                    {
+                        "@name": "meas3gpp:SupportedPerfMetricGroupGrp"
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "vnfParametersList",
+                        "key": {
+                            "@value": "vnfInstanceId"
+                        },
+                        "description": {
+                            "text": "Contains the parameter set of the VNF\ninstance(s) corresponding to an NE.\nThe presence of this list indicates that the ManagedFunction\nrepresented is realized by one or more VNF instance(s). Otherwise it\nshall be absent.\nThe presence of a vnfParametersList entry, whose vnfInstanceId with a\nstring length of zero, in createMO operation can trigger the\ninstantiation of the related VNF/VNFC instances."
+                        },
+                        "leaf": [
+                            {
+                                "@name": "vnfInstanceId",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "description": {
+                                    "text": "VNF instance identifier"
+                                },
+                                "reference": {
+                                    "text": "ETSI GS NFV-IFA 008 v2.1.1:\nNetwork Functions Virtualisation (NFV); Management and Orchestration;\nVe-Vnfm reference point - Interface and Information Model Specification\nsection 9.4.2\n\nETSI GS NFV-IFA 015 v2.1.2: Network Functions Virtualisation (NFV);\nManagement and Orchestration; Report on NFV Information Model\nsection B2.4.2.1.2.3"
+                                }
+                            },
+                            {
+                                "@name": "vnfdId",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "description": {
+                                    "text": "Identifier of the VNFD on which the VNF instance is based.\nThe absence of the leaf or a string length of zero for vnfInstanceId\nmeans the VNF instance(s) does not exist (e.g. has not been\ninstantiated yet, has already been terminated)."
+                                },
+                                "reference": {
+                                    "text": "ETSI GS NFV-IFA 008 v2.1.1:\nNetwork Functions Virtualisation (NFV); Management and Orchestration;\nVe-Vnfm reference point - Interface and Information Model Specification\nsection 9.4.2"
+                                }
+                            },
+                            {
+                                "@name": "flavourId",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "description": {
+                                    "text": "Identifier of the VNF Deployment Flavour applied to this\nVNF instance."
+                                },
+                                "reference": {
+                                    "text": "ETSI GS NFV-IFA 008 v2.1.1:\nNetwork Functions Virtualisation (NFV) Management and Orchestration"
+                                }
+                            },
+                            {
+                                "@name": "autoScalable",
+                                "type": {
+                                    "@name": "boolean"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "Indicator of whether the auto-scaling of this\nVNF instance is enabled or disabled."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "peeParametersList",
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "description": {
+                            "text": "Contains the parameter set for the control\nand monitoring of power, energy and environmental parameters of\nManagedFunction instance(s)."
+                        },
+                        "leaf": [
+                            {
+                                "@name": "idx",
+                                "type": {
+                                    "@name": "uint32"
+                                }
+                            },
+                            {
+                                "@name": "siteIdentification",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "The identification of the site where the\nManagedFunction resides."
+                                }
+                            },
+                            {
+                                "@name": "siteLatitude",
+                                "type": {
+                                    "@name": "decimal64",
+                                    "fraction-digits": {
+                                        "@value": "4"
+                                    },
+                                    "range": {
+                                        "@value": "-90.0000..+90.0000"
+                                    }
+                                },
+                                "description": {
+                                    "text": "The latitude of the site where the ManagedFunction\ninstance resides, based on World Geodetic System (1984 version)\nglobal reference frame (WGS 84). Positive values correspond to\nthe northern hemisphere. This attribute is optional in case of\nBTSFunction and RNCFunction instance(s)."
+                                }
+                            },
+                            {
+                                "@name": "siteLongitude",
+                                "type": {
+                                    "@name": "decimal64",
+                                    "fraction-digits": {
+                                        "@value": "4"
+                                    },
+                                    "range": {
+                                        "@value": "-180.0000..+180.0000"
+                                    }
+                                },
+                                "description": {
+                                    "text": "The longitude of the site where the ManagedFunction\ninstance resides, based on World Geodetic System (1984 version)\nglobal reference frame (WGS 84). Positive values correspond to\ndegrees east of 0 degrees longitude. This attribute is optional in\ncase of BTSFunction and RNCFunction instance(s)."
+                                }
+                            },
+                            {
+                                "@name": "siteDescription",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "An operator defined description of the site where\nthe ManagedFunction instance resides."
+                                }
+                            },
+                            {
+                                "@name": "equipmentType",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "The type of equipment where the managedFunction\ninstance resides."
+                                },
+                                "reference": {
+                                    "text": "clause 4.4.1 of ETSI ES 202 336-12"
+                                }
+                            },
+                            {
+                                "@name": "environmentType",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "The type of environment where the managedFunction\ninstance resides."
+                                },
+                                "reference": {
+                                    "text": "clause 4.4.1 of ETSI ES 202 336-12"
+                                }
+                            },
+                            {
+                                "@name": "powerInterface",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "The type of power."
+                                },
+                                "reference": {
+                                    "text": "clause 4.4.1 of ETSI ES 202 336-12"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "leaf": {
+                    "@name": "priorityLabel",
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    }
+                }
+            },
+            {
+                "@name": "ManagedFunctionContainedClasses",
+                "description": {
+                    "text": "A grouping used to containe classes (lists) contained by\nthe abstract IOC ManagedFunction"
+                },
+                "list": {
+                    "@name": "ManagedNFService",
+                    "description": {
+                        "text": "Represents a Network Function (NF)"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.501"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ManagedNFServiceGrp"
+                        }
+                    }
+                },
+                "uses": [
+                    {
+                        "@name": "meas3gpp:MeasurementSubtree",
+                        "if-feature": {
+                            "@name": "MeasurementsUnderManagedFunction"
+                        }
+                    },
+                    {
+                        "@name": "trace3gpp:TraceSubtree",
+                        "if-feature": {
+                            "@name": "TraceUnderManagedFunction"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

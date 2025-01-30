@@ -1,0 +1,214 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externalnrcellcu",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extnrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalnrcellcu",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:nrnet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:extgnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalgnbcucpfunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externalnrcellcu"
+        },
+        "prefix": {
+            "@value": "extnrcellcu3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrnetwork",
+                "prefix": {
+                    "@value": "nrnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-externalgnbcucpfunction",
+                "prefix": {
+                    "@value": "extgnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalNRCellCU Information\nObject Class (IOC), that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalNRCellCUGrp",
+                "description": {
+                    "text": "Represents the ExternalNRCellCU IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": [
+                    {
+                        "@name": "cellLocalId",
+                        "description": {
+                            "text": "Identifies an NR cell of a gNB. Together with corresponding\ngNB ID it forms the NR Cell Identifier (NCI)."
+                        },
+                        "reference": {
+                            "text": "NCI in 3GPP TS 38.300"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..16383"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "nRPCI",
+                        "description": {
+                            "text": "The Physical Cell Identity (PCI) of the NR cell."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 36.211"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..1007"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "nRFrequencyRef",
+                        "description": {
+                            "text": "Reference to corresponding NRFrequency instance."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "Defines which PLMNs that are assumed to be served by the\nNR cell in another gNB CU-CP. This list is either updated by the\nmanaged element itself (e.g. due to ANR, signalling over Xn, etc.) or\nby consumer over the standard interface."
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "12"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                }
+            },
+            {
+                "@name": "ExternalNRCellCUWrapper",
+                "list": {
+                    "@name": "ExternalNRCellCU",
+                    "description": {
+                        "text": "Represents the properties of an NRCellCU controlled by\nanother Management Service Provider."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.541"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalNRCellCUGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork/extgnbcucp3gpp:ExternalGNBCUCPFunction",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalNRCellCUWrapper"
+                }
+            },
+            {
+                "@target-node": "/nrnet3gpp:NRNetwork/extgnbcucp3gpp:ExternalGNBCUCPFunction",
+                "if-feature": {
+                    "@name": "nrnet3gpp:ExternalsUnderNRNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalNRCellCUWrapper"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "module": {
+        "@name": "_3gpp-common-top",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-top"
+        },
+        "prefix": {
+            "@value": "top3gpp"
+        },
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "The model defines a YANG mapping of the top level\ninformation classes used for management of 5G networks and\nnetwork slicing."
+        },
+        "reference": {
+            "text": "3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)\n\n3GPP TS 28.620\nUmbrella Information Model (UIM)"
+        },
+        "revision": {
+            "@date": "2019-06-17",
+            "description": {
+                "text": "Initial revision"
+            }
+        },
+        "grouping": {
+            "@name": "Top_Grp",
+            "description": {
+                "text": "Abstract class supplying a naming attribute"
+            },
+            "reference": {
+                "text": "3GPP TS 28.620"
+            },
+            "leaf": {
+                "@name": "id",
+                "type": {
+                    "@name": "string"
+                },
+                "description": {
+                    "text": "Key leaf (namingAttribute) for a class/list.\nShould be used as a key leaf for lists representing\nstage 2 classes."
+                },
+                "reference": {
+                    "text": "3GPP TS 32.300 Name convention for managed objects"
+                }
+            }
+        }
+    }
+}

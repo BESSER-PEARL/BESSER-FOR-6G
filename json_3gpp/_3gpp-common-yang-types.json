@@ -1,0 +1,945 @@
+{
+    "module": {
+        "@name": "_3gpp-common-yang-types",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:yang": "urn:ietf:params:xml:ns:yang:ietf-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-yang-types"
+        },
+        "prefix": {
+            "@value": "types3gpp"
+        },
+        "import": [
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "ietf-yang-types",
+                "prefix": {
+                    "@value": "yang"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "The model defines a YANG mapping of the top level\ninformation classes used for management of 5G networks and\nnetwork slicing."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-06",
+                "description": {
+                    "text": "Removed incorrect S-NSSAI definitions."
+                },
+                "reference": {
+                    "text": "CR-0118"
+                }
+            },
+            {
+                "@date": "2020-03-10",
+                "description": {
+                    "text": "Removed faulty when statements."
+                },
+                "reference": {
+                    "text": "SP-200229"
+                }
+            },
+            {
+                "@date": "2019-10-25",
+                "description": {
+                    "text": "Added ManagedNFProfile."
+                },
+                "reference": {
+                    "text": "S5-194457"
+                }
+            },
+            {
+                "@date": "2019-10-16",
+                "description": {
+                    "text": "Added SAP and usageState."
+                },
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-23",
+                "reference": {
+                    "text": "Initial version."
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ManagedNFProfile",
+                "description": {
+                    "text": "Defines profile for managed NF"
+                },
+                "reference": {
+                    "text": "3GPP TS 23.501"
+                },
+                "leaf": [
+                    {
+                        "@name": "idx",
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "nfInstanceID",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "yang:uuid"
+                        },
+                        "description": {
+                            "text": "This parameter defines profile for managed NF.\nThe format of the NF Instance ID shall be a\nUniversally Unique Identifier (UUID) version 4,\nas described in IETF RFC 4122"
+                        }
+                    },
+                    {
+                        "@name": "hostAddr",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "inet:host"
+                        },
+                        "description": {
+                            "text": "Host address of a NF"
+                        }
+                    },
+                    {
+                        "@name": "authzInfo",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "This parameter defines NF Specific Service authorization\ninformation. It shall include the NF type (s) and NF realms/origins\nallowed to consume NF Service(s) of NF Service Producer."
+                        },
+                        "reference": {
+                            "text": "See TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "location",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Information about the location of the NF instance\n(e.g. geographic location, data center) defined by operator"
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    },
+                    {
+                        "@name": "capacity",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        },
+                        "description": {
+                            "text": "This parameter defines static capacity information\nin the range of 0-65535, expressed as a weight relative to other\nNF instances of the same type; if capacity is also present in the\nnfServiceList parameters, those will have precedence over this value."
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    },
+                    {
+                        "@name": "nFSrvGroupId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "This parameter defines identity of the group that is\nserved by the NF instance.\nMay be config false or true depending on the ManagedFunction.\nConfig=true for Udrinfo. Config=false for UdmInfo and AusfInfo.\nShall be present if ../nfType = UDM or AUSF or UDR."
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    },
+                    {
+                        "@name": "priority",
+                        "type": {
+                            "@name": "uint16"
+                        },
+                        "description": {
+                            "text": "This parameter defines Priority (relative to other NFs\nof the same type) in the range of 0-65535, to be used for NF selection;\nlower values indicate a higher priority. If priority is also present\nin the nfServiceList parameters, those will have precedence over\nthis value. Shall be present if ../nfType = AMF"
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "nfType",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "NfType"
+                        },
+                        "description": {
+                            "text": "Type of the Network Function"
+                        }
+                    },
+                    {
+                        "@name": "supportedDataSetIds",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "SUBSCRIPTION"
+                                },
+                                {
+                                    "@name": "POLICY"
+                                },
+                                {
+                                    "@name": "EXPOSURE"
+                                },
+                                {
+                                    "@name": "APPLICATION"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "List of supported data sets in the UDR instance.\nMay be present if ../nfType = UDR"
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    },
+                    {
+                        "@name": "smfServingAreas",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Defines the SMF service area(s) the UPF can serve.\nShall be present if ../nfType = UPF"
+                        },
+                        "reference": {
+                            "text": "TS 29.510"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "SAP",
+                "leaf": [
+                    {
+                        "@name": "host",
+                        "type": {
+                            "@name": "inet:host"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    },
+                    {
+                        "@name": "port",
+                        "type": {
+                            "@name": "inet:port-number"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    }
+                ],
+                "description": {
+                    "text": "Service access point."
+                },
+                "reference": {
+                    "text": "TS 28.622"
+                }
+            },
+            {
+                "@name": "PLMNId",
+                "leaf": [
+                    {
+                        "@name": "mcc",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "Mcc"
+                        }
+                    },
+                    {
+                        "@name": "mnc",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "Mnc"
+                        }
+                    }
+                ],
+                "reference": {
+                    "text": "TS 23.658"
+                }
+            },
+            {
+                "@name": "AmfIdentifier",
+                "leaf": [
+                    {
+                        "@name": "amfRegionId",
+                        "type": {
+                            "@name": "AmfRegionId"
+                        }
+                    },
+                    {
+                        "@name": "amfSetId",
+                        "type": {
+                            "@name": "AmfSetId"
+                        }
+                    },
+                    {
+                        "@name": "amfPointer",
+                        "type": {
+                            "@name": "AmfPointer"
+                        }
+                    }
+                ],
+                "description": {
+                    "text": "The AMFI is constructed from an AMF Region ID,\nan AMF Set ID and an AMF Pointer.\nThe AMF Region ID identifies the region,\nthe AMF Set ID uniquely identifies the AMF Set within the AMF Region, and\nthe AMF Pointer uniquely identifies the AMF within the AMF Set."
+                }
+            },
+            {
+                "@name": "DefaultNotificationSubscription",
+                "leaf": [
+                    {
+                        "@name": "notificationType",
+                        "type": {
+                            "@name": "NotificationType"
+                        }
+                    },
+                    {
+                        "@name": "callbackUri",
+                        "type": {
+                            "@name": "inet:uri"
+                        }
+                    },
+                    {
+                        "@name": "n1MessageClass",
+                        "type": {
+                            "@name": "N1MessageClass"
+                        }
+                    },
+                    {
+                        "@name": "n2InformationClass",
+                        "type": {
+                            "@name": "N2InformationClass"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "Ipv4AddressRange",
+                "leaf": [
+                    {
+                        "@name": "start",
+                        "type": {
+                            "@name": "inet:ipv4-address"
+                        }
+                    },
+                    {
+                        "@name": "end",
+                        "type": {
+                            "@name": "inet:ipv4-address"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "Ipv6PrefixRange",
+                "leaf": [
+                    {
+                        "@name": "start",
+                        "type": {
+                            "@name": "inet:ipv6-prefix"
+                        }
+                    },
+                    {
+                        "@name": "end",
+                        "type": {
+                            "@name": "inet:ipv6-prefix"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "AddressWithVlan",
+                "leaf": [
+                    {
+                        "@name": "ipAddress",
+                        "type": {
+                            "@name": "inet:ip-address"
+                        }
+                    },
+                    {
+                        "@name": "vlanId",
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typedef": [
+            {
+                "@name": "usageState",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "IDLE"
+                        },
+                        {
+                            "@name": "ACTIVE"
+                        },
+                        {
+                            "@name": "BUSY"
+                        }
+                    ]
+                },
+                "description": {
+                    "text": "It describes whether or not the resource is actively in\nuse at a specific instant, and if so, whether or not it has spare\ncapacity for additional users at that instant. The value is READ-ONLY."
+                },
+                "reference": {
+                    "text": "ITU T Recommendation X.731"
+                }
+            },
+            {
+                "@name": "Mcc",
+                "description": {
+                    "text": "The mobile country code consists of three decimal digits,\nThe first digit of the mobile country code identifies the geographic\nregion (the digits 1 and 8 are not used):"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[02-79][0-9][0-9]"
+                    }
+                },
+                "reference": {
+                    "text": "3GPP TS 23.003 subclause 2.2 and 12.1"
+                }
+            },
+            {
+                "@name": "Mnc",
+                "description": {
+                    "text": "The mobile network code consists of two or three\ndecimal digits (for example: MNC of 001 is not the same as MNC of 01)"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[0-9][0-9][0-9]|[0-9][0-9]"
+                    }
+                },
+                "reference": {
+                    "text": "3GPP TS 23.003 subclause 2.2 and 12.1"
+                }
+            },
+            {
+                "@name": "Nci",
+                "description": {
+                    "text": "NR Cell Identity. The NCI shall be of fixed length of 36 bits\nand shall be coded using full hexadecimal representation.\nThe exact coding of the NCI is the responsibility of each PLMN operator"
+                },
+                "reference": {
+                    "text": "TS 23.003"
+                },
+                "type": {
+                    "@name": "union",
+                    "type": [
+                        {
+                            "@name": "string",
+                            "length": {
+                                "@value": "36"
+                            },
+                            "pattern": {
+                                "@value": "[01]+"
+                            }
+                        },
+                        {
+                            "@name": "string",
+                            "length": {
+                                "@value": "9"
+                            },
+                            "pattern": {
+                                "@value": "[a-fA-F0-9]*"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "OperationalState",
+                "reference": {
+                    "text": "3GPP TS 28.625 and ITU-T X.731"
+                },
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "DISABLED",
+                            "value": {
+                                "@value": "0"
+                            },
+                            "description": {
+                                "text": "The resource is totally inoperable."
+                            }
+                        },
+                        {
+                            "@name": "ENABLED",
+                            "value": {
+                                "@value": "1"
+                            },
+                            "description": {
+                                "text": "The resource is partially or fully operable."
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "AdministrativeState",
+                "reference": {
+                    "text": "3GPP TS 28.625 and ITU-T X.731"
+                },
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "LOCKED",
+                            "value": {
+                                "@value": "0"
+                            },
+                            "description": {
+                                "text": "The resource is administratively prohibited from performing\nservices for its users."
+                            }
+                        },
+                        {
+                            "@name": "UNLOCKED",
+                            "value": {
+                                "@value": "1"
+                            },
+                            "description": {
+                                "text": "The resource is administratively permitted to perform\nservices for its users. This is independent of its inherent\noperability."
+                            }
+                        },
+                        {
+                            "@name": "SHUTTINGDOWN",
+                            "value": {
+                                "@value": "2"
+                            },
+                            "description": {
+                                "text": "Use of the resource is administratively permitted to\nexisting instances of use only. While the system remains in\nthe shutting down state the manager or the managed element\nmay at any time cause the resource to transition to the\nlocked state."
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "AvailabilityStatus",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "IN_TEST"
+                        },
+                        {
+                            "@name": "FAILED"
+                        },
+                        {
+                            "@name": "POWER_OFF"
+                        },
+                        {
+                            "@name": "OFF_LINE"
+                        },
+                        {
+                            "@name": "OFF_DUTY"
+                        },
+                        {
+                            "@name": "DEPENDENCY"
+                        },
+                        {
+                            "@name": "DEGRADED"
+                        },
+                        {
+                            "@name": "NOT_INSTALLED"
+                        },
+                        {
+                            "@name": "LOG_FULL"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "CellState",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "IDLE"
+                        },
+                        {
+                            "@name": "INACTIVE"
+                        },
+                        {
+                            "@name": "ACTIVE"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "Nrpci",
+                "type": {
+                    "@name": "uint32"
+                },
+                "description": {
+                    "text": "Physical Cell Identity (PCI) of the NR cell."
+                },
+                "reference": {
+                    "text": "TS 36.211 subclause 6.11"
+                }
+            },
+            {
+                "@name": "Tac",
+                "type": {
+                    "@name": "int32",
+                    "range": {
+                        "@value": "0..16777215"
+                    }
+                },
+                "description": {
+                    "text": "Tracking Area Code"
+                },
+                "reference": {
+                    "text": "TS 23.003 clause 19.4.2.3"
+                }
+            },
+            {
+                "@name": "AmfRegionId",
+                "type": {
+                    "@name": "union",
+                    "type": [
+                        {
+                            "@name": "uint8"
+                        },
+                        {
+                            "@name": "string",
+                            "length": {
+                                "@value": "8"
+                            },
+                            "pattern": {
+                                "@value": "[01]*"
+                            }
+                        }
+                    ]
+                },
+                "reference": {
+                    "text": "clause 2.10.1 of 3GPP TS 23.003"
+                }
+            },
+            {
+                "@name": "AmfSetId",
+                "type": {
+                    "@name": "union",
+                    "type": [
+                        {
+                            "@name": "uint16",
+                            "range": {
+                                "@value": "0..1023"
+                            }
+                        },
+                        {
+                            "@name": "string",
+                            "length": {
+                                "@value": "8"
+                            },
+                            "pattern": {
+                                "@value": "[01]*"
+                            }
+                        }
+                    ]
+                },
+                "reference": {
+                    "text": "clause 2.10.1 of 3GPP TS 23.003"
+                }
+            },
+            {
+                "@name": "AmfPointer",
+                "type": {
+                    "@name": "union",
+                    "type": [
+                        {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..63"
+                            }
+                        },
+                        {
+                            "@name": "string",
+                            "length": {
+                                "@value": "6"
+                            },
+                            "pattern": {
+                                "@value": "[01]*"
+                            }
+                        }
+                    ]
+                },
+                "reference": {
+                    "text": "clause 2.10.1 of 3GPP TS 23.003"
+                }
+            },
+            {
+                "@name": "NfType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "NRF"
+                        },
+                        {
+                            "@name": "UDM"
+                        },
+                        {
+                            "@name": "AMF"
+                        },
+                        {
+                            "@name": "SMF"
+                        },
+                        {
+                            "@name": "AUSF"
+                        },
+                        {
+                            "@name": "NEF"
+                        },
+                        {
+                            "@name": "PCF"
+                        },
+                        {
+                            "@name": "SMSF"
+                        },
+                        {
+                            "@name": "NSSF"
+                        },
+                        {
+                            "@name": "UDR"
+                        },
+                        {
+                            "@name": "LMF"
+                        },
+                        {
+                            "@name": "GMLC"
+                        },
+                        {
+                            "@name": "5G_EIR"
+                        },
+                        {
+                            "@name": "SEPP"
+                        },
+                        {
+                            "@name": "UPF"
+                        },
+                        {
+                            "@name": "N3IWF"
+                        },
+                        {
+                            "@name": "AF"
+                        },
+                        {
+                            "@name": "UDSF"
+                        },
+                        {
+                            "@name": "BSF"
+                        },
+                        {
+                            "@name": "CHF"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "NotificationType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "N1_MESSAGES"
+                        },
+                        {
+                            "@name": "N2_INFORMATION"
+                        },
+                        {
+                            "@name": "LOCATION_NOTIFICATION"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "Load",
+                "description": {
+                    "text": "Latest known load information of the NF, percentage"
+                },
+                "type": {
+                    "@name": "uint8",
+                    "range": {
+                        "@value": "0..100"
+                    }
+                }
+            },
+            {
+                "@name": "N1MessageClass",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "5GMM"
+                        },
+                        {
+                            "@name": "SM"
+                        },
+                        {
+                            "@name": "LPP"
+                        },
+                        {
+                            "@name": "SMS"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "N2InformationClass",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "SM"
+                        },
+                        {
+                            "@name": "NRPPA"
+                        },
+                        {
+                            "@name": "PWS"
+                        },
+                        {
+                            "@name": "PWS_BCAL"
+                        },
+                        {
+                            "@name": "PWS_RF"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "NsiId",
+                "type": {
+                    "@name": "string"
+                }
+            },
+            {
+                "@name": "UeMobilityLevel",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "STATIONARY"
+                        },
+                        {
+                            "@name": "NOMADIC"
+                        },
+                        {
+                            "@name": "RESTRICTED_MOBILITY"
+                        },
+                        {
+                            "@name": "FULLY_MOBILITY"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "ResourceSharingLevel",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "SHARED"
+                        },
+                        {
+                            "@name": "NOT_SHARED"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "TxDirection",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "DL"
+                        },
+                        {
+                            "@name": "UL"
+                        },
+                        {
+                            "@name": "DL_AND_UL"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "DistinguishedName",
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "([a-zA-Z][a-zA-Z0-9-]*=(\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+,# ])((\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+,])*(\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+, ]))?[,\\+])*[a-zA-Z][a-zA-Z0-9-]*=(\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+,# ])((\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+,])*(\\\\( |#|\\\\|>|<|;|\"|\\+|,|[a-fA-F0-9]{2})|[^\\\\><;\"+, ]))?"
+                    }
+                },
+                "description": {
+                    "text": "Represents the international standard for the representation\nof Distinguished Name (RFC 4512).\nThe format of the DistinguishedName REGEX is:\n{AttributeType = AttributeValue}\n\nAttributeType consists of alphanumeric and hyphen (OIDs not allowed).\nAll other characters are restricted.\nThe Attribute value cannot contain control characters or the\nfollowing characters : \\ > < ; \" + , (Comma) and White space\nThe Attribute value can contain the following characters if they\nare excaped : \\ > < ; \" + , (Comma) and White space\nThe Attribute value can contain control characters if its an escaped\ndouble digit hex number.\nExamples could be\nUID=nobody@example.com,DC=example,DC=com\nCN=John Smith,OU=Sales,O=ACME Limited,L=Moab,ST=Utah,C=US"
+                },
+                "reference": {
+                    "text": "RFC 4512 Lightweight Directory Access Protocol (LDAP):\n      Directory Information Models"
+                }
+            },
+            {
+                "@name": "QOffsetRange",
+                "type": {
+                    "@name": "int8",
+                    "range": {
+                        "@value": "-24 | -22 | -20 | -18 | -16 | -14 | -12 | -10 | -8 | -6 |  -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 |  12 | 14 | 16 | 18 | 20 | 22 | 24"
+                    }
+                },
+                "units": {
+                    "@name": "dB"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,141 @@
+{
+    "module": {
+        "@name": "_3gpp-ns-nrm-networkslice",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:ns3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslice",
+        "@xmlns:nss3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslicesubnet",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslice"
+        },
+        "prefix": {
+            "@value": "ns3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-ns-nrm-networkslicesubnet",
+                "prefix": {
+                    "@value": "nss3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "include": {
+            "@module": "_3gpp-ns-nrm-serviceprofile"
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "A network slice instance in a 5G network."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541\nManagement and orchestration;\n5G Network Resource Model (NRM);\nInformation model definitions for network slice NRM (chapter 6)"
+        },
+        "revision": {
+            "@date": "2020-02-19",
+            "description": {
+                "text": "Introduction of YANG definitions for network slice NRM"
+            },
+            "reference": {
+                "text": "CR-0458"
+            }
+        },
+        "grouping": {
+            "@name": "NetworkSliceGrp",
+            "uses": {
+                "@name": "subnet3gpp:SubNetworkGrp"
+            },
+            "leaf": [
+                {
+                    "@name": "operationalState",
+                    "description": {
+                        "text": "The operational state of the network slice instance.\nIt describes whether or not the resource is physically installed\nand working."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:OperationalState"
+                    }
+                },
+                {
+                    "@name": "administrativeState",
+                    "description": {
+                        "text": "The administrative state of the network slice instance.\nIt describes the permission to use or prohibition against\nusing the instance, imposed through the OAM services."
+                    },
+                    "type": {
+                        "@name": "types3gpp:AdministrativeState"
+                    }
+                },
+                {
+                    "@name": "networkSliceSubnetRef",
+                    "type": {
+                        "@name": "leafref",
+                        "path": {
+                            "@value": "/nss3gpp:NetworkSliceSubnet/nss3gpp:id"
+                        }
+                    },
+                    "description": {
+                        "text": "The NetworkSliceSubnet that the NetworkSlice is\nassociated with."
+                    }
+                }
+            ],
+            "list": {
+                "@name": "serviceProfileList",
+                "description": {
+                    "text": "A list of service profiles supported by the network\nslice instance."
+                },
+                "key": {
+                    "@value": "serviceProfileId"
+                },
+                "uses": {
+                    "@name": "ServiceProfileGrp"
+                }
+            }
+        },
+        "list": {
+            "@name": "NetworkSlice",
+            "description": {
+                "text": "Represents the properties of a network slice instance in\na 5G network."
+            },
+            "key": {
+                "@value": "id"
+            },
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "NetworkSliceGrp"
+                }
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            }
+        }
+    }
+}

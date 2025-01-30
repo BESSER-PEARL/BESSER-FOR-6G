@@ -1,0 +1,150 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externalenbfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extenb3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalenbfunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:eutranet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externalenbfunction"
+        },
+        "prefix": {
+            "@value": "extenb3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-eutranetwork",
+                "prefix": {
+                    "@value": "eutranet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalENBFunction\nInformation Object Class (IOC) that is part of the NR Network Resource\nModel (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM),\n3GPP TS 28.658 (E-UTRAN) Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalENBFunctionGrp",
+                "description": {
+                    "text": "Represets the ExternalENBFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.658"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": {
+                    "@name": "eNBId",
+                    "description": {
+                        "text": "Unambiguously identifies an eNodeB within a PLMN."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 36.413, 3GPP TS 36.300"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..268435455"
+                        }
+                    }
+                }
+            },
+            {
+                "@name": "ExternalENBFunctionWrapper",
+                "list": {
+                    "@name": "ExternalENBFunction",
+                    "description": {
+                        "text": "Represents an external eNB functionality."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.658"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalENBFunctionGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalENBFunctionWrapper"
+                }
+            },
+            {
+                "@target-node": "/eutranet3gpp:EUtraNetwork",
+                "if-feature": {
+                    "@name": "eutranet3gpp:ExternalsUnderEUtraNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalENBFunctionWrapper"
+                }
+            }
+        ]
+    }
+}

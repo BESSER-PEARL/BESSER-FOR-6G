@@ -1,0 +1,363 @@
+{
+    "module": {
+        "@name": "_3gpp-ns-nrm-networkslicesubnet",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nss3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslicesubnet",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslicesubnet"
+        },
+        "prefix": {
+            "@value": "nss3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-measurements",
+                "prefix": {
+                    "@value": "meas3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "include": {
+            "@module": "_3gpp-ns-nrm-sliceprofile"
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the properties of a network slice subnet\ninstance in a 5G network."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541\nManagement and orchestration;\n5G Network Resource Model (NRM);\nInformation model definitions for network slice NRM (chapter 6)"
+        },
+        "revision": [
+            {
+                "@date": "2020-02-19",
+                "description": {
+                    "text": "Introduction of YANG definitions for network slice NRM"
+                },
+                "reference": {
+                    "text": "CR-0458"
+                }
+            },
+            {
+                "@date": "2019-06-07",
+                "description": {
+                    "text": "initial revision"
+                },
+                "reference": {
+                    "text": "Based on\n3GPP TS 28.541 V15.X.XX"
+                }
+            }
+        ],
+        "feature": {
+            "@name": "MeasurementsUnderNetworkSliceSubnet",
+            "description": {
+                "text": "The MeasurementSubtree shall be contained under\nNetworkSliceSubnet."
+            }
+        },
+        "typedef": {
+            "@name": "ETSI-GS-NFV-Identifier",
+            "type": {
+                "@name": "string"
+            },
+            "reference": {
+                "text": "ETSI GS NFV-IFA 013"
+            }
+        },
+        "grouping": [
+            {
+                "@name": "EPTransportGrp",
+                "leaf": [
+                    {
+                        "@name": "ipAddress",
+                        "description": {
+                            "text": "This parameter specifies the IP address assigned to a\nlogical transport interface/endpoint. It can be an IPv4 address\n(See RFC 791) or an IPv6 address (See RFC 2373)."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "logicInterfaceId",
+                        "description": {
+                            "text": "This parameter specifies the identify of a logical\ntransport interface. It could be VLAN ID (See IEEE 802.1Q),\nMPLS Tag or Segment ID."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "nextHopInfo",
+                        "description": {
+                            "text": "This parameter is used to identify ingress transport\nnode. Each node can be identified by any of combination of IP\naddress of next-hop router of transport network, system name,\nport name, IP management address of transport nodes."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "qosProfile",
+                        "description": {
+                            "text": "This parameter specifies reference to QoS Profile for\na logical transport interface. A QoS profile includes a set of\nparameters which are locally provisioned on both sides of a logical\ntransport interface."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "epApplicationRef",
+                        "description": {
+                            "text": "This parameter specifies a list of application level\nEPs associated with the logical transport interface."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    }
+                ],
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                }
+            },
+            {
+                "@name": "NsInfoGrp",
+                "description": {
+                    "text": "The NsInfo of the NS instance corresponding to the network\nslice subnet instance."
+                },
+                "reference": {
+                    "text": "ETSI GS NFV-IFA 013 clause 8.3.3.2.2, which can be found at\nhttps://www.etsi.org/deliver/etsi_gs/NFV-IFA/001_099/013\n/03.04.01_60/gs_NFV-IFA013v030401p.pdf page 123-124"
+                },
+                "leaf": [
+                    {
+                        "@name": "nSInstanceId",
+                        "description": {
+                            "text": "Uniquely identifies the NS instance."
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "ETSI-GS-NFV-Identifier"
+                        }
+                    },
+                    {
+                        "@name": "nsName",
+                        "description": {
+                            "text": "Human readable name of the NS instance."
+                        },
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "description",
+                        "description": {
+                            "text": "Human readable description of the NS instance."
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "NetworkSliceSubnetGrp",
+                "uses": [
+                    {
+                        "@name": "subnet3gpp:SubNetworkGrp"
+                    },
+                    {
+                        "@name": "EPTransportGrp"
+                    }
+                ],
+                "leaf": [
+                    {
+                        "@name": "operationalState",
+                        "description": {
+                            "text": "The operational state of the network slice instance.\nIt describes whether or not the resource is physically installed\nand working."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "types3gpp:OperationalState"
+                        }
+                    },
+                    {
+                        "@name": "administrativeState",
+                        "description": {
+                            "text": "The administrative state of the network slice instance.\nIt describes the permission to use or prohibition against\nusing the instance, imposed through the OAM services."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "types3gpp:AdministrativeState"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "nsInfo",
+                        "description": {
+                            "text": "This list represents the properties of network service\ninformation corresponding to the network slice subnet instance."
+                        },
+                        "reference": {
+                            "text": "ETSI GS NFV-IFA 013 clause 8.3.3.2.2"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "key": {
+                            "@value": "nSInstanceId"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "NsInfoGrp"
+                        }
+                    },
+                    {
+                        "@name": "sliceProfileList",
+                        "description": {
+                            "text": "List of SliceProfiles supported by the network slice\nsubnet instance"
+                        },
+                        "key": {
+                            "@value": "sliceProfileId"
+                        },
+                        "uses": {
+                            "@name": "SliceProfileGrp"
+                        }
+                    },
+                    {
+                        "@name": "managedFunctionRef",
+                        "description": {
+                            "text": "The managed functions that the NetworkSliceSubnet is\nassociated with."
+                        },
+                        "key": {
+                            "@value": "aggregatedManagedFunction"
+                        },
+                        "leaf": {
+                            "@name": "aggregatedManagedFunction",
+                            "type": {
+                                "@name": "instance-identifier"
+                            }
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "networkSliceSubnetRef",
+                    "type": {
+                        "@name": "leafref",
+                        "path": {
+                            "@value": "/NetworkSliceSubnet/id"
+                        }
+                    },
+                    "description": {
+                        "text": "Lists the NetworkSliceSubnet instances associated with\nthis NetworkSliceSubnet."
+                    }
+                }
+            }
+        ],
+        "list": {
+            "@name": "NetworkSliceSubnet",
+            "description": {
+                "text": "Represents the properties of a network slice subnet\ninstance in a 5G network."
+            },
+            "key": {
+                "@value": "id"
+            },
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "NetworkSliceSubnetGrp"
+                },
+                "leaf-list": [
+                    {
+                        "@name": "parents",
+                        "description": {
+                            "text": "Reference to direct parent NetworkSliceSubnet\ninstances.\nIf NetworkSliceSubnets form a containment hierarchy this is\nmodeled using references between the child NetworkSliceSubnet\nand the parent NetworkSliceSubnet.\nThis reference MUST NOT be present for the top level\nNetworkSliceSubnet and MUST be present for other\nNetworkSliceSubnets."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "/NetworkSliceSubnet/id"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "containedChildren",
+                        "description": {
+                            "text": "Reference to all directly contained NetworkSliceSubnet\ninstances.  If NetworkSliceSubnets form a containment hierarchy\nthis is modeled using references between the child\nNetworkSliceSubnet and the parent NetworkSliceSubnet."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "/NetworkSliceSubnet/id"
+                            }
+                        }
+                    }
+                ]
+            },
+            "uses": [
+                {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                {
+                    "@name": "meas3gpp:MeasurementSubtree",
+                    "if-feature": {
+                        "@name": "MeasurementsUnderNetworkSliceSubnet"
+                    }
+                }
+            ]
+        }
+    }
+}

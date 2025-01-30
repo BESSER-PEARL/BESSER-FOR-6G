@@ -1,0 +1,347 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externaleutrancell",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:exteutrancell3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externaleutrancell",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:eutranet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranetwork",
+        "@xmlns:extenb3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalenbfunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externaleutrancell"
+        },
+        "prefix": {
+            "@value": "exteutrancell3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-eutranetwork",
+                "prefix": {
+                    "@value": "eutranet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-externalenbfunction",
+                "prefix": {
+                    "@value": "extenb3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalEUtranCellFDD and\nExternalEUtranCellTDD Information Object Classes (IOCs) that are part\nof the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM),\n3GPP TS 28.658 (E-UTRAN) Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalEUtranGenericCellGrp",
+                "description": {
+                    "text": "Represents the ExternalEUtranGenericCell IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.658"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": [
+                    {
+                        "@name": "pci",
+                        "description": {
+                            "text": "The Physical Cell Identity (PCI) of the cell (for\nNM-Centralized, EM-Centralized and Distributed PCI assignment cases).\nIn the case of NM-Centralized PCI assignment, see 3GPP TS 36.300."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 36.211"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..503"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "cellLocalId",
+                        "description": {
+                            "text": "Unambiguously identifies a cell within an eNodeB."
+                        },
+                        "reference": {
+                            "text": "NCI defined in 3GPP TS 38.300"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..255"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "eNBId",
+                        "description": {
+                            "text": "Unambiguously identifies an eNodeB within a PLMN."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 36.413, 3GPP TS 36.300"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..268435455"
+                            }
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "plmnIdList",
+                    "description": {
+                        "text": "List of unique identities for PLMNs. A cell can broadcast\nup to 6 PLMN IDs. This is to support the case that one cell can be\nused by up to 6 operator's core networks. The PLMN(s) included in this\nlist will use the same single tracking area code (TAC) and the same\nCell Identity (cellLocalId) for sharing the radio access network\nresources. One member of plmnIdList is the primary PLMN ID. A PLMN ID\nincluded in this list cannot be included in the cellAccessInfoList.\nThe PLMN ID is composed of a Mobile Country Code (MCC) and a Mobile\nNetwork Code (MNC)."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 36.300, 3GPP TS 36.331, 3GPP TS 23.003"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                }
+            },
+            {
+                "@name": "ExternalEUtranCellFDDGrp",
+                "description": {
+                    "text": "Represents the ExternalEUtranCellFDD IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.658"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranGenericCellGrp"
+                },
+                "leaf": [
+                    {
+                        "@name": "earfcnDL",
+                        "description": {
+                            "text": "The channel number for the central DL frequency."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 36.101"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0..17999 | 46590..262143"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "earfcnUL",
+                        "description": {
+                            "text": "The channel number for the central UL frequency. Value 0\nmeans that the UL channel number is N/A for the DL-only bands."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 36.101"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "0 | 18000..35999 | 46590..262143"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ExternalEUtranCellTDDGrp",
+                "description": {
+                    "text": "Represents the ExternalEUtranCellTDD IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.658"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranGenericCellGrp"
+                },
+                "leaf": {
+                    "@name": "earfcn",
+                    "description": {
+                        "text": "The frequency number for the central frequency."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 36.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "36000..262143"
+                        }
+                    }
+                }
+            },
+            {
+                "@name": "ExternalEUtranCellFDDWrapper",
+                "list": {
+                    "@name": "ExternalEUtranCellFDD",
+                    "description": {
+                        "text": "Represents the common properties of external E-UTRAN FDD\ncell provided by eNB or NG-RAN FDD cell provided by ng-eNB."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.658"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalEUtranCellFDDGrp"
+                        }
+                    }
+                }
+            },
+            {
+                "@name": "ExternalEUtranCellTDDWrapper",
+                "list": {
+                    "@name": "ExternalEUtranCellTDD",
+                    "description": {
+                        "text": "Represents the common properties of external E-UTRAN cell\nTDD provided by eNB or NG-RAN TDD cell provided by ng-eNB."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.658"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalEUtranCellTDDGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork/extenb3gpp:ExternalENBFunction",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranCellFDDWrapper"
+                }
+            },
+            {
+                "@target-node": "/eutranet3gpp:EUtraNetwork/extenb3gpp:ExternalENBFunction",
+                "if-feature": {
+                    "@name": "eutranet3gpp:ExternalsUnderEUtraNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranCellFDDWrapper"
+                }
+            },
+            {
+                "@target-node": "/subnet3gpp:SubNetwork/extenb3gpp:ExternalENBFunction",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranCellTDDWrapper"
+                }
+            },
+            {
+                "@target-node": "/eutranet3gpp:EUtraNetwork/extenb3gpp:ExternalENBFunction",
+                "if-feature": {
+                    "@name": "eutranet3gpp:ExternalsUnderEUtraNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalEUtranCellTDDWrapper"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,335 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:nrrrmpolicy3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction"
+        },
+        "prefix": {
+            "@value": "gnbcucp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-rrmpolicy",
+                "prefix": {
+                    "@value": "nrrrmpolicy3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the GNBCUCPFunction Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-10-02",
+                "reference": {
+                    "text": "CR-0384"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0333"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-06-03",
+                "reference": {
+                    "text": "CR-0286"
+                }
+            },
+            {
+                "@date": "2020-05-08",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            },
+            {
+                "@date": "2020-04-28",
+                "reference": {
+                    "text": "0260"
+                }
+            },
+            {
+                "@date": "2020-02-14",
+                "reference": {
+                    "text": "S5-20XXXX"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "DESManagementFunction",
+                "description": {
+                    "text": "Classs representing Distributed SON or Domain-Centralized SON Energy Saving feature"
+                }
+            },
+            {
+                "@name": "DANRManagementFunction",
+                "description": {
+                    "text": "Classs representing D-SON function of ANR Management feature"
+                }
+            },
+            {
+                "@name": "DMROFunction",
+                "description": {
+                    "text": "Classs representing D-SON function of MRO feature"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "GNBCUCPFunctionGrp",
+            "description": {
+                "text": "Represents the GNBCUCPFunction IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": [
+                {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                {
+                    "@name": "nrrrmpolicy3gpp:RRMPolicy_Grp"
+                }
+            ],
+            "leaf": [
+                {
+                    "@name": "gNBId",
+                    "description": {
+                        "text": "Identifies a gNB within a PLMN. The gNB Identifier (gNB ID)\nis part of the NR Cell Identifier (NCI) of the gNB cells."
+                    },
+                    "reference": {
+                        "text": "gNB ID in 3GPP TS 38.300, Global gNB ID in 3GPP TS 38.413"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int64",
+                        "range": {
+                            "@value": "0..4294967295"
+                        }
+                    }
+                },
+                {
+                    "@name": "gNBIdLength",
+                    "description": {
+                        "text": "Indicates the number of bits for encoding the gNB ID."
+                    },
+                    "reference": {
+                        "text": "gNB ID in 3GPP TS 38.300, Global gNB ID in 3GPP TS 38.413"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "22..32"
+                        }
+                    }
+                },
+                {
+                    "@name": "gNBCUName",
+                    "description": {
+                        "text": "Identifies the Central Unit of an gNB."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.473"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "string",
+                        "length": {
+                            "@value": "1..150"
+                        }
+                    }
+                },
+                {
+                    "@name": "configurable5QISetRef",
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    },
+                    "description": {
+                        "text": "DN of the Configurable5QISet that the GNBCUCPFunction supports (is associated to)."
+                    }
+                },
+                {
+                    "@name": "dynamic5QISetRef",
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    },
+                    "description": {
+                        "text": "DN of the Dynamic5QISet that the GNBCUCPFunction supports (is associated to)."
+                    }
+                }
+            ],
+            "list": {
+                "@name": "pLMNId",
+                "description": {
+                    "text": "The PLMN identifier to be used as part of the global RAN\nnode identity."
+                },
+                "key": {
+                    "@value": "mcc mnc"
+                },
+                "min-elements": {
+                    "@value": "1"
+                },
+                "max-elements": {
+                    "@value": "1"
+                },
+                "uses": {
+                    "@name": "types3gpp:PLMNId"
+                }
+            },
+            "leaf-list": [
+                {
+                    "@name": "x2BlackList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which X2 connections are prohibited."
+                    }
+                },
+                {
+                    "@name": "x2WhiteList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which X2 connections are enforced."
+                    }
+                },
+                {
+                    "@name": "xnBlackList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which Xn connections are prohibited."
+                    }
+                },
+                {
+                    "@name": "xnWhiteList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which X2 connections are enforced."
+                    }
+                },
+                {
+                    "@name": "xnHOBlackList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which handovers over  Xn are prohibited."
+                    }
+                },
+                {
+                    "@name": "x2HOBlackList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of nodes to which handovers over X2 are prohibited."
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "GNBCUCPFunction",
+                "description": {
+                    "text": "Represents the logical function CU-CP of gNB and en-gNB."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "GNBCUCPFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

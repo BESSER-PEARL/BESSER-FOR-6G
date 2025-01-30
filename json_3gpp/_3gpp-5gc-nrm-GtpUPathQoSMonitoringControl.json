@@ -1,0 +1,313 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-GtpUPathQoSMonitoringControl",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:gtpUPathQMCtrl3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-GtpUPathQoSMonitoringControl",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:smf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smffunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-GtpUPathQoSMonitoringControl"
+        },
+        "prefix": {
+            "@value": "gtpUPathQMCtrl3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smffunction",
+                "prefix": {
+                    "@value": "smf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the capabilities and properties for control\nof GTP-U path QoS monitoring defined in 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-09-30",
+                "reference": {
+                    "text": "CR-0393"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-04-10",
+                "reference": {
+                    "text": "S5-202103"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "GtpUPathDelayThresholdsType",
+                "description": {
+                    "text": "Thresholds for reporting the packet delay for GTP-U path QoS\nmonitoring"
+                },
+                "reference": {
+                    "text": "3GPP TS 29.244"
+                },
+                "leaf": [
+                    {
+                        "@name": "n3AveragePacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "n3MinPacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "n3MaxPacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "n9AveragePacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "n9MinPacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "n9MaxPacketDelayThreshold",
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "GtpUPathQoSMonitoringControlGrp",
+                "description": {
+                    "text": "Represents the GtpUPathQoSMonitoringControl IOC."
+                },
+                "leaf": [
+                    {
+                        "@name": "gtpUPathQoSMonitoringState",
+                        "description": {
+                            "text": "The state of GTP-U path QoS monitoring."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ENABLED"
+                                },
+                                {
+                                    "@name": "DISABLED"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@name": "isEventTriggeredGtpUPathMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the event triggered GTP-U path QoS\nmonitoring reporting based on thresholds is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "isPeriodicGtpUMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the periodic GTP-U path QoS monitoring\nreporting is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "isImmediateGtpUMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the immediate GTP-U path QoS monitoring\nreporting is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "gtpUPathMinimumWaitTime",
+                        "description": {
+                            "text": "It specifies the minimum waiting time (in seconds) between\ntwo consecutive reports for event triggered GTP-U path QoS monitoring\nreporting."
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "gtpUPathMeasurementPeriod",
+                        "description": {
+                            "text": "It specifies the period (in seconds) for reporting the packet\ndelay for GTP-U path QoS monitoring."
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "gtpUPathMonitoredSNSSAIs",
+                        "key": {
+                            "@value": "sd sst"
+                        },
+                        "description": {
+                            "text": "The S-NSSAIs for which the the GTP-U path QoS monitoring is\nto be performed."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 23.003"
+                        },
+                        "uses": {
+                            "@name": "types5g3gpp:SNssai"
+                        }
+                    },
+                    {
+                        "@name": "gtpUPathDelayThresholds",
+                        "key": {
+                            "@value": "n3AveragePacketDelayThreshold"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "It specifies the thresholds for reporting the packet delay\nfor the GTO-U path QoS monitoring."
+                        },
+                        "uses": {
+                            "@name": "GtpUPathDelayThresholdsType"
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "monitoredDSCPs",
+                    "description": {
+                        "text": "The DSCPs for which the GTP-U path QoS monitoring is to be\nperformed."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 29.244"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    }
+                }
+            }
+        ],
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/smf3gpp:SMFFunction",
+            "list": {
+                "@name": "GtpUPathQoSMonitoringControl",
+                "description": {
+                    "text": "Specifies the capabilities and properties for control of\nGTP-U path QoS monitoring. For more information about the GTP-U path\nQoS monitoring."
+                },
+                "reference": {
+                    "text": "3GPP TS 23.501"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "GtpUPathQoSMonitoringControlGrp"
+                    }
+                }
+            }
+        }
+    }
+}

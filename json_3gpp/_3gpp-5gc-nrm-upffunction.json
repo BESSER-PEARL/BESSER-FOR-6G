@@ -1,0 +1,208 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-upffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:upf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-upffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-upffunction"
+        },
+        "prefix": {
+            "@value": "upf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "UPFFunction derived from basic ManagedFunction."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2019-10-25",
+                "reference": {
+                    "text": "S5-194457 S5-193518"
+                }
+            },
+            {
+                "@date": "2019-05-31",
+                "reference": {
+                    "text": "Ericsson refactoring."
+                }
+            },
+            {
+                "@date": "2018-08-07",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "UPFFunctionGrp",
+            "description": {
+                "text": "Represents the UPFFunction IOC"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": [
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "A list of PLMN identifiers (Mobile Country Code and Mobile\nNetwork Code)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "sNSSAIList",
+                    "description": {
+                        "text": "List of S-NSSAIs the managed object is capable of supporting.\n(Single Network Slice Selection Assistance Information)\nAn S-NSSAI has an SST (Slice/Service type) and an optional SD\n(Slice Differentiator) field."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003"
+                    },
+                    "key": {
+                        "@value": "sd sst"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:SNssai"
+                    }
+                },
+                {
+                    "@name": "managedNFProfile",
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:ManagedNFProfile"
+                    }
+                }
+            ],
+            "leaf-list": [
+                {
+                    "@name": "nRTACList",
+                    "description": {
+                        "text": "List of Tracking Area Codes (legacy TAC or extended TAC)\nwhere the represented management function is serving."
+                    },
+                    "reference": {
+                        "text": "TS 38.413 clause 9.3.3.10"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:Tac"
+                    }
+                },
+                {
+                    "@name": "supportedBMOList",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "List of supported BMOs (Bridge Managed Objects) required\nfor integration with TSN system."
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "UPFFunction",
+                "description": {
+                    "text": "5G Core UPF Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "UPFFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

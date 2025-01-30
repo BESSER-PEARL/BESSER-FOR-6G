@@ -1,0 +1,155 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-smsffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:smsf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smsffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-smsffunction"
+        },
+        "prefix": {
+            "@value": "smsf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "This IOC represents the SMSF function defined in 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-25",
+                "reference": {
+                    "text": "S5-194457 S5-195427 S5-193518"
+                }
+            },
+            {
+                "@date": "2019-05-15",
+                "description": {
+                    "text": "initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "SMSFFunctionGrp",
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": [
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at least one (the primary PLMN Id).\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "managedNFProfile",
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:ManagedNFProfile"
+                    }
+                },
+                {
+                    "@name": "commModelList",
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "key": {
+                        "@value": "groupId"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:CommModel"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "SMSFFunction",
+                "description": {
+                    "text": "5G Core SMSF Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "SMSFFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,213 @@
+{
+    "module": {
+        "@name": "_3gpp-common-subscription-control",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:subscr3gpp": "urn:3gpp:sa5:_3gpp-common-subscription-control",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-subscription-control"
+        },
+        "prefix": {
+            "@value": "subscr3gpp"
+        },
+        "import": {
+            "@module": "_3gpp-common-top",
+            "prefix": {
+                "@value": "top3gpp"
+            }
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines IOCs for subscription and heartbeat control."
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n3GPP TS 28.623"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-16",
+                "reference": {
+                    "text": "CR-0120"
+                }
+            },
+            {
+                "@date": "2020-08-26",
+                "reference": {
+                    "text": "CR-0106"
+                }
+            },
+            {
+                "@date": "2019-11-29",
+                "reference": {
+                    "text": "S5-197648 S5-197647 S5-197829 S5-197828"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "NtfSubscriptionControlGrp",
+                "description": {
+                    "text": "Attributes of a specific notification subscription"
+                },
+                "leaf": [
+                    {
+                        "@name": "notificationRecipientAddress",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    },
+                    {
+                        "@name": "notificationFilter",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Defines a filter to be applied to candidate notifications\nidentified by the notificationTypes attribute.\nIf notificationFilter is present, only notifications that pass the\nfilter criteria are forwarded to the notification recipient; all other\nnotifications are discarded.\nThe filter can be applied to any field of a notification."
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "notificationTypes",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "Defines the types of notifications that are candidates\nfor being forwarded to the notification recipient.\nIf the notificationFilter attribute is not supported or not present\nall candidate notifications types are forwarded to the notification;\ndiscriminated by notificationFilter attribute."
+                    }
+                },
+                "list": {
+                    "@name": "scope",
+                    "key": {
+                        "@value": "scopeType"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "Describes which object instances are selected with\nrespect to a base object instance."
+                    },
+                    "leaf": [
+                        {
+                            "@name": "scopeType",
+                            "type": {
+                                "@name": "enumeration",
+                                "enum": [
+                                    {
+                                        "@name": "BASE_ONLY"
+                                    },
+                                    {
+                                        "@name": "BASE_ALL"
+                                    },
+                                    {
+                                        "@name": "BASE_NTH_LEVEL"
+                                    },
+                                    {
+                                        "@name": "BASE_SUBTREE"
+                                    }
+                                ]
+                            },
+                            "description": {
+                                "text": "If the optional scopeLevel parameter is not supported\nor absent, allowed values of scopeType are BASE_ONLY and BASE_ALL.\n\nThe value BASE_ONLY indicates only the base object is selected.\nThe value BASE_ALL indicates the base object and all of its\nsubordinate objects (incl. the leaf objects) are selected.\n\nIf the scopeLevel parameter is supported and present, allowed\nvalues of scopeType are BASE_ALL, BASE_ONLY, BASE_NTH_LEVEL\nand BASE_SUBTREE.\n\nThe value BASE_NTH_LEVEL indicates all objects on the level,\nwhich is specified by the scopeLevel parameter, below the base\nobject are selected. The base object is at scopeLevel zero.\nThe value BASE_SUBTREE indicates the base object and all of its\nsubordinate objects down to and including the objects on the level,\nwhich is specified by the scopeLevel parameter, are selected.\nThe base object is at scopeLevel zero."
+                            }
+                        },
+                        {
+                            "@name": "scopeLevel",
+                            "when": {
+                                "@condition": "../scopeType = \"BASE_NTH_LEVEL\" or ../scopeType = \"BASE_SUBTREE\""
+                            },
+                            "type": {
+                                "@name": "uint16"
+                            },
+                            "mandatory": {
+                                "@value": "true"
+                            },
+                            "description": {
+                                "text": "See description of scopeType."
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "HeartbeatControlGrp",
+                "description": {
+                    "text": "Attributes of HeartbeatControl. Note the triggerHeartbeatNtf\nattribute has no mapping in the present release."
+                },
+                "leaf": {
+                    "@name": "heartbeatNtfPeriod",
+                    "type": {
+                        "@name": "uint32"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "units": {
+                        "@name": "seconds"
+                    },
+                    "description": {
+                        "text": "Specifies the periodicity of heartbeat notification emission.\nThe value of zero has the special meaning of stopping the heartbeat\nnotification emission."
+                    }
+                }
+            },
+            {
+                "@name": "SubscriptionControlSubtree",
+                "description": {
+                    "text": "Contains notification subscription related classes.\nShould be used in all classes (or classes inheriting from)\n- SubNetwork\n- ManagedElement\n\nIf some YAM wants to augment these classes/list/groupings they must\naugment all user classes!"
+                },
+                "list": {
+                    "@name": "NtfSubscriptionControl",
+                    "description": {
+                        "text": "A NtfSubscriptionControl instance represents the\nnotification subscription of a particular notification recipient.\nThe scope attribute is used to select managed object instances.\nThe base object instance of the scope is the object instance\nname-containing the NtfSubscriptionControl instance.\nThe notifications related to the selected managed object instances\nare candidates to be sent to the address specified by the\nnotificationRecipientAddress attribute.\nThe notificationType attribute and notificationFilter attribute\nallow MnS consumers to exercise control over which candidate\nnotifications are sent to the notificationRecipientAddress.\nIf the notificationType attribute is supported and present, its\nvalue identifies the\ntypes of notifications that are candidate to be sent to the\nnotificationRecipientAddress. If the notificationType attribute is\nnot supported or not present, all types of notifications are\ncandidate to be sent to notificationRecipientAddress.\nIf supported, the notificationFilter attribute defines a filter that\nis applied to the set of candidate notifications. Only candidate\nnotifications that pass the filter criteria are sent to the\nnotificationRecipientAddress. If the notificationFilter attribute is\nnot supported all candidate notificatios are sent to the\nnotificationRecipientAddress.\nTo receive notifications, a MnS consumer has to create\nNtfSubscriptionControl object instancess on the MnS producer.\nA MnS consumer can create a subscription for another MnS consumer\nsince it is not required the notificationRecipientAddress be his own\naddress.\nWhen a MnS consumer does not wish to receive notifications any more\nthe MnS consumer shall delete the corresponding NtfSubscriptionControl\ninstance.\nCreation and deletion of NtfSubscriptionControl instances by MnS\nconsumers is optional; when not supported, the NtfSubscriptionControl\ninstances may be created and deleted by the system or be\npre-installed."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "NtfSubscriptionControlGrp"
+                        }
+                    },
+                    "list": {
+                        "@name": "HeartbeatControl",
+                        "description": {
+                            "text": "MnS consumers (i.e. notification recipients) use heartbeat\nnotifications to monitor the communication channels between them and\ndata reporting MnS producers emitting notifications such as\nnotifyNewAlarm and notifyFileReady.\n\nA HeartbeatControl instance allows controlling the emission of\nheartbeat notifications by MnS producers. The recipients of heartbeat\nnotifications are specified by the notificationRecipientAddress\nattribute of the NtfSubscriptionControl instance containing the\nHeartbeatControl instance.\n\nNote that the MnS consumer managing the HeartbeatControl instance\nand the MnS consumer receiving the heartbeat notifications may not be\nthe same.\n\nAs a pre-condition for the emission of heartbeat notifications, a\nHeartbeatControl instance needs to be created. Creation of an instance\nwith an initial non-zero value of the heartbeatNtfPeriod attribute\ntriggers an immediate heartbeat notification emission. Creation of an\ninstance with an initial zero value of the heartbeatPeriod attribute\ndoes not trigger an emission of a heartbeat notification. Deletion of\nan instance does not trigger an emission of a heartbeat notification.\n\nOnce the instance is created, heartbeat notifications are emitted with\na periodicity defined by the value of the heartbeatNtfPeriod\nattribute. No heartbeat notifications are emitted if the value is\nequal to zero. Setting a zero value to a non zero value, or a non zero\nvalue to a different non zero value, triggers an immediate heartbeat\nnotification, that is the base for the new heartbeat period. Setting a\nnon zero value to a zero value stops emitting heartbeats immediately;\nno final heartbeat notification is sent.\n\nCreation and deletion of HeartbeatControl instances by MnS Consumers\nis optional; when not supported, the HeartbeatControl instances may be\ncreated and deleted by the system or be pre-installed.\n\nWhether and when to emit heartbeat notifications is controlled by\nHeartbeatControl. Subscription for heartbeat is not supported via the\nNtfSubscriptionControl."
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "HeartbeatControlGrp"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

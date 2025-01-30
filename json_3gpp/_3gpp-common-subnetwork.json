@@ -1,0 +1,339 @@
+{
+    "module": {
+        "@name": "_3gpp-common-subnetwork",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "@xmlns:subscr3gpp": "urn:3gpp:sa5:_3gpp-common-subscription-control",
+        "@xmlns:fm3gpp": "urn:3gpp:sa5:_3gpp-common-fm",
+        "@xmlns:trace3gpp": "urn:3gpp:sa5:_3gpp-common-trace",
+        "@xmlns:yangmnt": "urn:ietf:params:xml:ns:yang:ietf-yang-schema-mount",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-subnetwork"
+        },
+        "prefix": {
+            "@value": "subnet3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-measurements",
+                "prefix": {
+                    "@value": "meas3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subscription-control",
+                "prefix": {
+                    "@value": "subscr3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-fm",
+                "prefix": {
+                    "@value": "fm3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-trace",
+                "prefix": {
+                    "@value": "trace3gpp"
+                }
+            },
+            {
+                "@module": "ietf-yang-schema-mount",
+                "prefix": {
+                    "@value": "yangmnt"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines basic SubNetwork which will be augmented by other IOCs"
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n\n3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)\n\n3GPP TS 28.620\nUmbrella Information Model (UIM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-16",
+                "reference": {
+                    "text": "CR-0120"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0102"
+                }
+            },
+            {
+                "@date": "2020-06-08",
+                "reference": {
+                    "text": "CR-0092"
+                }
+            },
+            {
+                "@date": "2020-05-08",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            },
+            {
+                "@date": "2020-03-11",
+                "description": {
+                    "text": "Added KPIs and corrections"
+                },
+                "reference": {
+                    "text": "S5-201365, S5-201581, SP-200229"
+                }
+            },
+            {
+                "@date": "2020-02-24",
+                "reference": {
+                    "text": "S5-201365"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "ExternalsUnderSubNetwork",
+                "description": {
+                    "text": "Classes representing external entities like EUtranFrequency,\nExternalGNBCUCPFunction, ExternalENBFunction\nare contained under a Subnetwork list/class."
+                }
+            },
+            {
+                "@name": "MeasurementsUnderSubNetwork",
+                "description": {
+                    "text": "The MeasurementSubtree shall be contained under SubNetwork"
+                }
+            },
+            {
+                "@name": "SubscriptionControlUnderSubNetwork",
+                "description": {
+                    "text": "The SubscriptionControlSubtree shall be contained under\nSubNetwork"
+                }
+            },
+            {
+                "@name": "FmUnderSubNetwork",
+                "description": {
+                    "text": "The FmSubtree shall be contained under SubNetwork"
+                }
+            },
+            {
+                "@name": "TraceUnderSubNetwork",
+                "description": {
+                    "text": "The TraceSubtree shall be contained under SubNetwork"
+                }
+            },
+            {
+                "@name": "DESManagementFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nEnergy Saving feature. The DESManagementFunction shall be contained under\nSubNetwork."
+                }
+            },
+            {
+                "@name": "DMROFunction",
+                "description": {
+                    "text": "Class representing D-SON function of MRO feature. The\nDMROFunction shall be contained under SubNetwork."
+                }
+            },
+            {
+                "@name": "DRACHOptimizationFunction",
+                "description": {
+                    "text": "Class representing D-SON function of RACH optimization feature.\nThe DRACHOptimizationFunction shall be contained under SubNetwork."
+                }
+            },
+            {
+                "@name": "DPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nfunction of PCI configuration feature. The DPCIConfigurationFunction shall\nbe contained under SubNetwork."
+                }
+            },
+            {
+                "@name": "CPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON function of PCI\nconfiguration feature. The CPCIConfigurationFunction shall be contained\nunder SubNetwork."
+                }
+            },
+            {
+                "@name": "CESManagementFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON Energy Saving\nfeature. The CESManagementFunction shall be contained under SubNetwork."
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "Domain_Grp",
+                "description": {
+                    "text": "A domain is a partition of instances of managed entities\nsuch that :\n-  the group represents a topological structure which describes the\npotential for connectivity\n-  Subject to common administration\n-  With common characteristics"
+                },
+                "leaf": [
+                    {
+                        "@name": "dnPrefix",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        },
+                        "reference": {
+                            "text": "Annex C of 32.300"
+                        }
+                    },
+                    {
+                        "@name": "userLabel",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "A user-friendly (and user assignable) name of this object."
+                        }
+                    },
+                    {
+                        "@name": "userDefinedNetworkType",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Textual information indicating network type, e.g. 'UTRAN'."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "SubNetworkGrp",
+                "uses": [
+                    {
+                        "@name": "Domain_Grp"
+                    },
+                    {
+                        "@name": "meas3gpp:SupportedPerfMetricGroupGrp"
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "setOfMcc",
+                    "description": {
+                        "text": "Set of Mobile Country Code (MCC).\nThe MCC uniquely identifies the country of domicile\nof the mobile subscriber. MCC is part of the IMSI (3GPP TS 23.003)\n\nThis list contains all the MCC values in subordinate object\ninstances to this SubNetwork instance.\n\nSee clause 2.3 of 3GPP TS 23.003 for MCC allocation principles.\n\nIt shall be supported if there is more than one value in setOfMcc\nof the SubNetwork. Otherwise the support is optional."
+                    },
+                    "type": {
+                        "@name": "types3gpp:Mcc"
+                    }
+                },
+                "leaf": {
+                    "@name": "priorityLabel",
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    }
+                }
+            }
+        ],
+        "list": {
+            "@name": "SubNetwork",
+            "key": {
+                "@value": "id"
+            },
+            "description": {
+                "text": "Represents a set of managed entities"
+            },
+            "uses": [
+                {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                {
+                    "@name": "meas3gpp:MeasurementSubtree",
+                    "if-feature": {
+                        "@name": "MeasurementsUnderSubNetwork"
+                    }
+                },
+                {
+                    "@name": "subscr3gpp:SubscriptionControlSubtree",
+                    "if-feature": {
+                        "@name": "SubscriptionControlUnderSubNetwork"
+                    }
+                },
+                {
+                    "@name": "fm3gpp:FmSubtree",
+                    "if-feature": {
+                        "@name": "FmUnderSubNetwork"
+                    }
+                },
+                {
+                    "@name": "trace3gpp:TraceSubtree",
+                    "if-feature": {
+                        "@name": "TraceUnderSubNetwork"
+                    }
+                }
+            ],
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "SubNetworkGrp"
+                },
+                "leaf-list": [
+                    {
+                        "@name": "parents",
+                        "description": {
+                            "text": "Reference to all containg SubNetwork instances\nin strict order from the root subnetwork down to the immediate\nparent subnetwork.\nIf subnetworks form a containment hierarchy this is\nmodeled using references between the child SubNetwork and the parent\nSubNetworks.\nThis reference MUST NOT be present for the top level SubNetwork and\nMUST be present for other SubNetworks."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "../../../SubNetwork/id"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "containedChildren",
+                        "description": {
+                            "text": "Reference to all directly contained SubNetwork instances.\nIf subnetworks form a containment hierarchy this is\nmodeled using references between the child SubNetwork and the parent\nSubNetwork."
+                        },
+                        "type": {
+                            "@name": "leafref",
+                            "path": {
+                                "@value": "../../../SubNetwork/id"
+                            }
+                        }
+                    }
+                ]
+            },
+            "yangmnt:mount-point": {
+                "@label": "children-of-SubNetwork",
+                "description": {
+                    "text": "Mountpoint for ManagedElement"
+                },
+                "reference": {
+                    "text": "RFC8528 YANG Schema Mount"
+                }
+            }
+        }
+    }
+}

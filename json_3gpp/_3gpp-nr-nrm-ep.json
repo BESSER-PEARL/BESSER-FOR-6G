@@ -1,0 +1,545 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-ep",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:ep3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-ep",
+        "@xmlns:eprp3gpp": "urn:3gpp:sa5:_3gpp-common-ep-rp",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:gnbcuup3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcuupfunction",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-ep"
+        },
+        "prefix": {
+            "@value": "ep3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-ep-rp",
+                "prefix": {
+                    "@value": "eprp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcuupfunction",
+                "prefix": {
+                    "@value": "gnbcuup3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NR related endpoint\nInformation Object Classes (IOCs) that are part of the NR Network\nResource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-03-03",
+                "reference": {
+                    "text": "CR-0435"
+                }
+            },
+            {
+                "@date": "2021-02-17",
+                "reference": {
+                    "text": "CR-0470"
+                }
+            },
+            {
+                "@date": "2020-11-17",
+                "reference": {
+                    "text": "CR-0410"
+                }
+            },
+            {
+                "@date": "2020-03-02",
+                "reference": {
+                    "text": "S5-201191"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "EPClassesUnderGNBCUCPFunction",
+                "description": {
+                    "text": "Endpoint classes shall be contained under GNBCUCPFunction"
+                }
+            },
+            {
+                "@name": "EPClassesUnderGNBCUUPFunction",
+                "description": {
+                    "text": "Endpoint classes shall be contained under GNBCUUPFunction"
+                }
+            },
+            {
+                "@name": "EPClassesUnderGNBDUFunction",
+                "description": {
+                    "text": "Endpoint classes shall be contained under GNBDUFunction"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "EP_E1Grp",
+                "description": {
+                    "text": "Represents the EP_E1 IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.401"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_F1CGrp",
+                "description": {
+                    "text": "Represents the EP_F1C IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_F1UGrp",
+                "description": {
+                    "text": "Represents the EP_F1U IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_XnCGrp",
+                "description": {
+                    "text": "Represents the EP_XnC IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.420"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_XnUGrp",
+                "description": {
+                    "text": "Represents the EP_XnU IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.420"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_NgCGrp",
+                "description": {
+                    "text": "Represents the EP_NgC IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_NgUGrp",
+                "description": {
+                    "text": "Represents the EP_NgU IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_X2CGrp",
+                "description": {
+                    "text": "Represents the EP_X2C IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 36.423"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_X2UGrp",
+                "description": {
+                    "text": "Represents the EP_X2U IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 36.425"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_S1UGrp",
+                "description": {
+                    "text": "Represents the EP_S1U IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541, 3GPP TS 36.410"
+                },
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction",
+                "if-feature": {
+                    "@name": "EPClassesUnderGNBCUCPFunction"
+                },
+                "list": [
+                    {
+                        "@name": "EP_E1",
+                        "description": {
+                            "text": "Represents the local end point of the logical link,\nsupporting E1 interface between gNB-CU-CP and gNB-CU-UP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.401"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_E1Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_F1C",
+                        "description": {
+                            "text": "Represents the local end point of the control plane\ninterface (F1-C) between the DU and CU or CU-CP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_F1CGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_NgC",
+                        "description": {
+                            "text": "Represents the local end point of the control plane\ninterface (NG-C) between the gNB and NG-Core entity."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_NgCGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_XnC",
+                        "description": {
+                            "text": "Represents the local gNB node end point of the logical\nlink, supporting Xn application protocols, to a neighbour NG-RAN node\n(including gNB and ng-eNB). The Xn Application PDUs are carried over\nSCTP/IP/Data link layer/Physical layer stack."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.420 subclause 7"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_XnCGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_X2C",
+                        "description": {
+                            "text": "Represents the local end point of the logical link,\nsupporting X2-C application protocols used in EN-DC, to a neighbour\neNB or en-gNB node."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 36.423"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_X2CGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcuup3gpp:GNBCUUPFunction",
+                "if-feature": {
+                    "@name": "EPClassesUnderGNBCUUPFunction"
+                },
+                "list": [
+                    {
+                        "@name": "EP_E1",
+                        "description": {
+                            "text": "Represents the local end point of the logical link,\nsupporting E1 interface between gNB-CU-CP and gNB-CU-UP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.401"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_E1Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_F1U",
+                        "description": {
+                            "text": "Represents the local end point of the user plane\ninterface (F1-U) between the DU and CU or CU-UP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_F1UGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_NgU",
+                        "description": {
+                            "text": "Represents the local end point of the NG user plane\n(NG-U) interface between the gNB and UPF."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_NgUGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_XnU",
+                        "description": {
+                            "text": "Represents the one end-point of a logical link supporting\nthe Xn user plane (Xn-U) interface. The Xn-U interface provides\nnon-guaranteed delivery of user plane PDUs between two NG-RAN nodes."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.420"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_XnUGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_X2U",
+                        "description": {
+                            "text": "Represents the local end-point of a logical link supporting\nthe X2 user plane (X2-U) interface used in EN-DC."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 36.425"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_X2UGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_S1U",
+                        "description": {
+                            "text": "Represents the local end point of the logical link,\nsupporting S1-U interface towards a S-GW node."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 36.410"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_S1UGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction",
+                "if-feature": {
+                    "@name": "EPClassesUnderGNBDUFunction"
+                },
+                "list": [
+                    {
+                        "@name": "EP_F1C",
+                        "description": {
+                            "text": "Represents the local end point of the control plane\ninterface (F1-C) between the DU and CU or CU-CP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_F1CGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_F1U",
+                        "description": {
+                            "text": "Represents the local end point of the user plane\ninterface (F1-U) between the DU and CU or CU-UP."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 28.541, 3GPP TS 38.470"
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_F1UGrp"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-dnfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:dn3gpp": "urn:3gpp:sa5_3gpp-5gc-nrm-dnfunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5_3gpp-5gc-nrm-dnfunction"
+        },
+        "prefix": {
+            "@value": "dn3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "This IOC is defined only to describe the IOCs representing\nData Network (DN) interaction interface with 5GC (i.e. EP_N6).\nIt has no attributes defined."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-05-15",
+                "description": {
+                    "text": "initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "DNFunctionGrp",
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "DNFunction",
+                "description": {
+                    "text": "5G Core DN Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "DNFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

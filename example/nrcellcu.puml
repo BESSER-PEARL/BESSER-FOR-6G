@@ -1,0 +1,65 @@
+'Download plantuml from http://plantuml.sourceforge.net/ 
+'Generate png with java -jar plantuml.jar <file> 
+'Output in img/<module>.png 
+'If Java spits out memory error increase heap size with java -Xmx1024m  -jar plantuml.jar <file> 
+@startuml img/_3gpp-nr-nrm-nrcellcu.png 
+hide empty fields 
+hide empty methods 
+hide <<case>> circle
+hide <<augment>> circle
+hide <<choice>> circle
+hide <<leafref>> stereotype
+hide <<leafref>> circle
+hide stereotypes 
+page 1x1 
+Title _3gpp-nr-nrm-nrcellcu 
+package "types3gpp:_3gpp-common-yang-types" as types3gpp__3gpp_common_yang_types { 
+} 
+package "mf3gpp:_3gpp-common-managed-function" as mf3gpp__3gpp_common_managed_function { 
+} 
+package "me3gpp:_3gpp-common-managed-element" as me3gpp__3gpp_common_managed_element { 
+} 
+package "gnbcucp3gpp:_3gpp-nr-nrm-gnbcucpfunction" as gnbcucp3gpp__3gpp_nr_nrm_gnbcucpfunction { 
+} 
+package "top3gpp:_3gpp-common-top" as top3gpp__3gpp_common_top { 
+} 
+package "types5g3gpp:_3gpp-5g-common-yang-types" as types5g3gpp__3gpp_5g_common_yang_types { 
+} 
+package "nrcellcu3gpp:_3gpp-nr-nrm-nrcellcu" as nrcellcu3gpp__3gpp_nr_nrm_nrcellcu { 
+} 
+note top of nrcellcu3gpp__3gpp_nr_nrm_nrcellcu : <b>Namespace: </b> urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu \n<b>Prefix: </b> nrcellcu3gpp \n<b>Organization : </b>\n3GPP SA5 \n<b>Contact : </b>\nhttps://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464 \n<b>Revision : </b> 2021-01-25 \n
+package "nrcellcu3gpp:_3gpp-nr-nrm-nrcellcu" as nrcellcu3gpp__3gpp_nr_nrm_nrcellcu { 
+class "_3gpp-nr-nrm-nrcellcu" as _3gpp_nr_nrm_nrcellcu << (M, #33CCFF) module>> 
+_3gpp_nr_nrm_nrcellcu : feature : DPCIConfigurationFunction 
+_3gpp_nr_nrm_nrcellcu : feature : DESManagementFunction 
+_3gpp_nr_nrm_nrcellcu : feature : DMROFunction 
+_3gpp_nr_nrm_nrcellcu : feature : CESManagementFunction 
+class "NRCellCUGrp" as _3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping <<(G,Lime) grouping>> 
+_3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping : mf3gpp:ManagedFunctionGrp {uses} 
+_3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping : cellLocalId : int32 [0..16383]   {mandatory}
+class "pLMNInfoList" as _3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_I_pLMNInfoList << (L, #FF7700) list>> 
+_3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping *-- "1..N" _3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_I_pLMNInfoList 
+_3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_I_pLMNInfoList : types5g3gpp:PLMNInfo {uses} 
+_3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping : nRFrequencyRef : types3gpp:DistinguishedName   {Config : false}
+class "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction" as me3gpp_ManagedElement_gnbcucp3gpp_GNBCUCPFunction << (A,CadetBlue) augment>>
+_3gpp_nr_nrm_nrcellcu *--  me3gpp_ManagedElement_gnbcucp3gpp_GNBCUCPFunction 
+class "NRCellCU" as _3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU << (L, #FF7700) list>> 
+me3gpp_ManagedElement_gnbcucp3gpp_GNBCUCPFunction *-- "0..N" _3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU 
+_3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU : top3gpp:Top_Grp {uses} 
+class "attributes" as  _3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU_I_attributes <<container>> 
+_3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU *-- "1" _3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU_I_attributes 
+_3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU_I_attributes : NRCellCUGrp {uses} 
+_3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU : mf3gpp:ManagedFunctionContainedClasses {uses} 
+} 
+
+types3gpp__3gpp_common_yang_types +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+mf3gpp__3gpp_common_managed_function +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+me3gpp__3gpp_common_managed_element +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+gnbcucp3gpp__3gpp_nr_nrm_gnbcucpfunction +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+top3gpp__3gpp_common_top +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+types5g3gpp__3gpp_5g_common_yang_types +-- nrcellcu3gpp__3gpp_nr_nrm_nrcellcu
+_3gpp_common_managed_element_I_ManagedElement_I_GNBCUCPFunction_I_NRCellCU_I_attributes --> _3gpp_nr_nrm_nrcellcu_I_NRCellCUGrp_grouping : uses 
+center footer
+ <size:20> UML Generated : 2025-01-30 15:00 </size>
+ endfooter 
+@enduml 

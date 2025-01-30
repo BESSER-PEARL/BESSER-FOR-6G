@@ -1,0 +1,298 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-QFQoSMonitoringControl",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:qFQMCtrl3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-QFQoSMonitoringControl",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:smf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smffunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-QFQoSMonitoringControl"
+        },
+        "prefix": {
+            "@value": "qFQMCtrl3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smffunction",
+                "prefix": {
+                    "@value": "smf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the capabilities and properties for control\nof QoS monitoring per QoS flow per UE for URLLC service defined\n\nin 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-04-10",
+                "reference": {
+                    "text": "S5-202101"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "QFPacketDelayThresholdsTypeGrp",
+                "description": {
+                    "text": "Represents the QFPacketDelayThresholdsType"
+                },
+                "leaf": [
+                    {
+                        "@name": "thresholdDl",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Downlink threshold"
+                        }
+                    },
+                    {
+                        "@name": "thresholdUl",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Uplink threshold"
+                        }
+                    },
+                    {
+                        "@name": "thresholdRtt",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Round trip threshold"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "QFQoSMonitoringControlGrp",
+                "description": {
+                    "text": "Represents the QFQoSMonitoringControl IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "leaf": [
+                    {
+                        "@name": "qFQoSMonitoringState",
+                        "description": {
+                            "text": "The state of QoS monitoring per QoS flow per UE."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ENABLED"
+                                },
+                                {
+                                    "@name": "DISABLED"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@name": "isEventTriggeredQFMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the event based QoS monitoring\nreporting per QoS flow per UE is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "isPeriodicQFMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the periodic QoS monitoring reporting\nper QoS flow per UE is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "isSessionReleasedQFMonitoringSupported",
+                        "description": {
+                            "text": "It indicates whether the session release based QoS monitoring\nreporting  per QoS flow per UE is supported."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.244"
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "qFMinimumWaitTime",
+                        "description": {
+                            "text": "It specifies the minimum waiting time (in seconds) between\ntwo consecutive reports for event triggered QoS monitoring reporting\nper QoS flow per UE."
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "qFMeasurementPeriod",
+                        "description": {
+                            "text": "It specifies the period (in seconds) for reporting the\npacket delay for QoS monitoring per QoS flow per UE."
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "qFMonitoredSNSSAIs",
+                        "description": {
+                            "text": "The S-NSSAIs for which the QoS monitoring per QoS flow\nper UE is to be performed."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 23.003"
+                        },
+                        "key": {
+                            "@value": "sd sst"
+                        },
+                        "uses": {
+                            "@name": "types5g3gpp:SNssai"
+                        }
+                    },
+                    {
+                        "@name": "qFPacketDelayThresholds",
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "It specifies the thresholds for reporting the packet delay\nbetween PSA and UE for QoS monitoring per QoS flow per UE."
+                        },
+                        "leaf": {
+                            "@name": "idx",
+                            "type": {
+                                "@name": "uint32"
+                            }
+                        },
+                        "uses": {
+                            "@name": "QFPacketDelayThresholdsTypeGrp"
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "qFMonitored5QIs",
+                    "description": {
+                        "text": "The 5QIs for which the QoS monitoring per QoS flow\nper UE is to be performed."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.501"
+                    },
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "0..255"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/smf3gpp:SMFFunction",
+            "list": {
+                "@name": "QFQoSMonitoringControl",
+                "description": {
+                    "text": "Represents the QFQoSMonitoringControl IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "QFQoSMonitoringControlGrp"
+                    }
+                }
+            }
+        }
+    }
+}

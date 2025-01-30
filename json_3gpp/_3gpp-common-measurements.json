@@ -1,0 +1,557 @@
+{
+    "module": {
+        "@name": "_3gpp-common-measurements",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-measurements"
+        },
+        "prefix": {
+            "@value": "meas3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines Measurement and KPI related groupings\nAny list/class intending to use this should include 2 or 3 uses statements\ncontrolled by a feature:\n\nA)\n+++     feature MeasurementsUnderMyClass {\n+++       description 'Indicates whether measurements and/or KPIs are supported\n+++       for this class.';\n+++     }\n\nB) include the attribute measurementsList and/or kPIsList indicating the\nsupported measurment and KPI types and GPs. Note that for classes\ninheriting from ManagedFunction, EP_RP or SubNetwork these attributes are\nalready inherited, so there is no need to include them once more. E.g.\n\n+++     grouping MyClassGrp {\n+++        uses meas3gpp:SupportedPerfMetricGroup;\n+++     }\n\nC) include the class PerfmetricJob to control the measurements/KPIs. E.g.\n\nlist MyClass {\ncontainer attributes {\nuses MyClassGrp;\n}\n+++       uses meas3gpp:MeasurementSubtree {\n+++         if-feature MeasurementsUnderMyClass ;\n+++       }\n}\n\nMeasurements can be contained under ManagedElement, SubNetwork, or\nany list representing a class inheriting from Subnetwork or\nManagedFunction. Note: KPIs will only be supported under SubNetwork"
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n\n3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-06",
+                "reference": {
+                    "text": "CR-0118"
+                }
+            },
+            {
+                "@date": "2020-09-04",
+                "reference": {
+                    "text": "CR-000107"
+                }
+            },
+            {
+                "@date": "2020-06-08",
+                "reference": {
+                    "text": "CR-0092"
+                }
+            },
+            {
+                "@date": "2020-05-31",
+                "reference": {
+                    "text": "CR-0084"
+                }
+            },
+            {
+                "@date": "2020-03-11",
+                "reference": {
+                    "text": "S5-201581, SP-200229"
+                }
+            },
+            {
+                "@date": "2019-11-21",
+                "reference": {
+                    "text": "S5-197275, S5-197735"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193516"
+                }
+            },
+            {
+                "@date": "2019-06-17"
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ThresholdInfoGrp",
+                "description": {
+                    "text": "Defines a single threshold level."
+                },
+                "leaf-list": {
+                    "@name": "measurementTypes",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "The Measurement type can be those specified in TS 28.552,\nTS 32.404 and can be those specified by other SDOs or can be\nvendor-specific."
+                    }
+                },
+                "leaf": [
+                    {
+                        "@name": "thresholdLevel",
+                        "type": {
+                            "@name": "uint64"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Number (key) for a single threshold in the threshold list\napplicable to the monitored performance metric."
+                        }
+                    },
+                    {
+                        "@name": "thresholdDirection",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "UP"
+                                },
+                                {
+                                    "@name": "DOWN"
+                                },
+                                {
+                                    "@name": "UP_AND_DOWN"
+                                }
+                            ]
+                        },
+                        "must": {
+                            "@condition": ". = \"UP_AND_DOWN\" or  not(../hysteresis)",
+                            "error-message": {
+                                "value": "In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to 'UP_AND_DOWN'."
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Direction of a threshold indicating the direction for which\na threshold crossing triggers a threshold.\n\nWhen the threshold direction is configured to 'UP', the associated\ntreshold is triggered only when the performance metric value is going\nup upon reaching or crossing the threshold value. The treshold is not\ntriggered, when the performance metric is going down upon reaching or\ncrossing the threshold value.\n\nVice versa, when the threshold direction is configured to 'DOWN', the\nassociated treshold is triggered only when the performance metric is\ngoing down upon reaching or crossing the threshold value. The treshold\nis not triggered, when the performance metric is going up upon reaching\nor crossing the threshold value.\n\nWhen the threshold direction is set to 'UP_AND_DOWN' the treshold is\nactive in both direcions.\n\nIn case a threshold with hysteresis is configured, the threshold\ndirection attribute shall be set to 'UP_AND_DOWN'."
+                        }
+                    },
+                    {
+                        "@name": "thresholdValue",
+                        "type": {
+                            "@name": "union",
+                            "type": [
+                                {
+                                    "@name": "int64"
+                                },
+                                {
+                                    "@name": "decimal64",
+                                    "fraction-digits": {
+                                        "@value": "2"
+                                    }
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Value against which the monitored performance metric is\ncompared at a threshold level in case the hysteresis is zero"
+                        }
+                    },
+                    {
+                        "@name": "hysteresis",
+                        "type": {
+                            "@name": "union",
+                            "type": [
+                                {
+                                    "@name": "uint64"
+                                },
+                                {
+                                    "@name": "decimal64",
+                                    "fraction-digits": {
+                                        "@value": "2"
+                                    },
+                                    "range": {
+                                        "@value": "0..max"
+                                    }
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "Hysteresis of a threshold. If this attribute is present\nthe monitored performance metric is not compared against the\nthreshold value as specified by the thresholdValue attribute but\nagainst a high and low threshold value given by\n\nthreshold-high = thresholdValue + hysteresis\nthreshold-low = thresholdValue - hysteresis\n\nWhen going up, the threshold is triggered when the performance metric\nreaches or crosses the high threshold value. When going down, the\nhreshold is triggered when the performance metric reaches or crosses\nthe low threshold value.\n\nA hysteresis may be present only when the monitored performance\nmetric is not of type counter that can go up only. If present\nfor a performance metric of type counter, it shall be ignored."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "SupportedPerfMetricGroupGrp",
+                "list": {
+                    "@name": "SupportedPerfMetricGroup",
+                    "config": {
+                        "@value": "false"
+                    },
+                    "description": {
+                        "text": "Captures a group of supported performance metrics and\nassociated parameters related to their production and reporting.\nA SupportedPerfMetricGroup attribute which is part of an MOI may\ndefine performanceMetrics for any MOI under the subtree contained\nunder that MOI, e.g. SupportedPerfMetricGroup on a ManagedElement\ncan specify supported metrics for contained ManagedFunctions\nlike a GNBDUFunction."
+                    },
+                    "leaf-list": [
+                        {
+                            "@name": "performanceMetrics",
+                            "type": {
+                                "@name": "string"
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "description": {
+                                "text": "Performance metrics include measurements defined in\nTS 28.552 and KPIs defined in TS 28.554. Performance metrics can\nalso be those specified by other SDOs or vendor specific metrics.\nPerformance metrics are identfied with their names. A name can also\nidentify a vendor specific group of performance metrics.\n\nFor measurements defined in TS 28.552 the name is constructed as\nfollows:\n- 'family.measurementName.subcounter' for measurement types with\nsubcounters\n- 'family.measurementName' for measurement types without subcounters\n- 'family' for measurement families\n\nFor KPIs defined in TS 28.554 the name is defined in the KPI\ndefinitions template as the component designated with e)."
+                            }
+                        },
+                        {
+                            "@name": "granularityPeriods",
+                            "type": {
+                                "@name": "uint32",
+                                "range": {
+                                    "@value": "1..max"
+                                }
+                            },
+                            "units": {
+                                "@name": "seconds"
+                            }
+                        },
+                        {
+                            "@name": "reportingMethods",
+                            "type": {
+                                "@name": "enumeration",
+                                "enum": [
+                                    {
+                                        "@name": "FILE_BASED_LOC_SET_BY_PRODUCER"
+                                    },
+                                    {
+                                        "@name": "FILE_BASED_LOC_SET_BY_CONSUMER"
+                                    },
+                                    {
+                                        "@name": "STREAM_BASED"
+                                    }
+                                ]
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            }
+                        },
+                        {
+                            "@name": "monitorGranularityPeriods",
+                            "type": {
+                                "@name": "uint32",
+                                "range": {
+                                    "@value": "1..max"
+                                }
+                            },
+                            "units": {
+                                "@name": "seconds"
+                            },
+                            "description": {
+                                "text": "Granularity periods supported for the monitoring of\nassociated measurement types for thresholds"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "PerfMetricJobGrp",
+                "description": {
+                    "text": "Represents the attributtes of the IOC PerfMetricJob"
+                },
+                "leaf": [
+                    {
+                        "@name": "administrativeState",
+                        "default": {
+                            "@value": "UNLOCKED"
+                        },
+                        "type": {
+                            "@name": "types3gpp:AdministrativeState"
+                        },
+                        "description": {
+                            "text": "Enable or disables production of the metrics"
+                        }
+                    },
+                    {
+                        "@name": "operationalState",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "types3gpp:OperationalState"
+                        },
+                        "description": {
+                            "text": "Indicates whether the PerfMetricJob is working."
+                        }
+                    },
+                    {
+                        "@name": "jobId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Id for a PerfMetricJob job."
+                        }
+                    },
+                    {
+                        "@name": "granularityPeriod",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1..max"
+                            }
+                        },
+                        "units": {
+                            "@name": "seconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Granularity period used to produce measurements. The value\nmust be one of the supported granularity periods for the metric."
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "performanceMetrics",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "Performance metrics include measurements defined in\nTS 28.552 and KPIs defined in TS 28.554. Performance metrics can\nalso be those specified by other SDOs or vendor specific metrics.\nPerformance metrics are identfied with their names. A name can also\nidentify a vendor specific group of performance metrics.\n\nFor measurements defined in TS 28.552 the name is constructed as\nfollows:\n- 'family.measurementName.subcounter' for measurement types with\nsubcounters\n- 'family.measurementName' for measurement types without subcounters\n- 'family' for measurement families\n\nFor KPIs defined in TS 28.554 the name is defined in the KPI\ndefinitions template as the component designated with e)."
+                        }
+                    },
+                    {
+                        "@name": "objectInstances",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    },
+                    {
+                        "@name": "rootObjectInstances",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        },
+                        "description": {
+                            "text": "Each object instance designates the root of a subtree that\ncontains the root object and all descendant objects."
+                        }
+                    }
+                ],
+                "choice": {
+                    "@name": "reportingCtrl",
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "description": {
+                        "text": "This choice defines the method for reporting collected\nperformance metrics to MnS consumers as well as the parameters for\nconfiguring the reporting function. It is a choice between the control\nparameter required for the reporting methods, whose presence selects\nthe reporting method as follows:\n- When only the fileReportingPeriod attribute is present, the MnS\nproducer shall store files on the MnS producer at a location selected\nby the MnS producer and inform the MnS consumer about the availability\nof new files and the file location using the notifyFileReady\nnotification.\n- When only the fileReportingPeriod and fileLocation attributes are\npresent, the MnS producer shall store the files on the MnS consumer at\nthe location specified by fileLocation. No notification is emitted by\nthe MnS producer.\n- When only the streamTarget attribute is present, the MnS producer\nshall stream the data to the location specified by streamTarget.\n\nFor the file-based reporting methods the fileReportingPeriod attribute\nspecifies the time window during which collected measurements are stored\ninto the same file before the file is closed and a new file is opened."
+                    },
+                    "case": [
+                        {
+                            "@name": "file-based-reporting",
+                            "leaf": [
+                                {
+                                    "@name": "fileReportingPeriod",
+                                    "type": {
+                                        "@name": "uint32",
+                                        "range": {
+                                            "@value": "1..max"
+                                        }
+                                    },
+                                    "units": {
+                                        "@name": "minutes"
+                                    },
+                                    "must": {
+                                        "@condition": "(number(.)*\"60\") mod number(../granularityPeriod) = \"0\"",
+                                        "error-message": {
+                                            "value": "The time-period must be a multiple of the granularityPeriod."
+                                        }
+                                    },
+                                    "mandatory": {
+                                        "@value": "true"
+                                    },
+                                    "description": {
+                                        "text": "For the file-based reporting method this is the time\nwindow during which collected measurements are stored into the same\nfile before the file is closed and a new file is opened.\nThe time-period must be a multiple of the granularityPeriod.\n\nApplicable when the file-based reporting method is supported"
+                                    }
+                                },
+                                {
+                                    "@name": "fileLocation",
+                                    "type": {
+                                        "@name": "string"
+                                    },
+                                    "description": {
+                                        "text": "Applicable and must be present when the file-based\nreporting method is supported, and the files are stored on the MnS\nconsumer."
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@name": "stream-based-reporting",
+                            "leaf": {
+                                "@name": "streamTarget",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "Applicable when stream-based reporting method is\nsupported."
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "ThresholdMonitorGrp",
+                "description": {
+                    "text": "A threshold monitor that is created by the consumer for\nthe monitored entities whose measurements are required by consumer\nto monitor."
+                },
+                "leaf": [
+                    {
+                        "@name": "administrativeState",
+                        "default": {
+                            "@value": "UNLOCKED"
+                        },
+                        "type": {
+                            "@name": "types3gpp:AdministrativeState"
+                        },
+                        "description": {
+                            "text": "Enables or disables the ThresholdMonitor."
+                        }
+                    },
+                    {
+                        "@name": "operationalState",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "types3gpp:OperationalState"
+                        },
+                        "description": {
+                            "text": "Indicates whether the ThresholdMonitor is working."
+                        }
+                    },
+                    {
+                        "@name": "monitorGranularityPeriod",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1..max"
+                            }
+                        },
+                        "units": {
+                            "@name": "second"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Granularity period used to monitor measurements for\nthreshold crossings."
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "thresholdInfoList",
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "leaf": {
+                        "@name": "idx",
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    "uses": {
+                        "@name": "ThresholdInfoGrp"
+                    }
+                },
+                "leaf-list": [
+                    {
+                        "@name": "objectInstances",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    },
+                    {
+                        "@name": "rootObjectInstances",
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        },
+                        "description": {
+                            "text": "Each object instance designates the root of a subtree that\ncontains the root object and all descendant objects."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "MeasurementSubtree",
+                "description": {
+                    "text": "Contains classes that define measurements.\nShould be used in all  classes (or classes inheriting from)\n- SubNnetwork\n- ManagedElement\n- ManagedFunction\n\nIf a YANG module wants to augment these classes/list/groupings they must\naugment all user classes!\n\nIf a class uses this grouping in its list it shall also use the\ngrouping SupportedPerfMetricGroupGrp to add SupportedPerfMetricGroup as\nan attribute to its grouping"
+                },
+                "list": [
+                    {
+                        "@name": "PerfMetricJob",
+                        "description": {
+                            "text": "This IOC represents a performance metric production job. It\ncan be name-contained by SubNetwork, ManagedElement, or ManagedFunction.\n\nTo activate the production of the specified performance metrics, a MnS\nconsumer needs to create a PerfMetricJob instance on the MnS producer\nand ensure that the adminState is sUNLOCKED>.\nFor ultimate deactivation of metric production, the MnS consumer should\ndelete the job to free up resources on the MnS producer.\n\nFor temporary suspension of metric production, the MnS consumer can\nmanipulate the value of the administrative state attribute. The MnS\nproducer may disable metric production as well, for example in overload\nsituations. This situation is indicated by the MnS producer with setting\nthe operational state attribute to disabled. When production is resumed\nthe operational state is set again to enabled.\n\nThe jobId attribute can be used to associate metrics from multiple\nPerfMetricJob instances. The jobId can be included when reporting\nperformance metrics to allow a MnS consumer to associate received\nmetrics for the same purpose.  For example, it is possible to configure\nthe same jobId value for multiple PerfMetricJob instances required to\nproduce the measurements for a specific KPI.\n\nThe attribute performanceMetrics defines the performance metrics to be\nproduced and the attribute granularityPeriod defines the granularity\nperiod to be applied.\n\nAll object instances below and including the instance name-containing\nthe PerfMetricJob (base object instance) are scoped for performance\nmetric production. Performance metrics are produced only on those object\ninstances whose object class matches the object class associated to the\nperformance metrics to be produced.\n\nThe attributes objectInstances and rootObjectInstances allow to restrict\nthe scope. When the attribute objectInstances is present, only the object\ninstances identified by this attribute are scoped. When the attribute\nrootObjectInstances is present, then the subtrees whose root objects are\nidentified by this attribute are scoped. Both attributes may be present\nat the same time meaning the total scope is equal to the sum of both\nscopes. Object instances may be scoped by both the objectInstances and\nrootObjectInstances attributes. This shall not be considered as an error\nby the MnS producer.\n\nWhen the performance metric requires performance metric production on\nmultiple managed objects, which is for example the case for KPIs, the\nMnS consumer needs to ensure all required objects are scoped. Otherwise\na PerfMetricJob creation request shall fail.\n\nThe attribute reportingCtrl specifies the method and associated control\nparameters for reporting the produced measurements to MnS consumers.\nThree methods are available: file-based reporting with selection of the\nfile location by the MnS producer, file-based reporting with selection\nof the file location by the MnS consumer and stream-based reporting.\n\nA PerfMetricJob creation request shall fail, when the requested\nperformance metrics, the requested granularity period, the requested\nrepoting method, or the requested combination thereof is not supported\nby the MnS producer.\n\nCreation and deletion of PerfMetricJob instances by MnS consumers is\noptional; when not supported, PerfMetricJob instances may be created and\ndeleted by the system or be pre-installed."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "PerfMetricJobGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "ThresholdMonitor",
+                        "key": {
+                            "@value": "id"
+                        },
+                        "description": {
+                            "text": "Represents a threshold monitor for performance metrics.\nIt can be contained by SubNetwork, ManagedElement, or ManagedFunction.\nA threshold monitor checks for threshold crossings of performance metric\nvalues and generates a notification when that happens.\n\nTo activate threshold monitoring, a MnS consumer needs to create a\nThresholdMonitor instance on the MnS producer. For ultimate deactivation\nof threshold monitoring, the MnS consumer should delete the monitor to\nfree up resources on the MnS producer.\n\nFor temporary suspension of threshold monitoring, the MnS consumer can\nmanipulate the value of the administrative state attribute. The MnS\nproducer may disable threshold monitoring as well, for example in\noverload situations. This situation is indicated by the MnS producer with\nsetting the operational state attribute to disabled. When monitoring is\nresumed the operational state is set again to enabled.\n\nAll object instances below and including the instance containing the\nThresholdMonitor (base object instance) are scoped for performance\nmetric production. Performance metrics are monitored only on those\nobject instances whose object class matches the object class associated\nto the performance metrics to be monitored.\n\nThe optional attributes objectInstances and rootObjectInstances allow to\nrestrict the scope. When the attribute objectInstances is present, only\nthe object instances identified by this attribute are scoped. When the\nattribute rootObjectInstances is present, then the subtrees whose root\nobjects are identified by this attribute are scoped. Both attributes may\nbe present at the same time meaning the total scope is equal to the sum\nof both scopes. Object instances may be scoped by both the objectInstances\nand rootObjectInstances attributes. This shall not be considered as an\nerror by the MnS producer.\n\nMultiple thresholds can be defined for multiple performance metric sets\nin a single monitor using thresholdInfoList. The attribute\nmonitorGranularityPeriod defines the granularity period to be applied.\n\nEach threshold is identified with a number (key) called thresholdLevel.\nA threshold is defined using the attributes thresholdValue ,\nthresholdDirection and hysteresis.\n\nWhen hysteresis is absent or carries no information, a threshold is\ntriggered when the thresholdValue is reached or crossed. When hysteresis\nis present, two threshold values are specified for the threshold as\nfollows: A high treshold value equal to the threshold value plus the\nhysteresis value, and a low threshold value equal to the threshold value\nminus the hysteresis value. When the monitored performance metric\nincreases, the threshold is triggered when the high threshold value is\nreached or crossed. When the monitored performance metric decreases, the\nthreshold is triggered when the low threshold value is reached or crossed.\nThe hsyteresis ensures that the performance metric value can oscillate\naround a comparison value without triggering each time the threshold when\nthe threshold value is crossed.\n\nUsing the thresholdDirection attribute a threshold can be configured in\nsuch a manner that it is triggered only when the monitored performance\nmetric is going up or down upon reaching or crossing the threshold.\n\nA ThresholdMonitor creation request shall be rejected, if the performance\nmetrics requested to be monitored, the requested granularity period, or\nthe requested combination thereof is not supported by the MnS producer.\nA creation request may fail, when the performance metrics requested to be\nmonitored are not produced by a PerfMetricJob.\n\nCreation and deletion of ThresholdMonitor instances by MnS consumers is\noptional; when not supported, ThresholdMonitor instances may be created\nand deleted by the system or be pre-installed."
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "ThresholdMonitorGrp"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

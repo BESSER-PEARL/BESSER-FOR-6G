@@ -1,0 +1,1435 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-predefinedpccruleset",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:PredPccRules3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-predefinedpccruleset",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:smf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smffunction",
+        "@xmlns:pcf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-pcffunction",
+        "@xmlns:yang": "urn:ietf:params:xml:ns:yang:ietf-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-predefinedpccruleset"
+        },
+        "prefix": {
+            "@value": "PredPccRules3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smffunction",
+                "prefix": {
+                    "@value": "smf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-pcffunction",
+                "prefix": {
+                    "@value": "pcf3gpp"
+                }
+            },
+            {
+                "@module": "ietf-yang-types",
+                "prefix": {
+                    "@value": "yang"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the predefined PCC rules, which are\nconfigured to SMF and referenced by PCF."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-09-30",
+                "reference": {
+                    "text": "CR-0393"
+                }
+            },
+            {
+                "@date": "2020-08-21",
+                "reference": {
+                    "text": "CR-0330"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "TscaiInputContainer",
+                "description": {
+                    "text": "It specifies the transports TSCAI input parameters for TSC\ntraffic at the ingress interface of the DS-TT/UE for a PCC rule."
+                },
+                "reference": {
+                    "text": "3GPP TS 29.512"
+                },
+                "leaf": [
+                    {
+                        "@name": "periodicity",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "description": {
+                            "text": "It identifies the time period between the start of two bursts\nin reference to the TSN GM."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 29.571."
+                        }
+                    },
+                    {
+                        "@name": "burstArrivalTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "description": {
+                            "text": "It Indicates the arrival time (in date-time format) of the\ndata burst in reference to the TSN GM."
+                        },
+                        "reference": {
+                            "text": "3GPP,TS 29.571."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ConditionData",
+                "description": {
+                    "text": "It specifies the specifies the condition data for a PCC rule."
+                },
+                "leaf": [
+                    {
+                        "@name": "condId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It uniquely identifies the condition data."
+                        }
+                    },
+                    {
+                        "@name": "activationTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "description": {
+                            "text": "It indicates the time (in date-time format) when the decision\ndata shall be activated."
+                        },
+                        "reference": {
+                            "text": "3GPP29.512 and TS 29.571."
+                        }
+                    },
+                    {
+                        "@name": "deactivationTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "description": {
+                            "text": "It indicates the time (in date-time format) when the decision\ndata shall be deactivated."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.512 and TS 29.571."
+                        }
+                    },
+                    {
+                        "@name": "accessType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "3GPP_ACCESS"
+                                },
+                                {
+                                    "@name": "NON_3GPP_ACCESS"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It provides the condition of access type of the UE when the\nsession AMBR shall be enforced."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.512."
+                        }
+                    },
+                    {
+                        "@name": "ratType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "NR"
+                                },
+                                {
+                                    "@name": "EUTRA"
+                                },
+                                {
+                                    "@name": "WLAN"
+                                },
+                                {
+                                    "@name": "VIRTUAL"
+                                },
+                                {
+                                    "@name": "NBIOT"
+                                },
+                                {
+                                    "@name": "WIRELINE"
+                                },
+                                {
+                                    "@name": "WIRELINE_CABLE"
+                                },
+                                {
+                                    "@name": "WIRELINE_BBF"
+                                },
+                                {
+                                    "@name": "LTE-M"
+                                },
+                                {
+                                    "@name": "NR_U"
+                                },
+                                {
+                                    "@name": "EUTRA_U"
+                                },
+                                {
+                                    "@name": "TRUSTED_N3GA"
+                                },
+                                {
+                                    "@name": "TRUSTED_WLAN"
+                                },
+                                {
+                                    "@name": "UTRA"
+                                },
+                                {
+                                    "@name": "GERA"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It provides the condition of RAT type of the UE when the\nsession AMBR shall be enforced."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.512 and TS 29.571."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "SteeringMode",
+                "description": {
+                    "text": "It specifies the traffic distribution rule, see TS 29.512."
+                },
+                "leaf": [
+                    {
+                        "@name": "steerModeValue",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ACTIVE_STANDBY"
+                                },
+                                {
+                                    "@name": "LOAD_BALANCING"
+                                },
+                                {
+                                    "@name": "SMALLEST_DELAY"
+                                },
+                                {
+                                    "@name": "PRIORITY_BASED"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the value of the steering mode, see TS 29.512."
+                        }
+                    },
+                    {
+                        "@name": "active",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "3GPP_ACCESS"
+                                },
+                                {
+                                    "@name": "NON_3GPP_ACCESS"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It indicates the active access, see TS 29.571."
+                        }
+                    },
+                    {
+                        "@name": "standby",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "3GPP_ACCESS"
+                                },
+                                {
+                                    "@name": "NON_3GPP_ACCESS"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It indicates the Standby access, see TS 29.571."
+                        }
+                    },
+                    {
+                        "@name": "threeGLoad",
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..100"
+                            }
+                        },
+                        "description": {
+                            "text": "It indicates the traffic load to steer to the 3GPP Access\nexpressed in one percent."
+                        }
+                    },
+                    {
+                        "@name": "prioAcc",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "3GPP_ACCESS"
+                                },
+                                {
+                                    "@name": "NON_3GPP_ACCESS"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It indicates the high priority access."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.571"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "UpPathChgEvent",
+                "description": {
+                    "text": "It specifies the information about the AF subscriptions of the\nUP path change."
+                },
+                "reference": {
+                    "text": "3GPPTS 29.512"
+                },
+                "leaf": [
+                    {
+                        "@name": "notificationUri",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It provides notification address (Uri) of AF receiving the\nevent notification."
+                        }
+                    },
+                    {
+                        "@name": "notifCorreId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It is used to set the value of Notification Correlation ID in\nthe notification sent by the SMF, see TS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "dnaiChgType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "EARLY"
+                                },
+                                {
+                                    "@name": "EARLY_LATE"
+                                },
+                                {
+                                    "@name": "LATE"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the type of DNAI change, see TS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "afAckInd",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It identifies whether the AF acknowledgement of UP path\nevent notification is expected."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "RouteInformation",
+                "description": {
+                    "text": "It specifies the traffic routing information."
+                },
+                "leaf": [
+                    {
+                        "@name": "ipv4Addr",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It defines the Ipv4 address of the tunnel end point in the\ndata network, formatted in the dotted decimal notation."
+                        }
+                    },
+                    {
+                        "@name": "ipv6Addr",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It defines the Ipv6 address of the tunnel end point in the\ndata network."
+                        }
+                    },
+                    {
+                        "@name": "portNumber",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It defines the UDP port number of the tunnel end point in\nthe data network, see TS 29.571"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "RouteToLocation",
+                "description": {
+                    "text": "It specifies a list of location which the traffic shall be\nrouted to for the AF request."
+                },
+                "leaf": [
+                    {
+                        "@name": "dnai",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It represents the DNAI (Data network access identifier)."
+                        },
+                        "reference": {
+                            "text": "3GPP 3GPP TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "routeProfId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It identifies the routing profile."
+                        }
+                    }
+                ],
+                "container": {
+                    "@name": "routeInfo",
+                    "description": {
+                        "text": "It provides the traffic routing information."
+                    },
+                    "uses": {
+                        "@name": "RouteInformation"
+                    }
+                }
+            },
+            {
+                "@name": "RedirectInformaton",
+                "description": {
+                    "text": "It specifies the redirect information for traffic control in\nthe PCC rule."
+                },
+                "leaf": [
+                    {
+                        "@name": "redirectEnabled",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates whether the redirect instruction is enabled."
+                        }
+                    },
+                    {
+                        "@name": "redirectAddressType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "IPV4_ADDR"
+                                },
+                                {
+                                    "@name": "IPV6_ADDR"
+                                },
+                                {
+                                    "@name": "URL"
+                                },
+                                {
+                                    "@name": "SIP_URI"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the type of redirect address."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "redirectServerAddress",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the address of the redirect server."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "TrafficControlDataInformation",
+                "description": {
+                    "text": "It specifies the traffic control data for a service\nflow of a PCC rule."
+                },
+                "leaf": [
+                    {
+                        "@name": "tcId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It univocally identifies the traffic control policy data\nwithin a PDU session."
+                        }
+                    },
+                    {
+                        "@name": "flowStatus",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ENABLED-UPLINK"
+                                },
+                                {
+                                    "@name": "ENABLED-DOWNLINK"
+                                },
+                                {
+                                    "@name": "ENABLED"
+                                },
+                                {
+                                    "@name": "DISABLED"
+                                },
+                                {
+                                    "@name": "REMOVED"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It represents whether the service data flow(s) are enabled\nor disabled."
+                        }
+                    },
+                    {
+                        "@name": "muteNotif",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It indicates whether applicat'on's start or stop notification\nis to be muted."
+                        }
+                    },
+                    {
+                        "@name": "trafficSteeringPolIdDl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It references to a pre-configured traffic steering policy for downlink traffic at the SMF, see TS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "trafficSteeringPolIdUl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It references to a pre-configured traffic steering policy for\nuplink traffic at the SMF, see TS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "steerFun",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "MPTCP"
+                                },
+                                {
+                                    "@name": "ATSSS_LL"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It indicates the applicable traffic steering functionality."
+                        },
+                        "reference": {
+                            "text": "3GPPTS 29.512"
+                        }
+                    },
+                    {
+                        "@name": "mulAccCtrl",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ALLOWED"
+                                },
+                                {
+                                    "@name": "NOT_ALLOWED"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It indicates whether the service data flow, corresponding to the service data flow template, is allowed or not allowed."
+                        }
+                    }
+                ],
+                "container": [
+                    {
+                        "@name": "redirectInfo",
+                        "description": {
+                            "text": "It contains the redirect information indicating whether the\ndetected application traffic should be redirected to another controlled\naddress."
+                        },
+                        "uses": {
+                            "@name": "RedirectInformaton"
+                        }
+                    },
+                    {
+                        "@name": "addRedirectInfo",
+                        "description": {
+                            "text": "It contains the additional redirect information indicating\nwhether the detected application traffic should be redirected to another\ncontrolled address."
+                        },
+                        "list": {
+                            "@name": "redirectInfo",
+                            "description": {
+                                "text": "The list of redirect information indicating whether the\ndetected application traffic should be redirected to another\ncontrolled address."
+                            },
+                            "key": {
+                                "@value": "redirectServerAddress"
+                            },
+                            "uses": {
+                                "@name": "RedirectInformaton"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "routeToLocs",
+                        "description": {
+                            "text": "It provides a list of location which the traffic shall be\nrouted to for the AF request."
+                        },
+                        "list": {
+                            "@name": "routeToLoc",
+                            "description": {
+                                "text": "The list of location which the traffic shall be routed to\nfor the AF request."
+                            },
+                            "key": {
+                                "@value": "dnai"
+                            },
+                            "uses": {
+                                "@name": "RouteToLocation"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "steerModeDl",
+                        "description": {
+                            "text": "It provides the traffic distribution rule across 3GPP and\nNon-3GPP accesses to apply for downlink traffic."
+                        },
+                        "uses": {
+                            "@name": "SteeringMode"
+                        }
+                    },
+                    {
+                        "@name": "steerModeUl",
+                        "description": {
+                            "text": "It provides the traffic distribution rule across 3GPP and Non-3GPP accesses to apply for uplink traffic."
+                        },
+                        "uses": {
+                            "@name": "SteeringMode"
+                        }
+                    }
+                ],
+                "uses": {
+                    "@name": "UpPathChgEvent"
+                }
+            },
+            {
+                "@name": "ARP",
+                "description": {
+                    "text": "It specifies the allocation and retention priority of a QoS control policy."
+                },
+                "leaf": [
+                    {
+                        "@name": "priorityLevel",
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "1..15"
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It defines the relative importance of a resource request."
+                        }
+                    },
+                    {
+                        "@name": "preemptCap",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "NOT_PREEMPT"
+                                },
+                                {
+                                    "@name": "MAY_PREEMPT"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It defines whether a service data flow may get resources that were already assigned to another service data flow with a lower priority level."
+                        }
+                    },
+                    {
+                        "@name": "preemptVuln",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "NOT_PREEMPTABLE"
+                                },
+                                {
+                                    "@name": "PREEMPTABLE"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It defines whether a service data flow may lose the resources assigned to it in order to admit a service data flow with higher priority level."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "QosDataInformation",
+                "description": {
+                    "text": "It specifies the QoS control policy data for a service flow of a PCC rule."
+                },
+                "leaf": [
+                    {
+                        "@name": "qosId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It identifies the QoS control policy data for a PCC rule."
+                        }
+                    },
+                    {
+                        "@name": "fiveQIValue",
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..255"
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the 5QI value."
+                        }
+                    },
+                    {
+                        "@name": "maxbrUl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It represents the maximum uplink bandwidth."
+                        }
+                    },
+                    {
+                        "@name": "maxbrDl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It represents the maximum downlink bandwidth."
+                        }
+                    },
+                    {
+                        "@name": "gbrUl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It represents the guaranteed uplink bandwidth."
+                        }
+                    },
+                    {
+                        "@name": "gbrDl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It represents the guaranteed downlink bandwidth."
+                        }
+                    },
+                    {
+                        "@name": "qosNotificationControl",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It indicates whether notifications are requested from 3GPP NG-RAN when the GFBR can no longer (or again) be guaranteed for a QoS Flow during the lifetime of the QoS Flow."
+                        }
+                    },
+                    {
+                        "@name": "reflectiveQos",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates whether the QoS information is reflective for the corresponding non-GBR service data flow"
+                        }
+                    },
+                    {
+                        "@name": "sharingKeyDl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It indicates, by containing the same value, what PCC rules may share resource in downlink direction."
+                        }
+                    },
+                    {
+                        "@name": "sharingKeyUl",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It indicates, by containing the same value, what PCC rules may share resource in uplink direction."
+                        }
+                    },
+                    {
+                        "@name": "maxPacketLossRateDl",
+                        "type": {
+                            "@name": "uint16",
+                            "range": {
+                                "@value": "0..1000"
+                            }
+                        },
+                        "description": {
+                            "text": "It indicates the downlink maximum rate for lost packets that can be tolerated for the service data flow."
+                        }
+                    },
+                    {
+                        "@name": "maxPacketLossRateUl",
+                        "type": {
+                            "@name": "uint16",
+                            "range": {
+                                "@value": "0..1000"
+                            }
+                        },
+                        "description": {
+                            "text": "It indicates the uplink maximum rate for lost packets that can be tolerated for the service data flow."
+                        }
+                    },
+                    {
+                        "@name": "extMaxDataBurstVol",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "4096..2000000"
+                            }
+                        },
+                        "description": {
+                            "text": "It denotes the largest amount of data that is required to be transferred within a period of 5G-AN PDB, see TS 29.512"
+                        }
+                    }
+                ],
+                "uses": {
+                    "@name": "ARP"
+                }
+            },
+            {
+                "@name": "EthFlowDescription",
+                "description": {
+                    "text": "It describes an Ethernet flow."
+                },
+                "leaf": [
+                    {
+                        "@name": "destMacAddr",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the destination MAC address formatted in the\nhexadecimal ."
+                        },
+                        "reference": {
+                            "text": "clause 1.1 and clause 2.1 of IETF RFC"
+                        }
+                    },
+                    {
+                        "@name": "ethType",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "A two-octet string that represents the Ethertype."
+                        },
+                        "reference": {
+                            "text": "IEEE 802.3 and IETF RFC 7042 in hexadecimal representation."
+                        }
+                    },
+                    {
+                        "@name": "fDesc",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It contains the flow description for the Uplink or Downlink IP flow. It shall be present when the ethtype is IP."
+                        }
+                    },
+                    {
+                        "@name": "fDir",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "DOWNLINK"
+                                },
+                                {
+                                    "@name": "UPLINK"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the packet filter direction."
+                        }
+                    },
+                    {
+                        "@name": "sourceMacAddr",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the source MAC address formatted in the\nhexadecimal notation."
+                        },
+                        "reference": {
+                            "text": "clause 1.1 and clause 2.1 of IETF RFC 7042"
+                        }
+                    },
+                    {
+                        "@name": "srcMacAddrEnd",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It specifies the source MAC address end. If this attribute is present, the sourceMacAddr attribute specifies the source MAC address start. E.g. srcMacAddrEnd with value 00-10-A4-23-3E-FE and sourceMacAddr with value 00-10-A4-23-3E-02 means all MAC addresses from 00-10-A4-23-3E-02 up to and including 00-10-A4-23-3E-FE."
+                        }
+                    },
+                    {
+                        "@name": "destMacAddrEnd",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It specifies the destination MAC address end. If this attribute is present, the destMacAddr attribute specifies the destination MAC address start."
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "vlanTags",
+                    "type": {
+                        "@name": "string"
+                    },
+                    "description": {
+                        "text": "It specifies the Customer-VLAN and/or Service-VLAN tags\ncontaining the VID, PCP/DEI fields as defined in IEEE 802.1Q and\nIETF RFC 7042. The first/lower instance in the array stands for the\nCustomer-VLAN tag and the second/higher instance in the array stands\nfor the Service-VLAN tag."
+                    }
+                }
+            },
+            {
+                "@name": "FlowInformation",
+                "description": {
+                    "text": "It specifies the flow information of a PCC rule."
+                },
+                "leaf": [
+                    {
+                        "@name": "flowDescription",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It defines a packet filter for an IP flow."
+                        }
+                    },
+                    {
+                        "@name": "packFiltId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It is the identifier of the packet filter."
+                        }
+                    },
+                    {
+                        "@name": "packetFilterUsage",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It indicates if the packet shall be sent to the UE."
+                        }
+                    },
+                    {
+                        "@name": "tosTrafficClass",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It contains the Ipv4 Type-of-Service and mask field or the Ipv6 Traffic-Class field and mask field."
+                        }
+                    },
+                    {
+                        "@name": "spi",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It is the security parameter index of the IPSec packet."
+                        },
+                        "reference": {
+                            "text": "IETF RFC 4301"
+                        }
+                    },
+                    {
+                        "@name": "flowLabel",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It specifies the Ipv6 flow label header field."
+                        }
+                    },
+                    {
+                        "@name": "flowDirection",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "DOWNLINK"
+                                },
+                                {
+                                    "@name": "UPLINK"
+                                },
+                                {
+                                    "@name": "BIDIRECTIONAL"
+                                },
+                                {
+                                    "@name": "UNSPECIFIED"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the direction/directions that a filter is applicable."
+                        }
+                    }
+                ],
+                "uses": {
+                    "@name": "EthFlowDescription"
+                }
+            },
+            {
+                "@name": "PccRule",
+                "description": {
+                    "text": "It specifies the PCC rule, see TS 29.512"
+                },
+                "leaf": [
+                    {
+                        "@name": "pccRuleId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It identifies the PCC rule."
+                        }
+                    },
+                    {
+                        "@name": "applicationId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "A reference to the application detection filter configured\nat the UPF."
+                        }
+                    },
+                    {
+                        "@name": "appDescriptor",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It is the ATSSS rule application descriptor."
+                        }
+                    },
+                    {
+                        "@name": "contentVersion",
+                        "type": {
+                            "@name": "uint8"
+                        },
+                        "description": {
+                            "text": "Indicates the content version of the PCC rule."
+                        }
+                    },
+                    {
+                        "@name": "precedence",
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..255"
+                            }
+                        },
+                        "description": {
+                            "text": "It indicates the order in which this PCC rule is applied\nrelative to other PCC rules within the same PDU session."
+                        }
+                    },
+                    {
+                        "@name": "afSigProtocol",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "NO_INFORMATION"
+                                },
+                                {
+                                    "@name": "SIP"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "Indicates the protocol used for signalling between the UE\nand the AF, the default value is NO_INFORMATION."
+                        }
+                    },
+                    {
+                        "@name": "isAppRelocatable",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It indicates the application relocation possibility, the\ndefault value is NO_INFORMATION."
+                        }
+                    },
+                    {
+                        "@name": "isUeAddrPreserved",
+                        "type": {
+                            "@name": "boolean"
+                        },
+                        "default": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It Indicates whether UE IP address should be preserved."
+                        }
+                    }
+                ],
+                "container": [
+                    {
+                        "@name": "flowInfoList",
+                        "description": {
+                            "text": "It is a list of IP flow packet filter information."
+                        },
+                        "list": {
+                            "@name": "flowInfo",
+                            "description": {
+                                "text": "The list of IP flow packet filter information."
+                            },
+                            "key": {
+                                "@value": "packFiltId"
+                            },
+                            "uses": {
+                                "@name": "FlowInformation"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "qosData",
+                        "description": {
+                            "text": "It contains the QoS control policy data for a PCC rule."
+                        },
+                        "list": {
+                            "@name": "qosDataInfo",
+                            "description": {
+                                "text": "The list of QoS control policy data."
+                            },
+                            "key": {
+                                "@value": "qosId"
+                            },
+                            "uses": {
+                                "@name": "QosDataInformation"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "altQosParams",
+                        "description": {
+                            "text": "It contains the QoS control policy data for the Alternative\nQoS parameter sets of the service data flow."
+                        },
+                        "list": {
+                            "@name": "qosDataInfo",
+                            "description": {
+                                "text": "The list of QoS control policy data."
+                            },
+                            "key": {
+                                "@value": "qosId"
+                            },
+                            "uses": {
+                                "@name": "QosDataInformation"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "trafficControlData",
+                        "description": {
+                            "text": "It contains the traffic control policy data for a PCC rule."
+                        },
+                        "list": {
+                            "@name": "trafficControlDataInfo",
+                            "description": {
+                                "text": "The list of traffic control policy data."
+                            },
+                            "key": {
+                                "@value": "tcId"
+                            },
+                            "uses": {
+                                "@name": "TrafficControlDataInformation"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "tscaiInputUl",
+                        "description": {
+                            "text": "It contains transports TSCAI input parameters for TSC traffic at the ingress interface of the DS-TT/UE (uplink flow direction)."
+                        },
+                        "uses": {
+                            "@name": "TscaiInputContainer"
+                        }
+                    },
+                    {
+                        "@name": "tscaiInputDl",
+                        "description": {
+                            "text": "It contains transports TSCAI input parameters for TSC traffic at the ingress of the NW-TT (downlink flow direction)."
+                        },
+                        "uses": {
+                            "@name": "TscaiInputContainer"
+                        }
+                    }
+                ],
+                "uses": {
+                    "@name": "ConditionData"
+                }
+            },
+            {
+                "@name": "PredefinedPccRuleSetGrp",
+                "description": {
+                    "text": "Represents the PredefinedPccRuleSet IOC."
+                },
+                "list": {
+                    "@name": "PredefinedPccRules",
+                    "description": {
+                        "text": "The list of predefined PCC rules."
+                    },
+                    "key": {
+                        "@value": "pccRuleId"
+                    },
+                    "uses": {
+                        "@name": "PccRule"
+                    }
+                }
+            },
+            {
+                "@name": "PredefinedPccRuleSetSubtree",
+                "description": {
+                    "text": "It specifies the PredefinedPccRuleSet IOC with inherited attributes."
+                },
+                "list": {
+                    "@name": "PredefinedPccRuleSet",
+                    "description": {
+                        "text": "Specifies the predefined PCC rules."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "description": {
+                            "text": "It contains the attributes defined specifically in the PredefinedPccRuleSet IOC."
+                        },
+                        "uses": {
+                            "@name": "PredefinedPccRuleSetGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/smf3gpp:SMFFunction",
+                "description": {
+                    "text": "It specifies the containment relation of PredefinedPccRuleSet MOI with SMFFunction MOI."
+                },
+                "uses": {
+                    "@name": "PredefinedPccRuleSetSubtree"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/pcf3gpp:PCFFunction",
+                "description": {
+                    "text": "It specifies the containment relation of PredefinedPccRuleSet MOI with PCFFunction MOI."
+                },
+                "uses": {
+                    "@name": "PredefinedPccRuleSetSubtree"
+                }
+            }
+        ]
+    }
+}

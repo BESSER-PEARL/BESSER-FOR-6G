@@ -1,0 +1,132 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externalupffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extupf3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalupffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:nrnet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externalupffunction"
+        },
+        "prefix": {
+            "@value": "extupf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrnetwork",
+                "prefix": {
+                    "@value": "nrnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalUPFFunction Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalUPFFunctionGrp",
+                "description": {
+                    "text": "Represents the ExternalUPFFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                }
+            },
+            {
+                "@name": "ExternalUPFFunctionWrapper",
+                "list": {
+                    "@name": "ExternalUPFFunction",
+                    "description": {
+                        "text": "Represents the properties, known by the management\nfunction, of a UPFFunction managed by another management\nfunction."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.541"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalUPFFunctionGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalUPFFunctionWrapper"
+                }
+            },
+            {
+                "@target-node": "/nrnet3gpp:NRNetwork",
+                "if-feature": {
+                    "@name": "nrnet3gpp:ExternalsUnderNRNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalUPFFunctionWrapper"
+                }
+            }
+        ]
+    }
+}

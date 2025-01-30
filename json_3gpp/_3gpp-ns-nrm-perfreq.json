@@ -1,0 +1,275 @@
+{
+    "module": {
+        "@name": "_3gpp-ns-nrm-perfreq",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:perf3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-perfreq",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-ns-nrm-perfreq"
+        },
+        "prefix": {
+            "@value": "perf3gpp"
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "The performance requirements for the NSI in terms of the\nscenarios defined in the 3GPP TS 22.261, such as experienced data rate,\narea traffic capacity (density) information of UE density."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541\nManagement and orchestration;\n5G Network Resource Model (NRM);\nInformation model definitions for network slice NRM (chapter 6)"
+        },
+        "revision": {
+            "@date": "2020-02-19",
+            "description": {
+                "text": "Introduction of YANG definitions for network slice NRM"
+            },
+            "reference": {
+                "text": "CR-0458"
+            }
+        },
+        "typedef": [
+            {
+                "@name": "data-rate",
+                "type": {
+                    "@name": "uint32"
+                },
+                "units": {
+                    "@name": "kbits/s"
+                }
+            },
+            {
+                "@name": "integer-percentage",
+                "type": {
+                    "@name": "uint8",
+                    "range": {
+                        "@value": "0..100"
+                    }
+                },
+                "units": {
+                    "@name": "percent"
+                }
+            },
+            {
+                "@name": "reliability-string",
+                "description": {
+                    "text": "Mean time between failures.\nE.g. '1 day', or '3 months'"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[0-9]+ (day|week|month|year)s?"
+                    }
+                },
+                "reference": {
+                    "text": "3GPP TS 22.104 clause 5.2-5.5"
+                }
+            },
+            {
+                "@name": "message-size-string",
+                "description": {
+                    "text": "Message size in bytes.\nE.g. '80', or '250-2000'"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[0-9]+(-[0-9]+)?"
+                    }
+                },
+                "units": {
+                    "@name": "bytes"
+                },
+                "reference": {
+                    "text": "3GPP TS 22.104 clause 5.2-5.5"
+                }
+            },
+            {
+                "@name": "transfer-interval-string",
+                "description": {
+                    "text": "Transfer interval time.  If multiple values are given,\nthe first value is the application requirement, the other values are\nthe requirement with multiple transmission of the same information\ntwo or three times, respectively).\nE.g. '40ms', or '0ms-5ms,0ms-2.5ms,0ms-1.7ms'"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[0-9]+(\\.[0-9]+)?m?s-[0-9]+(\\.[0-9]+)?m?s(,[0-9]+(\\.[0-9]+)?m?s-[0-9]+(\\.[0-9]+)?){0,2}"
+                    }
+                },
+                "reference": {
+                    "text": "3GPP TS 22.104 clause 5.2-5.5"
+                }
+            },
+            {
+                "@name": "survival-time-string",
+                "description": {
+                    "text": "Survival time in milliseconds (ms) or in multiples of\nthe transfer interval (x).  If multiple values are given,\nthe first value is the application requirement, the other values are\nthe requirement with multiple transmission of the same information\ntwo or three times, respectively).\nE.g. '12ms', or '0x,2x'"
+                },
+                "type": {
+                    "@name": "string",
+                    "pattern": {
+                        "@value": "[0-9]+(x|ms)(,[0-9]+(x|ms)){0,2}"
+                    }
+                },
+                "reference": {
+                    "text": "3GPP TS 22.104 clause 5.2-5.5"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "PerfReqGrp",
+            "leaf": [
+                {
+                    "@name": "expDataRateDL",
+                    "description": {
+                        "text": "User experienced data rate over downlink"
+                    },
+                    "type": {
+                        "@name": "data-rate"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "expDataRateUL",
+                    "description": {
+                        "text": "User experienced data rate over uplink"
+                    },
+                    "type": {
+                        "@name": "data-rate"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "areaTrafficCapDL",
+                    "description": {
+                        "text": "Area traffic capacity over downlink"
+                    },
+                    "type": {
+                        "@name": "data-rate"
+                    },
+                    "units": {
+                        "@name": "kbits/s/km2"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "areaTrafficCapUL",
+                    "description": {
+                        "text": "Area traffic capacity over uplink"
+                    },
+                    "type": {
+                        "@name": "data-rate"
+                    },
+                    "units": {
+                        "@name": "kbits/s/km2"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "overallUserDensity",
+                    "description": {
+                        "text": "Overall user density"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    },
+                    "units": {
+                        "@name": "users/km2"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "activityFactor",
+                    "description": {
+                        "text": "Percentage value of the amount of simultaneous active\nUEs to the total number of UEs where active means the UEs are\nexchanging data with the network."
+                    },
+                    "type": {
+                        "@name": "integer-percentage"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.261 clause 7.1, table 7.1-1"
+                    }
+                },
+                {
+                    "@name": "cSAvailabilityTarget",
+                    "description": {
+                        "text": "Reliability uptime target"
+                    },
+                    "type": {
+                        "@name": "decimal64",
+                        "fraction-digits": {
+                            "@value": "6"
+                        },
+                        "range": {
+                            "@value": "0..100"
+                        }
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.104 clause 5.2-5.5"
+                    }
+                },
+                {
+                    "@name": "cSReliabilityMeanTime",
+                    "description": {
+                        "text": "Mean time between failures"
+                    },
+                    "type": {
+                        "@name": "reliability-string"
+                    }
+                },
+                {
+                    "@name": "expDataRate",
+                    "description": {
+                        "text": "User experienced data rate"
+                    },
+                    "type": {
+                        "@name": "data-rate"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 22.104 clause 5.2-5.5"
+                    }
+                },
+                {
+                    "@name": "msgSizeByte",
+                    "description": {
+                        "text": "PDU size"
+                    },
+                    "type": {
+                        "@name": "message-size-string"
+                    }
+                },
+                {
+                    "@name": "transferIntervalTarget",
+                    "description": {
+                        "text": "Time difference between two consecutive transfers\nof application data from an application via the service interface\nto 3GPP system"
+                    },
+                    "type": {
+                        "@name": "transfer-interval-string"
+                    }
+                },
+                {
+                    "@name": "survivalTime",
+                    "description": {
+                        "text": "The time that an application consuming a communication\nservice may continue without an anticipated message"
+                    },
+                    "type": {
+                        "@name": "survival-time-string"
+                    }
+                }
+            ]
+        }
+    }
+}

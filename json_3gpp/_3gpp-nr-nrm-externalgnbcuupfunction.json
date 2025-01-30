@@ -1,0 +1,170 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externalgnbcuupfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extgnbcuup3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalgnbcuupfunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:nrnet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externalgnbcuupfunction"
+        },
+        "prefix": {
+            "@value": "extgnbcuup3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrnetwork",
+                "prefix": {
+                    "@value": "nrnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalGNBCUUPFunction\nInformation Object Class (IOC), that is part of the NR Network\nResource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalGNBCUUPFunctionGrp",
+                "description": {
+                    "text": "Represets the ExternalGNBCUUPFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": [
+                    {
+                        "@name": "gNBId",
+                        "description": {
+                            "text": "Identifies a gNB within a PLMN."
+                        },
+                        "reference": {
+                            "text": "gNB Identifier (gNB ID) in 3GPP TS 38.300, Global gNB ID\nin 3GPP TS 38.413"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int64",
+                            "range": {
+                                "@value": "0..4294967295"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "gNBIdLength",
+                        "description": {
+                            "text": "Indicates the number of bits for encoding the gNB ID."
+                        },
+                        "reference": {
+                            "text": "gNB ID in 3GPP TS 38.300, Global gNB ID in 3GPP TS 38.413"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "int32",
+                            "range": {
+                                "@value": "22..32"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ExternalGNBCUUPFunctionWrapper",
+                "list": {
+                    "@name": "ExternalGNBCUUPFunction",
+                    "description": {
+                        "text": "Represents the properties, known by the management function,\nof a GNBCUUPFunction managed by another management function."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.541"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalGNBCUUPFunctionGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalGNBCUUPFunctionWrapper"
+                }
+            },
+            {
+                "@target-node": "/nrnet3gpp:NRNetwork",
+                "if-feature": {
+                    "@name": "nrnet3gpp:ExternalsUnderNRNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalGNBCUUPFunctionWrapper"
+                }
+            }
+        ]
+    }
+}

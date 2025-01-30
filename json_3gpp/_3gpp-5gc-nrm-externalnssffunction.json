@@ -1,0 +1,116 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-externalnssffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extnssf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-externalnssffunction",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-externalnssffunction"
+        },
+        "prefix": {
+            "@value": "extnssf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            }
+        ],
+        "description": {
+            "text": "This IOC represents external NSSF function controlled by another management domain."
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-11",
+                "description": {
+                    "text": "Ericsson refactoring."
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "ExternalNSSFFunctionGrp",
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": {
+                "@name": "pLMNIdList",
+                "description": {
+                    "text": "List of at most six entries of PLMN Identifiers, but at least one (the primary PLMN Id).\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                },
+                "min-elements": {
+                    "@value": "1"
+                },
+                "max-elements": {
+                    "@value": "6"
+                },
+                "key": {
+                    "@value": "mcc mnc"
+                },
+                "uses": {
+                    "@name": "types3gpp:PLMNId"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/subnet3gpp:SubNetwork",
+            "list": {
+                "@name": "ExternalNSSFFunction",
+                "description": {
+                    "text": "5G Core External NSSF Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "ExternalNSSFFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

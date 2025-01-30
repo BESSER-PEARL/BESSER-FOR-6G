@@ -1,0 +1,307 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrcellrelation",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrcellrel3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellrelation",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellrelation"
+        },
+        "prefix": {
+            "@value": "nrcellrel3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcellcu",
+                "prefix": {
+                    "@value": "nrcellcu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRCellRelation Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0454"
+                }
+            },
+            {
+                "@date": "2020-06-03",
+                "reference": {
+                    "text": "S5-202333"
+                }
+            },
+            {
+                "@date": "2020-04-23",
+                "reference": {
+                    "text": "CR0281"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-08-30",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "typedef": {
+            "@name": "EnergySavingCoverage",
+            "type": {
+                "@name": "enumeration",
+                "enum": [
+                    {
+                        "@name": "FULL"
+                    },
+                    {
+                        "@name": "NO"
+                    },
+                    {
+                        "@name": "PARTIAL"
+                    }
+                ]
+            }
+        },
+        "grouping": {
+            "@name": "NRCellRelationGrp",
+            "description": {
+                "text": "Represents the NRCellRelation IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "leaf": [
+                {
+                    "@name": "nRTCI",
+                    "description": {
+                        "text": "Target NR Cell Identifier. It consists of NR Cell\nIdentifier (NCI) and Physical Cell Identifier of the target NR cell\n(nRPCI)."
+                    },
+                    "type": {
+                        "@name": "uint64"
+                    }
+                },
+                {
+                    "@name": "nRFreqRelationRef",
+                    "description": {
+                        "text": "Reference to a corresponding NRFreqRelation instance."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                },
+                {
+                    "@name": "adjacentNRCellRef",
+                    "description": {
+                        "text": "Reference to an adjacent NR cell (NRCellCU or\nExternalNRCellCU)."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                },
+                {
+                    "@name": "isRemoveAllowed",
+                    "type": {
+                        "@name": "boolean"
+                    },
+                    "default": {
+                        "@value": "true"
+                    },
+                    "description": {
+                        "text": "True if the ANR function in the node is allowed to remove this relation."
+                    }
+                },
+                {
+                    "@name": "isHOAllowed",
+                    "type": {
+                        "@name": "boolean"
+                    },
+                    "default": {
+                        "@value": "true"
+                    },
+                    "description": {
+                        "text": "True if handovers are allowed over this relation."
+                    }
+                },
+                {
+                    "@name": "isESCoveredBy",
+                    "description": {
+                        "text": "Indicates whether the adjacent cell\nprovides no, partial or full coverage for the parent cell\ninstance. Adjacent cells with this attribute equal to FULL are\nrecommended to be considered as candidate cells to take over the\ncoverage when the original cell is about to be changed to energy\nsaving state. All adjacent cells with this property equal\nto PARTIAL are recommended to be considered as entirety of candidate\ncells to take over the coverage when the original cell is about to be\nchanged to energy saving state."
+                    },
+                    "type": {
+                        "@name": "EnergySavingCoverage"
+                    }
+                }
+            ],
+            "container": {
+                "@name": "cellIndividualOffset",
+                "description": {
+                    "text": "A set of offset values for the neighbour cell. Used when\nUE is in connected mode. Defined for rsrpOffsetSSB, rsrqOffsetSSB,\nsinrOffsetSSB, rsrpOffsetCSI-RS, rsrqOffsetCSI-RS and\nsinrOffsetCSI-RS."
+                },
+                "reference": {
+                    "text": "cellIndividualOffset in MeasObjectNR in 3GPP TS 38.331"
+                },
+                "leaf": [
+                    {
+                        "@name": "rsrpOffsetSsb",
+                        "description": {
+                            "text": "Offset value of rsrpOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrqOffsetSsb",
+                        "description": {
+                            "text": "Offset value of rsrqOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "sinrOffsetSsb",
+                        "description": {
+                            "text": "Offset value of sinrOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrpOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of rsrpOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrqOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of rsrqOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "sinrOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of sinrOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    }
+                ]
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU",
+            "list": {
+                "@name": "NRCellRelation",
+                "description": {
+                    "text": "Represents a neighbour cell relation from a source cell\nto a target cell, where the target cell is an NRCellCU or\nExternalNRCellCU instance."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRCellRelationGrp"
+                    }
+                }
+            }
+        }
+    }
+}

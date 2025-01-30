@@ -1,0 +1,160 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-commonbeamformingfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:combeamformfunc3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-commonbeamformingfunction",
+        "@xmlns:nrsectcarr3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-nrsectorcarrier",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-commonbeamformingfunction"
+        },
+        "prefix": {
+            "@value": "combeamformfunc3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-nr-nrm-nrsectorcarrier",
+                "prefix": {
+                    "@value": "nrsectcarr3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the CommonBeamformingFuntion Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2019-11-22",
+            "description": {
+                "text": "Initial revision"
+            },
+            "reference": {
+                "text": "S5-197643"
+            }
+        },
+        "grouping": {
+            "@name": "CommonBeamformingFunctionGrp",
+            "description": {
+                "text": "Represents the CommonBeamformingFunction IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "leaf": [
+                {
+                    "@name": "coverageShape",
+                    "description": {
+                        "text": "Identifies the sector carrier coverage shape described by the envelope of the contained SSB beams. The coverage shape is implementation dependent."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..65535"
+                        }
+                    }
+                },
+                {
+                    "@name": "digitalAzimuth",
+                    "description": {
+                        "text": "Digitally-controlled azimuth through beamforming. It represents the horizontal pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical horizontal pan of the selected coverageShape. Positive value gives azimuth to the right and negative value gives an azimuth to the left."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104, TS 38.901, TS 28.662"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-1800..1800"
+                        }
+                    },
+                    "units": {
+                        "@name": "0.1"
+                    }
+                },
+                {
+                    "@name": "digitalTilt",
+                    "description": {
+                        "text": "Digitally-controlled tilt through beamforming. It represents the vertical pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical vertical tilt of the selected coverageShape. Positive value gives downwards tilt and negative value gives upwards tilt."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104, TS 38.901, TS 28.662"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-900..900"
+                        }
+                    },
+                    "units": {
+                        "@name": "0.1"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction/nrsectcarr3gpp:NRSectorCarrier",
+            "list": {
+                "@name": "CommonBeamformingFunction",
+                "description": {
+                    "text": "Represents common beamforming functionality (eg: SSB beams) for the NRSectorCarrier."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "CommonBeamformingFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

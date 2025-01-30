@@ -1,0 +1,1921 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-nfprofile",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nfp3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfprofile",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:yang": "urn:ietf:params:xml:ns:yang:ietf-yang-types",
+        "@xmlns:nfs3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfservice",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfprofile"
+        },
+        "prefix": {
+            "@value": "nfp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "ietf-yang-types",
+                "prefix": {
+                    "@value": "yang"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-nfservice",
+                "prefix": {
+                    "@value": "nfs3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "NF profile class."
+        },
+        "reference": {
+            "text": "3GPP TS 29.510"
+        },
+        "revision": {
+            "@date": "2019-06-17",
+            "description": {
+                "text": "initial revision"
+            }
+        },
+        "grouping": [
+            {
+                "@name": "NFProfileGrp",
+                "leaf": [
+                    {
+                        "@name": "nfInstanceID",
+                        "description": {
+                            "text": "String uniquely identifying a NF instance."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "nfType",
+                        "description": {
+                            "text": "Type of Network Function."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "types3gpp:NfType"
+                        }
+                    },
+                    {
+                        "@name": "nfStatus",
+                        "description": {
+                            "text": "Status of the NF Instance."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "NFStatus"
+                        }
+                    },
+                    {
+                        "@name": "heartBeatTimer",
+                        "description": {
+                            "text": "Time in seconds expected between 2 consecutive heart-beat messages from\nan NF Instance to the NRF. It may be included in the registration request.\nWhen present in the request it shall contain the heartbeat time proposed by the NF service consumer."
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "fqdn",
+                        "description": {
+                            "text": "FQDN of the Network Function. For AMF, the FQDN registered with the NRF\nshall be that of the AMF Name."
+                        },
+                        "type": {
+                            "@name": "inet:domain-name"
+                        }
+                    },
+                    {
+                        "@name": "interPlmnFqdn",
+                        "description": {
+                            "text": "If the NF needs to be discoverable by other NFs in a different PLMN,\nthen an FQDN that is used for inter-PLMN routing is specified."
+                        },
+                        "type": {
+                            "@name": "inet:domain-name"
+                        }
+                    },
+                    {
+                        "@name": "priority",
+                        "description": {
+                            "text": "Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection;\nlower values indicate a higher priority. If priority is also present in the nfServiceList parameters,\nthose will have precedence over this value. The NRF may overwrite the received priority value when exposing\nan NFProfile with the Nnrf_NFDiscovery service."
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "capacity",
+                        "description": {
+                            "text": "Static capacity information in the range of 0-65535, expressed as a weight\nrelative to other NF instances of the same type; if capacity is also present\nin the nfServiceList parameters, those will have precedence over this value."
+                        },
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "load",
+                        "description": {
+                            "text": "Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF."
+                        },
+                        "type": {
+                            "@name": "types3gpp:Load"
+                        }
+                    },
+                    {
+                        "@name": "locality",
+                        "description": {
+                            "text": "Operator defined information about the location of the NF instance (e.g. geographic location, data center)."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "customInfo",
+                        "description": {
+                            "text": "Specific data for custom Network Functions."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "recoveryTime",
+                        "description": {
+                            "text": "Timestamp when the NF was (re)started."
+                        },
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        }
+                    },
+                    {
+                        "@name": "nfServicePersistence",
+                        "description": {
+                            "text": "If present, and set to true, it indicates that the different service instances of a same NF Service in this NF instance,\nsupporting a same API version, are capable to persist their resource state in shared storage and therefore these resources\nare available after a new NF service instance supporting the same API version is selected by a NF Service Consumer (see 3GPP TS 23.527).\nOtherwise, it indicates that the NF Service Instances of a same NF Service are not capable to share resource state inside the NF Instance."
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "nfProfileChangesSupportInd",
+                        "description": {
+                            "text": "NF Profile Changes Support Indicator. This IE may be present in the NFRegister or NFUpdate (NF Profile Complete Replacement) request and shall be absent in the response.\ntrue: the NF Service Consumer supports receiving NF Profile Changes in the response.\nfalse (default): the NF Service Consumer does not support receiving NF Profile Changes in the response."
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    },
+                    {
+                        "@name": "nfProfileChangesInd",
+                        "description": {
+                            "text": "NF Profile Changes Indicator. This IE shall be absent in the request to the NRF and may be included by the NRF in NFRegister or NFUpdate (NF Profile Complete Replacement) response.\ntrue: the NF Profile contains NF Profile changes.\nfalse (default): complete NF Profile."
+                        },
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "plmnList",
+                        "description": {
+                            "text": "PLMN(s) of the Network Function.\nThis IE shall be present if this information is available for the NF.\nIf not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "sNssais",
+                        "description": {
+                            "text": "S-NSSAIs of the Network Function. If not provided, the NF can serve any S-NSSAI.\nWhen present this IE represents the list of S-NSSAIs supported in all the PLMNs listed in the plmnList IE."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sst sd"
+                        },
+                        "uses": {
+                            "@name": "Snssai"
+                        }
+                    },
+                    {
+                        "@name": "perPlmnSnssaiList",
+                        "description": {
+                            "text": "This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different.\nWhen present, this IE shall include the S-NSSAIs supported by the Network Function\nfor each PLMN supported by the Network Function. When present, this IE shall override sNssais IE."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "leaf": {
+                            "@name": "idx",
+                            "type": {
+                                "@name": "uint32"
+                            }
+                        },
+                        "uses": {
+                            "@name": "PlmnSnssai"
+                        }
+                    },
+                    {
+                        "@name": "allowedPlmns",
+                        "description": {
+                            "text": "PLMNs allowed to access the NF instance.\nIf not provided, any PLMN is allowed to access the NF."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "allowedNssais",
+                        "description": {
+                            "text": "S-NSSAI of the allowed slices to access the NF instance.\nIf not provided, any slice is allowed to access the NF."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sst sd"
+                        },
+                        "uses": {
+                            "@name": "Snssai"
+                        }
+                    },
+                    {
+                        "@name": "nrfInfo",
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "leaf": {
+                            "@name": "idx",
+                            "type": {
+                                "@name": "uint32"
+                            }
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "nrfInfoGrp"
+                        }
+                    },
+                    {
+                        "@name": "nfServices",
+                        "description": {
+                            "text": "List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs."
+                        },
+                        "key": {
+                            "@value": "serviceInstanceID"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "nfs3gpp:NFServiceGrp"
+                        }
+                    },
+                    {
+                        "@name": "defaultNotificationSubscriptions",
+                        "description": {
+                            "text": "Notification endpoints for different notification types."
+                        },
+                        "key": {
+                            "@value": "notificationType"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:DefaultNotificationSubscription"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "nsiList",
+                        "description": {
+                            "text": "NSI identities of the Network Function.\nIf not provided, the NF can serve any NSI."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "ipv4Addresses",
+                        "description": {
+                            "text": "IPv4 address(es) of the Network Function."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "inet:ipv4-address"
+                        }
+                    },
+                    {
+                        "@name": "ipv6Addresses",
+                        "description": {
+                            "text": "IPv6 address(es) of the Network Function."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "inet:ipv6-address"
+                        }
+                    },
+                    {
+                        "@name": "allowedNfTypes",
+                        "description": {
+                            "text": "Type of the NFs allowed to access the NF instance.\nIf not provided, any NF type is allowed to access the NF."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "types3gpp:NfType"
+                        }
+                    },
+                    {
+                        "@name": "allowedNfDomains",
+                        "description": {
+                            "text": "Pattern representing the NF domain names allowed to access the NF instance.\nIf not provided, any NF domain is allowed to access the NF."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ],
+                "grouping": [
+                    {
+                        "@name": "udrInfo",
+                        "leaf": {
+                            "@name": "groupId",
+                            "description": {
+                                "text": "Identity of the UDR group that is served by the UDR instance.\nIf not provided, the UDR instance does not pertain to any UDR group."
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        },
+                        "list": [
+                            {
+                                "@name": "supiRanges",
+                                "description": {
+                                    "text": "List of ranges of SUPI's whose profile data is available in the UDR instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "SupiRange"
+                                }
+                            },
+                            {
+                                "@name": "gpsiRanges",
+                                "description": {
+                                    "text": "List of ranges of GPSIs whose profile data is available in the UDR instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "IdentityRange"
+                                }
+                            },
+                            {
+                                "@name": "externalGroupIdentifiersRanges",
+                                "description": {
+                                    "text": "List of ranges of external groups whose profile data is available in the UDR instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "IdentityRange"
+                                }
+                            }
+                        ],
+                        "leaf-list": {
+                            "@name": "supportedDataSets",
+                            "description": {
+                                "text": "List of supported data sets in the UDR instance.\nIf not provided, the UDR supports all data sets."
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "type": {
+                                "@name": "DataSetId"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "udmInfo",
+                        "leaf": {
+                            "@name": "groupId",
+                            "description": {
+                                "text": "Identity of the UDM group that is served by the UDM instance.\nIf not provided, the UDM instance does not pertain to any UDM group."
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        },
+                        "list": [
+                            {
+                                "@name": "supiRanges",
+                                "description": {
+                                    "text": "List of ranges of SUPI's whose profile data is available in the UDM instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "SupiRange"
+                                }
+                            },
+                            {
+                                "@name": "gpsiRanges",
+                                "description": {
+                                    "text": "List of ranges of GPSIs whose profile data is available in the UDM instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "IdentityRange"
+                                }
+                            },
+                            {
+                                "@name": "externalGroupIdentifiersRanges",
+                                "description": {
+                                    "text": "List of ranges of external groups whose profile data is available in the UDM instance."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "IdentityRange"
+                                }
+                            }
+                        ],
+                        "leaf-list": {
+                            "@name": "routingIndicators",
+                            "description": {
+                                "text": "List of Routing Indicator information that allows to route network signalling with SUCI\nto the UDM instance. If not provided, the UDM can serve any Routing Indicator.\nPattern: '^[0-9]{1,4}$'."
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "ausfInfo",
+                        "leaf": {
+                            "@name": "groupId",
+                            "description": {
+                                "text": "Identity of the AUSF group. If not provided, the AUSF instance does not pertain to any AUSF group."
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        },
+                        "list": {
+                            "@name": "supiRanges",
+                            "description": {
+                                "text": "List of ranges of SUPIs that can be served by the AUSF instance. If not provided, the AUSF can serve any SUPI."
+                            },
+                            "key": {
+                                "@value": "start end pattern"
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "uses": {
+                                "@name": "SupiRange"
+                            }
+                        },
+                        "leaf-list": {
+                            "@name": "routingIndicators",
+                            "description": {
+                                "text": "List of Routing Indicator information that allows to route network signalling with SUCI\nto the AUSF instance. If not provided, the AUSF can serve any Routing Indicator.\nPattern: '^[0-9]{1,4}$'."
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "amfInfo",
+                        "leaf": [
+                            {
+                                "@name": "amfRegionId",
+                                "description": {
+                                    "text": "AMF region identifier"
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "amfSetId",
+                                "description": {
+                                    "text": "AMF set identifier"
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            }
+                        ],
+                        "list": [
+                            {
+                                "@name": "guamiList",
+                                "description": {
+                                    "text": "List of supported GUAMIs."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "Guami"
+                                }
+                            },
+                            {
+                                "@name": "taiList",
+                                "description": {
+                                    "text": "The list of TAIs the AMF can serve. It may contain the non-3GPP access TAI.\nThe absence of this attribute and the taiRangeList attribute indicate that\nthe AMF can be selected for any TAI in the serving network."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "Tai"
+                                }
+                            },
+                            {
+                                "@name": "taiRangeList",
+                                "description": {
+                                    "text": "The range of TAIs the AMF can serve. The absence of this attribute and the taiList\nattribute indicate that the AMF can be selected for any TAI in the serving network."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "uses": {
+                                    "@name": "TaiRange"
+                                }
+                            },
+                            {
+                                "@name": "backupInfoAmfFailure",
+                                "description": {
+                                    "text": "List of GUAMIs for which the AMF acts as a backup for AMF failure."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "Guami"
+                                }
+                            },
+                            {
+                                "@name": "backupInfoAmfRemoval",
+                                "description": {
+                                    "text": "List of GUAMIs for which the AMF acts as a backup for planned AMF removal."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "Guami"
+                                }
+                            },
+                            {
+                                "@name": "n2InterfaceAmfInfo",
+                                "description": {
+                                    "text": "N2 interface information of the AMF. This information needs not be sent in NF Discovery responses.\nIt may be used by the NRF to update the DNS for AMF discovery by the 5G Access Network."
+                                },
+                                "max-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "uses": {
+                                    "@name": "N2InterfaceAmfInfo"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "smfInfo",
+                        "list": [
+                            {
+                                "@name": "sNssaiSmfInfoList",
+                                "description": {
+                                    "text": "List of parameters supported by the SMF per S-NSSAI."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "uses": {
+                                    "@name": "sNssaiSmfInfoItem"
+                                }
+                            },
+                            {
+                                "@name": "taiList",
+                                "description": {
+                                    "text": "The list of TAIs the SMF can serve. It may contain the non-3GPP access TAI.\nThe absence of this attribute and the taiRangeList attribute indicate that\nthe SMF can be selected for any TAI in the serving network."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "Tai"
+                                }
+                            },
+                            {
+                                "@name": "taiRangeList",
+                                "description": {
+                                    "text": "The range of TAIs the SMF can serve. The absence of this attribute and the taiList\nattribute indicate that the SMF can be selected for any TAI in the serving network."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "uses": {
+                                    "@name": "TaiRange"
+                                }
+                            }
+                        ],
+                        "leaf": {
+                            "@name": "pgwFqdn",
+                            "description": {
+                                "text": "The FQDN of the PGW if the SMF is a combined SMF/PGW-C."
+                            },
+                            "type": {
+                                "@name": "inet:domain-name"
+                            }
+                        },
+                        "leaf-list": {
+                            "@name": "accessType",
+                            "description": {
+                                "text": "If included, this IE shall contain the access type (3GPP_ACCESS and/or NON_3GPP_ACCESS) supported by the SMF.\nIf not included, it shall be assumed the both access types are supported."
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "max-elements": {
+                                "@value": "2"
+                            },
+                            "type": {
+                                "@name": "AccessType"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "upfInfo",
+                        "list": [
+                            {
+                                "@name": "sNssaiUpfInfoList",
+                                "description": {
+                                    "text": "List of parameters supported by the UPF per S-NSSAI."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "uses": {
+                                    "@name": "SnssaiUpfInfoItem"
+                                }
+                            },
+                            {
+                                "@name": "interfaceUpfInfo",
+                                "description": {
+                                    "text": "List of User Plane interfaces configured on the UPF. When this IE is provided in the NF Discovery response,\nthe NF Service Consumer (e.g. SMF) may use this information for UPF selection."
+                                },
+                                "key": {
+                                    "@value": "idx"
+                                },
+                                "leaf": {
+                                    "@name": "idx",
+                                    "type": {
+                                        "@name": "uint32"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "InterfaceUpfInfoItem"
+                                }
+                            }
+                        ],
+                        "leaf-list": [
+                            {
+                                "@name": "smfServingArea",
+                                "description": {
+                                    "text": "The SMF service area(s) the UPF can serve.\nIf not provided, the UPF can serve any SMF service area."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "pduSessionTypes",
+                                "description": {
+                                    "text": "List of PDU session type(s) supported by the UPF. The absence of this attribute indicates that the UPF can be selected\nfor any PDU session type."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "PduSessionType"
+                                }
+                            }
+                        ],
+                        "leaf": {
+                            "@name": "iwkEpsInd",
+                            "description": {
+                                "text": "Indicates whether interworking with EPS is supported by the UPF.\ntrue: Supported\nfalse (default): Not Supported"
+                            },
+                            "type": {
+                                "@name": "boolean"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "pcfInfo",
+                        "leaf-list": {
+                            "@name": "dnnList",
+                            "description": {
+                                "text": "DNNs supported by the PCF.\nIf not provided, the PCF can serve any DNN."
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "type": {
+                                "@name": "string"
+                            }
+                        },
+                        "list": {
+                            "@name": "supiRanges",
+                            "description": {
+                                "text": "List of ranges of SUPIs that can be served by the PCF instance. If not provided, the PCF can serve any SUPI."
+                            },
+                            "key": {
+                                "@value": "start end pattern"
+                            },
+                            "min-elements": {
+                                "@value": "1"
+                            },
+                            "uses": {
+                                "@name": "SupiRange"
+                            }
+                        },
+                        "leaf": [
+                            {
+                                "@name": "rxDiamHost",
+                                "description": {
+                                    "text": "This IE shall be present if the PCF supports Rx interface.\nWhen present, this IE shall indicate the Diameter host of the Rx interface for the PCF.\nPattern: '^([A-Za-z0-9]+(-[A-Za-z0-9]+).)+[a-z]{2,}$'."
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "rxDiamRealm",
+                                "description": {
+                                    "text": "This IE shall be present if the PCF supports Rx interface.\nWhen present, this IE shall indicate the Diameter realm of the Rx interface for the PCF.\nPattern: '^([A-Za-z0-9]+(-[A-Za-z0-9]+).)+[a-z]{2,}$'."
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "bsfInfo",
+                        "list": [
+                            {
+                                "@name": "ipv4AddressRanges",
+                                "description": {
+                                    "text": "List of ranges of IPv4 addresses handled by BSF.\nIf not provided, the BSF can serve any IPv4 address."
+                                },
+                                "key": {
+                                    "@value": "start end"
+                                },
+                                "uses": {
+                                    "@name": "types3gpp:Ipv4AddressRange"
+                                }
+                            },
+                            {
+                                "@name": "ipv6PrefixRanges",
+                                "description": {
+                                    "text": "List of ranges of IPv6 prefixes handled by the BSF.\nIf not provided, the BSF can serve any IPv6 prefix."
+                                },
+                                "key": {
+                                    "@value": "start end"
+                                },
+                                "uses": {
+                                    "@name": "types3gpp:Ipv6PrefixRange"
+                                }
+                            }
+                        ],
+                        "leaf-list": [
+                            {
+                                "@name": "dnnList",
+                                "description": {
+                                    "text": "List of DNNs handled by the BSF\nIf not provided, the BSF can serve any DNN."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "ipDomainList",
+                                "description": {
+                                    "text": "List of IPv4 address domains, as described in subclause 6.2 of 3GPP TS 29.513, handled by the BSF.\nIf not provided, the BSF can serve any IP domain."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "string"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "chfInfo",
+                        "list": [
+                            {
+                                "@name": "supiRangeList",
+                                "description": {
+                                    "text": "List of ranges of SUPIs that can be served by the CHF instance. If not provided, the CHF can serve any SUPI."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "SupiRange"
+                                }
+                            },
+                            {
+                                "@name": "gpsiRangeList",
+                                "description": {
+                                    "text": "List of ranges of GPSI that can be served by the CHF instance. If not provided, the CHF can serve any GPSI."
+                                },
+                                "key": {
+                                    "@value": "start end pattern"
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "IdentityRange"
+                                }
+                            },
+                            {
+                                "@name": "plmnRangeList",
+                                "description": {
+                                    "text": "List of ranges of PLMNs (including the PLMN IDs of the CHF instance) that can be served by the CHF instance.\nIf not provided, the CHF can serve any PLMN."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "key": {
+                                    "@value": "mcc mnc"
+                                },
+                                "uses": {
+                                    "@name": "types3gpp:PLMNId"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "nrfInfoGrp",
+                        "list": [
+                            {
+                                "@name": "servedUdrInfo",
+                                "description": {
+                                    "text": "This attribute contains all the udrInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "udrInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedUdmInfo",
+                                "description": {
+                                    "text": "This attribute contains all the udmInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "udmInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedAusfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the ausfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "ausfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedAmfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the amfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "amfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedSmfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the smfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "smfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedUpfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the upfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "upfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedPcfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the pcfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "pcfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedBsfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the bsfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "bsfInfo"
+                                }
+                            },
+                            {
+                                "@name": "servedChfInfo",
+                                "description": {
+                                    "text": "This attribute contains all the bsfInfo attributes locally configured in the NRF or the NRF received during NF registration."
+                                },
+                                "key": {
+                                    "@value": "nfInstanceID"
+                                },
+                                "leaf": {
+                                    "@name": "nfInstanceID",
+                                    "description": {
+                                        "text": "String uniquely identifying a NF instance."
+                                    },
+                                    "type": {
+                                        "@name": "string"
+                                    }
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "uses": {
+                                    "@name": "chfInfo"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "@name": "SupiRange",
+                "leaf": [
+                    {
+                        "@name": "start",
+                        "description": {
+                            "text": "First value identifying the start of a SUPI range. To be used when the range of SUPI's can be represented as a numeric range (e.g., IMSI ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^[0-9]+$"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "end",
+                        "description": {
+                            "text": "Last value identifying the end of a SUPI range. To be used when the range of SUPI's can be represented as a numeric range (e.g. IMSI ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^[0-9]+$"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "pattern",
+                        "description": {
+                            "text": "Pattern representing the set of SUPI's belonging to this range.\nA SUPI value is considered part of the range if and only if the SUPI string fully matches the regular expression."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "IdentityRange",
+                "leaf": [
+                    {
+                        "@name": "start",
+                        "description": {
+                            "text": "First value identifying the start of an identity range. To be used when the range of identities can be represented as a numeric range (e.g., MSISDN ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^[0-9]+$"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "end",
+                        "description": {
+                            "text": "Last value identifying the end of an identity range. To be used when the range of identities can be represented as a numeric range (e.g. MSISDN ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^[0-9]+$"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "pattern",
+                        "description": {
+                            "text": "Pattern representing the set of identities belonging to this range.\nAn identity value is considered part of the range if and only if the identity string fully matches the regular expression."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "TacRange",
+                "leaf": [
+                    {
+                        "@name": "start",
+                        "description": {
+                            "text": "First value identifying the start of a TAC range, to be used when the range of TAC's can be represented as a hexadecimal range (e.g., TAC ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^([A-Fa-f0-9]{4}|[A-Fa-f0-9]{6}$)"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "end",
+                        "description": {
+                            "text": "Last value identifying the end of a TAC range, to be used when the range of TAC's can be represented as a hexadecimal range (e.g. TAC ranges)."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^([A-Fa-f0-9]{4}|[A-Fa-f0-9]{6})$"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "pattern",
+                        "description": {
+                            "text": "Pattern representing the set of TAC's belonging to this range."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "SnssaiUpfInfoItem",
+                "list": [
+                    {
+                        "@name": "sNssai",
+                        "description": {
+                            "text": "Supported S-NSSAI."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sst sd"
+                        },
+                        "uses": {
+                            "@name": "Snssai"
+                        }
+                    },
+                    {
+                        "@name": "dnnUpfInfoList",
+                        "description": {
+                            "text": "List of parameters supported by the UPF per DNN."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "dnn"
+                        },
+                        "uses": {
+                            "@name": "DnnUpfInfoItem"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "DnnUpfInfoItem",
+                "leaf": {
+                    "@name": "dnn",
+                    "description": {
+                        "text": "String representing a Data Network."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "string"
+                    }
+                },
+                "leaf-list": [
+                    {
+                        "@name": "dnaiList",
+                        "description": {
+                            "text": "List of Data network access identifiers supported by the UPF for this DNN.\nThe absence of this attribute indicates that the UPF can be selected for this DNN for any DNAI."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "pduSessionTypes",
+                        "description": {
+                            "text": "List of PDU session type(s) supported by the UPF for a specific DNN."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "PduSessionType"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "Snssai",
+                "leaf": [
+                    {
+                        "@name": "sst",
+                        "description": {
+                            "text": "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.\nIt indicates the expected Network Slice behaviour in terms of features and services."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    {
+                        "@name": "sd",
+                        "description": {
+                            "text": "3-octet string, representing the Slice Differentiator, in hexadecimal representation."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "pattern": {
+                                "@value": "^[A-Fa-f0-9]{6}$"
+                            }
+                        }
+                    }
+                ],
+                "reference": {
+                    "text": "3GPP TS 29.571"
+                }
+            },
+            {
+                "@name": "Guami",
+                "list": [
+                    {
+                        "@name": "plmnId",
+                        "description": {
+                            "text": "PLMN Identity."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "amfId",
+                        "description": {
+                            "text": "AMF Identity."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "amfRegionId amfSetId amfPointer"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:AmfIdentifier"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "Tai",
+                "list": {
+                    "@name": "plmnId",
+                    "description": {
+                        "text": "PLMN Identity."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                "leaf": {
+                    "@name": "tac",
+                    "type": {
+                        "@name": "types3gpp:Tac"
+                    }
+                }
+            },
+            {
+                "@name": "InterfaceUpfInfoItem",
+                "leaf": [
+                    {
+                        "@name": "interfaceType",
+                        "description": {
+                            "text": "User Plane interface type."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "UPInterfaceType"
+                        }
+                    },
+                    {
+                        "@name": "networkInstance",
+                        "description": {
+                            "text": "Network Instance associated to the User Plane interface."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ],
+                "choice": {
+                    "@name": "address",
+                    "case": [
+                        {
+                            "@name": "ipv4EndpointAddresses",
+                            "leaf-list": {
+                                "@name": "ipv4EndpointAddresses",
+                                "description": {
+                                    "text": "Available endpoint IPv4 address(es) of the User Plane interface."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "inet:ipv4-address"
+                                }
+                            }
+                        },
+                        {
+                            "@name": "ipv6EndpointAddresses",
+                            "leaf-list": {
+                                "@name": "ipv6EndpointAddresses",
+                                "description": {
+                                    "text": "Available endpoint IPv6 address(es) of the User Plane interface."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "inet:ipv6-address"
+                                }
+                            }
+                        },
+                        {
+                            "@name": "endpointFqdn",
+                            "leaf": {
+                                "@name": "endpointFqdn",
+                                "description": {
+                                    "text": "FQDN of available endpoint of the User Plane interface."
+                                },
+                                "type": {
+                                    "@name": "inet:domain-name"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "TaiRange",
+                "list": [
+                    {
+                        "@name": "plmnId",
+                        "description": {
+                            "text": "PLMN ID related to the TacRange."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "tacRangeList",
+                        "description": {
+                            "text": "The range of the TACs."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "start end"
+                        },
+                        "uses": {
+                            "@name": "TacRange"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "N2InterfaceAmfInfo",
+                "choice": {
+                    "@name": "address",
+                    "case": [
+                        {
+                            "@name": "ipv4EndpointAddress",
+                            "leaf-list": {
+                                "@name": "ipv4EndpointAddress",
+                                "description": {
+                                    "text": "Available AMF endpoint IPv4 address(es) for N2."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "inet:ipv4-address"
+                                }
+                            }
+                        },
+                        {
+                            "@name": "ipv6EndpointAddress",
+                            "leaf-list": {
+                                "@name": "ipv6EndpointAddress",
+                                "description": {
+                                    "text": "Available AMF endpoint IPv6 address(es) for N2."
+                                },
+                                "min-elements": {
+                                    "@value": "1"
+                                },
+                                "type": {
+                                    "@name": "inet:ipv6-address"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "leaf": {
+                    "@name": "amfName",
+                    "description": {
+                        "text": "AMF name."
+                    },
+                    "type": {
+                        "@name": "string"
+                    }
+                }
+            },
+            {
+                "@name": "sNssaiSmfInfoItem",
+                "list": [
+                    {
+                        "@name": "sNssai",
+                        "description": {
+                            "text": "Supported S-NSSAI."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sst sd"
+                        },
+                        "uses": {
+                            "@name": "Snssai"
+                        }
+                    },
+                    {
+                        "@name": "dnnSmfInfoList",
+                        "description": {
+                            "text": "List of parameters supported by the SMF per DNN."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "dnn"
+                        },
+                        "uses": {
+                            "@name": "DnnSmfInfoItem"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "DnnSmfInfoItem",
+                "leaf": {
+                    "@name": "dnn",
+                    "description": {
+                        "text": "Supported DNN."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "string"
+                    }
+                }
+            },
+            {
+                "@name": "PlmnSnssai",
+                "list": [
+                    {
+                        "@name": "plmnId",
+                        "description": {
+                            "text": "PLMN ID for which list of supported S-NSSAI(s) is provided."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        }
+                    },
+                    {
+                        "@name": "sNssaiList",
+                        "description": {
+                            "text": "The specific list of S-NSSAIs supported by the given PLMN."
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "key": {
+                            "@value": "sst sd"
+                        },
+                        "uses": {
+                            "@name": "Snssai"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typedef": [
+            {
+                "@name": "NFStatus",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "REGISTERED"
+                        },
+                        {
+                            "@name": "SUSPENDED"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "DataSetId",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "SUBSCRIPTION"
+                        },
+                        {
+                            "@name": "POLICY"
+                        },
+                        {
+                            "@name": "EXPOSURE"
+                        },
+                        {
+                            "@name": "APPLICATION"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "PduSessionType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "IPV4"
+                        },
+                        {
+                            "@name": "IPV6"
+                        },
+                        {
+                            "@name": "IPV4V6"
+                        },
+                        {
+                            "@name": "UNSTRUCTURED"
+                        },
+                        {
+                            "@name": "ETHERNET"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "UPInterfaceType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "N3"
+                        },
+                        {
+                            "@name": "N6"
+                        },
+                        {
+                            "@name": "N9"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "AccessType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "3GPP_ACCESS"
+                        },
+                        {
+                            "@name": "NON_3GPP_ACCESS"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

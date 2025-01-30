@@ -1,0 +1,172 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-seppfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:sepp3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-seppfunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-seppfunction"
+        },
+        "prefix": {
+            "@value": "sepp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "This IOC represents the SEPP function which support message filtering\nand policing on inter-PLMN control plane interface. For more information about the SEPP, see 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            }
+        ],
+        "typedef": {
+            "@name": "SEPPType",
+            "reference": {
+                "text": "3GPP TS 23501"
+            },
+            "type": {
+                "@name": "enumeration",
+                "enum": [
+                    {
+                        "@name": "CSEPP",
+                        "value": {
+                            "@value": "0"
+                        },
+                        "description": {
+                            "text": "consumer SEPP"
+                        }
+                    },
+                    {
+                        "@name": "PSEPP",
+                        "value": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "producer SEPP"
+                        }
+                    }
+                ]
+            }
+        },
+        "grouping": {
+            "@name": "SEPPFunctionGrp",
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "container": {
+                "@name": "pLMNId",
+                "description": {
+                    "text": "PLMN Identifiers of the sepp.\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                },
+                "uses": {
+                    "@name": "types3gpp:PLMNId"
+                }
+            },
+            "leaf": [
+                {
+                    "@name": "sEPPType",
+                    "type": {
+                        "@name": "sepp3gpp:SEPPType"
+                    }
+                },
+                {
+                    "@name": "sEPPId",
+                    "type": {
+                        "@name": "uint16"
+                    }
+                },
+                {
+                    "@name": "fqdn",
+                    "description": {
+                        "text": "The domain name of the SEPP."
+                    },
+                    "type": {
+                        "@name": "inet:domain-name"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "SEPPFunction",
+                "description": {
+                    "text": "5G Core SEPP Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "SEPPFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

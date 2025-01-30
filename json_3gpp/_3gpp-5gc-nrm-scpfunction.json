@@ -1,0 +1,122 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-scpfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:scp3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-scpfunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-scpfunction"
+        },
+        "prefix": {
+            "@value": "scp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "description": {
+            "text": "This IOC represents the SCP function in 5GC. For more information about the SCP, see 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": {
+            "@date": "2019-10-20",
+            "description": {
+                "text": "initial revision"
+            },
+            "reference": {
+                "text": "Based on\n3GPP TS 28.541 V16.X.XX"
+            }
+        },
+        "grouping": {
+            "@name": "SCPFunctionGrp",
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "leaf": {
+                "@name": "address",
+                "description": {
+                    "text": "The host address of the SCP."
+                },
+                "type": {
+                    "@name": "inet:host"
+                }
+            },
+            "list": {
+                "@name": "supportedFuncList",
+                "min-elements": {
+                    "@value": "1"
+                },
+                "key": {
+                    "@value": "function"
+                },
+                "uses": {
+                    "@name": "types5g3gpp:SupportedFunc"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "SCPFunction",
+                "description": {
+                    "text": "5G Core SCP Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "SCPFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

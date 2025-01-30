@@ -1,0 +1,130 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-dynamic5qiset",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:dyn5QIs3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-dynamic5qiset",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:Conf5QIs3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-configurable5qiset",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-dynamic5qiset"
+        },
+        "prefix": {
+            "@value": "dyn5QIs3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-configurable5qiset",
+                "prefix": {
+                    "@value": "Conf5QIs3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the dynamic 5QIs including their QoS\ncharacteristics."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-09-30",
+                "reference": {
+                    "text": "CR-0393"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0333"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "Dynamic5QISetGrp",
+                "description": {
+                    "text": "Represents the Dynamic5QISet IOC."
+                },
+                "list": {
+                    "@name": "dynamic5QIs",
+                    "key": {
+                        "@value": "fiveQIValue"
+                    },
+                    "description": {
+                        "text": "Represents the Dynamic5QISet IOC."
+                    },
+                    "uses": {
+                        "@name": "Conf5QIs3gpp:FiveQICharacteristics"
+                    }
+                }
+            },
+            {
+                "@name": "Dynamic5QISetSubtree",
+                "description": {
+                    "text": "Helps augmenting Dynamic5QISet into multiple places."
+                },
+                "list": {
+                    "@name": "Dynamic5QISet",
+                    "description": {
+                        "text": "Specifies the dynamic 5QIs including their QoS\ncharacteristics, see 3GPP TS 23.501."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "Dynamic5QISetGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "uses": {
+                    "@name": "Dynamic5QISetSubtree"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "uses": {
+                    "@name": "Dynamic5QISetSubtree"
+                }
+            }
+        ]
+    }
+}

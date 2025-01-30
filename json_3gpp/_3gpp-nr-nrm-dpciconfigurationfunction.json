@@ -1,0 +1,179 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-dpciconfigurationfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:dpciconfigurationfunction3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-dpciconfigurationfunction",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-dpciconfigurationfunction"
+        },
+        "prefix": {
+            "@value": "dpciconfigurationfunction3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcellcu",
+                "prefix": {
+                    "@value": "nrcellcu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the DPCIConfigurationFunction Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0454"
+                }
+            },
+            {
+                "@date": "2020-11-25",
+                "reference": {
+                    "text": "CR-0386"
+                }
+            },
+            {
+                "@date": "2020-05-08",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "DPCIConfigurationFunctionGrp",
+                "description": {
+                    "text": "Represents the DPCICONFIGURATIONFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "list": {
+                    "@name": "nRPciList",
+                    "key": {
+                        "@value": "NRPci"
+                    },
+                    "description": {
+                        "text": "This holds a list of physical cell identities that can be assigned to the NR cells. This attribute shall be supported if D-SON PCI configuration or domain Centralized SON PCI configuration function is supported."
+                    },
+                    "leaf": {
+                        "@name": "NRPci",
+                        "type": {
+                            "@name": "int32"
+                        }
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "NRPciListGrp"
+                        }
+                    }
+                },
+                "leaf": {
+                    "@name": "dPciConfigurationControl",
+                    "description": {
+                        "text": "This attribute determines whether the Distributed SON or Domain-Centralized SON PCI configuration Function is enabled or disabled."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                }
+            },
+            {
+                "@name": "NRPciListGrp",
+                "description": {
+                    "text": "Represents the NR PCI list for the PCI configuration function."
+                },
+                "leaf": {
+                    "@name": "NRPci",
+                    "description": {
+                        "text": "This attribute determines the NR PCI."
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..1007"
+                        }
+                    },
+                    "units": {
+                        "@name": "1"
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU",
+                "if-feature": {
+                    "@name": "nrcellcu3gpp:DPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "DPCIConfigurationFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "if-feature": {
+                    "@name": "me3gpp:DPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "DPCIConfigurationFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:DPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "DPCIConfigurationFunctionGrp"
+                }
+            }
+        ]
+    }
+}

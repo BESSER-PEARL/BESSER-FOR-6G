@@ -1,0 +1,1332 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-ep",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:cep3gpp": "urn:3gpp:tsg:sa5:nrm:_3gpp-5gc-nrm-ep",
+        "@xmlns:eprp3gpp": "urn:3gpp:sa5:_3gpp-common-ep-rp",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:af3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-affunction",
+        "@xmlns:amf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-amffunction",
+        "@xmlns:ausf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-ausffunction",
+        "@xmlns:dn3gpp": "urn:3gpp:sa5_3gpp-5gc-nrm-dnfunction",
+        "@xmlns:lmf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-lmffunction",
+        "@xmlns:n3iwf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-n3iwffunction",
+        "@xmlns:ngeir3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-ngeirfunction",
+        "@xmlns:nrf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nrffunction",
+        "@xmlns:nssf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nssffunction",
+        "@xmlns:pcf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-pcffunction",
+        "@xmlns:sepp3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-seppfunction",
+        "@xmlns:smf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smffunction",
+        "@xmlns:smsf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smsffunction",
+        "@xmlns:udm3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-udmfunction",
+        "@xmlns:upf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-upffunction",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:tsg:sa5:nrm:_3gpp-5gc-nrm-ep"
+        },
+        "prefix": {
+            "@value": "cep3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-ep-rp",
+                "prefix": {
+                    "@value": "eprp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-affunction",
+                "prefix": {
+                    "@value": "af3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-amffunction",
+                "prefix": {
+                    "@value": "amf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-ausffunction",
+                "prefix": {
+                    "@value": "ausf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-dnfunction",
+                "prefix": {
+                    "@value": "dn3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-lmffunction",
+                "prefix": {
+                    "@value": "lmf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-n3iwffunction",
+                "prefix": {
+                    "@value": "n3iwf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-ngeirfunction",
+                "prefix": {
+                    "@value": "ngeir3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-nrffunction",
+                "prefix": {
+                    "@value": "nrf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-nssffunction",
+                "prefix": {
+                    "@value": "nssf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-pcffunction",
+                "prefix": {
+                    "@value": "pcf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-seppfunction",
+                "prefix": {
+                    "@value": "sepp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smffunction",
+                "prefix": {
+                    "@value": "smf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smsffunction",
+                "prefix": {
+                    "@value": "smsf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-udmfunction",
+                "prefix": {
+                    "@value": "udm3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-upffunction",
+                "prefix": {
+                    "@value": "upf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the 5GC related endpoint\nInformation Object Classes (IOCs) that are part of the 5G Core\nNetwork Resource Model."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2019-11-18",
+                "description": {
+                    "text": "Ericsson refactoring."
+                }
+            },
+            {
+                "@date": "2018-07-31",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "EP_N2Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N3Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N4Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N5Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N6Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N7Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N8Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N9Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N10Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N11Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N12Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N13Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N14Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N15Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N16Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N17Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N20Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N21Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N22Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N26Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N27Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N31Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_N32Grp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                },
+                "container": {
+                    "@name": "remotePlmnId",
+                    "description": {
+                        "text": "PLMN Identifiers of the remote sepp.\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                "leaf": [
+                    {
+                        "@name": "remoteSeppAddress",
+                        "description": {
+                            "text": "The host address of the SEPP."
+                        },
+                        "type": {
+                            "@name": "inet:host"
+                        }
+                    },
+                    {
+                        "@name": "remoteSeppId",
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "n32cParas",
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "n32fPolicy",
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "withIPX",
+                        "type": {
+                            "@name": "boolean"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "EP_S5CGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_S5UGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_RxGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_MAP_SMSCGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_NLSGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_NLGGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                }
+            },
+            {
+                "@name": "EP_SBI_IPXGrp",
+                "uses": {
+                    "@name": "eprp3gpp:EP_Common"
+                },
+                "leaf-list": {
+                    "@name": "sBIService",
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "string"
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/af3gpp:AFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N6",
+                        "description": {
+                            "text": "Represents the EP_N6 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N6Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_Rx",
+                        "description": {
+                            "text": "Represents the EP_Rx IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_RxGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/amf3gpp:AMFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N2",
+                        "description": {
+                            "text": "Represents the EP_N2 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N2Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N8",
+                        "description": {
+                            "text": "Represents the EP_N8 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N8Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N11",
+                        "description": {
+                            "text": "Represents the EP_N11 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N11Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N12",
+                        "description": {
+                            "text": "Represents the EP_N12 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N12Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N14",
+                        "description": {
+                            "text": "Represents the EP_N14 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N14Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N15",
+                        "description": {
+                            "text": "Represents the EP_N15 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N15Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N17",
+                        "description": {
+                            "text": "Represents the EP_N17 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N17Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N20",
+                        "description": {
+                            "text": "Represents the EP_N20 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N20Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N22",
+                        "description": {
+                            "text": "Represents the EP_N22 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N22Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N26",
+                        "description": {
+                            "text": "Represents the EP_N26 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N26Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_NLS",
+                        "description": {
+                            "text": "Represents the EP_NLS IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_NLSGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_NLG",
+                        "description": {
+                            "text": "Represents the EP_NLG IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_NLGGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/ausf3gpp:AUSFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N12",
+                        "description": {
+                            "text": "Represents the EP_N12 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N12Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N13",
+                        "description": {
+                            "text": "Represents the EP_N13 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N13Grp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/dn3gpp:DNFunction",
+                "list": {
+                    "@name": "EP_N6",
+                    "description": {
+                        "text": "Represents the EP_N6 IOC."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EP_N6Grp"
+                        }
+                    }
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/lmf3gpp:LMFFunction",
+                "list": {
+                    "@name": "EP_NLS",
+                    "description": {
+                        "text": "Represents the EP_NLS IOC."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EP_NLSGrp"
+                        }
+                    }
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/n3iwf3gpp:N3IWFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N2",
+                        "description": {
+                            "text": "Represents the EP_N2 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N2Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N3",
+                        "description": {
+                            "text": "Represents the EP_N3 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N3Grp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/ngeir3gpp:NGEIRFunction",
+                "list": {
+                    "@name": "EP_N17",
+                    "description": {
+                        "text": "Represents the EP_N17 IOC."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EP_N17Grp"
+                        }
+                    }
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/nrf3gpp:NRFFunction",
+                "list": {
+                    "@name": "EP_N27",
+                    "description": {
+                        "text": "Represents the EP_N27 IOC."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EP_N26Grp"
+                        }
+                    }
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/nssf3gpp:NSSFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N22",
+                        "description": {
+                            "text": "Represents the EP_N22 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N22Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N31",
+                        "description": {
+                            "text": "Represents the EP_N31 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N31Grp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/pcf3gpp:PCFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N5",
+                        "description": {
+                            "text": "Represents the EP_N5 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N5Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N7",
+                        "description": {
+                            "text": "Represents the EP_N7 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N7Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N15",
+                        "description": {
+                            "text": "Represents the EP_N15 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N15Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N16",
+                        "description": {
+                            "text": "Represents the EP_N16 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N16Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_Rx",
+                        "description": {
+                            "text": "Represents the EP_Rx IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_RxGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/sepp3gpp:SEPPFunction",
+                "list": {
+                    "@name": "EP_N32",
+                    "description": {
+                        "text": "Represents the EP_N32 IOC."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EP_N32Grp"
+                        }
+                    }
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/smsf3gpp:SMSFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N20",
+                        "description": {
+                            "text": "Represents the EP_20 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N20Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N21",
+                        "description": {
+                            "text": "Represents the EP_N21 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N21Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_MAP_SMSC",
+                        "description": {
+                            "text": "Represents the EP_MAP_SMSC IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_MAP_SMSCGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/smf3gpp:SMFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N4",
+                        "description": {
+                            "text": "Represents the EP_N4 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N4Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N7",
+                        "description": {
+                            "text": "Represents the EP_N7 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N7Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N10",
+                        "description": {
+                            "text": "Represents the EP_N10 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N10Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N11",
+                        "description": {
+                            "text": "Represents the EP_N11 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N11Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N16",
+                        "description": {
+                            "text": "Represents the EP_N16 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N16Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_S5C",
+                        "description": {
+                            "text": "Represents the EP_S5C IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_S5CGrp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/udm3gpp:UDMFunction",
+                "list": [
+                    {
+                        "@name": "EP_N8",
+                        "description": {
+                            "text": "Represents the EP_N8 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N8Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N10",
+                        "description": {
+                            "text": "Represents the EP_N10 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N10Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N13",
+                        "description": {
+                            "text": "Represents the EP_N13 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N13Grp"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement/upf3gpp:UPFFunction",
+                "list": [
+                    {
+                        "@name": "EP_N4",
+                        "description": {
+                            "text": "Represents the EP_N4 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N4Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N3",
+                        "description": {
+                            "text": "Represents the EP_N3 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N3Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_N9",
+                        "description": {
+                            "text": "Represents the EP_N9 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N9Grp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_S5U",
+                        "description": {
+                            "text": "Represents the EP_S5U IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_S5UGrp"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "EP_EP_N6",
+                        "description": {
+                            "text": "Represents the EP_N6 IOC."
+                        },
+                        "key": {
+                            "@value": "id"
+                        },
+                        "uses": {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        "container": {
+                            "@name": "attributes",
+                            "uses": {
+                                "@name": "EP_N6Grp"
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

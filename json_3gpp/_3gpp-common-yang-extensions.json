@@ -1,0 +1,45 @@
+{
+    "module": {
+        "@name": "_3gpp-common-yang-extensions",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:yext3gpp": "urn:3gpp:sa5:_3gpp-common-yang-extensions",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-yang-extensions"
+        },
+        "prefix": {
+            "@value": "yext3gpp"
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "The module defines YANG extensions needed\n3GPP YANG modeling.\n\nCopyright (c) 2019 3GPP. All rights reserved.\n\nExtensions MUST be defined with the following structure in the\ndescription statement:\n- What is this statement.\n- Newline,\n- This statement can be a substatement of the xxx statements with\ncardinality x..y.\n- This statement can have the following substatements with\ncardinality x..y.\n- Newline\n- Is changing this statement an editorial, BC(backwards compatible)\nor NBC(non-BC) change?\n- Newline.\n- The argument its meaning and type. Preferably use YANG types and\nconstraints to define the argument's type.\n\nAny extension statement can be added with a\ndeviation/deviate add statement. In this case the restriction about\nthe parent statement of the extension SHALL be evaluated based on the\ntarget of the deviation statement.\n\nSupport for this module does not mean that a YANG server implements\nsupport for each of these extensions.\nImplementers of each specific module using an extensions MUST check\nif the server implements support for the used extension.\nNote: modules use many extensions which individual\nimplementations MAY or MAY NOT support.\nIf support for an extension is missing the extension statement needs\nindividual handling or it SHOULD be removed from the module using\nthe extension e.g. with a deviation."
+        },
+        "revision": {
+            "@date": "2019-06-23",
+            "description": {
+                "text": "Initial version"
+            }
+        },
+        "extension": [
+            {
+                "@name": "inVariant",
+                "description": {
+                    "text": "Indicates that the value for the data node can only be set when its\nparent data node is being created. To change the value after that, the\nparent data node must be deleted and recreated with the data node\nhaving the new value.\n\nIt is unnecessary to use and MUST NOT be used for key leafs.\n\nThe statement MUST only be a substatement of a leaf, leaf-list, list\nstatements that is config=true.\nZero or one inVariant statement is allowed per parent statement.\nNO substatements are allowed.\n\nAdding this statement is an NBC change, removing it is BC."
+                }
+            },
+            {
+                "@name": "initial-value",
+                "description": {
+                    "text": "Specifies a value that the system will set for a leaf\nleaf-list if a value is not specified for it when its parent list\nor container is created. The value has no effect in any other\nmodification e.g. changing or removing the value.\n\nThe description statement of the parent statement SHOULD contain\nthe label 'Initial-value: ' followed by the text from the argument.\n\nThe statement MUST only be a substatement of a leaf or leaf-list.\nThe statement MUST NOT be present if the leaf or the leaf-list\nhas a default statement or the type used for the data node\nhas a default value.\nThe statement MUST NOT be used for config=false data or in an\naction, rpc or notification.\nZero or one initial-value statements are allowed for a leaf parent\nstatement. Zero or more initial-value statements are allowed for a\nleaf-list parent statement. If the leaf-list is ordered-by user, the\ninitial values are stored in the order they appear in the YANG definition.\nNO substatements are allowed.\n\nAlways consider using a YANG-default statement instead.\n\nModification of the initial-value is a non-backwards-compatible change.\n\nThe argument specifies a single initial value for a leaf or leaf-list.\nThe value MUST be part of the valuespace of the leaf/leaf-list.\nIt follows the same rules as the argument of the default statement."
+                },
+                "argument": {
+                    "@name": "initial-value"
+                }
+            }
+        ]
+    }
+}

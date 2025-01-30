@@ -1,0 +1,205 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-rrmpolicy",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrrrmpolicy3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy"
+        },
+        "prefix": {
+            "@value": "nrrrmpolicy3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the RRMPolicy abstract class that\nis part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-04-28",
+                "reference": {
+                    "text": "CR0285"
+                }
+            },
+            {
+                "@date": "2020-02-14",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "rRMPolicyMemberGrp",
+                "description": {
+                    "text": "This data type represents an RRM Policy member that will be\npart of a rRMPolicyMemberList. A RRMPolicyMember is defined by its\npLMNId and sNSSAI (S-NSSAI).\nThe members in a rRMPolicyMemberList are assigned a specific amount of\nRRM resources based on settings in RRMPolicy."
+                },
+                "uses": {
+                    "@name": "types5g3gpp:PLMNInfo"
+                }
+            },
+            {
+                "@name": "RRMPolicy_Grp",
+                "description": {
+                    "text": "This IOC represents the properties of an abstract RRMPolicy\n. The RRMPolicy_ IOC needs to be subclassed to be instantiated.\nIt defines two attributes apart from those inherited from Top IOC, the\nresourceType attribute defines type of resource (PRB, RRC\nconnected users, DRB usage etc.) and the rRMPolicyMemberList attribute\ndefines the RRMPolicyMember(s)that are subject to this policy.\nAn RRM resource (defined in resourceType\nattribute) is located in NRCellDU, NRCellCU, GNBDUFunction,\nGNBCUCPFunction or in GNBCUUPFunction. The RRMPolicyRatio IOC is one\nrealization of a RRMPolicy_ IOC. This RRM framework allows adding new\npolicies, both standardized (like RRMPolicyRatio) or as vendor specific,\nby inheriting from the abstract RRMPolicy_ IOC."
+                },
+                "leaf": {
+                    "@name": "resourceType",
+                    "description": {
+                        "text": "The resourceType attribute defines type of resource (PRB,\nRRC connected users, DRB usage etc.) that is subject to policy.\nValid values are 'PRB', 'RRC' or 'DRB'"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "string"
+                    }
+                },
+                "list": {
+                    "@name": "rRMPolicyMemberList",
+                    "description": {
+                        "text": "It represents the list of RRMPolicyMember (s) that the\nmanaged object is supporting. A RRMPolicyMember <<dataType>> include\nthe PLMNId <<dataType>> and S-NSSAI <<dataType>>."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "key": {
+                        "@value": "mcc mnc sd sst"
+                    },
+                    "uses": {
+                        "@name": "rRMPolicyMemberGrp"
+                    }
+                }
+            },
+            {
+                "@name": "RRMPolicyRatioGrp",
+                "description": {
+                    "text": "Represents the RRMPolicyRatio concrete IOC."
+                },
+                "uses": {
+                    "@name": "RRMPolicy_Grp"
+                },
+                "leaf": [
+                    {
+                        "@name": "rRMPolicyMaxRatio",
+                        "description": {
+                            "text": "This attribute specifies the maximum percentage of radio\nresource that can be used by the associated rRMPolicyMemberList.\nThe maximum percentage of radio resource include at least one of\nthe shared resources, prioritized resources and dedicated resources.\nThe sum of the rRMPolicyMaxRatio values assigned to all RRMPolicyRatio(s)\nname-contained by same ManagedEntity can be greater that 100."
+                        },
+                        "default": {
+                            "@value": "100"
+                        },
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..100"
+                            }
+                        },
+                        "units": {
+                            "@name": "percent"
+                        }
+                    },
+                    {
+                        "@name": "rRMPolicyMinRatio",
+                        "description": {
+                            "text": "This attribute specifies the minimum percentage of radio\nresources that can be used by the associated rRMPolicyMemberList.\nThe minimum percentage of radio resources including at least one of\nprioritized resources and dedicated resources. The sum of the\nrRMPolicyMinRatio values assigned to all RRM PolicyRatio(s)\nname-contained by same ManagedEntity shall be less or equal 100."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..100"
+                            }
+                        },
+                        "units": {
+                            "@name": "percent"
+                        }
+                    },
+                    {
+                        "@name": "rRMPolicyDedicatedRatio",
+                        "description": {
+                            "text": "This attribute specifies the percentage of radio resource\nthat dedicatedly used by the associated rRMPolicyMemberList. The sum of\nthe rRMPolicyDeidctaedRatio values assigned to all RRMPolicyRatio(s)\nname-contained by same ManagedEntity shall be less or equal 100."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "0..100"
+                            }
+                        },
+                        "units": {
+                            "@name": "percent"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typedef": {
+            "@name": "CyclicPrefix",
+            "type": {
+                "@name": "enumeration",
+                "enum": [
+                    {
+                        "@name": "NORMAL"
+                    },
+                    {
+                        "@name": "EXTENDED"
+                    }
+                ]
+            }
+        },
+        "list": {
+            "@name": "RRMPolicyRatio",
+            "description": {
+                "text": "The RRMPolicyRatio IOC is one realization of a RRMPolicy_ IOC,\nsee the inheritance in Figure 4.2.1.2-1. This RRM framework allows\nadding new policies, both standardized (like RRMPolicyRatio) or as\nvendor specific, by inheriting from the\nabstract RRMPolicy_ IOC. For details see subclause 4.3.36."
+            },
+            "key": {
+                "@value": "id"
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            },
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "RRMPolicyRatioGrp"
+                }
+            }
+        }
+    }
+}

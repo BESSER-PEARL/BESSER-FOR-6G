@@ -1,0 +1,210 @@
+{
+    "submodule": {
+        "@name": "_3gpp-ns-nrm-sliceprofile",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nss3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-networkslicesubnet",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:perf3gpp": "urn:3gpp:sa5:_3gpp-ns-nrm-perfreq",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "belongs-to": {
+            "@module": "_3gpp-ns-nrm-networkslicesubnet",
+            "prefix": {
+                "@value": "nss3gpp"
+            }
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-ns-nrm-perfreq",
+                "prefix": {
+                    "@value": "perf3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Represents the properties of network slice subnet related\nrequirement that should be supported by the network slice subnet\ninstance in a 5G network."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541\nManagement and orchestration;\n5G Network Resource Model (NRM);\nInformation model definitions for network slice NRM (chapter 6)"
+        },
+        "revision": [
+            {
+                "@date": "2020-02-19",
+                "description": {
+                    "text": "Introduction of YANG definitions for network slice NRM"
+                },
+                "reference": {
+                    "text": "CR-0458"
+                }
+            },
+            {
+                "@date": "2019-05-27",
+                "description": {
+                    "text": "initial revision."
+                },
+                "reference": {
+                    "text": "Based on\n3GPP TS 28.541 V15.X.XX"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "SliceProfileGrp",
+            "leaf": [
+                {
+                    "@name": "sliceProfileId",
+                    "description": {
+                        "text": "A unique identifier of the property of network slice\nsubnet related requirement should be supported by the network\nslice subnet instance."
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                },
+                {
+                    "@name": "maxNumberofUEs",
+                    "description": {
+                        "text": "Specifies the maximum number of UEs may simultaneously\naccess the network slice instance."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint64"
+                    }
+                },
+                {
+                    "@name": "latency",
+                    "description": {
+                        "text": "The packet transmission latency (milliseconds) through\nthe RAN, CN, and TN part of 5G network, used to evaluate\nutilization performance of the end-to-end network slice instance."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.554 clause 6.3.1"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint16"
+                    },
+                    "units": {
+                        "@name": "milliseconds"
+                    }
+                },
+                {
+                    "@name": "uEMobilityLevel",
+                    "description": {
+                        "text": "The mobility level of UE accessing the network slice\ninstance."
+                    },
+                    "type": {
+                        "@name": "types3gpp:UeMobilityLevel"
+                    }
+                },
+                {
+                    "@name": "resourceSharingLevel",
+                    "description": {
+                        "text": "Specifies whether the resources to be allocated to the\nnetwork slice subnet instance may be shared with another network\nslice subnet instance(s)."
+                    },
+                    "type": {
+                        "@name": "types3gpp:ResourceSharingLevel"
+                    }
+                }
+            ],
+            "list": [
+                {
+                    "@name": "sNSSAIList",
+                    "description": {
+                        "text": "List of S-NSSAIs the managed object is capable of\nsupporting. (Single Network Slice Selection Assistance Information)\nAn S-NSSAI has an SST (Slice/Service type) and an optional SD\n(Slice Differentiator) field."
+                    },
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "unique": {
+                        "@tag": "sst sd"
+                    },
+                    "leaf": {
+                        "@name": "idx",
+                        "description": {
+                            "text": "Synthetic index for the element."
+                        },
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:SNssai"
+                    }
+                },
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at\nleast one (the primary PLMN Id).  The PLMN Identifier is composed\nof a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "ordered-by": {
+                        "@value": "user"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "perfReq",
+                    "description": {
+                        "text": "The performance requirements for the NSI in terms of the\nscenarios defined in the 3GPP TS 22.261, such as experienced data\nrate, area traffic capacity (density) information of UE density."
+                    },
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "leaf": {
+                        "@name": "idx",
+                        "type": {
+                            "@name": "uint32"
+                        }
+                    },
+                    "uses": {
+                        "@name": "perf3gpp:PerfReqGrp"
+                    }
+                }
+            ],
+            "leaf-list": {
+                "@name": "coverageAreaTAList",
+                "description": {
+                    "text": "A list of TrackingAreas where the NSI can be selected."
+                },
+                "min-elements": {
+                    "@value": "1"
+                },
+                "type": {
+                    "@name": "types3gpp:Tac"
+                }
+            }
+        }
+    }
+}

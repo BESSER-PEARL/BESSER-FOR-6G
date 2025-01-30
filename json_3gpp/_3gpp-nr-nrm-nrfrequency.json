@@ -1,0 +1,185 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrfrequency",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrfreq3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-nrfrequency",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:nrnet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork-nrfrequency"
+        },
+        "prefix": {
+            "@value": "nrfreq3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrnetwork",
+                "prefix": {
+                    "@value": "nrnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRFrequency Information Object\nClass (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "NRFrequencyGrp",
+                "description": {
+                    "text": "Represents the NRFrequency IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": [
+                    {
+                        "@name": "absoluteFrequencySSB",
+                        "description": {
+                            "text": "The absolute frequency applicable for a downlink NR carrier\nfrequency associated with the SSB, in terms of NR-ARFCN."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0.. 3279165"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "sSBSubCarrierSpacing",
+                        "description": {
+                            "text": "Sub-carrier spacing of the SSB."
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "type": {
+                            "@name": "uint8",
+                            "range": {
+                                "@value": "15 | 30 | 60 | 120"
+                            }
+                        },
+                        "units": {
+                            "@name": "kHz"
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "multiFrequencyBandListNR",
+                    "description": {
+                        "text": "List of additional frequency bands the frequency belongs to.\nThe list is automatically set by the gNB."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "min-elements": {
+                        "@value": "0"
+                    },
+                    "type": {
+                        "@name": "uint16",
+                        "range": {
+                            "@value": "1..256"
+                        }
+                    }
+                }
+            },
+            {
+                "@name": "NRFrequencyWrapper",
+                "list": {
+                    "@name": "NRFrequency",
+                    "description": {
+                        "text": "Represents certain NR frequency properties."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.541"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "NRFrequencyGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "NRFrequencyWrapper"
+                }
+            },
+            {
+                "@target-node": "/nrnet3gpp:NRNetwork",
+                "if-feature": {
+                    "@name": "nrnet3gpp:ExternalsUnderNRNetwork"
+                },
+                "uses": {
+                    "@name": "NRFrequencyWrapper"
+                }
+            }
+        ]
+    }
+}

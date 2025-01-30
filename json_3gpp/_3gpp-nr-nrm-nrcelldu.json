@@ -1,0 +1,502 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrcelldu",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrcelldu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcelldu",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "@xmlns:nrrrmpolicy3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-rrmpolicy",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcelldu"
+        },
+        "prefix": {
+            "@value": "nrcelldu3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-rrmpolicy",
+                "prefix": {
+                    "@value": "nrrrmpolicy3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRCellDU Information Object\nClass (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0454"
+                }
+            },
+            {
+                "@date": "2020-11-25",
+                "reference": {
+                    "text": "CR-0386"
+                }
+            },
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-10-02",
+                "reference": {
+                    "text": "CR-0384"
+                }
+            },
+            {
+                "@date": "2020-05-08",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            },
+            {
+                "@date": "2020-02-14",
+                "reference": {
+                    "text": "S5-20XXXX"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-09-03",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "DRACHOptimizationFunction",
+                "description": {
+                    "text": "Class representing D-SON function of RACH optimization\nfeature"
+                }
+            },
+            {
+                "@name": "CPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON function of\nPCI configuration feature"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NRCellDUGrp",
+            "description": {
+                "text": "Represents the NRCellDU IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": [
+                {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                {
+                    "@name": "nrrrmpolicy3gpp:RRMPolicy_Grp"
+                }
+            ],
+            "leaf": [
+                {
+                    "@name": "cellLocalId",
+                    "description": {
+                        "text": "Identifies an NR cell of a gNB. Together with the\ncorresponding gNB identifier in forms the NR Cell Identity (NCI)."
+                    },
+                    "reference": {
+                        "text": "NCI in 3GPP TS 38.300"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..16383"
+                        }
+                    }
+                },
+                {
+                    "@name": "operationalState",
+                    "description": {
+                        "text": "Operational state of the NRCellDU instance. Indicates\nwhether the resource is installed and partially or fully operable\n(ENABLED) or the resource is not installed or not operable\n(DISABLED)."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:OperationalState"
+                    }
+                },
+                {
+                    "@name": "administrativeState",
+                    "description": {
+                        "text": "Administrative state of the NRCellDU. Indicates the\npermission to use or prohibition against using the cell, imposed\nthrough the OAM services."
+                    },
+                    "type": {
+                        "@name": "types3gpp:AdministrativeState"
+                    },
+                    "default": {
+                        "@value": "LOCKED"
+                    }
+                },
+                {
+                    "@name": "cellState",
+                    "description": {
+                        "text": "Cell state of the NRCellDU instance. Indicates whether the\ncell is not currently in use (IDLE), or currently in use but not\nconfigured to carry traffic (INACTIVE), or currently in use and is\nconfigured to carry traffic (ACTIVE)."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:CellState"
+                    }
+                },
+                {
+                    "@name": "nRPCI",
+                    "description": {
+                        "text": "The Physical Cell Identity (PCI) of the NR cell."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 36.211"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..1007"
+                        }
+                    }
+                },
+                {
+                    "@name": "nRTAC",
+                    "description": {
+                        "text": "The common 5GS Tracking Area Code for the PLMNs."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003, 3GPP TS 38.473"
+                    },
+                    "type": {
+                        "@name": "types3gpp:Tac"
+                    }
+                },
+                {
+                    "@name": "arfcnDL",
+                    "description": {
+                        "text": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for\ndownlink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    }
+                },
+                {
+                    "@name": "arfcnUL",
+                    "description": {
+                        "text": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for\nuplink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    }
+                },
+                {
+                    "@name": "arfcnSUL",
+                    "description": {
+                        "text": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for\nsupplementary uplink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    }
+                },
+                {
+                    "@name": "bSChannelBwDL",
+                    "description": {
+                        "text": "Base station channel bandwidth for downlink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    },
+                    "units": {
+                        "@name": "MHz"
+                    }
+                },
+                {
+                    "@name": "bSChannelBwUL",
+                    "description": {
+                        "text": "Base station channel bandwidth for uplink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    },
+                    "units": {
+                        "@name": "MHz"
+                    }
+                },
+                {
+                    "@name": "bSChannelBwSUL",
+                    "description": {
+                        "text": "Base station channel bandwidth for supplementary uplink."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "type": {
+                        "@name": "int32"
+                    },
+                    "units": {
+                        "@name": "MHz"
+                    }
+                },
+                {
+                    "@name": "ssbFrequency",
+                    "description": {
+                        "text": "Indicates cell defining SSB frequency domain position.\nFrequency (in terms of NR-ARFCN) of the cell defining SSB transmission.\nThe frequency identifies the position of resource element RE=#0\n(subcarrier #0) of resource block RB#10 of the SS block. The frequency\nmust be positioned on the NR global frequency raster, as defined in\n3GPP TS 38.101-1, and within bSChannelBwDL."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..3279165"
+                        }
+                    }
+                },
+                {
+                    "@name": "ssbPeriodicity",
+                    "description": {
+                        "text": "Indicates cell defined SSB periodicity. The SSB periodicity\nis used for the rate matching purpose."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "5 | 10 | 20 | 40 | 80 | 160"
+                        }
+                    },
+                    "units": {
+                        "@name": "subframes (ms)"
+                    }
+                },
+                {
+                    "@name": "ssbSubCarrierSpacing",
+                    "description": {
+                        "text": "Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz\n(< 6 GHz), 120 kHz or 240 kHz (> 6 GHz) are applicable."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.211"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "15 | 30 | 120 | 240"
+                        }
+                    },
+                    "units": {
+                        "@name": "kHz"
+                    }
+                },
+                {
+                    "@name": "ssbOffset",
+                    "description": {
+                        "text": "Indicates cell defining SSB time domain position. Defined\nas the offset of the measurement window, in which to receive SS/PBCH\nblocks, where allowed values depend on the ssbPeriodicity\n(ssbOffset < ssbPeriodicity)."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..159"
+                        }
+                    },
+                    "units": {
+                        "@name": "subframes (ms)"
+                    }
+                },
+                {
+                    "@name": "ssbDuration",
+                    "description": {
+                        "text": "Duration of the measurement window in which to receive\nSS/PBCH blocks."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.213"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "1..5"
+                        }
+                    },
+                    "units": {
+                        "@name": "subframes (ms)"
+                    }
+                }
+            ],
+            "list": {
+                "@name": "pLMNInfoList",
+                "description": {
+                    "text": "The PLMNInfoList is a list of PLMNInfo data type. It\ndefines which PLMNs that can be served by the NR cell, and which\nS-NSSAIs that can be supported by the NR cell for corresponding PLMN\nin case of network slicing feature is supported. The plMNId of the\nfirst entry of the list is the PLMNId used to construct the nCGI for\nthe NR cell."
+                },
+                "key": {
+                    "@value": "mcc mnc sd sst"
+                },
+                "min-elements": {
+                    "@value": "1"
+                },
+                "ordered-by": {
+                    "@value": "user"
+                },
+                "uses": {
+                    "@name": "types5g3gpp:PLMNInfo"
+                }
+            },
+            "leaf-list": [
+                {
+                    "@name": "nRSectorCarrierRef",
+                    "description": {
+                        "text": "Reference to corresponding NRSectorCarrier instance."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                },
+                {
+                    "@name": "bWPRef",
+                    "description": {
+                        "text": "Reference to corresponding BWP instance."
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                },
+                {
+                    "@name": "nRFrequencyRef",
+                    "description": {
+                        "text": "Reference to corresponding NRFrequency instance."
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction",
+            "list": {
+                "@name": "NRCellDU",
+                "description": {
+                    "text": "Represents the information of a cell known by DU."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRCellDUGrp"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,169 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-externalamffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:extamf3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-externalamffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:nrnet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-externalamffunction"
+        },
+        "prefix": {
+            "@value": "extamf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrnetwork",
+                "prefix": {
+                    "@value": "nrnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the ExternalAMFFunction Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ExternalAMFFunctionGrp",
+                "description": {
+                    "text": "Represents the ExternalAMFFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "list": {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at least\none (the primary PLMN Id).\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a\nMobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                "container": {
+                    "@name": "aMFIdentifier",
+                    "presence": {
+                        "@value": "true"
+                    },
+                    "description": {
+                        "text": "An AMF identifier, comprising an AMF Region ID, an AMF Set ID and an AMF Pointer."
+                    },
+                    "uses": {
+                        "@name": "types3gpp:AmfIdentifier"
+                    }
+                }
+            },
+            {
+                "@name": "ExternalAMFFunctionWrapper",
+                "list": {
+                    "@name": "ExternalAMFFunction",
+                    "description": {
+                        "text": "Represents the properties, known by the management\nfunction, of a AMFFunction managed by another management\nfunction."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.541"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "ExternalAMFFunctionGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalAMFFunctionWrapper"
+                }
+            },
+            {
+                "@target-node": "/nrnet3gpp:NRNetwork",
+                "if-feature": {
+                    "@name": "nrnet3gpp:ExternalsUnderNRNetwork"
+                },
+                "uses": {
+                    "@name": "ExternalAMFFunctionWrapper"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,157 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-cesmanagementfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:cesmanagementfunction3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-cesmanagementfunction",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-cesmanagementfunction"
+        },
+        "prefix": {
+            "@value": "cesmanagementfunction3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcellcu",
+                "prefix": {
+                    "@value": "nrcellcu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the CESManagementFunction Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2020-05-08",
+            "reference": {
+                "text": "S5-203316"
+            }
+        },
+        "grouping": {
+            "@name": "CESManagementFunctionGrp",
+            "description": {
+                "text": "Represents the CESManagementFunction IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            },
+            "leaf": [
+                {
+                    "@name": "cesSwitch",
+                    "description": {
+                        "text": "This attribute determines whether the Cross Domain-Centralized SON energy saving function is enabled or disabled."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                },
+                {
+                    "@name": "energySavingState",
+                    "description": {
+                        "text": "Specifies the status regarding the energy saving in the cell. If the value of energySavingControl is toBeEnergySaving, then it shall be tried to achieve the value isEnergySaving for the energySavingState. If the value of energySavingControl is toBeNotEnergySaving, then it shall be tried to achieve the value isNotEnergySaving for the energySavingState."
+                    },
+                    "type": {
+                        "@name": "enumeration",
+                        "enum": [
+                            {
+                                "@name": "isNotEnergySaving"
+                            },
+                            {
+                                "@name": "isEnergySaving"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "@name": "energySavingControl",
+                    "description": {
+                        "text": "This attribute allows the Cross Domain-Centralized SON energy saving function to initiate energy saving activation or deactivation."
+                    },
+                    "type": {
+                        "@name": "enumeration",
+                        "enum": [
+                            {
+                                "@name": "toBeEnergySaving"
+                            },
+                            {
+                                "@name": "toBeNotEnergySaving"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU",
+                "if-feature": {
+                    "@name": "nrcellcu3gpp:CESManagementFunction"
+                },
+                "uses": {
+                    "@name": "CESManagementFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "if-feature": {
+                    "@name": "me3gpp:CESManagementFunction"
+                },
+                "uses": {
+                    "@name": "CESManagementFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:CESManagementFunction"
+                },
+                "uses": {
+                    "@name": "CESManagementFunctionGrp"
+                }
+            }
+        ]
+    }
+}

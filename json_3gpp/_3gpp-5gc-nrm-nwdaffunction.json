@@ -1,0 +1,207 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-nwdaffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nwdaf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nwdaffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-nwdaffunction"
+        },
+        "prefix": {
+            "@value": "nwdaf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the NWDAF function in 5GC. For more information about the NWDAF, see 3GPP TS 23.501."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2019-10-25",
+                "reference": {
+                    "text": "S5-194457 S5-195427 S5-193518"
+                }
+            },
+            {
+                "@date": "2019-05-15",
+                "reference": {
+                    "text": "initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NWDAFFunctionGrp",
+            "description": {
+                "text": "Represents the NWDAFFunction IOC"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": [
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at\nleast one (the primary PLMN Id).\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a\nMobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "sNSSAIList",
+                    "description": {
+                        "text": "List of S-NSSAIs the managed object is capable of supporting.\n(Single Network Slice Selection Assistance Information)\nAn S-NSSAI has an SST (Slice/Service type) and an optional SD\n(Slice Differentiator) field."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003"
+                    },
+                    "key": {
+                        "@value": "sd sst"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:SNssai"
+                    }
+                },
+                {
+                    "@name": "managedNFProfile",
+                    "key": {
+                        "@value": "idx"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:ManagedNFProfile"
+                    }
+                },
+                {
+                    "@name": "commModelList",
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "key": {
+                        "@value": "groupId"
+                    },
+                    "description": {
+                        "text": "Specifies a list of commModel. It can be used by NF and\nNF services to interact with each other in 5G Core network"
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.501"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:CommModel"
+                    }
+                }
+            ],
+            "leaf": {
+                "@name": "sBIFQDN",
+                "description": {
+                    "text": "The FQDN of the registered NF instance in the service-based\ninterface."
+                },
+                "type": {
+                    "@name": "inet:domain-name"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "NWDAFFunction",
+                "description": {
+                    "text": "5G Core NWDAF Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NWDAFFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

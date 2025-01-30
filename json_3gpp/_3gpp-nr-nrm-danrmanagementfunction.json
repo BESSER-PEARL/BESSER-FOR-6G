@@ -1,0 +1,98 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-danrmanagementfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:danrmanagementfunction3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-danrmanagementfunction",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-danrmanagementfunction"
+        },
+        "prefix": {
+            "@value": "danrmanagementfunction3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the DANRManagementFunction Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2020-05-08",
+            "reference": {
+                "text": "S5-203316"
+            }
+        },
+        "grouping": {
+            "@name": "DANRManagementFunctionGrp",
+            "description": {
+                "text": "Represents the DANRManagementFunction IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "top3gpp:Top_Grp"
+            },
+            "leaf": [
+                {
+                    "@name": "intrasystemANRManagementSwitch",
+                    "description": {
+                        "text": "This attribute determines whether the intra-system ANR function is activated or deactivated."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                },
+                {
+                    "@name": "intersystemANRManagementSwitch",
+                    "description": {
+                        "text": "This attribute determines whether the inter-system ANR function is activated or deactivated."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction",
+            "if-feature": {
+                "@name": "gnbcucp3gpp:DANRManagementFunction"
+            },
+            "uses": {
+                "@name": "DANRManagementFunctionGrp"
+            }
+        }
+    }
+}

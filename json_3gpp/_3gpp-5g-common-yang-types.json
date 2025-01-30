@@ -1,0 +1,196 @@
+{
+    "module": {
+        "@name": "_3gpp-5g-common-yang-types",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5g-common-yang-types"
+        },
+        "prefix": {
+            "@value": "types5g3gpp"
+        },
+        "import": {
+            "@module": "_3gpp-common-yang-types",
+            "prefix": {
+                "@value": "types3gpp"
+            }
+        },
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "The model defines common types for 5G networks and\nnetwork slicing."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2019-10-20",
+                "reference": {
+                    "text": "Initial version."
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "SNssai",
+                "description": {
+                    "text": "Single Network Slice Selection Assistance Information(S-NSSAI)"
+                },
+                "reference": {
+                    "text": "3GPP TS 23.003"
+                },
+                "leaf": [
+                    {
+                        "@name": "sd",
+                        "description": {
+                            "text": "Slice Differentiator\nIf not needed, the value can be set to FFFFFF."
+                        },
+                        "type": {
+                            "@name": "string",
+                            "length": {
+                                "@value": "6"
+                            },
+                            "pattern": {
+                                "@value": "[a-fA-F0-9]*"
+                            }
+                        },
+                        "reference": {
+                            "text": "3GPP TS 23.003"
+                        }
+                    },
+                    {
+                        "@name": "sst",
+                        "type": {
+                            "@name": "uint8"
+                        },
+                        "description": {
+                            "text": "Slice/Service Type.\nValues 0 to 127 belong to standardized SST range and are defined in\n3GPP TS 23.501. Values 128 to 255 belong to operator-specific range."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "PLMNInfo",
+                "description": {
+                    "text": "The PLMNInfo data type define a S-NSSAI member in a specific\nPLMNId, and it have two attributes PLMNId and S-NSSAI (PLMNId, S-NSSAI).\nThe PLMNId represents a data type that is comprised of mcc\n(mobile country code) and mnc (mobile network code), (See TS 23.003\nsubclause 2.2 and 12.1) and S-NSSAI represents an data type, that is\ncomprised of an SST (Slice/Service type) and an optional\nSD (Slice Differentiator) field"
+                },
+                "uses": [
+                    {
+                        "@name": "types3gpp:PLMNId"
+                    },
+                    {
+                        "@name": "SNssai"
+                    }
+                ]
+            },
+            {
+                "@name": "CommModel",
+                "leaf": [
+                    {
+                        "@name": "groupId",
+                        "type": {
+                            "@name": "uint16"
+                        }
+                    },
+                    {
+                        "@name": "commModelType",
+                        "type": {
+                            "@name": "CommModelType"
+                        }
+                    },
+                    {
+                        "@name": "commModelConfiguration",
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ],
+                "leaf-list": {
+                    "@name": "targetNFServiceList",
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            },
+            {
+                "@name": "SupportedFunc",
+                "leaf": [
+                    {
+                        "@name": "function",
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "policy",
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            }
+        ],
+        "typedef": {
+            "@name": "CommModelType",
+            "reference": {
+                "text": "3GPP TS 23501"
+            },
+            "type": {
+                "@name": "enumeration",
+                "enum": [
+                    {
+                        "@name": "DIRECT_COMMUNICATION_WO_NRF",
+                        "value": {
+                            "@value": "0"
+                        },
+                        "description": {
+                            "text": "Directly communicate to other pre-configured NF service."
+                        }
+                    },
+                    {
+                        "@name": "DIRECT_COMMUNICATION_WITH_NRF",
+                        "value": {
+                            "@value": "1"
+                        },
+                        "description": {
+                            "text": "Directly communicate to other NF service discovered\nby NRF."
+                        }
+                    },
+                    {
+                        "@name": "INDIRECT_COMMUNICATION_WO_DEDICATED_DISCOVERY",
+                        "value": {
+                            "@value": "2"
+                        },
+                        "description": {
+                            "text": "Communicate to pre-configured other NF service through\nSCP as a proxy."
+                        }
+                    },
+                    {
+                        "@name": "INDIRECT_COMMUNICATION_WITH_DEDICATED_DISCOVERY",
+                        "value": {
+                            "@value": "3"
+                        },
+                        "description": {
+                            "text": "Communication to NF service discovered by NRF through SCP as a proxy."
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

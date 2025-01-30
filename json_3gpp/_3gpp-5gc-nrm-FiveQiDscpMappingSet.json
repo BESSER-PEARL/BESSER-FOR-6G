@@ -1,0 +1,139 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-FiveQiDscpMappingSet",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:FiveQiDscpMapping3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-FiveQiDscpMappingSet",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:smf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-smffunction",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-FiveQiDscpMappingSet"
+        },
+        "prefix": {
+            "@value": "FiveQiDscpMapping3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-smffunction",
+                "prefix": {
+                    "@value": "smf3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the set of mapping between 5QIs and DSCP."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-05-27",
+                "reference": {
+                    "text": "CR-0287"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "FiveQiDscpMapping",
+                "leaf-list": {
+                    "@name": "fiveQIValues",
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "0..255"
+                        }
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "Identifies the 5QI values that are mapped to a same DSCP, as specified in TS 28.541."
+                    }
+                },
+                "leaf": {
+                    "@name": "dscp",
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "0..255"
+                        }
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    }
+                }
+            },
+            {
+                "@name": "FiveQiDscpMappingSetGrp",
+                "description": {
+                    "text": "Represents the FiveQiDscpMappingSet IOC."
+                },
+                "list": {
+                    "@name": "FiveQiDscpMappingList",
+                    "key": {
+                        "@value": "dscp"
+                    },
+                    "uses": {
+                        "@name": "FiveQiDscpMapping"
+                    }
+                }
+            },
+            {
+                "@name": "FiveQiDscpMappingSetSubtree",
+                "list": {
+                    "@name": "FiveQiDscpMappingSet",
+                    "description": {
+                        "text": "Specifies the mapping between 5QIs and DSCPs."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "FiveQiDscpMappingSetGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/smf3gpp:SMFFunction",
+            "uses": {
+                "@name": "FiveQiDscpMappingSetSubtree"
+            }
+        }
+    }
+}

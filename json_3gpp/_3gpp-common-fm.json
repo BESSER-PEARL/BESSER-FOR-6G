@@ -1,0 +1,689 @@
+{
+    "module": {
+        "@name": "_3gpp-common-fm",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:fm3gpp": "urn:3gpp:sa5:_3gpp-common-fm",
+        "@xmlns:yang": "urn:ietf:params:xml:ns:yang:ietf-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-fm"
+        },
+        "prefix": {
+            "@value": "fm3gpp"
+        },
+        "import": [
+            {
+                "@module": "ietf-yang-types",
+                "prefix": {
+                    "@value": "yang"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines a Fault Management model"
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n\n3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)"
+        },
+        "revision": [
+            {
+                "@date": "2020-06-03",
+                "reference": {
+                    "text": "CR-0091"
+                }
+            },
+            {
+                "@date": "2020-02-24",
+                "reference": {
+                    "text": "S5-201365"
+                }
+            }
+        ],
+        "typedef": [
+            {
+                "@name": "eventType",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "COMMUNICATIONS_ALARM",
+                            "value": {
+                                "@value": "2"
+                            }
+                        },
+                        {
+                            "@name": "QUALITY_OF_SERVICE_ALARM",
+                            "value": {
+                                "@value": "3"
+                            }
+                        },
+                        {
+                            "@name": "PROCESSING_ERROR_ALARM",
+                            "value": {
+                                "@value": "4"
+                            }
+                        },
+                        {
+                            "@name": "EQUIPMENT_ALARM",
+                            "value": {
+                                "@value": "5"
+                            }
+                        },
+                        {
+                            "@name": "ENVIRONMENTAL_ALARM",
+                            "value": {
+                                "@value": "6"
+                            }
+                        },
+                        {
+                            "@name": "INTEGRITY_VIOLATION",
+                            "value": {
+                                "@value": "7"
+                            }
+                        },
+                        {
+                            "@name": "OPERATIONAL_VIOLATION",
+                            "value": {
+                                "@value": "8"
+                            }
+                        },
+                        {
+                            "@name": "PHYSICAL_VIOLATIONu",
+                            "value": {
+                                "@value": "9"
+                            }
+                        },
+                        {
+                            "@name": "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
+                            "value": {
+                                "@value": "10"
+                            }
+                        },
+                        {
+                            "@name": "TIME_DOMAIN_VIOLATION",
+                            "value": {
+                                "@value": "11"
+                            }
+                        }
+                    ]
+                },
+                "description": {
+                    "text": "General category for the alarm."
+                }
+            },
+            {
+                "@name": "severity-level",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "CRITICAL",
+                            "value": {
+                                "@value": "3"
+                            }
+                        },
+                        {
+                            "@name": "MAJOR",
+                            "value": {
+                                "@value": "4"
+                            }
+                        },
+                        {
+                            "@name": "MINOR",
+                            "value": {
+                                "@value": "5"
+                            }
+                        },
+                        {
+                            "@name": "WARNING",
+                            "value": {
+                                "@value": "6"
+                            }
+                        },
+                        {
+                            "@name": "INDETERMINATE",
+                            "value": {
+                                "@value": "7"
+                            }
+                        },
+                        {
+                            "@name": "CLEARED",
+                            "value": {
+                                "@value": "8"
+                            }
+                        }
+                    ]
+                },
+                "description": {
+                    "text": "The possible alarm serverities.\n \tAligned with ERICSSON-ALARM-MIB."
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "AlarmRecordGrp",
+                "description": {
+                    "text": "Contains alarm information of an alarmed object instance.\nA new record is created in the alarm list when an alarmed object\ninstance generates an alarm and no alarm record exists with the same\nvalues for objectInstance, alarmType, probableCause and specificProblem.\nWhen a new record is created the MnS producer creates an alarmId, that\nunambiguously identifies an alarm record in the AlarmList.\n\nAlarm records are maintained only for active alarms. Inactive alarms are\nautomatically deleted by the MnS producer from the AlarmList.\nActive alarms are alarms whose\na)\tperceivedSeverity is not CLEARED, or whose\nb)\tperceivedSeverity is CLEARED and its ackState is not ACKNOWLEDED."
+                },
+                "leaf": [
+                    {
+                        "@name": "alarmId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Identifies the alarmRecord"
+                        }
+                    },
+                    {
+                        "@name": "objectInstance",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    },
+                    {
+                        "@name": "notificationId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    },
+                    {
+                        "@name": "alarmRaisedTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "alarmChangedTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "not applicable if related alarm has not changed"
+                        }
+                    },
+                    {
+                        "@name": "alarmClearedTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "not applicable if related alarm was not cleared"
+                        }
+                    },
+                    {
+                        "@name": "alarmType",
+                        "type": {
+                            "@name": "eventType"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "General category for the alarm."
+                        }
+                    },
+                    {
+                        "@name": "probableCause",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "specificProblem",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "reference": {
+                            "text": "ITU-T Recommendation X.733 clause 8.1.2.2."
+                        }
+                    },
+                    {
+                        "@name": "perceivedSeverity",
+                        "type": {
+                            "@name": "severity-level"
+                        },
+                        "description": {
+                            "text": "This is Writable only if producer supports consumer\nto set perceivedSeverity to CLEARED"
+                        }
+                    },
+                    {
+                        "@name": "backedUpStatus",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates if an object (the MonitoredEntity) has a back\nup. See definition in ITU-T Recommendation X.733 clause 8.1.2.4."
+                        }
+                    },
+                    {
+                        "@name": "backUpObject",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "trendIndication",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates if some observed condition is getting better,\nworse, or not changing."
+                        },
+                        "reference": {
+                            "text": "ITU-T Recommendation X.733 clause 8.1.2.6."
+                        }
+                    },
+                    {
+                        "@name": "stateChangeDefinition",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates MO attribute value changes. See definition\nin ITU-T Recommendation X.733 clause 8.1.2.11."
+                        }
+                    },
+                    {
+                        "@name": "monitoredAttributes",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates MO attributes whose value changes are being\nmonitored. See definition in ITU-T Recommendation X.733 clause 8.1.2.11."
+                        }
+                    },
+                    {
+                        "@name": "proposedRepairActions",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "Indicates proposed repair actions. See definition in\nITU-T Recommendation X.733 clause 8.1.2.12."
+                        }
+                    },
+                    {
+                        "@name": "additionalText",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "additionalInformation",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    },
+                    {
+                        "@name": "rootCauseIndicator",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "YES"
+                                },
+                                {
+                                    "@name": "NO"
+                                }
+                            ]
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It indicates that this AlarmInformation is the root cause\nof the events captured by the notifications whose identifiers are in\nthe related CorrelatedNotification instances."
+                        }
+                    },
+                    {
+                        "@name": "ackTime",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It identifies the time when the alarm has been\nacknowledged or unacknowledged the last time, i.e. it registers the\ntime when ackState changes."
+                        }
+                    },
+                    {
+                        "@name": "ackUserId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It identifies the last user who has changed the\nAcknowledgement State."
+                        }
+                    },
+                    {
+                        "@name": "ackSystemId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "It identifies the system (Management System) that last\nchanged the ackState of an alarm, i.e. acknowledged or unacknowledged\nthe alarm."
+                        }
+                    },
+                    {
+                        "@name": "ackState",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "ACKNOWLEDGED",
+                                    "description": {
+                                        "text": "The alarm has been acknowledged."
+                                    }
+                                },
+                                {
+                                    "@name": "UNACKNOWLEDGED",
+                                    "description": {
+                                        "text": "The alarm has unacknowledged or the alarm has never\nbeen acknowledged."
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@name": "clearUserId",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "Carries the identity of the user who invokes the\nclearAlarms operation."
+                        }
+                    },
+                    {
+                        "@name": "clearSystemId",
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "serviceUser",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It identifies the service-user whose request for service\nprovided by the serviceProvider led to the generation of the\nsecurity alarm."
+                        }
+                    },
+                    {
+                        "@name": "serviceProvider",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "It identifies the service-provider whose service is\nrequested by the serviceUser and the service request provokes the\ngeneration of the security alarm."
+                        }
+                    },
+                    {
+                        "@name": "securityAlarmDetector",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "config": {
+                            "@value": "false"
+                        }
+                    }
+                ],
+                "grouping": [
+                    {
+                        "@name": "ThresholdPackGrp",
+                        "leaf": [
+                            {
+                                "@name": "thresholdLevel",
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "thresholdValue",
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "hysteresis",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "description": {
+                                    "text": "The hysteresis has a threshold high and a threshold\nlow value that are different from the threshold value.\nA hysteresis, therefore, defines the threshold-high and\nthreshold-low levels within which the measurementType value is\nallowed to oscillate without triggering the threshold crossing\nnotification."
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "ThresholdInfoGrp",
+                        "leaf": [
+                            {
+                                "@name": "measurementType",
+                                "type": {
+                                    "@name": "string"
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                }
+                            },
+                            {
+                                "@name": "direction",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "INCREASING"
+                                        },
+                                        {
+                                            "@name": "DECREASING"
+                                        }
+                                    ]
+                                },
+                                "mandatory": {
+                                    "@value": "true"
+                                },
+                                "description": {
+                                    "text": "If it is 'Increasing', the threshold crossing notification is\ntriggered when the measurement value equals or exceeds a\nthresholdValue.\n\nIf it is 'Decreasing', the threshold crossing notification is\ntriggered when the measurement value equals or below a\nthresholdValue."
+                                }
+                            }
+                        ],
+                        "uses": {
+                            "@name": "ThresholdPackGrp"
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "thresholdInfo",
+                    "config": {
+                        "@value": "false"
+                    },
+                    "uses": {
+                        "@name": "ThresholdInfoGrp"
+                    }
+                }
+            },
+            {
+                "@name": "AlarmListGrp",
+                "description": {
+                    "text": "Represents the AlarmList IOC."
+                },
+                "leaf": [
+                    {
+                        "@name": "administrativeState",
+                        "type": {
+                            "@name": "types3gpp:AdministrativeState"
+                        },
+                        "default": {
+                            "@value": "LOCKED"
+                        },
+                        "description": {
+                            "text": "When set to UNLOCKED, the alarm list is updated.\nWhen the set to LOCKED, the existing alarm records are not\nupdated, and new alarm records are not added to the alarm list."
+                        }
+                    },
+                    {
+                        "@name": "operationalState",
+                        "type": {
+                            "@name": "types3gpp:OperationalState"
+                        },
+                        "default": {
+                            "@value": "DISABLED"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "The producer sets this attribute to ENABLED, indicating\nthat it has the resource and ability to record alarm in AlarmList\nelse, it sets the attribute to DISABLED."
+                        }
+                    },
+                    {
+                        "@name": "numOfAlarmRecords",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "The number of alarm records in the AlarmList"
+                        }
+                    },
+                    {
+                        "@name": "lastModification",
+                        "type": {
+                            "@name": "yang:date-and-time"
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "description": {
+                            "text": "The last time when an alarm record was modified"
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "alarmRecords",
+                    "key": {
+                        "@value": "alarmId"
+                    },
+                    "description": {
+                        "text": "List of alarmRecords"
+                    },
+                    "uses": {
+                        "@name": "AlarmRecordGrp"
+                    }
+                }
+            },
+            {
+                "@name": "FmSubtree",
+                "description": {
+                    "text": "Contains FM related classes.\nShould be used in all classes (or classes inheriting from)\n- SubNetwork\n- ManagedElement\n\nIf some YAM wants to augment these classes/list/groupings they must\naugment all user classes!"
+                },
+                "list": {
+                    "@name": "AlarmList",
+                    "key": {
+                        "@value": "id"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "description": {
+                        "text": "The AlarmList represents the capability to store and manage\nalarm records. The management scope of an AlarmList is defined by all\ndescendant objects of the base managed object, which is the object\nname-containing the AlarmList, and the base object itself.\n\nAlarmList instances are created by the system or are pre-installed.\nThey cannot be created nor deleted by MnS consumers.\n\nWhen the alarm list is locked or disabled, the existing alarm records\nare not updated, and new alarm records are not added to the alarm list"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "AlarmListGrp"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

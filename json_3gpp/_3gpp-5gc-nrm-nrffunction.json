@@ -1,0 +1,208 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-nrffunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrf3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nrffunction",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:nfp3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-nfprofile",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-nrffunction"
+        },
+        "prefix": {
+            "@value": "nrf3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5gc-nrm-nfprofile",
+                "prefix": {
+                    "@value": "nfp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the NRF function in 5GC.\nFor more information about the NRF, see 3GPP TS 23.501 [2]."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-05-15",
+                "reference": {
+                    "text": "initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NRFFunctionGrp",
+            "description": {
+                "text": "Represents the NRFFunction IOC"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": [
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at\nleast one (the primary PLMN Id).\nThe PLMN Identifier is composed of a Mobile Country Code (MCC) and a\nMobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "sNSSAIList",
+                    "description": {
+                        "text": "List of S-NSSAIs the managed object is capable of supporting.\n(Single Network Slice Selection Assistance Information)\nAn S-NSSAI has an SST (Slice/Service type) and an optional SD\n(Slice Differentiator) field."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003"
+                    },
+                    "key": {
+                        "@value": "sd sst"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:SNssai"
+                    }
+                },
+                {
+                    "@name": "nFProfileList",
+                    "description": {
+                        "text": "Set of NFProfile(s) to be registered in the NRF instance."
+                    },
+                    "key": {
+                        "@value": "nfInstanceID"
+                    },
+                    "uses": {
+                        "@name": "nfp3gpp:NFProfileGrp"
+                    }
+                }
+            ],
+            "leaf": {
+                "@name": "sBIFQDN",
+                "description": {
+                    "text": "The FQDN of the registered NF instance in the service-based\ninterface."
+                },
+                "type": {
+                    "@name": "inet:domain-name"
+                }
+            },
+            "leaf-list": {
+                "@name": "cNSIIdList",
+                "description": {
+                    "text": "NSI ID. NSI ID is an identifier for identifying the Core\nNetwork part of a Network Slice instance when multiple Network Slice\ninstances of the same Network Slice are deployed, and there is a need\nto differentiate between them in the 5GC, see clause 3.1 of TS 23.501\nand subclause 6.1.6.2.7 of 3GPP TS 29.531"
+                },
+                "type": {
+                    "@name": "string"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement",
+            "list": {
+                "@name": "NRFFunction",
+                "description": {
+                    "text": "5G Core NRF Function"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRFFunctionGrp"
+                    }
+                }
+            }
+        }
+    }
+}

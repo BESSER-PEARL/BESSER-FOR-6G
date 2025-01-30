@@ -1,0 +1,1688 @@
+{
+    "module": {
+        "@name": "_3gpp-common-trace",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:trace3gpp": "urn:3gpp:sa5:_3gpp-common-trace",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:inet": "urn:ietf:params:xml:ns:yang:ietf-inet-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-trace"
+        },
+        "prefix": {
+            "@value": "trace3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "ietf-inet-types",
+                "prefix": {
+                    "@value": "inet"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Trace handling"
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n\n3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-25",
+                "reference": {
+                    "text": "CR-0122"
+                }
+            },
+            {
+                "@date": "2020-11-16",
+                "reference": {
+                    "text": "CR-0117"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0102"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "TraceJobGrp",
+                "leaf": [
+                    {
+                        "@name": "tjJobType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "IMMEDIATE_MDT_ONLY"
+                                },
+                                {
+                                    "@name": "LOGGED_MDT_ONLY"
+                                },
+                                {
+                                    "@name": "TRACE_ONLY"
+                                },
+                                {
+                                    "@name": "IMMEDIATE_MDT_AND_TRACE"
+                                },
+                                {
+                                    "@name": "RLF_REPORT_ONLY"
+                                },
+                                {
+                                    "@name": "RCEF_REPORT_ONLY"
+                                },
+                                {
+                                    "@name": "LOGGED_MBSFN_MDT"
+                                }
+                            ]
+                        },
+                        "default": {
+                            "@value": "TRACE_ONLY"
+                        },
+                        "description": {
+                            "text": "Specifies the MDT mode and it specifies also whether the\nTraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined\nTrace and MDT job. The attribute is applicable for Trace, MDT, RCEF and\nRLF reporting."
+                        },
+                        "reference": {
+                            "text": "Clause 5.9a of 3GPP TS 32.422 for additional details on the\nallowed values."
+                        }
+                    },
+                    {
+                        "@name": "tjPLMNTarget",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies which PLMN that the subscriber of the session to\nbe recorded uses as selected PLMN. PLMN Target might differ from the\nPLMN specified in the Trace Reference"
+                        },
+                        "reference": {
+                            "text": "Clause 5.9b of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjStreamingTraceConsumerURI",
+                        "when": {
+                            "@condition": "./tjTraceReportingFormat  = \"STREAMING\""
+                        },
+                        "type": {
+                            "@name": "inet:uri"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "URI of the Streaming Trace data reporting MnS consumer\n(a.k.a. streaming target).\nThis attribute shall be present if file based trace data reporting is\nsupported and tjTraceReportingFormat set to 'file based' or when\ntjJobType is set to Logged MDT or Logged MBSFN MDT."
+                        },
+                        "reference": {
+                            "text": "Clause 5.9 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjTraceCollectionEntityAddress",
+                        "when": {
+                            "@condition": "./tjTraceReportingFormat  = \"FILE_BASED\" or ./tjJobType = \"LOGGED_MDT_ONLY\" or ./tjJobType = \"LOGGED_MBSFN_MDT\""
+                        },
+                        "type": {
+                            "@name": "union",
+                            "type": [
+                                {
+                                    "@name": "inet:uri"
+                                },
+                                {
+                                    "@name": "inet:ip-address"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies the address of the Trace Collection Entity when\nthe attribute tjTraceReportingFormat is configured for the file-based\nreporting. The attribute is applicable for both Trace and MDT."
+                        },
+                        "reference": {
+                            "text": "Clause 5.9 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjTraceDepth",
+                        "when": {
+                            "@condition": "./tjJobType = \"TRACE_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "MINIMUM"
+                                },
+                                {
+                                    "@name": "MEDIUM"
+                                },
+                                {
+                                    "@name": "MAXIMUM"
+                                },
+                                {
+                                    "@name": "VENDORMINIMUM"
+                                },
+                                {
+                                    "@name": "VENDORMEDIUM"
+                                },
+                                {
+                                    "@name": "VENDORMAXIMUM"
+                                }
+                            ]
+                        },
+                        "default": {
+                            "@value": "MAXIMUM"
+                        },
+                        "description": {
+                            "text": "Specifies how detailed information should be recorded in the\nNetwork Element. The Trace Depth is a paremeter for Trace Session level,\ni.e., the Trace Depth is the same for all of the NEs to be traced in\nthe same Trace Session.\nThe attribute is applicable only for Trace, otherwise it carries a null\nsemantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.3 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjTraceReference",
+                        "type": {
+                            "@name": "uint64"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "A globally unique identifier, which uniquely identifies the\nTrace Session that is created by the TraceJob.\nIn case of shared network, it is the MCC and MNC of the Participating\nOperator that request the trace session that shall be provided.\nThe attribute is applicable for both Trace and MDT."
+                        }
+                    },
+                    {
+                        "@name": "tjTraceReportingFormat",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "FILE_BASED"
+                                },
+                                {
+                                    "@name": "STREAMING"
+                                }
+                            ]
+                        },
+                        "default": {
+                            "@value": "FILE_BASED"
+                        },
+                        "description": {
+                            "text": "Specifies the trace reporting format - streaming trace\nreporting or file-based trace reporting"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 32.422 clause 5.11"
+                        }
+                    },
+                    {
+                        "@name": "tjTriggeringEvent",
+                        "when": {
+                            "@condition": "./tjJobType = \"TRACE\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "string"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies the triggering event parameter of the trace session.\nThe attribute is applicable only for Trace. In case this attribute is\nnot used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.1 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTAnonymizationOfData",
+                        "when": {
+                            "@condition": "./tjMDTAreaScope"
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "NO_IDENTITY"
+                                },
+                                {
+                                    "@name": "TAC_OF_IMEI"
+                                }
+                            ]
+                        },
+                        "default": {
+                            "@value": "NO_IDENTITY"
+                        },
+                        "description": {
+                            "text": "Specifies level of MDT anonymization."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 32.422 clause 5.10.12."
+                        }
+                    },
+                    {
+                        "@name": "tjMDTCollectionPeriodRrmLte",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "250|500|1000|2000|3000|4000|6000|8000|12000|16000|20000|24000|28000|32000|64000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Specifies the collection period for collecting RRM configured\nmeasurement samples for M2, M3 in LTE. The attribute is applicable only\nfor Immediate MDT. In case this attribute is not used, it carries a\nnull semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.20 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTCollectionPeriodRrmUmts",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1024|1280|2048|2560|5120|10240|60000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Specifies the collection period for collecting RRM configured\nmeasurement samples for M3, M4, M5 in UMTS. The attribute is applicable\nonly for Immediate MDT. In case this attribute is not used, it carries\na null semantic"
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.21 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTCollectionPeriodRrmNR",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1024|2048|5120|10240|60000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "description": {
+                            "text": "Specifies the collection period for collecting RRM configured\nmeasurement samples for M4, M5 in NR. The attribute is applicable only\nfor Immediate MDT. In case this attribute is not used, it carries a\nnull semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.30 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTEventListForTriggeredMeasurement",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\""
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "OUT_OF_COVERAGE"
+                                },
+                                {
+                                    "@name": "A2_EVENT"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies event types for event triggered measurement in the\ncase of logged NR MDT.  Each trace session may configure at most one\nevent. The UE shall perform logging of measurements only upon certain\ncondition being fulfilled:\n- Out of coverage.\n- A2 event."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.28 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTEventThreshold",
+                        "type": {
+                            "@name": "int64"
+                        },
+                        "description": {
+                            "text": "Specifies the threshold which should trigger the reporting\nin case A2 event reporting in LTE or 1F/1l event in UMTS. The attribute\nis applicable only for Immediate MDT and when reportingTrigger is\nconfigured for A2 event in LTE or 1F event or 1l event in UMTS. In\ncase this attribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clauses 5.10.7 and 5.10.7a of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTListOfMeasurements",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT\""
+                        },
+                        "type": {
+                            "@name": "int64"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the UE measurements that shall be collected in\nan Immediate MDT job. The attribute is applicable only for Immediate MDT.\nIn case this attribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 32.422 clause 5.10.3"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTLoggingDuration",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\" or ./tjJobType = \"LOGGED_MBSFN_MDT\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "600|1200|2400|3600|5400|7200"
+                            }
+                        },
+                        "units": {
+                            "@name": "seconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies how long the MDT configuration is valid at the\nUE in case of Logged MDT. The attribute is applicable only for\nLogged MDT and Logged MBSFN MDT. In case this attribute is not used, it\ncarries a null semantic."
+                        },
+                        "reference": {
+                            "text": "5.10.9 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTLoggingInterval",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\" or ./tjJobType = \"LOGGED_MBSFN_MDT\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1280|2560|5120|10240|20480|30720|40960|61440"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Specifies the periodicty for Logged MDT. The attribute is\napplicable only for Logged MDT and Logged MBSFN MDT. In case this\nattribute is not used, it carries a null semantic"
+                        },
+                        "reference": {
+                            "text": "5.10.8 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTMeasurementPeriodLTE",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "1024|1280|2048|2560|5120|10240|60000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the measurement period for the Data Volume and\nScheduled IP throughput measurements for MDT taken by the eNB.\nThe attribute is applicable only for Immediate MDT. In case this\nattribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.23 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTMeasurementPeriodUMTS",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "250|500|1000|2000|3000|4000|6000|8000|12000|16000|20000|24000|28000|32000|64000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the measurement period for the Data Volume and\nThroughput measurements for MDT taken by RNC.\nThe attribute is applicable only for Immediate MDT. In case this\nattribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.22 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTMeasurementQuantity",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "uint64"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the measurements that are collected in an MDT\njob for a UMTS MDT configured for event triggered reporting."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.15 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTPositioningMethod",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" or ./tjJobType = \"IMMEDIATE_MDT_AND_TRACE\""
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "GNSS"
+                                },
+                                {
+                                    "@name": "E_CELL_ID"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies what positioning method should be used in the\nMDT job."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.19 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTReportAmount",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" and ./tjMDTReportingTrigger = \"PERIODICAL\""
+                        },
+                        "type": {
+                            "@name": "union",
+                            "type": [
+                                {
+                                    "@name": "uint32",
+                                    "range": {
+                                        "@value": "1|4|8|16|32|64"
+                                    }
+                                },
+                                {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "INFINITY"
+                                    }
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the number of measurement reports that shall be\ntaken for periodic reporting while the UE is in connected.\nThe attribute is applicable only for Immediate MDT and when\ntjMDTReportingTrigger is configured for periodical measurements. In\ncase this attribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.6 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTReportingTrigger",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\""
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "PERIODICAL"
+                                },
+                                {
+                                    "@name": "A2_FOR_LTE"
+                                },
+                                {
+                                    "@name": "1F_FOR_UMTS"
+                                },
+                                {
+                                    "@name": "1I_FOR_UMTS_MCPS_TDD"
+                                },
+                                {
+                                    "@name": "A2_TRIGGERED_PERIODIC_FOR_LTE"
+                                },
+                                {
+                                    "@name": "ALL_CONFIGURED_RRM_FOR_LTE"
+                                },
+                                {
+                                    "@name": "ALL_CONFIGURED_RRM_FOR_UMTS"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "It specifies whether periodic or event based measurements\nshould be collected.\nThe attribute is applicable only for Immediate MDT and when the\ntjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE)\nor M2 (only for UMTS). In case this attribute is not used, it carries\na null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.4 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTReportInterval",
+                        "when": {
+                            "@condition": "./tjJobType = \"IMMEDIATE_MDT_ONLY\" and ./tjMDTReportingTrigger = \"PERIODICAL\""
+                        },
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "120|240|250|480|500|640|1000|1024|2000|2048|3000|4000|5120|6000|8000|10240|12000|16000|20000|24000|28000|32000|60000|64000|360000|720000|1800000|3600000"
+                            }
+                        },
+                        "units": {
+                            "@name": "milliseconds"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the interval between the periodical measurements\nthat shall be taken when the UE is in connected mode.\nThe attribute is applicable only for Immediate MDT and when\ntjMDTReportingTrigger is configured for periodical measurements. In case\nthis attribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "5.10.5 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTReportType",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\""
+                        },
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "PERIODICAL"
+                                },
+                                {
+                                    "@name": "EVENT_TRIGGERED"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies report type for logged NR MDT"
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.27 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTSensorInformation",
+                        "type": {
+                            "@name": "bits",
+                            "bit": [
+                                {
+                                    "@name": "BAROMETRIC_PRESSURE"
+                                },
+                                {
+                                    "@name": "UE_SPEED"
+                                },
+                                {
+                                    "@name": "UE_ORIENTATION"
+                                }
+                            ]
+                        },
+                        "default": {
+                            "@value": ""
+                        },
+                        "description": {
+                            "text": "It specifies which sensor information shall be included in\nlogged NR MDT and immediate NR MDT measurement if they are available.\nThe following sensor measurement can be included or excluded for the UE."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.29 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTTraceCollectionEntityID",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\" or ./tjJobType = \"LOGGED_MBSFN_MDT\""
+                        },
+                        "type": {
+                            "@name": "uint8"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It specifies the TCE Id which is sent to the UE in Logged MDT."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.11 of 3GPP TS 32.422"
+                        }
+                    }
+                ],
+                "list": [
+                    {
+                        "@name": "tjListOfInterfaces",
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "must": {
+                            "@condition": "count(MSCServerInterfaces)+count(MGWInterfaces)+count(RNCInterfaces)+count(SGSNInterfaces)+count(GGSNInterfaces)+count(S-CSCFInterfaces)+count(P-CSCFInterfaces)+count(I-CSCFInterfaces)+count(MRFCInterfaces)+count(MGCFInterfaces)+count(IBCFInterfaces)+count(E-CSCFInterfaces)+count(BGCFInterfaces)+count(ASInterfaces)+count(HSSInterfaces)+count(EIRInterfaces)+count(BM-SCInterfaces)+count(MMEInterfaces)+count(SGWInterfaces)+count(PDN_GWInterfaces)+count(eNBInterfaces)+count(en-gNBInterfaces)+count(AMFInterfaces)+count(AUSFInterfaces)+count(NEFInterfaces)+count(NRFInterfaces)+count(NSSFInterfaces)+count(PCFInterfaces)+count(SMFInterfaces)+count(SMSFInterfaces)+count(UDMInterfaces)+count(UPFInterfaces)+count(ng-eNBInterfaces)+count(gNB-CU-CPInterfaces)+count(gNB-CU-UPInterfaces)+count(gNB-DUInterfaces)"
+                        },
+                        "description": {
+                            "text": "Specifies the interfaces that need to be traced in the given\nManagedEntityFunction.The attribute is applicable only for Trace. In\ncase this attribute is not used, it carries a null semantic."
+                        },
+                        "reference": {
+                            "text": "Clause 5.5 of 3GPP TS 32.422 for additional details on the\nallowed values."
+                        },
+                        "leaf": {
+                            "@name": "idx",
+                            "type": {
+                                "@name": "uint32"
+                            }
+                        },
+                        "leaf-list": [
+                            {
+                                "@name": "MSCServerInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "A"
+                                        },
+                                        {
+                                            "@name": "Iu-CS"
+                                        },
+                                        {
+                                            "@name": "Mc"
+                                        },
+                                        {
+                                            "@name": "MAP-G"
+                                        },
+                                        {
+                                            "@name": "MAP-B"
+                                        },
+                                        {
+                                            "@name": "MAP-E"
+                                        },
+                                        {
+                                            "@name": "MAP-F"
+                                        },
+                                        {
+                                            "@name": "MAP-D"
+                                        },
+                                        {
+                                            "@name": "MAP-C"
+                                        },
+                                        {
+                                            "@name": "CAP"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "MGWInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mc"
+                                        },
+                                        {
+                                            "@name": "Nb-UP"
+                                        },
+                                        {
+                                            "@name": "Iu-UP"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "RNCInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Iu-CS"
+                                        },
+                                        {
+                                            "@name": "Iu-PS"
+                                        },
+                                        {
+                                            "@name": "Iur"
+                                        },
+                                        {
+                                            "@name": "Iub"
+                                        },
+                                        {
+                                            "@name": "Uu"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "SGSNInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Gb"
+                                        },
+                                        {
+                                            "@name": "Iu-PS"
+                                        },
+                                        {
+                                            "@name": "Gn"
+                                        },
+                                        {
+                                            "@name": "MAP-Gr"
+                                        },
+                                        {
+                                            "@name": "MAP-Gd"
+                                        },
+                                        {
+                                            "@name": "MAP-Gf"
+                                        },
+                                        {
+                                            "@name": "Ge"
+                                        },
+                                        {
+                                            "@name": "Gs"
+                                        },
+                                        {
+                                            "@name": "S6d"
+                                        },
+                                        {
+                                            "@name": "S4"
+                                        },
+                                        {
+                                            "@name": "S3"
+                                        },
+                                        {
+                                            "@name": "S13"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "GGSNInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Gn"
+                                        },
+                                        {
+                                            "@name": "Gi"
+                                        },
+                                        {
+                                            "@name": "Gmb"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "S-CSCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mw"
+                                        },
+                                        {
+                                            "@name": "Mg"
+                                        },
+                                        {
+                                            "@name": "Mr"
+                                        },
+                                        {
+                                            "@name": "Mi"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "P-CSCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Gm"
+                                        },
+                                        {
+                                            "@name": "Mw"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "I-CSCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Cx"
+                                        },
+                                        {
+                                            "@name": "Dx"
+                                        },
+                                        {
+                                            "@name": "Mg"
+                                        },
+                                        {
+                                            "@name": "Mw"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "MRFCInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mp"
+                                        },
+                                        {
+                                            "@name": "Mr"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "MGCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mg"
+                                        },
+                                        {
+                                            "@name": "Mj"
+                                        },
+                                        {
+                                            "@name": "Mn"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "IBCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Ix"
+                                        },
+                                        {
+                                            "@name": "Mx"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "E-CSCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mw"
+                                        },
+                                        {
+                                            "@name": "Ml"
+                                        },
+                                        {
+                                            "@name": "Mm"
+                                        },
+                                        {
+                                            "@name": "Mi-Mg"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "BGCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Mi"
+                                        },
+                                        {
+                                            "@name": "Mj"
+                                        },
+                                        {
+                                            "@name": "Mk"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "ASInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "Dh"
+                                        },
+                                        {
+                                            "@name": "Sh"
+                                        },
+                                        {
+                                            "@name": "ISC"
+                                        },
+                                        {
+                                            "@name": "Ut"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "HSSInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "MAP-C"
+                                        },
+                                        {
+                                            "@name": "MAP-D"
+                                        },
+                                        {
+                                            "@name": "Gc"
+                                        },
+                                        {
+                                            "@name": "Gr"
+                                        },
+                                        {
+                                            "@name": "Cx"
+                                        },
+                                        {
+                                            "@name": "S6d"
+                                        },
+                                        {
+                                            "@name": "S6a"
+                                        },
+                                        {
+                                            "@name": "Sh"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "EIRInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "MAP-F"
+                                        },
+                                        {
+                                            "@name": "S13"
+                                        },
+                                        {
+                                            "@name": "MAP-Gf"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "BM-SCInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "Gmb"
+                                    }
+                                }
+                            },
+                            {
+                                "@name": "MMEInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "S1-MME"
+                                        },
+                                        {
+                                            "@name": "S3"
+                                        },
+                                        {
+                                            "@name": "S6a"
+                                        },
+                                        {
+                                            "@name": "S10"
+                                        },
+                                        {
+                                            "@name": "S11"
+                                        },
+                                        {
+                                            "@name": "S13"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "SGWInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "S4"
+                                        },
+                                        {
+                                            "@name": "S5"
+                                        },
+                                        {
+                                            "@name": "S8"
+                                        },
+                                        {
+                                            "@name": "S11"
+                                        },
+                                        {
+                                            "@name": "Gxc"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "PDN_GWInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "S2a"
+                                        },
+                                        {
+                                            "@name": "S2b"
+                                        },
+                                        {
+                                            "@name": "S2c"
+                                        },
+                                        {
+                                            "@name": "S5"
+                                        },
+                                        {
+                                            "@name": "S6b"
+                                        },
+                                        {
+                                            "@name": "Gx"
+                                        },
+                                        {
+                                            "@name": "S8"
+                                        },
+                                        {
+                                            "@name": "SGi"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "eNBInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "S1-MME"
+                                        },
+                                        {
+                                            "@name": "X2"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "en-gNBInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "S1-MME"
+                                        },
+                                        {
+                                            "@name": "X2"
+                                        },
+                                        {
+                                            "@name": "Uu"
+                                        },
+                                        {
+                                            "@name": "F1-C"
+                                        },
+                                        {
+                                            "@name": "E1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "AMFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N1"
+                                        },
+                                        {
+                                            "@name": "N2"
+                                        },
+                                        {
+                                            "@name": "N8"
+                                        },
+                                        {
+                                            "@name": "N11"
+                                        },
+                                        {
+                                            "@name": "N12"
+                                        },
+                                        {
+                                            "@name": "N14"
+                                        },
+                                        {
+                                            "@name": "N15"
+                                        },
+                                        {
+                                            "@name": "N20"
+                                        },
+                                        {
+                                            "@name": "N22"
+                                        },
+                                        {
+                                            "@name": "N26"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "AUSFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N12"
+                                        },
+                                        {
+                                            "@name": "N13"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "NEFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N29"
+                                        },
+                                        {
+                                            "@name": "N30"
+                                        },
+                                        {
+                                            "@name": "N33"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "NRFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "N27"
+                                    }
+                                }
+                            },
+                            {
+                                "@name": "NSSFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N22"
+                                        },
+                                        {
+                                            "@name": "N31"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "PCFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N5"
+                                        },
+                                        {
+                                            "@name": "N7"
+                                        },
+                                        {
+                                            "@name": "N15"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "SMFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N4"
+                                        },
+                                        {
+                                            "@name": "N7"
+                                        },
+                                        {
+                                            "@name": "N10"
+                                        },
+                                        {
+                                            "@name": "N11"
+                                        },
+                                        {
+                                            "@name": "S5-C"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "SMSFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N20"
+                                        },
+                                        {
+                                            "@name": "N21"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "UDMInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "N8"
+                                        },
+                                        {
+                                            "@name": "N10"
+                                        },
+                                        {
+                                            "@name": "N13"
+                                        },
+                                        {
+                                            "@name": "N21"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "UPFInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "N4"
+                                    }
+                                }
+                            },
+                            {
+                                "@name": "ng-eNBInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "NG-C"
+                                        },
+                                        {
+                                            "@name": "Xn-C"
+                                        },
+                                        {
+                                            "@name": "Uu"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "gNB-CU-CPInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "NG-C"
+                                        },
+                                        {
+                                            "@name": "Xn-C"
+                                        },
+                                        {
+                                            "@name": "Uu"
+                                        },
+                                        {
+                                            "@name": "F1-C"
+                                        },
+                                        {
+                                            "@name": "E1"
+                                        },
+                                        {
+                                            "@name": "X2-C"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "gNB-CU-UPInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "E1"
+                                    }
+                                }
+                            },
+                            {
+                                "@name": "gNB-DUInterfaces",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": {
+                                        "@name": "F1-C"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@name": "tjTraceTarget",
+                        "key": {
+                            "@value": "targetIdType targetIdValue"
+                        },
+                        "max-elements": {
+                            "@value": "1"
+                        },
+                        "leaf": [
+                            {
+                                "@name": "targetIdType",
+                                "type": {
+                                    "@name": "enumeration",
+                                    "enum": [
+                                        {
+                                            "@name": "IMSI"
+                                        },
+                                        {
+                                            "@name": "IMEI"
+                                        },
+                                        {
+                                            "@name": "IMEISV"
+                                        },
+                                        {
+                                            "@name": "PUBLIC_ID"
+                                        },
+                                        {
+                                            "@name": "UTRAN_CELL"
+                                        },
+                                        {
+                                            "@name": "E_UTRAN_CELL"
+                                        },
+                                        {
+                                            "@name": "NG_RAN_CELL"
+                                        },
+                                        {
+                                            "@name": "ENB"
+                                        },
+                                        {
+                                            "@name": "RNC"
+                                        },
+                                        {
+                                            "@name": "GNB"
+                                        },
+                                        {
+                                            "@name": "SUPI"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "@name": "targetIdValue",
+                                "type": {
+                                    "@name": "string"
+                                }
+                            }
+                        ],
+                        "description": {
+                            "text": "Specifies the target object of the Trace and MDT. The\nattribute is applicable for both Trace and MDT. This attribute\nincludes the ID type of the target as an enumeration and the ID value.\n\nThe tjTraceTarget shall be public ID in case of a Management Based\nActivation is done to an ScscfFunction. The tjTraceTarget shall be\ncell only in case of the UTRAN cell traffic trace function.\n\nThe tjTraceTarget shall be E-UtranCell only in case of E-UTRAN cell\ntraffic trace function.The tjTraceTarget shall be either IMSI or\nIMEI(SV) if the Trace Session is activated to any of the following\nManagedEntity(ies):\n-\tHssFunction\n-\tMscServerFunction\n-\tSgsnFunction\n-\tGgsnFunction\n-\tBmscFunction\n-\tRncFunction\n-\tMmeFunction\n\nThe tjTraceTarget shall be IMSI if the Trace Session is activated to a\nManagedEntity playing a role of ServinGWFunction.\n\nIn case of signaling based Trace/MDT, the tjTraceTarget attribute shall be\nable to carry (IMSI or IMEI(SV)or SUPI), the tjMDTAreaScope attribute shall be\nable to carry a list of (cell or E-UtranCell or NRCellDU or TA/LA/RA).\n\nIn case of management based Immediate MDT, the tjTraceTarget attribute\nshall be null value, the tjMDTAreaScope attribute shall carry a list of\n(Utrancell or E-UtranCell or NRCellDU).\n\nIn case of management based Logged MDT, the tjTraceTarget attribute\nshall carry an eBs or a RNC or gNBs. The Logged MDT should be initiated on\nthe specified eNB or RNC or gNB in tjTraceTarget. The tjMDTAreaScope attribute\nshall carry a list of (Utrancell or E-UtranCell or NRCellDU or TA/LA/RA).\n\nIn case of RLF reporting, or RCEF reporting,  the tjTraceTarget attribute\nshall be null value, the tjMDTAreaScope attribute shall carry one or\nlist of eNBs/gNBs"
+                        },
+                        "reference": {
+                            "text": "3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTAreaConfigurationForNeighCell",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\""
+                        },
+                        "key": {
+                            "@value": "idx"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "leaf": [
+                            {
+                                "@name": "idx",
+                                "type": {
+                                    "@name": "uint32"
+                                }
+                            },
+                            {
+                                "@name": "frequency",
+                                "type": {
+                                    "@name": "string"
+                                }
+                            },
+                            {
+                                "@name": "cell",
+                                "type": {
+                                    "@name": "string"
+                                }
+                            }
+                        ],
+                        "description": {
+                            "text": "It specifies the area for which UE is requested to perform\nmeasurement logging for neighbour cells which have list of frequencies.\nIf it is not configured, the UE shall perform measurement logging for\nall the neighbour cells.\n\nApplicable only to NR Logged MDT."
+                        },
+                        "reference": {
+                            "text": "3GPP TS 32.422 clause 5.10.26."
+                        }
+                    },
+                    {
+                        "@name": "tjMDTPLMList",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MDT_ONLY\""
+                        },
+                        "key": {
+                            "@value": "mcc mnc"
+                        },
+                        "uses": {
+                            "@name": "types3gpp:PLMNId"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "16"
+                        },
+                        "description": {
+                            "text": "It indicates the PLMNs where measurement collection, status\nindication and log reporting is allowed."
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.24 of 3GPP TS 32.422"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "tjListOfNeTypes",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "MSC_SERVER"
+                                },
+                                {
+                                    "@name": "SGSN"
+                                },
+                                {
+                                    "@name": "MGW"
+                                },
+                                {
+                                    "@name": "GGSN"
+                                },
+                                {
+                                    "@name": "RNC"
+                                },
+                                {
+                                    "@name": "BM_SC"
+                                },
+                                {
+                                    "@name": "MME"
+                                },
+                                {
+                                    "@name": "SGW"
+                                },
+                                {
+                                    "@name": "PGW"
+                                },
+                                {
+                                    "@name": "ENB"
+                                },
+                                {
+                                    "@name": "EN_GNB"
+                                },
+                                {
+                                    "@name": "GNB_CU_CP"
+                                },
+                                {
+                                    "@name": "GNB_CU_UP"
+                                },
+                                {
+                                    "@name": "GNB_DU"
+                                }
+                            ]
+                        },
+                        "description": {
+                            "text": "Specifies in which type of ManagedFunction the trace should\nbe activated. The attribute is applicable only for Trace with\nSignalling Based Trace activation. In case this attribute is not used,\nit carries a null semantic"
+                        },
+                        "reference": {
+                            "text": "Clause 5.4 of 3GPP TS 32.422 for additional details on the\nallowed values"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTAreaScope",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "specifies MDT area scope when activates an MDT job.\n\nFor RLF and RCEF reporting it specifies the eNB or list of eNBs where the\nRLF or RCEF reports should be collected.\n\n\nList of cells/TA/LA/RA for signaling based MDT or management based Logged\nMDT.\n\nList of cells for management based Immediate MDT.\n\nCell, TA, LA, RA are mutually exclusive.\n\nOne or list of eNBs for RLF and RCEFreporting"
+                        },
+                        "reference": {
+                            "text": "Clause 5.10.2 of 3GPP TS 32.422"
+                        }
+                    },
+                    {
+                        "@name": "tjMDTMBSFNAreaList",
+                        "when": {
+                            "@condition": "./tjJobType = \"LOGGED_MBSFN_MDT\""
+                        },
+                        "type": {
+                            "@name": "string"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "max-elements": {
+                            "@value": "8"
+                        },
+                        "description": {
+                            "text": "The MBSFN Area consists of a MBSFN Area ID and Carrier\nFrequency (EARFCN). The target MBSFN area List can have up to 8 entries.\nThis parameter is applicable only if the job type is Logged MBSFN MDT."
+                        },
+                        "reference": {
+                            "text": "5.10.25 of 3GPP TS 32.422"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "TraceSubtree",
+                "description": {
+                    "text": "Contains classes that manage Tracing.\nShould be used in all  classes (or classes inheriting from)\n- SubNnetwork\n- ManagedElement\n- ManagedFunction\n\nIf a YANG module wants to augment these classes/list/groupings they must\naugment all user classes!"
+                },
+                "list": {
+                    "@name": "TraceJob",
+                    "description": {
+                        "text": "Represents the Trace Control and Configuration parameters of a\nparticular Trace Job (see TS 32.421 and TS 32.422 for details).\n\nTo activate Trace Jobs, a MnS consumer has to create TraceJob object\ninstances on the MnS producer. A MnS consumer can activate a Trace Job\nfor another MnS consumer since it is not required the value of\ntjTraceCollectionEntityAddress or tjStreamingTraceConsumerUri to be his\nown.\n\nWhen a MnS consumer wishes to deactivate a Trace Job, the MnS consumer\nshall delete the corresponding TraceJob instance.\n\nFor details of management Trace Job activation/deactivation see clause\n4.1.1.1.2 of TS 32.422.\n\nCreation and deletion of TraceJob instances by MnS consumers is optional;\nwhen not supported, the TraceJob instances may be created and deleted by\nthe system or be pre-installed."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "TraceJobGrp"
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,517 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-nrfreqrelation",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:nrfreqrel3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrfreqrelation",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbcucp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbcucpfunction",
+        "@xmlns:nrcellcu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcellcu",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-nrfreqrelation"
+        },
+        "prefix": {
+            "@value": "nrfreqrel3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbcucpfunction",
+                "prefix": {
+                    "@value": "gnbcucp3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcellcu",
+                "prefix": {
+                    "@value": "nrcellcu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the NRFreqRelation Information\nObject Class (IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-04-23",
+                "reference": {
+                    "text": "CR0281"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "NRFreqRelationGrp",
+            "description": {
+                "text": "Represents the NRFreqRelation IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "container": {
+                "@name": "offsetMO",
+                "description": {
+                    "text": "A set of offset values applicable to all measured cells\nwith reference signal(s) indicated in corresponding MeasObjectNR. It\nis used to indicate a cell, beam or measurement object specific offset\nto be applied when evaluating candidates for cell re-selection or when\nevaluating triggering conditions for measurement reporting. It is\ndefined for rsrpOffsetSSB, rsrqOffsetSSB, sinrOffsetSSB,\nrsrpOffsetCSI-RS, rsrqOffsetCSI-RS and sinrOffsetCSI-RS."
+                },
+                "reference": {
+                    "text": "offsetMO in MeasObjectNR in 3GPP TS 38.331"
+                },
+                "leaf": [
+                    {
+                        "@name": "rsrpOffsetSsb",
+                        "description": {
+                            "text": "Offset value of rsrpOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrqOffsetSsb",
+                        "description": {
+                            "text": "Offset value of rsrqOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "sinrOffsetSsb",
+                        "description": {
+                            "text": "Offset value of sinrOffsetSSB."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrpOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of rsrpOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "rsrqOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of rsrqOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    },
+                    {
+                        "@name": "sinrOffsetCsiRs",
+                        "description": {
+                            "text": "Offset value of sinrOffsetCSI-RS."
+                        },
+                        "default": {
+                            "@value": "0"
+                        },
+                        "type": {
+                            "@name": "types3gpp:QOffsetRange"
+                        }
+                    }
+                ]
+            },
+            "leaf-list": [
+                {
+                    "@name": "blackListEntry",
+                    "description": {
+                        "text": "A list of Physical Cell Identities (PCIs) that are\nblacklisted in NR measurements."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.331"
+                    },
+                    "min-elements": {
+                        "@value": "0"
+                    },
+                    "type": {
+                        "@name": "uint16",
+                        "range": {
+                            "@value": "0..1007"
+                        }
+                    }
+                },
+                {
+                    "@name": "blackListEntryIdleMode",
+                    "description": {
+                        "text": "A list of Physical Cell Identities (PCIs) that are\nblacklisted in SIB4 and SIB5."
+                    },
+                    "min-elements": {
+                        "@value": "0"
+                    },
+                    "type": {
+                        "@name": "uint16",
+                        "range": {
+                            "@value": "0..1007"
+                        }
+                    }
+                }
+            ],
+            "leaf": [
+                {
+                    "@name": "cellReselectionPriority",
+                    "description": {
+                        "text": "The absolute priority of the carrier frequency used by the\ncell reselection procedure. Value 0 means lowest priority. The value\nmust not already used by other RAT, i.e. equal priorities between RATs\nare not supported. The UE behaviour when no value is entered is\nspecified in subclause 5.2.4.1 of 3GPP TS 38.304."
+                    },
+                    "reference": {
+                        "text": "CellReselectionPriority in 3GPP TS 38.331, priority in\n3GPP TS 38.304"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    },
+                    "default": {
+                        "@value": "0"
+                    }
+                },
+                {
+                    "@name": "cellReselectionSubPriority",
+                    "description": {
+                        "text": "Indicates a fractional value to be added to the value of\ncellReselectionPriority to obtain the absolute priority of the\nconcerned carrier frequency for E-UTRA and NR."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.331"
+                    },
+                    "type": {
+                        "@name": "uint8",
+                        "range": {
+                            "@value": "2 | 4 | 6 | 8"
+                        }
+                    },
+                    "units": {
+                        "@name": "0.1"
+                    }
+                },
+                {
+                    "@name": "pMax",
+                    "description": {
+                        "text": "Used for calculation of the parameter Pcompensation\n(defined in 3GPP TS 38.304), at cell reselection to a cell."
+                    },
+                    "reference": {
+                        "text": "PEMAX in 3GPP TS 38.101-1"
+                    },
+                    "mandatory": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-30..33"
+                        }
+                    },
+                    "units": {
+                        "@name": "dBm"
+                    }
+                },
+                {
+                    "@name": "qOffsetFreq",
+                    "description": {
+                        "text": "The frequency specific offset applied when evaluating\ncandidates for cell reselection."
+                    },
+                    "mandatory": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:QOffsetRange"
+                    },
+                    "default": {
+                        "@value": "0"
+                    }
+                },
+                {
+                    "@name": "qQualMin",
+                    "description": {
+                        "text": "Indicates the minimum required quality level in the cell.\nValue 0 means that it is not sent and UE applies in such case the\n(default) value of negative infinity for Qqualmin. Sent in SIB3 or\nSIB5."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.304"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-34..-3 | 0"
+                        }
+                    },
+                    "units": {
+                        "@name": "dB"
+                    },
+                    "default": {
+                        "@value": "0"
+                    }
+                },
+                {
+                    "@name": "qRxLevMin",
+                    "description": {
+                        "text": "Indicates the required minimum received Reference Symbol\nReceived Power (RSRP) level in the NR frequency for cell reselection.\nBroadcast in SIB3 or SIB5, depending on whether the related frequency\nis intra- or inter-frequency. Resolution is 2."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "-140..-44"
+                        }
+                    },
+                    "units": {
+                        "@name": "dBm"
+                    }
+                },
+                {
+                    "@name": "threshXHighP",
+                    "description": {
+                        "text": "Specifies the Srxlev threshold used by the UE when\nreselecting towards a higher priority RAT/frequency than the current\nserving frequency. Each frequency of NR and E-UTRAN might have a\nspecific threshold. Resolution is 2."
+                    },
+                    "reference": {
+                        "text": "ThreshX, HighP in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..62"
+                        }
+                    },
+                    "units": {
+                        "@name": "dB"
+                    }
+                },
+                {
+                    "@name": "threshXHighQ",
+                    "description": {
+                        "text": "Specifies the Squal threshold used by the UE when\nreselecting towards a higher priority RAT/frequency than the current\nserving frequency. Each frequency of NR and E-UTRAN might have a\nspecific threshold."
+                    },
+                    "reference": {
+                        "text": "ThreshX, HighQ in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..31"
+                        }
+                    },
+                    "units": {
+                        "@name": "dB"
+                    }
+                },
+                {
+                    "@name": "threshXLowP",
+                    "description": {
+                        "text": "Specifies the Srxlev threshold used by the UE when\nreselecting towards a lower priority RAT/frequency than the current\nserving frequency. Each frequency of NR and E-UTRAN might have a\nspecific threshold. Resolution is 2."
+                    },
+                    "reference": {
+                        "text": "ThreshX, LowP in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..62"
+                        }
+                    },
+                    "units": {
+                        "@name": "dB"
+                    }
+                },
+                {
+                    "@name": "threshXLowQ",
+                    "description": {
+                        "text": "Specifies the Squal threshold used by the UE when\nreselecting towards a lower priority RAT/frequency than the current\nserving frequency. Each frequency of NR and E-UTRAN might have a\nspecific threshold."
+                    },
+                    "reference": {
+                        "text": "ThreshX, LowQ in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..31"
+                        }
+                    },
+                    "units": {
+                        "@name": "dB"
+                    }
+                },
+                {
+                    "@name": "tReselectionNR",
+                    "description": {
+                        "text": "Cell reselection timer for NR."
+                    },
+                    "reference": {
+                        "text": "TreselectionRAT for NR in 3GPP TS 38.331"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..7"
+                        }
+                    },
+                    "units": {
+                        "@name": "s"
+                    }
+                },
+                {
+                    "@name": "tReselectionNRSfHigh",
+                    "description": {
+                        "text": "The attribute tReselectionNr (parameter TreselectionNR in\n3GPP TS 38.304) is multiplied with this scaling factor if the UE is\nin high mobility state."
+                    },
+                    "reference": {
+                        "text": "Speed dependent ScalingFactor for TreselectionNR for high\nmobility state in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint8",
+                        "range": {
+                            "@value": "25 | 50 | 75 | 100"
+                        }
+                    },
+                    "units": {
+                        "@name": "%"
+                    }
+                },
+                {
+                    "@name": "tReselectionNRSfMedium",
+                    "description": {
+                        "text": "The attribute tReselectionNr (parameter TreselectionNR in\n3GPP TS 38.304) multiplied with this scaling factor if the UE is in\nmedium mobility state."
+                    },
+                    "reference": {
+                        "text": "Speed dependent ScalingFactor for TreselectionNR for medium\nmobility state in 3GPP TS 38.304"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint8",
+                        "range": {
+                            "@value": "25 | 50 | 75 | 100"
+                        }
+                    },
+                    "units": {
+                        "@name": "%"
+                    }
+                },
+                {
+                    "@name": "nRFrequencyRef",
+                    "description": {
+                        "text": "Reference to a corresponding NRFrequency instance."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbcucp3gpp:GNBCUCPFunction/nrcellcu3gpp:NRCellCU",
+            "list": {
+                "@name": "NRFreqRelation",
+                "description": {
+                    "text": "Together with the target NRFrequency, it represents the\nfrequency properties applicable to the referencing NRFreqRelation."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "NRFreqRelationGrp"
+                    }
+                }
+            }
+        }
+    }
+}

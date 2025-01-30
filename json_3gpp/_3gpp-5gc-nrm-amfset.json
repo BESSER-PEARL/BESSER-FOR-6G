@@ -1,0 +1,199 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-amfset",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:amfset3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-amfset",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:types5g3gpp": "urn:3gpp:sa5:_3gpp-5g-common-yang-types",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-amfset"
+        },
+        "prefix": {
+            "@value": "amfset3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-5g-common-yang-types",
+                "prefix": {
+                    "@value": "types5g3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the AMF Set which consists of some AMFs\nthat serve a given area and Network Slice."
+        },
+        "revision": [
+            {
+                "@date": "2020-11-05",
+                "reference": {
+                    "text": "CR-0412"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-11",
+                "reference": {
+                    "text": "Ericsson refactoring."
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "AMFSetGrp",
+            "description": {
+                "text": "Represents the AMFSet IOC"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "list": [
+                {
+                    "@name": "pLMNIdList",
+                    "description": {
+                        "text": "List of at most six entries of PLMN Identifiers, but at\nleast one (the primary PLMN Id). The PLMN Identifier is composed\nof a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "6"
+                    },
+                    "key": {
+                        "@value": "mcc mnc"
+                    },
+                    "uses": {
+                        "@name": "types3gpp:PLMNId"
+                    }
+                },
+                {
+                    "@name": "sNSSAIList",
+                    "description": {
+                        "text": "List of S-NSSAIs the managed object is capable of supporting.\n(Single Network Slice Selection Assistance Information)\nAn S-NSSAI has an SST (Slice/Service type) and an optional SD\n(Slice Differentiator) field."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 23.003"
+                    },
+                    "key": {
+                        "@value": "sd sst"
+                    },
+                    "uses": {
+                        "@name": "types5g3gpp:SNssai"
+                    }
+                }
+            ],
+            "leaf-list": [
+                {
+                    "@name": "nRTACList",
+                    "description": {
+                        "text": "List of Tracking Area Codes (legacy TAC or extended TAC)\nwhere the represented management function is serving."
+                    },
+                    "reference": {
+                        "text": "TS 38.413 clause 9.3.3.10"
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "type": {
+                        "@name": "types3gpp:Tac"
+                    }
+                },
+                {
+                    "@name": "aMFSetMemberList",
+                    "description": {
+                        "text": "List of DNs of AMFFunction instances of the AMFSet."
+                    },
+                    "min-elements": {
+                        "@value": "1"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "type": {
+                        "@name": "types3gpp:DistinguishedName"
+                    }
+                }
+            ],
+            "leaf": {
+                "@name": "aMFRegion",
+                "description": {
+                    "text": "The AMFRegion that the AFMSet is associated with."
+                },
+                "type": {
+                    "@name": "instance-identifier"
+                }
+            }
+        },
+        "augment": {
+            "@target-node": "/subnet3gpp:SubNetwork",
+            "list": {
+                "@name": "AMFSet",
+                "description": {
+                    "text": "5G Core AMFSet IOC"
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "AMFSetGrp"
+                    }
+                }
+            }
+        }
+    }
+}

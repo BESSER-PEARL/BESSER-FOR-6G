@@ -1,0 +1,349 @@
+{
+    "module": {
+        "@name": "_3gpp-common-managed-element",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:types3gpp": "urn:3gpp:sa5:_3gpp-common-yang-types",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:meas3gpp": "urn:3gpp:sa5:_3gpp-common-measurements",
+        "@xmlns:subscr3gpp": "urn:3gpp:sa5:_3gpp-common-subscription-control",
+        "@xmlns:fm3gpp": "urn:3gpp:sa5:_3gpp-common-fm",
+        "@xmlns:trace3gpp": "urn:3gpp:sa5:_3gpp-common-trace",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-common-managed-element"
+        },
+        "prefix": {
+            "@value": "me3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-yang-types",
+                "prefix": {
+                    "@value": "types3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-measurements",
+                "prefix": {
+                    "@value": "meas3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subscription-control",
+                "prefix": {
+                    "@value": "subscr3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-fm",
+                "prefix": {
+                    "@value": "fm3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-trace",
+                "prefix": {
+                    "@value": "trace3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines ManagedElement which will be augmented\nby other IOCs"
+        },
+        "reference": {
+            "text": "3GPP TS 28.623\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nSolution Set (SS) definitions\n\n3GPP TS 28.622\nGeneric Network Resource Model (NRM)\nIntegration Reference Point (IRP);\nInformation Service (IS)\n\n3GPP TS 28.620\nUmbrella Information Model (UIM)"
+        },
+        "revision": [
+            {
+                "@date": "2021-01-16",
+                "reference": {
+                    "text": "CR-0120"
+                }
+            },
+            {
+                "@date": "2020-08-06",
+                "reference": {
+                    "text": "CR-0102"
+                }
+            },
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0095"
+                }
+            },
+            {
+                "@date": "2020-06-08",
+                "reference": {
+                    "text": "CR-0092"
+                }
+            },
+            {
+                "@date": "2020-05-12",
+                "reference": {
+                    "text": "CR0084"
+                }
+            },
+            {
+                "@date": "2020-02-24",
+                "reference": {
+                    "text": "S5-201365"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "S5-203316"
+                }
+            },
+            {
+                "@date": "2019-05-08",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "feature": [
+            {
+                "@name": "MeasurementsUnderManagedElement",
+                "description": {
+                    "text": "The MeasurementSubtree shall be contained under\nManagedElement"
+                }
+            },
+            {
+                "@name": "SubscriptionControlUnderManagedElement",
+                "description": {
+                    "text": "The SubscriptionControlSubtree shall be contained under\nManagedElement"
+                }
+            },
+            {
+                "@name": "FmUnderManagedElement",
+                "description": {
+                    "text": "The FmSubtree shall be contained under ManagedElement"
+                }
+            },
+            {
+                "@name": "TraceUnderManagedElement",
+                "description": {
+                    "text": "The TraceSubtree shall be contained under ManageElement"
+                }
+            },
+            {
+                "@name": "DESManagementFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nEnergy Saving feature. The DESManagementFunction shall be contained under\nManagedElement."
+                }
+            },
+            {
+                "@name": "DMROFunction",
+                "description": {
+                    "text": "Class representing D-SON function of MRO feature. The\nDMROFunction shall be contained under ManagedElement."
+                }
+            },
+            {
+                "@name": "DRACHOptimizationFunction",
+                "description": {
+                    "text": "Class representing D-SON function of RACH optimization\nfeature. The DRACHOptimizationFunction shall be contained under\nManagedElement."
+                }
+            },
+            {
+                "@name": "DPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Distributed SON or Domain-Centralized SON\nfunction of PCI configuration feature. The DPCIConfigurationFunction shall\nbe contained under ManagedElement."
+                }
+            },
+            {
+                "@name": "CPCIConfigurationFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON function of PCI\nconfiguration feature. The CPCIConfigurationFunction shall be contained\nunder ManagedElement."
+                }
+            },
+            {
+                "@name": "CESManagementFunction",
+                "description": {
+                    "text": "Class representing Cross Domain-Centralized SON Energy Saving\nfeature. The CESManagementFunction shall be contained under\nManagedElement."
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "ManagedElement_Grp",
+                "description": {
+                    "text": "Abstract class representing telecommunications resources.\nAn ME communicates with a manager (directly or indirectly) for the\npurpose of being monitored and/or controlled. MEs may perform element\nmanagement functionality.\nAn ME (and its contained Function_(s)) may or may not be geographically\ndistributed. An ME (and its contained Function_(s)) is often referred\nto as a Network Element"
+                },
+                "leaf": [
+                    {
+                        "@name": "dnPrefix",
+                        "description": {
+                            "text": "Provides naming context that allows the Managed\nElements to be partitioned into logical domains.\nA Distingushed Name(DN) is defined by 3GPP TS 32.300,\nwhich splits the DN into a DN Prefix and Local DN"
+                        },
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    },
+                    {
+                        "@name": "userLabel",
+                        "description": {
+                            "text": "A user-friendly (and user assignable) name of this object."
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "locationName",
+                        "description": {
+                            "text": "The physical location (e.g. an address) of an entity\nrepresented by a (derivative of) ManagedElement_. It may contain no\ninformation to support the case where the derivative of\nManagedElement_ needs to represent a distributed multi-location NE."
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ],
+                "leaf-list": [
+                    {
+                        "@name": "managedBy",
+                        "description": {
+                            "text": "Relates to the role played by ManagementSystem_ in the\nbetween ManagedSystem_ and ManagedElement_. This attribute contains\na list of the DN(s) of the related subclasses of\nManagementSystem_ instance(s)."
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "types3gpp:DistinguishedName"
+                        }
+                    },
+                    {
+                        "@name": "managedElementTypeList",
+                        "description": {
+                            "text": "The type of functionality provided by the ManagedElement.\nIt may represent one ME functionality or a combination of\nmore than one functionality.\n1) The allowed values of this attribute are the names of the IOC(s)\nthat are (a) derived/subclassed from ManagedFunction and (b) directly\nname-contained by ManagedElement IOC (on the first level below\nManagedElement), but with the string 'Function' excluded.\n2) If a ManagedElement contains multiple instances of a ManagedFunction\nthis attribute will not contain repeated values.\n3) The capitalisation (usage of upper/lower case) of characters in this\nattribute is insignificant.  Thus, the NodeB should be case insensitive\nwhen reading these values.\n4) Two examples of allowed values are:\n-  NodeB;\n-  HLR, VLR."
+                        },
+                        "config": {
+                            "@value": "false"
+                        },
+                        "min-elements": {
+                            "@value": "1"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "ManagedElementGrp",
+                "description": {
+                    "text": "Represents telecommunications equipment or\nTMN entities within the telecommunications network providing support\nand/or service to the subscriber."
+                },
+                "uses": [
+                    {
+                        "@name": "ManagedElement_Grp"
+                    },
+                    {
+                        "@name": "meas3gpp:SupportedPerfMetricGroupGrp"
+                    }
+                ],
+                "leaf": [
+                    {
+                        "@name": "vendorName",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "userDefinedState",
+                        "type": {
+                            "@name": "string"
+                        },
+                        "description": {
+                            "text": "An operator defined state for operator specific usage"
+                        }
+                    },
+                    {
+                        "@name": "swVersion",
+                        "config": {
+                            "@value": "false"
+                        },
+                        "type": {
+                            "@name": "string"
+                        }
+                    },
+                    {
+                        "@name": "priorityLabel",
+                        "type": {
+                            "@name": "uint32"
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        }
+                    }
+                ]
+            }
+        ],
+        "list": {
+            "@name": "ManagedElement",
+            "description": {
+                "text": "Represents telecommunications equipment or TMN entities within\nthe telecommunications network providing support and/or service to the\nsubscriber. An ManagedElement IOC is used to represent a Network Element\ndefined in TS 32.101 including virtualizeation or non-virtualization\nscenario. An ManagedElement instance is used for communicating with a\nmanager (directly or indirectly) over one or more management interfaces\nfor the purpose of being monitored and/or controlled. ManagedElement may\nor may not additionally perform element management functionality.\nAn ManagedElement contains equipment that may or may not be geographically\ndistributed.\n\nA telecommunication equipment has software and hardware components. The\nManagedElement IOC described above represents following two case:\n- In the case when the software component is designed to run on dedicated\nhardware component, the ManagedElement IOC description includes both\nsoftware and hardware components.\n- In the case when the software is designed to run on ETSI NFV defined\nNFVI [15], the ManagedElement IOC description would exclude the NFVI\ncomponent supporting the above  mentioned subject software.\n\nA ManagedElement may be contained in either a SubNetwork or in a MeContext\ninstance. A single ManagedElement may also exist stand-alone with no\nparent at all.\n\nThe relation of ManagedElement IOC and ManagedFunction IOC can be\ndescribed as following:\n- A ManaagedElement instance may have 1..1 containment relationship to a\nManagedFunction instance. In this case, the ManagedElement IOC may be\nused to represent a NE with single functionality. For example, a\nManagedElement is used to represent the 3GPP defined RNC node;\n- A ManagedElement instance may have 1..N containment relationship to\nmultiple ManagedFunction IOC instances. In this case, the ManagedElement\nIOC may be used to represent a NE with combined ManagedFunction\nfuncationality (as indicated by the managedElementType attribute and the\ncontained instances of different ManagedFunction IOCs).For example, a\nManagedElement is used to represent the combined functionality of 3GPP\ndefined gNBCUCPFuntion, gNBCUUPFunction and gNBDUFunction"
+            },
+            "key": {
+                "@value": "id"
+            },
+            "uses": [
+                {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                {
+                    "@name": "meas3gpp:MeasurementSubtree",
+                    "if-feature": {
+                        "@name": "MeasurementsUnderManagedElement"
+                    }
+                },
+                {
+                    "@name": "subscr3gpp:SubscriptionControlSubtree",
+                    "if-feature": {
+                        "@name": "SubscriptionControlUnderManagedElement"
+                    }
+                },
+                {
+                    "@name": "fm3gpp:FmSubtree",
+                    "if-feature": {
+                        "@name": "FmUnderManagedElement"
+                    }
+                },
+                {
+                    "@name": "trace3gpp:TraceSubtree",
+                    "if-feature": {
+                        "@name": "TraceUnderManagedElement"
+                    }
+                }
+            ],
+            "container": {
+                "@name": "attributes",
+                "uses": {
+                    "@name": "ManagedElementGrp"
+                }
+            }
+        }
+    }
+}

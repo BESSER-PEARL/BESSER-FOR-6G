@@ -1,0 +1,255 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-bwp",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:bwp3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-bwp",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-bwp"
+        },
+        "prefix": {
+            "@value": "bwp3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the BWP Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2020-11-17",
+                "reference": {
+                    "text": "CR-0410"
+                }
+            },
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "reference": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "typedef": [
+            {
+                "@name": "CyclicPrefix",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "NORMAL"
+                        },
+                        {
+                            "@name": "EXTENDED"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "BwpContext",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "DL"
+                        },
+                        {
+                            "@name": "UL"
+                        },
+                        {
+                            "@name": "SUL"
+                        }
+                    ]
+                }
+            },
+            {
+                "@name": "IsInitialBwp",
+                "type": {
+                    "@name": "enumeration",
+                    "enum": [
+                        {
+                            "@name": "INITIAL"
+                        },
+                        {
+                            "@name": "OTHER"
+                        }
+                    ]
+                }
+            }
+        ],
+        "grouping": {
+            "@name": "BWPGrp",
+            "description": {
+                "text": "Represents the BWP IOC."
+            },
+            "reference": {
+                "text": "3GPP TS 28.541"
+            },
+            "uses": {
+                "@name": "mf3gpp:ManagedFunctionGrp"
+            },
+            "leaf": [
+                {
+                    "@name": "bwpContext",
+                    "description": {
+                        "text": "Identifies whether the object is used for downlink, uplink\nor supplementary uplink."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "BwpContext"
+                    }
+                },
+                {
+                    "@name": "isInitialBwp",
+                    "description": {
+                        "text": "Identifies whether the object is used for initial or other\nBWP."
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "IsInitialBwp"
+                    }
+                },
+                {
+                    "@name": "subCarrierSpacing",
+                    "description": {
+                        "text": "Subcarrier spacing configuration for a BWP."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.104"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "15 | 30 | 60 | 120"
+                        }
+                    },
+                    "units": {
+                        "@name": "kHz"
+                    }
+                },
+                {
+                    "@name": "cyclicPrefix",
+                    "description": {
+                        "text": "Cyclic prefix, which may be normal or extended."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 38.211"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "CyclicPrefix"
+                    }
+                },
+                {
+                    "@name": "startRB",
+                    "description": {
+                        "text": "Offset in common resource blocks to common resource block 0\nfor the applicable subcarrier spacing for a BWP."
+                    },
+                    "reference": {
+                        "text": "N_BWP_start in 3GPP TS 38.211"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    }
+                },
+                {
+                    "@name": "numberOfRBs",
+                    "description": {
+                        "text": "Number of physical resource blocks for a BWP."
+                    },
+                    "reference": {
+                        "text": "N_BWP_size in 3GPP TS 38.211"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32"
+                    }
+                }
+            ]
+        },
+        "augment": {
+            "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction",
+            "list": {
+                "@name": "BWP",
+                "description": {
+                    "text": "Represents a bandwidth part (BWP)."
+                },
+                "key": {
+                    "@value": "id"
+                },
+                "uses": [
+                    {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    {
+                        "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                    }
+                ],
+                "container": {
+                    "@name": "attributes",
+                    "uses": {
+                        "@name": "BWPGrp"
+                    }
+                }
+            }
+        }
+    }
+}

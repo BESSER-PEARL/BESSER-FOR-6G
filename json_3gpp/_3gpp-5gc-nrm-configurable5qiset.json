@@ -1,0 +1,258 @@
+{
+    "module": {
+        "@name": "_3gpp-5gc-nrm-configurable5qiset",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:Conf5QIs3gpp": "urn:3gpp:sa5:_3gpp-5gc-nrm-configurable5qiset",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-5gc-nrm-configurable5qiset"
+        },
+        "prefix": {
+            "@value": "Conf5QIs3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3gpp SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "This IOC represents the non-standardized 5QIs, including\ntheir QoS characteristics, that need to be pre-configured\n(and configurable) to the 5G NFs."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541"
+        },
+        "revision": [
+            {
+                "@date": "2020-08-03",
+                "reference": {
+                    "text": "CR-0321"
+                }
+            },
+            {
+                "@date": "2020-06-03",
+                "reference": {
+                    "text": "CR-0286"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "PacketErrorRate",
+                "leaf": [
+                    {
+                        "@name": "scalar",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..9"
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "The Packet Error Rate of a 5QI expressed as Scalar x 10-k\nwhere k is the Exponent."
+                        }
+                    },
+                    {
+                        "@name": "exponent",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..9"
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "The Packet Error Rate of a 5QI expressed as Scalar x 10-k,\nwhere k is the Exponent."
+                        }
+                    }
+                ]
+            },
+            {
+                "@name": "FiveQICharacteristics",
+                "leaf": [
+                    {
+                        "@name": "fiveQIValue",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..255"
+                            }
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "Identifies the 5QI value."
+                        }
+                    },
+                    {
+                        "@name": "resourceType",
+                        "type": {
+                            "@name": "enumeration",
+                            "enum": [
+                                {
+                                    "@name": "GBR"
+                                },
+                                {
+                                    "@name": "NON_GBR"
+                                }
+                            ]
+                        },
+                        "mandatory": {
+                            "@value": "true"
+                        },
+                        "description": {
+                            "text": "It indicates the Resource Type of a 5QI, as specified\nin TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "priorityLevel",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..127"
+                            }
+                        }
+                    },
+                    {
+                        "@name": "packetDelayBudget",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..1023"
+                            }
+                        },
+                        "description": {
+                            "text": "Indicates the Packet Delay Budget (in unit of 0.5ms)of a 5QI,\nas specified in TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "averagingWindow",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..4095"
+                            }
+                        },
+                        "units": {
+                            "@name": "ms"
+                        },
+                        "reference": {
+                            "text": "TS 23.501"
+                        }
+                    },
+                    {
+                        "@name": "maximumDataBurstVolume",
+                        "type": {
+                            "@name": "uint32",
+                            "range": {
+                                "@value": "0..4095"
+                            }
+                        },
+                        "units": {
+                            "@name": "byte"
+                        }
+                    }
+                ],
+                "list": {
+                    "@name": "packetErrorRate",
+                    "key": {
+                        "@value": "scalar exponent"
+                    },
+                    "min-elements": {
+                        "@value": "0"
+                    },
+                    "max-elements": {
+                        "@value": "1"
+                    },
+                    "uses": {
+                        "@name": "PacketErrorRate"
+                    },
+                    "reference": {
+                        "text": "TS 23.501"
+                    }
+                }
+            },
+            {
+                "@name": "Configurable5QISetGrp",
+                "description": {
+                    "text": "Represents the Configurable5QISet IOC."
+                },
+                "list": {
+                    "@name": "configurable5QIs",
+                    "key": {
+                        "@value": "fiveQIValue"
+                    },
+                    "uses": {
+                        "@name": "FiveQICharacteristics"
+                    }
+                }
+            },
+            {
+                "@name": "Configurable5QISetSubtree",
+                "list": {
+                    "@name": "Configurable5QISet",
+                    "description": {
+                        "text": "Specifies the non-standardized 5QIs, including their QoS\ncharacteristics, that need to be pre-configured (and configurable) to\nthe 5G NFs, see 3GPP TS 23.501."
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": {
+                        "@name": "top3gpp:Top_Grp"
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "Configurable5QISetGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "uses": {
+                    "@name": "Configurable5QISetSubtree"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "uses": {
+                    "@name": "Configurable5QISetSubtree"
+                }
+            }
+        ]
+    }
+}

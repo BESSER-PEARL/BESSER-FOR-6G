@@ -1,0 +1,165 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-cpciconfigurationfunction",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:cpciconfigurationfunction3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-cpciconfigurationfunction",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "@xmlns:nrcelldu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-nrcelldu",
+        "@xmlns:gnbdu3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-gnbdufunction",
+        "@xmlns:me3gpp": "urn:3gpp:sa5:_3gpp-common-managed-element",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-cpciconfigurationfunction"
+        },
+        "prefix": {
+            "@value": "cpciconfigurationfunction3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-nrcelldu",
+                "prefix": {
+                    "@value": "nrcelldu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-gnbdufunction",
+                "prefix": {
+                    "@value": "gnbdu3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-managed-element",
+                "prefix": {
+                    "@value": "me3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "contact": {
+            "text": "https://www.3gpp.org/DynaReport/TSG-WG--S5--officials.htm?Itemid=464"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the CPCIConfigurationFunction Information Object Class\n(IOC) that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM)"
+        },
+        "revision": {
+            "@date": "2020-05-08",
+            "reference": {
+                "text": "S5-203316"
+            }
+        },
+        "grouping": [
+            {
+                "@name": "CPCIConfigurationFunctionGrp",
+                "description": {
+                    "text": "Represents the CPCICONFIGURATIONFunction IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "top3gpp:Top_Grp"
+                },
+                "list": {
+                    "@name": "cSonPciList",
+                    "key": {
+                        "@value": "NRPci"
+                    },
+                    "description": {
+                        "text": "This holds a list of physical cell identities that can be assigned to the pci attribute by gNB. The assignment algorithm is not specified. This attribute shall be supported if and only if the C-SON PCI configuration is supported."
+                    },
+                    "leaf": {
+                        "@name": "NRPci",
+                        "type": {
+                            "@name": "int32"
+                        }
+                    },
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "CSonPciListGrp"
+                        }
+                    }
+                },
+                "leaf": {
+                    "@name": "cPciConfigurationControl",
+                    "description": {
+                        "text": "This attribute determines whether the Cross Domain-Centralized SON PCI configuration function is enabled or disabled."
+                    },
+                    "type": {
+                        "@name": "boolean"
+                    }
+                }
+            },
+            {
+                "@name": "CSonPciListGrp",
+                "description": {
+                    "text": "Represents the C-SON PCI list for the PCI configuration function."
+                },
+                "leaf": {
+                    "@name": "NRPci",
+                    "description": {
+                        "text": "This attribute determines the NR PCI."
+                    },
+                    "type": {
+                        "@name": "int32",
+                        "range": {
+                            "@value": "0..1007"
+                        }
+                    },
+                    "units": {
+                        "@name": "1"
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/me3gpp:ManagedElement/gnbdu3gpp:GNBDUFunction/nrcelldu3gpp:NRCellDU",
+                "if-feature": {
+                    "@name": "nrcelldu3gpp:CPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "CPCIConfigurationFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/me3gpp:ManagedElement",
+                "if-feature": {
+                    "@name": "me3gpp:CPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "CPCIConfigurationFunctionGrp"
+                }
+            },
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:CPCIConfigurationFunction"
+                },
+                "uses": {
+                    "@name": "CPCIConfigurationFunctionGrp"
+                }
+            }
+        ]
+    }
+}

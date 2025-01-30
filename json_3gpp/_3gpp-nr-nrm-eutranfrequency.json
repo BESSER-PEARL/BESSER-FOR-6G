@@ -1,0 +1,168 @@
+{
+    "module": {
+        "@name": "_3gpp-nr-nrm-eutranfrequency",
+        "@xmlns": "urn:ietf:params:xml:ns:yang:yin:1",
+        "@xmlns:eutraneteutranfreq3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranfrequency",
+        "@xmlns:mf3gpp": "urn:3gpp:sa5:_3gpp-common-managed-function",
+        "@xmlns:eutranet3gpp": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranetwork",
+        "@xmlns:subnet3gpp": "urn:3gpp:sa5:_3gpp-common-subnetwork",
+        "@xmlns:top3gpp": "urn:3gpp:sa5:_3gpp-common-top",
+        "yang-version": {
+            "@value": "1.1"
+        },
+        "namespace": {
+            "@uri": "urn:3gpp:sa5:_3gpp-nr-nrm-eutranfrequency"
+        },
+        "prefix": {
+            "@value": "eutraneteutranfreq3gpp"
+        },
+        "import": [
+            {
+                "@module": "_3gpp-common-managed-function",
+                "prefix": {
+                    "@value": "mf3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-nr-nrm-eutranetwork",
+                "prefix": {
+                    "@value": "eutranet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-subnetwork",
+                "prefix": {
+                    "@value": "subnet3gpp"
+                }
+            },
+            {
+                "@module": "_3gpp-common-top",
+                "prefix": {
+                    "@value": "top3gpp"
+                }
+            }
+        ],
+        "organization": {
+            "text": "3GPP SA5"
+        },
+        "description": {
+            "text": "Defines the YANG mapping of the EUtranFrequency Information\nObject Class (IOC), that is part of the NR Network Resource Model (NRM)."
+        },
+        "reference": {
+            "text": "3GPP TS 28.541 5G Network Resource Model (NRM),\n3GPP TS 28.658 (E-UTRAN) Network Resource Model (NRM)"
+        },
+        "revision": [
+            {
+                "@date": "2019-10-28",
+                "reference": {
+                    "text": "S5-193518"
+                }
+            },
+            {
+                "@date": "2019-06-17",
+                "description": {
+                    "text": "Initial revision"
+                }
+            }
+        ],
+        "grouping": [
+            {
+                "@name": "EUtranFrequencyGrp",
+                "description": {
+                    "text": "Represents the EUtranFrequency IOC."
+                },
+                "reference": {
+                    "text": "3GPP TS 28.541"
+                },
+                "uses": {
+                    "@name": "mf3gpp:ManagedFunctionGrp"
+                },
+                "leaf": {
+                    "@name": "earfcnDL",
+                    "description": {
+                        "text": "Specifies the channel number for the central DL frequency."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 36.101"
+                    },
+                    "mandatory": {
+                        "@value": "true"
+                    },
+                    "type": {
+                        "@name": "uint32",
+                        "range": {
+                            "@value": "0..262143"
+                        }
+                    }
+                },
+                "leaf-list": {
+                    "@name": "multiBandInfoListEutra",
+                    "description": {
+                        "text": "List of additional frequency bands the frequency belongs to."
+                    },
+                    "config": {
+                        "@value": "false"
+                    },
+                    "min-elements": {
+                        "@value": "0"
+                    },
+                    "type": {
+                        "@name": "uint16",
+                        "range": {
+                            "@value": "1..256"
+                        }
+                    }
+                }
+            },
+            {
+                "@name": "EUtranFrequencyWrapper",
+                "list": {
+                    "@name": "EUtranFrequency",
+                    "description": {
+                        "text": "Represents certain E-UTRAN frequency properties."
+                    },
+                    "reference": {
+                        "text": "3GPP TS 28.658"
+                    },
+                    "key": {
+                        "@value": "id"
+                    },
+                    "uses": [
+                        {
+                            "@name": "top3gpp:Top_Grp"
+                        },
+                        {
+                            "@name": "mf3gpp:ManagedFunctionContainedClasses"
+                        }
+                    ],
+                    "container": {
+                        "@name": "attributes",
+                        "uses": {
+                            "@name": "EUtranFrequencyGrp"
+                        }
+                    }
+                }
+            }
+        ],
+        "augment": [
+            {
+                "@target-node": "/subnet3gpp:SubNetwork",
+                "if-feature": {
+                    "@name": "subnet3gpp:ExternalsUnderSubNetwork"
+                },
+                "uses": {
+                    "@name": "EUtranFrequencyWrapper"
+                }
+            },
+            {
+                "@target-node": "/eutranet3gpp:EUtraNetwork",
+                "if-feature": {
+                    "@name": "eutranet3gpp:ExternalsUnderEUtraNetwork"
+                },
+                "uses": {
+                    "@name": "EUtranFrequencyWrapper"
+                }
+            }
+        ]
+    }
+}
