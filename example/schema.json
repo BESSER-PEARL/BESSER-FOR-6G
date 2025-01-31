@@ -1,0 +1,59 @@
+{
+  "/Instructions for creating your schema": {},
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.NRCellCU/NRCellCU/schema.json",
+  "title": "Smart Data models -NRCellCU schema\"",
+  "modelTags": "\"\"",
+  "description": "This Class represents the part of NR cell information that is responsible for the management of inter-cell mobility and neighbour relations via Automatic Neighbour Relation (ANR).",
+  "required": [
+    "id",
+    [
+      "id",
+      "type"
+    ]
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "cellLocalId": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. Example of definition of a numerical attribute"
+        },
+        "pLMNInfoList": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. Example of definition of a arrayof strings",
+          "items": {
+            "type": "string",
+            "minitems": 1
+          }
+        },
+        "nRFrequencyRef": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the other entity"
+        }
+      }
+    }
+  ],
+  "derivedFrom": "\"3GPP- TS 28.451\"",
+  "license": "\"\""
+}

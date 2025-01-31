@@ -1,6 +1,6 @@
-import xmltodict
-import json
 import sys
+import json
+import xmltodict
 
 # Get file paths from arguments
 if len(sys.argv) != 3:
