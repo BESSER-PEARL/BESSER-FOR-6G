@@ -19,10 +19,19 @@ class YangParser:
         module_name = module.get('@name', '')
         self.model.name = module_name
 
-        # Parse groupings first as they define types
+        # Parse typedefs first as they can define enums
+        if 'typedef' in module:
+            typedefs = module['typedef']
+            # Handle both single typedef and list of typedefs
+            if isinstance(typedefs, list):
+                for typedef in typedefs:
+                    self.parse_typedef(typedef)
+            else:
+                self.parse_typedef(typedefs)
+
+        # Parse groupings as they define types
         if 'grouping' in module:
             groupings = module['grouping']
-            # Handle both single grouping and list of groupings
             if isinstance(groupings, list):
                 for grouping in groupings:
                     self.parse_grouping(grouping)
@@ -34,6 +43,23 @@ class YangParser:
             self.parse_augment(module['augment'])
 
         return self.model
+
+    def parse_typedef(self, typedef: Dict[str, Any]) -> None:
+        """Parse a typedef definition and create an enumeration if it defines one."""
+        type_info = typedef.get('type', {})
+        if type_info.get('@name') == 'enumeration':
+            enum_name = typedef['@name']
+            enum_type = Enumeration(name=enum_name)
+            
+            # Add enumeration literals
+            if 'enum' in type_info:
+                enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
+                for enum in enums:
+                    literal_name = enum.get('@name', '')
+                    literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                    enum_type.add_literal(literal)
+            
+            self.model.add_type(enum_type)
 
     def parse_grouping(self, grouping: Dict[str, Any]) -> None:
         """Parse a grouping definition and create a class."""
@@ -52,7 +78,9 @@ class YangParser:
 
         # Add attributes from lists
         if 'list' in grouping:
-            self.parse_list(grouping['list'])
+            lists = grouping['list'] if isinstance(grouping['list'], list) else [grouping['list']]
+            for list_def in lists:
+                self.parse_list(list_def)
 
         self.model.add_type(new_class)
 
@@ -84,15 +112,30 @@ class YangParser:
         type_info = leaf.get('type', {})
         type_name = type_info.get('@name', 'string')
 
-        # Map YANG types to primitive types
-        type_mapping = {
-            'int32': 'int',
-            'string': 'str',
-            'boolean': 'bool',
-            'enumeration': 'str'
-        }
-
-        type_name = type_mapping.get(type_name, type_name)
+        # Handle enumeration types
+        if type_name == 'enumeration':
+            enum_name = f"{self.current_class.name}_{name}_enum"
+            enum_type = Enumeration(name=enum_name)
+            
+            # Add enumeration literals
+            if 'enum' in type_info:
+                enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
+                for enum in enums:
+                    literal_name = enum.get('@name', '')
+                    literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                    enum_type.add_literal(literal)
+            
+            self.model.add_type(enum_type)
+            type_name = enum_name
+        else:
+            # Map YANG types to primitive types
+            type_mapping = {
+                'int32': 'int',
+                'uint32': 'int',
+                'string': 'str',
+                'boolean': 'bool'
+            }
+            type_name = type_mapping.get(type_name, type_name)
 
         # Create property
         prop = Property(
