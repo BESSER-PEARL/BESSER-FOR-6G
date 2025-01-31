@@ -21,13 +21,7 @@ class YangParser:
 
         # Parse groupings first as they define types
         if 'grouping' in module:
-            groupings = module['grouping']
-            # Handle both single grouping and list of groupings
-            if isinstance(groupings, list):
-                for grouping in groupings:
-                    self.parse_grouping(grouping)
-            else:
-                self.parse_grouping(groupings)
+            self.parse_grouping(module['grouping'])
 
         # Parse augments which contain the main class definitions
         if 'augment' in module:
