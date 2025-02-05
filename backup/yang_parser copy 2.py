@@ -5,56 +5,19 @@ from structural import (Class, DataType, DomainModel, Property, Method,
 
 class YangParser:
     def __init__(self):
-        self.model = DomainModel("3GPPModel")
-        self.current_model = None
+        self.model = DomainModel("YangModel")
         self.current_class = None
-        self.prefix_map = {}  # Maps prefixes to their module names
-        self.processed_types = set()  # Keep track of processed type names
 
-    def parse_file(self, filepath: str, model_name: str) -> DomainModel:
-        """Parse a YANG JSON file and create a new model."""
-        self.current_model = DomainModel(model_name)
-        try:
-            with open(filepath, 'r') as f:
-                data = json.load(f)
-            
-            # Check if data is a dictionary and contains 'module'
-            if not isinstance(data, dict):
-                print(f"Warning: File {filepath} does not contain a valid JSON object")
-                return self.current_model
-            
-            # Extract module if it exists
-            module = data.get('module')
-            if not module:
-                print(f"Warning: File {filepath} does not contain a 'module' key")
-                return self.current_model
-            
-            # Extract module name and prefix mappings from imports
-            module_name = module.get('@name', '')
-            
-            # Store prefix mappings
-            if 'import' in module:
-                imports = module['import']
-                if not isinstance(imports, list):
-                    imports = [imports]
-                for imp in imports:
-                    prefix = imp.get('prefix', {}).get('@value')
-                    module_ref = imp.get('@module')
-                    if prefix and module_ref:
-                        self.prefix_map[prefix] = module_ref
-            
-            return self.parse_module(module)
-        except json.JSONDecodeError:
-            print(f"Warning: File {filepath} is not a valid JSON file")
-            return self.current_model
-        except Exception as e:
-            print(f"Warning: Error processing file {filepath}: {str(e)}")
-            return self.current_model
+    def parse_file(self, filepath: str) -> DomainModel:
+        """Parse a YANG JSON file and return a DomainModel."""
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+        return self.parse_module(data['module'])
 
     def parse_module(self, module: Dict[str, Any]) -> DomainModel:
         """Parse the module section and create corresponding model elements."""
         module_name = module.get('@name', '')
-        self.current_model.name = module_name
+        self.model.name = module_name
 
         # Parse typedefs first as they can define enums
         if 'typedef' in module:
@@ -79,18 +42,13 @@ class YangParser:
         if 'augment' in module:
             self.parse_augment(module['augment'])
 
-        return self.current_model
+        return self.model
 
     def parse_typedef(self, typedef: Dict[str, Any]) -> None:
         """Parse a typedef definition and create an enumeration if it defines one."""
         type_info = typedef.get('type', {})
         if type_info.get('@name') == 'enumeration':
             enum_name = typedef['@name']
-            
-            # Skip if we've already processed this type
-            if enum_name in self.processed_types:
-                return
-            
             enum_type = Enumeration(name=enum_name)
             
             # Add enumeration literals
@@ -101,17 +59,11 @@ class YangParser:
                     literal = EnumerationLiteral(name=literal_name, owner=enum_type)
                     enum_type.add_literal(literal)
             
-            self.current_model.add_type(enum_type)
-            self.processed_types.add(enum_name)
+            self.model.add_type(enum_type)
 
     def parse_grouping(self, grouping: Dict[str, Any]) -> None:
         """Parse a grouping definition and create a class."""
         class_name = grouping['@name']
-        
-        # Skip if we've already processed this type
-        if class_name in self.processed_types:
-            return
-        
         class_desc = grouping.get('description', {}).get('text', '')
         
         # Create new class
@@ -130,8 +82,7 @@ class YangParser:
             for list_def in lists:
                 self.parse_list(list_def)
 
-        self.current_model.add_type(new_class)
-        self.processed_types.add(class_name)
+        self.model.add_type(new_class)
 
     def parse_augment(self, augment: Dict[str, Any]) -> None:
         """Parse augment section which contains the main class definitions."""
@@ -149,7 +100,7 @@ class YangParser:
                 if 'uses' in container:
                     self.parse_uses(container['uses'])
 
-            self.current_model.add_type(new_class)
+            self.model.add_type(new_class)
 
     def parse_leaf(self, leaf: Dict[str, Any]) -> None:
         """Parse a leaf definition and create a property."""
@@ -160,25 +111,33 @@ class YangParser:
         # Determine type
         type_info = leaf.get('type', {})
         type_name = type_info.get('@name', 'string')
-        
-        # Map YANG types to primitive types
-        type_mapping = {
-            'string': 'string',
-            'boolean': 'boolean',
-            'uint8': 'integer',
-            'uint16': 'integer',
-            'uint32': 'integer',
-            'uint64': 'integer',
-            'int8': 'integer',
-            'int16': 'integer',
-            'int32': 'integer',
-            'int64': 'integer',
-            'decimal64': 'float',
-            'boolean': 'bool'
-        }
-        type_name = type_mapping.get(type_name, type_name)
 
-        # Create property with proper type
+        # Handle enumeration types
+        if type_name == 'enumeration':
+            enum_name = f"{self.current_class.name}_{name}_enum"
+            enum_type = Enumeration(name=enum_name)
+            
+            # Add enumeration literals
+            if 'enum' in type_info:
+                enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
+                for enum in enums:
+                    literal_name = enum.get('@name', '')
+                    literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                    enum_type.add_literal(literal)
+            
+            self.model.add_type(enum_type)
+            type_name = enum_name
+        else:
+            # Map YANG types to primitive types
+            type_mapping = {
+                'int32': 'int',
+                'uint32': 'int',
+                'string': 'str',
+                'boolean': 'bool'
+            }
+            type_name = type_mapping.get(type_name, type_name)
+
+        # Create property
         prop = Property(
             name=name,
             type=type_name,
@@ -204,21 +163,11 @@ class YangParser:
 
     def parse_uses(self, uses: Dict[str, Any]) -> None:
         """Parse uses statement which references a grouping."""
+        """Take the attributes from a Grp class"""
         grouping_name = uses.get('@name', '')
         # Find referenced class and inherit from it
-        referenced_class = self.current_model.get_class_by_name(grouping_name)
+        referenced_class = self.model.get_class_by_name(grouping_name)
         if referenced_class and self.current_class:
             # Copy attributes from referenced class
             for attr in referenced_class.attributes:
                 self.current_class.add_attribute(attr)
-
-    def resolve_type_reference(self, type_name: str) -> str:
-        """Resolve type references with prefixes (e.g., types3gpp:DistinguishedName)"""
-        if ':' in type_name:
-            prefix, name = type_name.split(':')
-            if prefix in self.prefix_map:
-                # The type is defined in another module
-                referenced_module = self.prefix_map[prefix]
-                # Return the full type name
-                return f"{referenced_module}.{name}"
-        return type_name

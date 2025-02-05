@@ -1,0 +1,115 @@
+# Generated B-UML Model
+from besser.BUML.metamodel.structural import (
+    Class, Property, Method, Parameter,
+    BinaryAssociation, Generalization, DomainModel,
+    Enumeration, EnumerationLiteral, Multiplicity,
+    StringType, IntegerType, FloatType, BooleanType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    Constraint
+)
+
+# Import referenced models
+from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
+from generated_models._3gpp_5gc_nrm_affunction import domain_model as af3gpp_model
+from generated_models._3gpp_5gc_nrm_amffunction import domain_model as amf3gpp_model
+from generated_models._3gpp_5gc_nrm_ausffunction import domain_model as ausf3gpp_model
+from generated_models._3gpp_5gc_nrm_configurable5qiset import domain_model as Conf5QIs3gpp_model
+from generated_models._3gpp_5gc_nrm_dnfunction import domain_model as dn3gpp_model
+from generated_models._3gpp_5gc_nrm_lmffunction import domain_model as lmf3gpp_model
+from generated_models._3gpp_5gc_nrm_n3iwffunction import domain_model as n3iwf3gpp_model
+from generated_models._3gpp_5gc_nrm_nfprofile import domain_model as nfp3gpp_model
+from generated_models._3gpp_5gc_nrm_nfservice import domain_model as nfs3gpp_model
+from generated_models._3gpp_5gc_nrm_ngeirfunction import domain_model as ngeir3gpp_model
+from generated_models._3gpp_5gc_nrm_nrffunction import domain_model as nrf3gpp_model
+from generated_models._3gpp_5gc_nrm_nssffunction import domain_model as nssf3gpp_model
+from generated_models._3gpp_5gc_nrm_pcffunction import domain_model as pcf3gpp_model
+from generated_models._3gpp_5gc_nrm_seppfunction import domain_model as sepp3gpp_model
+from generated_models._3gpp_5gc_nrm_smffunction import domain_model as smf3gpp_model
+from generated_models._3gpp_5gc_nrm_smsffunction import domain_model as smsf3gpp_model
+from generated_models._3gpp_5gc_nrm_udmfunction import domain_model as udm3gpp_model
+from generated_models._3gpp_5gc_nrm_upffunction import domain_model as upf3gpp_model
+from generated_models._3gpp_common_ep_rp import domain_model as eprp3gpp_model
+from generated_models._3gpp_common_fm import domain_model as fm3gpp_model
+from generated_models._3gpp_common_managed_element import domain_model as me3gpp_model
+from generated_models._3gpp_common_managed_function import domain_model as mf3gpp_model
+from generated_models._3gpp_common_measurements import domain_model as meas3gpp_model
+from generated_models._3gpp_common_subnetwork import domain_model as subnet3gpp_model
+from generated_models._3gpp_common_subscription_control import domain_model as subscr3gpp_model
+from generated_models._3gpp_common_top import domain_model as top3gpp_model
+from generated_models._3gpp_common_trace import domain_model as trace3gpp_model
+from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
+from generated_models._3gpp_nr_nrm_commonbeamformingfunction import domain_model as cbeamff3gpp_model
+from generated_models._3gpp_nr_nrm_gnbcucpfunction import domain_model as gnbcucp3gpp_model
+from generated_models._3gpp_nr_nrm_gnbdufunction import domain_model as gnbdu3gpp_model
+from generated_models._3gpp_nr_nrm_nrcellcu import domain_model as nrcellcu3gpp_model
+from generated_models._3gpp_nr_nrm_nrcelldu import domain_model as nrcelldu3gpp_model
+from generated_models._3gpp_nr_nrm_nrsectorcarrier import domain_model as nrsectcarr3gpp_model
+
+# Enumerations
+# Classes
+DESManagementFunctionGrp = Class(name="DESManagementFunctionGrp")
+IntraRatEsActivationOriginalCellLoadParametersGrp = Class(name="IntraRatEsActivationOriginalCellLoadParametersGrp")
+IntraRatEsActivationCandidateCellsLoadParametersGrp = Class(name="IntraRatEsActivationCandidateCellsLoadParametersGrp")
+IntraRatEsDeactivationCandidateCellsLoadParametersGrp = Class(name="IntraRatEsDeactivationCandidateCellsLoadParametersGrp")
+EsNotAllowedTimePeriodGrp = Class(name="EsNotAllowedTimePeriodGrp")
+InterRatEsActivationOriginalCellParametersGrp = Class(name="InterRatEsActivationOriginalCellParametersGrp")
+InterRatEsActivationCandidateCellParametersGrp = Class(name="InterRatEsActivationCandidateCellParametersGrp")
+InterRatEsDeactivationCandidateCellParametersGrp = Class(name="InterRatEsDeactivationCandidateCellParametersGrp")
+
+# DESManagementFunctionGrp class attributes and methods
+DESManagementFunctionGrp_desSwitch: Property = Property(name="desSwitch", type=BooleanType)
+DESManagementFunctionGrp_energySavingState: Property = Property(name="energySavingState", type=enumeration)
+DESManagementFunctionGrp_isProbingCapable: Property = Property(name="isProbingCapable", type=enumeration)
+DESManagementFunctionGrp_intraRatEsActivationOriginalCellLoadParameters: Property = Property(name="intraRatEsActivationOriginalCellLoadParameters", type=list)
+DESManagementFunctionGrp_intraRatEsActivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsActivationCandidateCellsLoadParameters", type=list)
+DESManagementFunctionGrp_intraRatEsDeactivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsDeactivationCandidateCellsLoadParameters", type=list)
+DESManagementFunctionGrp_esNotAllowedTimePeriod: Property = Property(name="esNotAllowedTimePeriod", type=list)
+DESManagementFunctionGrp_interRatEsActivationOriginalCellParameters: Property = Property(name="interRatEsActivationOriginalCellParameters", type=list)
+DESManagementFunctionGrp_interRatEsActivationCandidateCellParameters: Property = Property(name="interRatEsActivationCandidateCellParameters", type=list)
+DESManagementFunctionGrp_interRatEsDeactivationCandidateCellParameters: Property = Property(name="interRatEsDeactivationCandidateCellParameters", type=list)
+DESManagementFunctionGrp.attributes={DESManagementFunctionGrp_isProbingCapable, DESManagementFunctionGrp_interRatEsActivationCandidateCellParameters, DESManagementFunctionGrp_energySavingState, DESManagementFunctionGrp_desSwitch, DESManagementFunctionGrp_interRatEsActivationOriginalCellParameters, DESManagementFunctionGrp_esNotAllowedTimePeriod, DESManagementFunctionGrp_intraRatEsDeactivationCandidateCellsLoadParameters, DESManagementFunctionGrp_intraRatEsActivationCandidateCellsLoadParameters, DESManagementFunctionGrp_intraRatEsActivationOriginalCellLoadParameters, DESManagementFunctionGrp_interRatEsDeactivationCandidateCellParameters}
+
+# IntraRatEsActivationOriginalCellLoadParametersGrp class attributes and methods
+IntraRatEsActivationOriginalCellLoadParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+IntraRatEsActivationOriginalCellLoadParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+IntraRatEsActivationOriginalCellLoadParametersGrp.attributes={IntraRatEsActivationOriginalCellLoadParametersGrp_timeDuration, IntraRatEsActivationOriginalCellLoadParametersGrp_loadThreshold}
+
+# IntraRatEsActivationCandidateCellsLoadParametersGrp class attributes and methods
+IntraRatEsActivationCandidateCellsLoadParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+IntraRatEsActivationCandidateCellsLoadParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+IntraRatEsActivationCandidateCellsLoadParametersGrp.attributes={IntraRatEsActivationCandidateCellsLoadParametersGrp_loadThreshold, IntraRatEsActivationCandidateCellsLoadParametersGrp_timeDuration}
+
+# IntraRatEsDeactivationCandidateCellsLoadParametersGrp class attributes and methods
+IntraRatEsDeactivationCandidateCellsLoadParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+IntraRatEsDeactivationCandidateCellsLoadParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+IntraRatEsDeactivationCandidateCellsLoadParametersGrp.attributes={IntraRatEsDeactivationCandidateCellsLoadParametersGrp_timeDuration, IntraRatEsDeactivationCandidateCellsLoadParametersGrp_loadThreshold}
+
+# EsNotAllowedTimePeriodGrp class attributes and methods
+EsNotAllowedTimePeriodGrp_startTimeandendTime: Property = Property(name="startTimeandendTime", type=StringType)
+EsNotAllowedTimePeriodGrp_periodOfDay: Property = Property(name="periodOfDay", type=StringType)
+EsNotAllowedTimePeriodGrp_daysOfWeekList: Property = Property(name="daysOfWeekList", type=StringType)
+EsNotAllowedTimePeriodGrp_listoftimeperiods: Property = Property(name="listoftimeperiods", type=StringType)
+EsNotAllowedTimePeriodGrp.attributes={EsNotAllowedTimePeriodGrp_periodOfDay, EsNotAllowedTimePeriodGrp_daysOfWeekList, EsNotAllowedTimePeriodGrp_listoftimeperiods, EsNotAllowedTimePeriodGrp_startTimeandendTime}
+
+# InterRatEsActivationOriginalCellParametersGrp class attributes and methods
+InterRatEsActivationOriginalCellParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsActivationOriginalCellParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsActivationOriginalCellParametersGrp.attributes={InterRatEsActivationOriginalCellParametersGrp_timeDuration, InterRatEsActivationOriginalCellParametersGrp_loadThreshold}
+
+# InterRatEsActivationCandidateCellParametersGrp class attributes and methods
+InterRatEsActivationCandidateCellParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsActivationCandidateCellParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsActivationCandidateCellParametersGrp.attributes={InterRatEsActivationCandidateCellParametersGrp_timeDuration, InterRatEsActivationCandidateCellParametersGrp_loadThreshold}
+
+# InterRatEsDeactivationCandidateCellParametersGrp class attributes and methods
+InterRatEsDeactivationCandidateCellParametersGrp_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsDeactivationCandidateCellParametersGrp_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsDeactivationCandidateCellParametersGrp.attributes={InterRatEsDeactivationCandidateCellParametersGrp_loadThreshold, InterRatEsDeactivationCandidateCellParametersGrp_timeDuration}
+
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-desmanagementfunction",
+    types={DESManagementFunctionGrp, IntraRatEsActivationOriginalCellLoadParametersGrp, IntraRatEsActivationCandidateCellsLoadParametersGrp, IntraRatEsDeactivationCandidateCellsLoadParametersGrp, EsNotAllowedTimePeriodGrp, InterRatEsActivationOriginalCellParametersGrp, InterRatEsActivationCandidateCellParametersGrp, InterRatEsDeactivationCandidateCellParametersGrp, types3gpp_model, mf3gpp_model, me3gpp_model, top3gpp_model, types5g3gpp_model, inet_model, subnet3gpp_model, Conf5QIs3gpp_model, eprp3gpp_model, af3gpp_model, amf3gpp_model, ausf3gpp_model, dn3gpp_model, lmf3gpp_model, n3iwf3gpp_model, ngeir3gpp_model, nrf3gpp_model, nssf3gpp_model, pcf3gpp_model, sepp3gpp_model, smf3gpp_model, smsf3gpp_model, udm3gpp_model, upf3gpp_model, yang_model, nfs3gpp_model, nfp3gpp_model, meas3gpp_model, subscr3gpp_model, fm3gpp_model, trace3gpp_model, yangmnt_model, cbeamff3gpp_model, gnbdu3gpp_model, nrsectcarr3gpp_model, nrcellcu3gpp_model, gnbcucp3gpp_model, nrcelldu3gpp_model},
+    associations={},
+    generalizations={}
+)
