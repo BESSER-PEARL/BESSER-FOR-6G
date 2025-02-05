@@ -163,6 +163,7 @@ class YangParser:
 
     def parse_uses(self, uses: Dict[str, Any]) -> None:
         """Parse uses statement which references a grouping."""
+        """Take the attributes from a Grp class"""
         grouping_name = uses.get('@name', '')
         # Find referenced class and inherit from it
         referenced_class = self.model.get_class_by_name(grouping_name)
