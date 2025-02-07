@@ -56,15 +56,16 @@ class YangParser:
         module_name = module.get('@name', '')
         self.current_model.name = module_name
 
-        # Parse typedefs first as they can define enums
-        if 'typedef' in module:
-            typedefs = module['typedef']
-            # Handle both single typedef and list of typedefs
-            if isinstance(typedefs, list):
-                for typedef in typedefs:
-                    self.parse_typedef(typedef)
-            else:
-                self.parse_typedef(typedefs)
+        # Parse imports first to build prefix map
+        if 'import' in module:
+            imports = module['import']
+            if not isinstance(imports, list):
+                imports = [imports]
+            for imp in imports:
+                prefix = imp.get('prefix', {}).get('@value')
+                module_ref = imp.get('@module')
+                if prefix and module_ref:
+                    self.prefix_map[prefix] = module_ref
 
         # Parse groupings as they define types
         if 'grouping' in module:
@@ -75,11 +76,16 @@ class YangParser:
             else:
                 self.parse_grouping(groupings)
 
-        # Parse augments which contain the main class definitions
-        if 'augment' in module:
-            self.parse_augment(module['augment'])
+        # Parse lists and containers which define the main classes
+        if 'list' in module:
+            lists = module['list']
+            if isinstance(lists, list):
+                for list_def in lists:
+                    self.parse_list(list_def)
+            else:
+                self.parse_list(lists)
 
-        return self.current_model
+        return self.cleanup_grp_classes(self.current_model)
 
     def parse_typedef(self, typedef: Dict[str, Any]) -> None:
         """Parse a typedef definition and create an enumeration if it defines one."""
@@ -163,18 +169,19 @@ class YangParser:
         
         # Map YANG types to primitive types
         type_mapping = {
-            'string': 'string',
-            'boolean': 'boolean',
-            'uint8': 'integer',
-            'uint16': 'integer',
-            'uint32': 'integer',
-            'uint64': 'integer',
-            'int8': 'integer',
-            'int16': 'integer',
-            'int32': 'integer',
-            'int64': 'integer',
-            'decimal64': 'float',
-            'boolean': 'bool'
+            'string': 'StringType',
+            'boolean': 'BooleanType',
+            'uint8': 'IntegerType',
+            'uint16': 'IntegerType',
+            'uint32': 'IntegerType',
+            'uint64': 'IntegerType',
+            'int8': 'IntegerType',
+            'int16': 'IntegerType',
+            'int32': 'IntegerType',
+            'int64': 'IntegerType',
+            'decimal64': 'FloatType',
+            'boolean': 'BooleanType'
+
         }
         type_name = type_mapping.get(type_name, type_name)
 
@@ -222,3 +229,38 @@ class YangParser:
                 # Return the full type name
                 return f"{referenced_module}.{name}"
         return type_name
+
+    def cleanup_grp_classes(self, model: DomainModel) -> DomainModel:
+        """Merge *Grp classes into their base classes and remove the Grp classes."""
+        classes_to_remove = set()
+        classes_to_update = {}
+
+        # Find all classes ending with 'Grp'
+        for type_obj in model.types:
+            if isinstance(type_obj, Class) and type_obj.name.endswith('Grp'):
+                base_name = type_obj.name[:-3]  # Remove 'Grp' suffix
+                
+                # Find the corresponding base class
+                base_class = next(
+                    (c for c in model.types 
+                     if isinstance(c, Class) and c.name == base_name), 
+                    None
+                )
+
+                if base_class:
+                    # Merge attributes from Grp class into base class
+                    for attr in type_obj.attributes:
+                        base_class.add_attribute(attr)
+                    classes_to_remove.add(type_obj)
+                else:
+                    # If no base class exists, rename this class by removing 'Grp'
+                    classes_to_update[type_obj] = base_name
+
+        # Update class names for those without a base class
+        for cls, new_name in classes_to_update.items():
+            cls.name = new_name
+
+        # Remove merged Grp classes
+        model.types = {t for t in model.types if t not in classes_to_remove}
+        
+        return model

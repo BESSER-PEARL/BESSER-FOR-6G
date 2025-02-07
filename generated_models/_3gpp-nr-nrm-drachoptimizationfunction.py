@@ -1,86 +1,33 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, Method, Parameter,
-    BinaryAssociation, Generalization, DomainModel,
-    Enumeration, EnumerationLiteral, Multiplicity,
-    StringType, IntegerType, FloatType, BooleanType,
-    TimeType, DateType, DateTimeType, TimeDeltaType,
-    Constraint
+    Class, Property, DomainModel,
+    IntegerType
 )
 
 # Import referenced models
 from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_5gc_nrm_affunction import domain_model as af3gpp_model
-from generated_models._3gpp_5gc_nrm_amffunction import domain_model as amf3gpp_model
-from generated_models._3gpp_5gc_nrm_ausffunction import domain_model as ausf3gpp_model
-from generated_models._3gpp_5gc_nrm_configurable5qiset import domain_model as Conf5QIs3gpp_model
-from generated_models._3gpp_5gc_nrm_dnfunction import domain_model as dn3gpp_model
-from generated_models._3gpp_5gc_nrm_lmffunction import domain_model as lmf3gpp_model
-from generated_models._3gpp_5gc_nrm_n3iwffunction import domain_model as n3iwf3gpp_model
-from generated_models._3gpp_5gc_nrm_nfprofile import domain_model as nfp3gpp_model
-from generated_models._3gpp_5gc_nrm_nfservice import domain_model as nfs3gpp_model
-from generated_models._3gpp_5gc_nrm_ngeirfunction import domain_model as ngeir3gpp_model
-from generated_models._3gpp_5gc_nrm_nrffunction import domain_model as nrf3gpp_model
-from generated_models._3gpp_5gc_nrm_nssffunction import domain_model as nssf3gpp_model
-from generated_models._3gpp_5gc_nrm_pcffunction import domain_model as pcf3gpp_model
-from generated_models._3gpp_5gc_nrm_seppfunction import domain_model as sepp3gpp_model
-from generated_models._3gpp_5gc_nrm_smffunction import domain_model as smf3gpp_model
-from generated_models._3gpp_5gc_nrm_smsffunction import domain_model as smsf3gpp_model
-from generated_models._3gpp_5gc_nrm_udmfunction import domain_model as udm3gpp_model
-from generated_models._3gpp_5gc_nrm_upffunction import domain_model as upf3gpp_model
-from generated_models._3gpp_common_ep_rp import domain_model as eprp3gpp_model
-from generated_models._3gpp_common_fm import domain_model as fm3gpp_model
-from generated_models._3gpp_common_managed_element import domain_model as me3gpp_model
-from generated_models._3gpp_common_managed_function import domain_model as mf3gpp_model
-from generated_models._3gpp_common_measurements import domain_model as meas3gpp_model
-from generated_models._3gpp_common_subnetwork import domain_model as subnet3gpp_model
-from generated_models._3gpp_common_subscription_control import domain_model as subscr3gpp_model
-from generated_models._3gpp_common_top import domain_model as top3gpp_model
-from generated_models._3gpp_common_trace import domain_model as trace3gpp_model
 from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-from generated_models._3gpp_nr_nrm_commonbeamformingfunction import domain_model as cbeamff3gpp_model
-from generated_models._3gpp_nr_nrm_gnbcucpfunction import domain_model as gnbcucp3gpp_model
-from generated_models._3gpp_nr_nrm_gnbdufunction import domain_model as gnbdu3gpp_model
-from generated_models._3gpp_nr_nrm_nrcellcu import domain_model as nrcellcu3gpp_model
-from generated_models._3gpp_nr_nrm_nrcelldu import domain_model as nrcelldu3gpp_model
-from generated_models._3gpp_nr_nrm_nrsectorcarrier import domain_model as nrsectcarr3gpp_model
-
-# Enumerations
-TargetProbability: Enumeration = Enumeration(
-    name="TargetProbability",
-    literals={
-            EnumerationLiteral(name="25"),
-			EnumerationLiteral(name="50"),
-			EnumerationLiteral(name="75"),
-			EnumerationLiteral(name="90")
-    }
-)
 
 # Classes
-DRACHOptimizationFunctionGrp = Class(name="DRACHOptimizationFunctionGrp")
-UeAccProbilityDistGrp = Class(name="UeAccProbilityDistGrp")
-UeAccDelayProbilityDistGrp = Class(name="UeAccDelayProbilityDistGrp")
+DRACHOptimizationFunction = Class(name="DRACHOptimizationFunction")
 
-# DRACHOptimizationFunctionGrp class attributes and methods
-DRACHOptimizationFunctionGrp_drachOptimizationControl: Property = Property(name="drachOptimizationControl", type=BooleanType)
-DRACHOptimizationFunctionGrp_ueAccProbilityDist: Property = Property(name="ueAccProbilityDist", type=list)
-DRACHOptimizationFunctionGrp_ueAccDelayProbilityDist: Property = Property(name="ueAccDelayProbilityDist", type=list)
-DRACHOptimizationFunctionGrp.attributes={DRACHOptimizationFunctionGrp_ueAccProbilityDist, DRACHOptimizationFunctionGrp_ueAccDelayProbilityDist, DRACHOptimizationFunctionGrp_drachOptimizationControl}
+# DRACHOptimizationFunction class attributes and methods
+DRACHOptimizationFunction_drachOptimizationControl: Property = Property(name="drachOptimizationControl", type=BooleanType)
+DRACHOptimizationFunction_ueAccProbilityDist: Property = Property(name="ueAccProbilityDist", type=list)
+DRACHOptimizationFunction_ueAccDelayProbilityDist: Property = Property(name="ueAccDelayProbilityDist", type=list)
+DRACHOptimizationFunction.attributes={DRACHOptimizationFunction_drachOptimizationControl, DRACHOptimizationFunction_ueAccProbilityDist, DRACHOptimizationFunction_ueAccDelayProbilityDist}
 
-# UeAccProbilityDistGrp class attributes and methods
-UeAccProbilityDistGrp_targetProbability: Property = Property(name="targetProbability", type=TargetProbability)
-UeAccProbilityDistGrp_numberofpreamblessent: Property = Property(name="numberofpreamblessent", type=Numberofpreamblessent)
-UeAccProbilityDistGrp.attributes={UeAccProbilityDistGrp_targetProbability, UeAccProbilityDistGrp_numberofpreamblessent}
+UeAccProbilityDist = Class(name="UeAccProbilityDist")
 
-# UeAccDelayProbilityDistGrp class attributes and methods
-UeAccDelayProbilityDistGrp_targetProbability: Property = Property(name="targetProbability", type=TargetProbability)
-UeAccDelayProbilityDistGrp_accessdelay: Property = Property(name="accessdelay", type=Accessdelay)
-UeAccDelayProbilityDistGrp.attributes={UeAccDelayProbilityDistGrp_targetProbability, UeAccDelayProbilityDistGrp_accessdelay}
+# UeAccProbilityDist class attributes and methods
+UeAccProbilityDist_targetProbability: Property = Property(name="targetProbability", type=TargetProbability)
+UeAccProbilityDist_numberofpreamblessent: Property = Property(name="numberofpreamblessent", type=Numberofpreamblessent)
+UeAccProbilityDist.attributes={UeAccProbilityDist_targetProbability, UeAccProbilityDist_numberofpreamblessent}
 
-# Domain Model with References
-domain_model = DomainModel(
-    name="_3gpp-nr-nrm-drachoptimizationfunction",
-    types={DRACHOptimizationFunctionGrp, UeAccProbilityDistGrp, UeAccDelayProbilityDistGrp, TargetProbability, types3gpp_model, mf3gpp_model, me3gpp_model, top3gpp_model, types5g3gpp_model, inet_model, subnet3gpp_model, Conf5QIs3gpp_model, eprp3gpp_model, af3gpp_model, amf3gpp_model, ausf3gpp_model, dn3gpp_model, lmf3gpp_model, n3iwf3gpp_model, ngeir3gpp_model, nrf3gpp_model, nssf3gpp_model, pcf3gpp_model, sepp3gpp_model, smf3gpp_model, smsf3gpp_model, udm3gpp_model, upf3gpp_model, yang_model, nfs3gpp_model, nfp3gpp_model, meas3gpp_model, subscr3gpp_model, fm3gpp_model, trace3gpp_model, yangmnt_model, cbeamff3gpp_model, gnbdu3gpp_model, nrsectcarr3gpp_model, nrcellcu3gpp_model, gnbcucp3gpp_model, nrcelldu3gpp_model},
-    associations={},
-    generalizations={}
-)
+UeAccDelayProbilityDist = Class(name="UeAccDelayProbilityDist")
+
+# UeAccDelayProbilityDist class attributes and methods
+UeAccDelayProbilityDist_targetProbability: Property = Property(name="targetProbability", type=TargetProbability)
+UeAccDelayProbilityDist_accessdelay: Property = Property(name="accessdelay", type=Accessdelay)
+UeAccDelayProbilityDist.attributes={UeAccDelayProbilityDist_targetProbability, UeAccDelayProbilityDist_accessdelay}
+

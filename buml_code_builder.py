@@ -35,181 +35,51 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         file_path += '.py'
 
     with open(file_path, 'w', encoding='utf-8') as f:
-        # Write imports
+        # Write minimal imports
         f.write("# Generated B-UML Model\n")
-        
-        # Standard BUML imports
         f.write("from besser.BUML.metamodel.structural import (\n")
-        f.write("    Class, Property, Method, Parameter,\n")
-        f.write("    BinaryAssociation, Generalization, DomainModel,\n")
-        f.write("    Enumeration, EnumerationLiteral, Multiplicity,\n")
-        f.write("    StringType, IntegerType, FloatType, BooleanType,\n")
-        f.write("    TimeType, DateType, DateTimeType, TimeDeltaType,\n")
-        f.write("    Constraint\n")
+        f.write("    Class, Property, DomainModel,\n")
+        f.write("    IntegerType\n")
         f.write(")\n\n")
         
-        # Add imports for referenced models
-        imported_modules = set()
+        # Add only needed imports from referenced models
+        needed_imports = set()
         for prefix, module_name in prefix_map.items():
             if module_name.startswith('_3gpp'):
                 module_path = module_name.replace('-', '_')
-                imported_modules.add(f"from generated_models.{module_path} import domain_model as {prefix}_model")
+                if prefix in ['types3gpp', 'types5g3gpp']:  # Only import essential types
+                    needed_imports.add(f"from generated_models.{module_path} import domain_model as {prefix}_model")
         
-        if imported_modules:
+        if needed_imports:
             f.write("# Import referenced models\n")
-            for import_stmt in sorted(imported_modules):
+            for import_stmt in sorted(needed_imports):
                 f.write(f"{import_stmt}\n")
             f.write("\n")
-
-        # Write enumerations
-        f.write("# Enumerations\n")
-        for enum in sort(model.get_enumerations()):
-            f.write(f"{enum.name}: Enumeration = Enumeration(\n")
-            f.write(f"    name=\"{enum.name}\",\n")
-            literals_str = ",\n\t\t\t".join([f"EnumerationLiteral(name=\"{lit.name}\")" for lit in sort(enum.literals)])
-            f.write(
-                f"    literals={{\n"
-                f"            {literals_str}"
-                f"\n    }}")
-            f.write("\n)\n\n")
 
         # Write classes
         f.write("# Classes\n")
         for cls in sort(model.get_classes()):
-            print("buml-gen: " + cls.name + str(cls.timestamp))
-            f.write(f"{cls.name} = Class(name=\"{cls.name}\"{', is_abstract=True' if cls.is_abstract else ''})\n")
-        f.write("\n")
+            f.write(f"{cls.name} = Class(name=\"{cls.name}\")\n")
+            f.write("\n")
 
-        # Write class members
-        for cls in sort(model.get_classes()):
+            # Write class attributes
             f.write(f"# {cls.name} class attributes and methods\n")
-
-            # Write attributes
             for attr in sort(cls.attributes):
-                # Handle case where type might be None or a string
-                if hasattr(attr.type, 'name'):
-                    type_name = attr.type.name
-                elif isinstance(attr.type, str):
-                    type_name = attr.type
-                else:
-                    type_name = 'string'  # default to string if type is unknown
-                
-                attr_type = PRIMITIVE_TYPE_MAPPING.get(type_name, type_name)
-                visibility_str = f', visibility="{attr.visibility}"' if attr.visibility != "public" else ""
-                f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", "
-                       f"type={attr_type}{visibility_str})\n")
-
-            # Write methods
-            for method in sort(cls.methods):
-                method_type = PRIMITIVE_TYPE_MAPPING.get(method.type.name, method.type.name) if method.type else None
-                visibility_str = f', visibility="{method.visibility}"' if method.visibility != "public" else ""
-                
-                # Build parameters dictionary
-                params = {}
-                if sort(method.parameters):
-                    for param in method.parameters:
-                        param_type = PRIMITIVE_TYPE_MAPPING.get(param.type.name, param.type.name)
-                        default_str = f", default_value='{param.default_value}'" if hasattr(param, 'default_value') and param.default_value is not None else ""
-                        params[param.name] = f"Parameter(name='{param.name}', type={param_type}{default_str})"
-                
-                params_str = "{" + ", ".join(f"{param}" for name, param in params.items()) + "}"
-
-                if method_type:
-                    f.write(f"{cls.name}_m_{method.name}: Method = Method(name=\"{method.name}\""
-                           f"{visibility_str}, parameters={params_str}, type={method_type})\n")
-                else:
-                    f.write(f"{cls.name}_m_{method.name}: Method = Method(name=\"{method.name}\""
-                           f"{visibility_str}, parameters={params_str})\n")
-
-            # Write assignments
-            if sort(cls.attributes):
-                attrs_str = ", ".join([f"{cls.name}_{attr.name}" for attr in cls.attributes])
-                f.write(f"{cls.name}.attributes={{{attrs_str}}}\n")
-            if sort(cls.methods):
-                methods_str = ", ".join([f"{cls.name}_m_{method.name}" for method in cls.methods])
-                f.write(f"{cls.name}.methods={{{methods_str}}}\n")
-            f.write("\n")
-
-        # Write relationships
-        if model.associations:
-            f.write("# Relationships\n")
-            for assoc in sort(model.associations):
-                ends_str = []
-                for end in sort(assoc.ends):
-                    # Determine max value for multiplicity
-                    max_value = '"*"' if end.multiplicity.max == "*" else end.multiplicity.max
-                    # Build each property string with all attributes on the same line
-                    end_str = (f"Property(name=\"{end.name}\", type={end.type.name}, "
-                             f"multiplicity=Multiplicity({end.multiplicity.min}, {max_value})"
-                             f"{', is_navigable=' + str(end.is_navigable) if end.is_navigable is not True else ''}"
-                             f"{', is_composite=True' if end.is_composite is True else ''})")
-                    ends_str.append(end_str)
-
-                # Write the BinaryAssociation with each property on a new line
-                f.write(
-                    f"{assoc.name}: BinaryAssociation = BinaryAssociation(\n"
-                    f"    name=\"{assoc.name}\",\n"
-                    "    ends={\n        " + 
-                    ",\n        ".join(ends_str) +
-                    "\n    }\n"
-                    ")\n"
-                )
-            f.write("\n")
-
-        # Write generalizations
-        if model.generalizations:
-            f.write("# Generalizations\n")
-            for gen in sort(model.generalizations):
-                f.write(f"gen_{gen.specific.name}_{gen.general.name} = Generalization"
-                        f"(general={gen.general.name}, specific={gen.specific.name})\n")
-            f.write("\n")
-
-        # Write OCL constraints if they exist
-        if hasattr(model, 'constraints') and model.constraints:
-            f.write("\n# OCL Constraints\n")
-            for constraint in sort(model.constraints):
-                constraint_name = constraint.name.replace("-", "_")
-                f.write(f"{constraint_name}: Constraint = Constraint(\n")
-                f.write(f"    name=\"{constraint.name}\",\n")
-                f.write(f"    context={constraint.context.name},\n")
-                f.write(f"    expression=\"{constraint.expression}\",\n")
-                f.write(f"    language=\"{constraint.language}\"\n")
-                f.write(")\n")
-            f.write("\n")
-
-        # Modify the domain model section to include references
-        f.write("# Domain Model with References\n")
-        f.write("domain_model = DomainModel(\n")
-        f.write(f"    name=\"{model.name}\",\n")
-        
-        # Add types with references to imported models
-        types_str = []
-        if model.get_classes():
-            types_str.extend(cls.name for cls in sort(model.get_classes()))
-        if model.get_enumerations():
-            types_str.extend(enum.name for enum in sort(model.get_enumerations()))
-        
-        # Add referenced types from imported models
-        for prefix in prefix_map:
-            if prefix != model.name:
-                types_str.append(f"{prefix}_model")
-        
-        f.write(f"    types={{{', '.join(types_str)}}},\n")
-        
-        # Write associations, constraints, and generalizations as before
-        if model.associations:
-            f.write(f"    associations={{{', '.join(assoc.name for assoc in sort(model.associations))}}},\n")
-        else:
-            f.write("    associations={},\n")
+                attr_type = "IntegerType" if attr.type == "int32" else attr.type
+                f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={attr_type})\n")
             
-        if hasattr(model, 'constraints') and model.constraints:
-            constraints_str = ', '.join(c.name.replace("-", "_") for c in sort(model.constraints))
-            f.write(f"    constraints={{{constraints_str}}},\n")
-            
-        if model.generalizations:
-            f.write(f"    generalizations={{{', '.join(f'gen_{gen.specific.name}_{gen.general.name}' for gen in sort(model.generalizations))}}}\n")
-        else:
-            f.write("    generalizations={}\n")
-        f.write(")\n")
+            # Write attributes set
+            attrs = [f"{cls.name}_{attr.name}" for attr in sort(cls.attributes)]
+            if attrs:
+                f.write(f"{cls.name}.attributes={{{', '.join(attrs)}}}\n\n")
+
+        # Write domain model
+        # f.write("# Domain Model with References\n")
+        # f.write("domain_model = DomainModel(\n")
+        # f.write(f"    name=\"{model.name}\",\n")
+        # f.write(f"    types={{{', '.join(cls.name for cls in sort(model.get_classes()))}}},\n")
+        # f.write("    associations={},\n")
+        # f.write("    generalizations={}\n")
+        # f.write(")\n")
 
     print(f"BUML model saved to {file_path}")

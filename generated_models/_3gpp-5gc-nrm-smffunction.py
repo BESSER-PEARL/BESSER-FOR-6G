@@ -1,69 +1,23 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, Method, Parameter,
-    BinaryAssociation, Generalization, DomainModel,
-    Enumeration, EnumerationLiteral, Multiplicity,
-    StringType, IntegerType, FloatType, BooleanType,
-    TimeType, DateType, DateTimeType, TimeDeltaType,
-    Constraint
+    Class, Property, DomainModel,
+    IntegerType
 )
 
 # Import referenced models
 from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_5gc_nrm_affunction import domain_model as af3gpp_model
-from generated_models._3gpp_5gc_nrm_amffunction import domain_model as amf3gpp_model
-from generated_models._3gpp_5gc_nrm_ausffunction import domain_model as ausf3gpp_model
-from generated_models._3gpp_5gc_nrm_configurable5qiset import domain_model as Conf5QIs3gpp_model
-from generated_models._3gpp_5gc_nrm_dnfunction import domain_model as dn3gpp_model
-from generated_models._3gpp_5gc_nrm_lmffunction import domain_model as lmf3gpp_model
-from generated_models._3gpp_5gc_nrm_n3iwffunction import domain_model as n3iwf3gpp_model
-from generated_models._3gpp_5gc_nrm_nfprofile import domain_model as nfp3gpp_model
-from generated_models._3gpp_5gc_nrm_nfservice import domain_model as nfs3gpp_model
-from generated_models._3gpp_5gc_nrm_ngeirfunction import domain_model as ngeir3gpp_model
-from generated_models._3gpp_5gc_nrm_nrffunction import domain_model as nrf3gpp_model
-from generated_models._3gpp_5gc_nrm_nssffunction import domain_model as nssf3gpp_model
-from generated_models._3gpp_5gc_nrm_pcffunction import domain_model as pcf3gpp_model
-from generated_models._3gpp_5gc_nrm_seppfunction import domain_model as sepp3gpp_model
-from generated_models._3gpp_5gc_nrm_smffunction import domain_model as smf3gpp_model
-from generated_models._3gpp_5gc_nrm_smsffunction import domain_model as smsf3gpp_model
-from generated_models._3gpp_5gc_nrm_udmfunction import domain_model as udm3gpp_model
-from generated_models._3gpp_5gc_nrm_upffunction import domain_model as upf3gpp_model
-from generated_models._3gpp_common_ep_rp import domain_model as eprp3gpp_model
-from generated_models._3gpp_common_managed_element import domain_model as me3gpp_model
-from generated_models._3gpp_common_managed_function import domain_model as mf3gpp_model
-from generated_models._3gpp_common_subnetwork import domain_model as subnet3gpp_model
-from generated_models._3gpp_common_top import domain_model as top3gpp_model
 from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
-# Enumerations
 # Classes
-SMFFunctionGrp = Class(name="SMFFunctionGrp")
 SMFFunction = Class(name="SMFFunction")
 
-# SMFFunctionGrp class attributes and methods
-SMFFunctionGrp_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
-SMFFunctionGrp_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
-SMFFunctionGrp_sBIFQDN: Property = Property(name="sBIFQDN", type=inet:domain-name)
-SMFFunctionGrp_configurable5QISetRef: Property = Property(name="configurable5QISetRef", type=types3gpp:DistinguishedName)
-SMFFunctionGrp_dynamic5QISetRef: Property = Property(name="dynamic5QISetRef", type=types3gpp:DistinguishedName)
-SMFFunctionGrp_managedNFProfile: Property = Property(name="managedNFProfile", type=list)
-SMFFunctionGrp_commModelList: Property = Property(name="commModelList", type=list)
-SMFFunctionGrp.attributes={SMFFunctionGrp_dynamic5QISetRef, SMFFunctionGrp_managedNFProfile, SMFFunctionGrp_sBIFQDN, SMFFunctionGrp_configurable5QISetRef, SMFFunctionGrp_commModelList, SMFFunctionGrp_pLMNIdList, SMFFunctionGrp_sNSSAIList}
-
 # SMFFunction class attributes and methods
-SMFFunction_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
-SMFFunction_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
 SMFFunction_sBIFQDN: Property = Property(name="sBIFQDN", type=inet:domain-name)
 SMFFunction_configurable5QISetRef: Property = Property(name="configurable5QISetRef", type=types3gpp:DistinguishedName)
 SMFFunction_dynamic5QISetRef: Property = Property(name="dynamic5QISetRef", type=types3gpp:DistinguishedName)
+SMFFunction_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
+SMFFunction_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
 SMFFunction_managedNFProfile: Property = Property(name="managedNFProfile", type=list)
 SMFFunction_commModelList: Property = Property(name="commModelList", type=list)
-SMFFunction.attributes={SMFFunction_dynamic5QISetRef, SMFFunction_managedNFProfile, SMFFunction_sBIFQDN, SMFFunction_configurable5QISetRef, SMFFunction_commModelList, SMFFunction_pLMNIdList, SMFFunction_sNSSAIList}
+SMFFunction.attributes={SMFFunction_sBIFQDN, SMFFunction_configurable5QISetRef, SMFFunction_dynamic5QISetRef, SMFFunction_pLMNIdList, SMFFunction_sNSSAIList, SMFFunction_managedNFProfile, SMFFunction_commModelList}
 
-# Domain Model with References
-domain_model = DomainModel(
-    name="_3gpp-5gc-nrm-smffunction",
-    types={SMFFunctionGrp, SMFFunction, types3gpp_model, mf3gpp_model, me3gpp_model, top3gpp_model, types5g3gpp_model, inet_model, subnet3gpp_model, Conf5QIs3gpp_model, eprp3gpp_model, af3gpp_model, amf3gpp_model, ausf3gpp_model, dn3gpp_model, lmf3gpp_model, n3iwf3gpp_model, ngeir3gpp_model, nrf3gpp_model, nssf3gpp_model, pcf3gpp_model, sepp3gpp_model, smf3gpp_model, smsf3gpp_model, udm3gpp_model, upf3gpp_model, yang_model, nfs3gpp_model, nfp3gpp_model},
-    associations={},
-    generalizations={}
-)
