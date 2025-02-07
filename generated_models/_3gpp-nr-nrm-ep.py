@@ -1,7 +1,7 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType
+    IntegerType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -9,15 +9,6 @@ from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3
 from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
-EP_X2C = Class(name="EP_X2C")
-
-# EP_X2C class attributes and methods
-EP_X2U = Class(name="EP_X2U")
-
-# EP_X2U class attributes and methods
-EP_S1U = Class(name="EP_S1U")
-
-# EP_S1U class attributes and methods
 EP_E1 = Class(name="EP_E1")
 
 # EP_E1 class attributes and methods
@@ -39,3 +30,12 @@ EP_NgC = Class(name="EP_NgC")
 EP_NgU = Class(name="EP_NgU")
 
 # EP_NgU class attributes and methods
+EP_X2C = Class(name="EP_X2C")
+
+# EP_X2C class attributes and methods
+EP_X2U = Class(name="EP_X2U")
+
+# EP_X2U class attributes and methods
+EP_S1U = Class(name="EP_S1U")
+
+# EP_S1U class attributes and methods

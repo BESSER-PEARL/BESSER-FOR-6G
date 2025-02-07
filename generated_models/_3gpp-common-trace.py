@@ -1,7 +1,7 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType
+    IntegerType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -9,15 +9,11 @@ from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3
 from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
-TraceSubtree = Class(name="TraceSubtree")
-
-# TraceSubtree class attributes and methods
-TraceSubtree_TraceJob: Property = Property(name="TraceJob", type=list)
-TraceSubtree.attributes={TraceSubtree_TraceJob}
-
 TraceJob = Class(name="TraceJob")
 
 # TraceJob class attributes and methods
+TraceJob_tjJobType: Property = Property(name="tjJobType", type=enumeration)
+TraceJob_tjPLMNTarget: Property = Property(name="tjPLMNTarget", type=StringType)
 TraceJob_tjStreamingTraceConsumerURI: Property = Property(name="tjStreamingTraceConsumerURI", type=inet:uri)
 TraceJob_tjTraceCollectionEntityAddress: Property = Property(name="tjTraceCollectionEntityAddress", type=union)
 TraceJob_tjTraceDepth: Property = Property(name="tjTraceDepth", type=enumeration)
@@ -47,7 +43,11 @@ TraceJob_tjListOfInterfaces: Property = Property(name="tjListOfInterfaces", type
 TraceJob_tjTraceTarget: Property = Property(name="tjTraceTarget", type=list)
 TraceJob_tjMDTAreaConfigurationForNeighCell: Property = Property(name="tjMDTAreaConfigurationForNeighCell", type=list)
 TraceJob_tjMDTPLMList: Property = Property(name="tjMDTPLMList", type=list)
-TraceJob_tjJobType: Property = Property(name="tjJobType", type=enumeration)
-TraceJob_tjPLMNTarget: Property = Property(name="tjPLMNTarget", type=StringType)
-TraceJob.attributes={TraceJob_tjStreamingTraceConsumerURI, TraceJob_tjTraceCollectionEntityAddress, TraceJob_tjTraceDepth, TraceJob_tjTraceReference, TraceJob_tjTraceReportingFormat, TraceJob_tjTriggeringEvent, TraceJob_tjMDTAnonymizationOfData, TraceJob_tjMDTCollectionPeriodRrmLte, TraceJob_tjMDTCollectionPeriodRrmUmts, TraceJob_tjMDTCollectionPeriodRrmNR, TraceJob_tjMDTEventListForTriggeredMeasurement, TraceJob_tjMDTEventThreshold, TraceJob_tjMDTListOfMeasurements, TraceJob_tjMDTLoggingDuration, TraceJob_tjMDTLoggingInterval, TraceJob_tjMDTMeasurementPeriodLTE, TraceJob_tjMDTMeasurementPeriodUMTS, TraceJob_tjMDTMeasurementQuantity, TraceJob_tjMDTPositioningMethod, TraceJob_tjMDTReportAmount, TraceJob_tjMDTReportingTrigger, TraceJob_tjMDTReportInterval, TraceJob_tjMDTReportType, TraceJob_tjMDTSensorInformation, TraceJob_tjMDTTraceCollectionEntityID, TraceJob_tjListOfInterfaces, TraceJob_tjTraceTarget, TraceJob_tjMDTAreaConfigurationForNeighCell, TraceJob_tjMDTPLMList, TraceJob_tjJobType, TraceJob_tjPLMNTarget}
+TraceJob.attributes={TraceJob_tjJobType, TraceJob_tjPLMNTarget, TraceJob_tjStreamingTraceConsumerURI, TraceJob_tjTraceCollectionEntityAddress, TraceJob_tjTraceDepth, TraceJob_tjTraceReference, TraceJob_tjTraceReportingFormat, TraceJob_tjTriggeringEvent, TraceJob_tjMDTAnonymizationOfData, TraceJob_tjMDTCollectionPeriodRrmLte, TraceJob_tjMDTCollectionPeriodRrmUmts, TraceJob_tjMDTCollectionPeriodRrmNR, TraceJob_tjMDTEventListForTriggeredMeasurement, TraceJob_tjMDTEventThreshold, TraceJob_tjMDTListOfMeasurements, TraceJob_tjMDTLoggingDuration, TraceJob_tjMDTLoggingInterval, TraceJob_tjMDTMeasurementPeriodLTE, TraceJob_tjMDTMeasurementPeriodUMTS, TraceJob_tjMDTMeasurementQuantity, TraceJob_tjMDTPositioningMethod, TraceJob_tjMDTReportAmount, TraceJob_tjMDTReportingTrigger, TraceJob_tjMDTReportInterval, TraceJob_tjMDTReportType, TraceJob_tjMDTSensorInformation, TraceJob_tjMDTTraceCollectionEntityID, TraceJob_tjListOfInterfaces, TraceJob_tjTraceTarget, TraceJob_tjMDTAreaConfigurationForNeighCell, TraceJob_tjMDTPLMList}
+
+TraceSubtree = Class(name="TraceSubtree")
+
+# TraceSubtree class attributes and methods
+TraceSubtree_TraceJob: Property = Property(name="TraceJob", type=list)
+TraceSubtree.attributes={TraceSubtree_TraceJob}
 

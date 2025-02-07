@@ -1,7 +1,7 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType
+    IntegerType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -9,6 +9,27 @@ from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3
 from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
+EP_S5C = Class(name="EP_S5C")
+
+# EP_S5C class attributes and methods
+EP_S5U = Class(name="EP_S5U")
+
+# EP_S5U class attributes and methods
+EP_Rx = Class(name="EP_Rx")
+
+# EP_Rx class attributes and methods
+EP_MAP_SMSC = Class(name="EP_MAP_SMSC")
+
+# EP_MAP_SMSC class attributes and methods
+EP_NLS = Class(name="EP_NLS")
+
+# EP_NLS class attributes and methods
+EP_NLG = Class(name="EP_NLG")
+
+# EP_NLG class attributes and methods
+EP_SBI_IPX = Class(name="EP_SBI_IPX")
+
+# EP_SBI_IPX class attributes and methods
 EP_N2 = Class(name="EP_N2")
 
 # EP_N2 class attributes and methods
@@ -85,24 +106,3 @@ EP_N32_n32fPolicy: Property = Property(name="n32fPolicy", type=StringType)
 EP_N32_withIPX: Property = Property(name="withIPX", type=BooleanType)
 EP_N32.attributes={EP_N32_remoteSeppAddress, EP_N32_remoteSeppId, EP_N32_n32cParas, EP_N32_n32fPolicy, EP_N32_withIPX}
 
-EP_S5C = Class(name="EP_S5C")
-
-# EP_S5C class attributes and methods
-EP_S5U = Class(name="EP_S5U")
-
-# EP_S5U class attributes and methods
-EP_Rx = Class(name="EP_Rx")
-
-# EP_Rx class attributes and methods
-EP_MAP_SMSC = Class(name="EP_MAP_SMSC")
-
-# EP_MAP_SMSC class attributes and methods
-EP_NLS = Class(name="EP_NLS")
-
-# EP_NLS class attributes and methods
-EP_NLG = Class(name="EP_NLG")
-
-# EP_NLG class attributes and methods
-EP_SBI_IPX = Class(name="EP_SBI_IPX")
-
-# EP_SBI_IPX class attributes and methods

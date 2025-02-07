@@ -1,7 +1,7 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType
+    IntegerType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models

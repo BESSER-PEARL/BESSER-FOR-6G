@@ -1,5 +1,5 @@
 import os
-from besser.BUML.metamodel.structural.structural import DomainModel
+from besser.BUML.metamodel.structural.structural import DomainModel, Enumeration
 from besser.utilities import sort_by_timestamp as sort
 
 PRIMITIVE_TYPE_MAPPING = {
@@ -39,7 +39,7 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         f.write("# Generated B-UML Model\n")
         f.write("from besser.BUML.metamodel.structural import (\n")
         f.write("    Class, Property, DomainModel,\n")
-        f.write("    IntegerType\n")
+        f.write("    IntegerType, Enumeration, EnumerationLiteral\n")
         f.write(")\n\n")
         
         # Add only needed imports from referenced models
@@ -55,6 +55,17 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
             for import_stmt in sorted(needed_imports):
                 f.write(f"{import_stmt}\n")
             f.write("\n")
+
+        # Write enumerations
+        enums = [t for t in model.types if isinstance(t, Enumeration)]
+        if enums:
+            f.write("# Enumerations\n")
+            for enum in sort(enums):
+                f.write(f"{enum.name} = Enumeration(name=\"{enum.name}\")\n")
+                for literal in sort(enum.literals):
+                    f.write(f"{enum.name}_{literal.name} = EnumerationLiteral(")
+                    f.write(f"name=\"{literal.name}\", owner={enum.name})\n")
+                f.write(f"{enum.name}.literals = {{{', '.join(f'{enum.name}_{lit.name}' for lit in sort(enum.literals))}}}\n\n")
 
         # Write classes
         f.write("# Classes\n")
