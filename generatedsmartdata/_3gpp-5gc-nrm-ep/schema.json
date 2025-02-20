@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.EP_N6Grp/EP_N6Grp/schema.json",
+  "title": "Smart Data models - EP_N6Grp schema",
+  "modelTags": "",
+  "description": "This class represents EP_N6Grp",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

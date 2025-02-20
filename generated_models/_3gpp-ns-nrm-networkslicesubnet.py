@@ -1,7 +1,9 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
@@ -12,29 +14,29 @@ EPTransport_ipAddress: Property = Property(name="ipAddress", type=StringType)
 EPTransport_logicInterfaceId: Property = Property(name="logicInterfaceId", type=StringType)
 EPTransport.attributes={EPTransport_ipAddress, EPTransport_logicInterfaceId}
 
-NsInfo = Class(name="NsInfo")
-
-# NsInfo class attributes and methods
-NsInfo_nSInstanceId: Property = Property(name="nSInstanceId", type=ETSI-GS-NFV-Identifier)
-NsInfo_nsName: Property = Property(name="nsName", type=StringType)
-NsInfo_description: Property = Property(name="description", type=StringType)
-NsInfo.attributes={NsInfo_nSInstanceId, NsInfo_nsName, NsInfo_description}
-
 NetworkSliceSubnet = Class(name="NetworkSliceSubnet")
 
 # NetworkSliceSubnet class attributes and methods
-NetworkSliceSubnet_operationalState: Property = Property(name="operationalState", type=types3gpp:OperationalState)
-NetworkSliceSubnet_administrativeState: Property = Property(name="administrativeState", type=types3gpp:AdministrativeState)
-NetworkSliceSubnet_nsInfo: Property = Property(name="nsInfo", type=list)
-NetworkSliceSubnet_sliceProfileList: Property = Property(name="sliceProfileList", type=list)
-NetworkSliceSubnet_managedFunctionRef: Property = Property(name="managedFunctionRef", type=list)
 NetworkSliceSubnet_NetworkSliceSubnet: Property = Property(name="NetworkSliceSubnet", type=list)
-NetworkSliceSubnet.attributes={NetworkSliceSubnet_operationalState, NetworkSliceSubnet_administrativeState, NetworkSliceSubnet_nsInfo, NetworkSliceSubnet_sliceProfileList, NetworkSliceSubnet_managedFunctionRef, NetworkSliceSubnet_NetworkSliceSubnet}
+NetworkSliceSubnet_administrativeState: Property = Property(name="administrativeState", type=StringType)
+NetworkSliceSubnet_managedFunctionRef: Property = Property(name="managedFunctionRef", type=list)
+NetworkSliceSubnet_nsInfo: Property = Property(name="nsInfo", type=list)
+NetworkSliceSubnet_operationalState: Property = Property(name="operationalState", type=StringType)
+NetworkSliceSubnet_sliceProfileList: Property = Property(name="sliceProfileList", type=list)
+NetworkSliceSubnet.attributes={NetworkSliceSubnet_NetworkSliceSubnet, NetworkSliceSubnet_administrativeState, NetworkSliceSubnet_managedFunctionRef, NetworkSliceSubnet_nsInfo, NetworkSliceSubnet_operationalState, NetworkSliceSubnet_sliceProfileList}
+
+NsInfo = Class(name="NsInfo")
+
+# NsInfo class attributes and methods
+NsInfo_description: Property = Property(name="description", type=StringType)
+NsInfo_nSInstanceId: Property = Property(name="nSInstanceId", type=StringType)
+NsInfo_nsName: Property = Property(name="nsName", type=StringType)
+NsInfo.attributes={NsInfo_description, NsInfo_nSInstanceId, NsInfo_nsName}
 
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-ns-nrm-networkslicesubnet",
-    types={EPTransport, NsInfo, NetworkSliceSubnet},
+    types={EPTransport, NetworkSliceSubnet, NsInfo},
     associations={},
     generalizations={}
 )

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.BWP/BWP/schema.json",
+  "title": "Smart Data models - BWP schema",
+  "modelTags": "",
+  "description": "This class represents BWP",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "bwpContext": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "cyclicPrefix": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "isInitialBwp": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "numberOfRBs": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "startRB": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "subCarrierSpacing": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

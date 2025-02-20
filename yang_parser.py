@@ -1,6 +1,6 @@
 import json
 from typing import Any, Dict, List
-from structural import (Class, DataType, DomainModel, Property, Method,
+from besser.BUML.metamodel.structural import (Class, DataType, DomainModel, Property, Method,
                        PrimitiveDataType, Enumeration, EnumerationLiteral)
 
 class YangParser:
@@ -67,6 +67,15 @@ class YangParser:
                 if prefix and module_ref:
                     self.prefix_map[prefix] = module_ref
 
+        # Parse typedefs first as they define types used by other elements
+        if 'typedef' in module:
+            typedefs = module['typedef']
+            if isinstance(typedefs, list):
+                for typedef in typedefs:
+                    self.parse_typedef(typedef)
+            else:
+                self.parse_typedef(typedefs)
+
         # Parse groupings as they define types
         if 'grouping' in module:
             groupings = module['grouping']
@@ -90,8 +99,9 @@ class YangParser:
     def parse_typedef(self, typedef: Dict[str, Any]) -> None:
         """Parse a typedef definition and create an enumeration if it defines one."""
         type_info = typedef.get('type', {})
-        if type_info.get('@name') == 'enumeration':
-            enum_name = typedef['@name']
+        if isinstance(type_info, dict) and type_info.get('@name') == 'enumeration':
+            enum_name = typedef.get('@name')
+            print(f"Creating enumeration {enum_name}")  # Debug print
             
             # Skip if we've already processed this type
             if enum_name in self.processed_types:
@@ -104,11 +114,15 @@ class YangParser:
                 enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
                 for enum in enums:
                     literal_name = enum.get('@name', '')
-                    literal = EnumerationLiteral(name=literal_name, owner=enum_type)
-                    enum_type.add_literal(literal)
+                    if literal_name:  # Only add if we have a valid name
+                        print(f"  Adding literal {literal_name}")  # Debug print
+                        literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                        enum_type.add_literal(literal)
             
+            # Add the enumeration to the model
             self.current_model.add_type(enum_type)
             self.processed_types.add(enum_name)
+            print(f"Added enumeration {enum_name} to model")  # Debug print
 
     def parse_grouping(self, grouping: Dict[str, Any]) -> None:
         """Parse a grouping definition and create a class."""
@@ -167,10 +181,10 @@ class YangParser:
         type_info = leaf.get('type', {})
         type_name = type_info.get('@name', 'string')
         
-        # Handle types3gpp:DistinguishedName specifically
-        if type_name == 'types3gpp:DistinguishedName':
-            type_name = 'StringType'
-        
+        # Handle special types with hyphens
+        if isinstance(type_name, str) and '-' in type_name:
+            type_name = type_name.replace('-', '_')
+
         # Map YANG types to primitive types
         type_mapping = {
             'string': 'StringType',
@@ -184,9 +198,27 @@ class YangParser:
             'int32': 'IntegerType',
             'int64': 'IntegerType',
             'decimal64': 'FloatType',
-            'boolean': 'BooleanType'
+            'integer': 'IntegerType',
+            'integer_percentage': 'IntegerType',
+            'DistinguishedName': 'StringType',
+            'DateAndTime': 'DateTimeType',
+            'DateTime': 'DateTimeType',
+            'Duration': 'TimeDeltaType',
+            'Float': 'FloatType',
+            'domain_name': 'StringType',
+            'ip_address': 'StringType',
+            'host': 'StringType',
+            'date_and_time': 'DateTimeType',
+            'instance_identifier': 'StringType',
+            'enumeration': 'EnumerationType'
         }
-        type_name = type_mapping.get(type_name, type_name)
+        
+        # Try to map the type
+        if type_name not in type_mapping:
+            # For unknown types, create a StringType
+            type_name = 'StringType'
+        else:
+            type_name = type_mapping[type_name]
 
         # Create property with proper type
         prop = Property(

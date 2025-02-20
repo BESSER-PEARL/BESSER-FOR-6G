@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.ExternalENBFunctionWrapper/ExternalENBFunctionWrapper/schema.json",
-  "title": "Smart Data models - ExternalENBFunctionWrapper schema",
+  "$id": "https://smart-data-models.github.io/dataModel.ExternalENBFunction/ExternalENBFunction/schema.json",
+  "title": "Smart Data models - ExternalENBFunction schema",
   "modelTags": "",
-  "description": "This class represents ExternalENBFunctionWrapper",
+  "description": "This class represents ExternalENBFunction",
   "required": [
     "id",
     "type"
@@ -18,12 +18,9 @@
     },
     {
       "properties": {
-        "ExternalENBFunction": {
-                "description": "Property. Model:\u0027https://schema.org/Array\u0027",
-                "items": {
-                        "type": "string"
-                },
-                "type": "array"
+        "eNBId": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
         }
 }
     }

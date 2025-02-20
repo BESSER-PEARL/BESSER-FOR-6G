@@ -1,14 +1,16 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
 SCPFunction = Class(name="SCPFunction")
 
 # SCPFunction class attributes and methods
-SCPFunction_address: Property = Property(name="address", type=inet:host)
+SCPFunction_address: Property = Property(name="address", type=StringType)
 SCPFunction_supportedFuncList: Property = Property(name="supportedFuncList", type=list)
 SCPFunction.attributes={SCPFunction_address, SCPFunction_supportedFuncList}
 

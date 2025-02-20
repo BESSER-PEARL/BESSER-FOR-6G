@@ -1,7 +1,9 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
@@ -9,9 +11,9 @@ Domain_ = Class(name="Domain_")
 
 # Domain_ class attributes and methods
 Domain__dnPrefix: Property = Property(name="dnPrefix", type=StringType)
-Domain__userLabel: Property = Property(name="userLabel", type=StringType)
 Domain__userDefinedNetworkType: Property = Property(name="userDefinedNetworkType", type=StringType)
-Domain_.attributes={Domain__dnPrefix, Domain__userLabel, Domain__userDefinedNetworkType}
+Domain__userLabel: Property = Property(name="userLabel", type=StringType)
+Domain_.attributes={Domain__dnPrefix, Domain__userDefinedNetworkType, Domain__userLabel}
 
 SubNetwork = Class(name="SubNetwork")
 

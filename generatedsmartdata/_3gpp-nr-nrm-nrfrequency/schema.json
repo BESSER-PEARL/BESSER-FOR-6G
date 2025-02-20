@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.NRFrequencyWrapper/NRFrequencyWrapper/schema.json",
-  "title": "Smart Data models - NRFrequencyWrapper schema",
+  "$id": "https://smart-data-models.github.io/dataModel.NRFrequency/NRFrequency/schema.json",
+  "title": "Smart Data models - NRFrequency schema",
   "modelTags": "",
-  "description": "This class represents NRFrequencyWrapper",
+  "description": "This class represents NRFrequency",
   "required": [
     "id",
     "type"
@@ -18,12 +18,13 @@
     },
     {
       "properties": {
-        "NRFrequency": {
-                "description": "Property. Model:\u0027https://schema.org/Array\u0027",
-                "items": {
-                        "type": "string"
-                },
-                "type": "array"
+        "absoluteFrequencySSB": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "sSBSubCarrierSpacing": {
+                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
         }
 }
     }

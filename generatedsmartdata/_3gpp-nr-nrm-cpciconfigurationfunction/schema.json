@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.CSonPciList/CSonPciList/schema.json",
-  "title": "Smart Data models - CSonPciList schema",
+  "$id": "https://smart-data-models.github.io/dataModel.CPCIConfigurationFunction/CPCIConfigurationFunction/schema.json",
+  "title": "Smart Data models - CPCIConfigurationFunction schema",
   "modelTags": "",
-  "description": "This class represents CSonPciList",
+  "description": "This class represents CPCIConfigurationFunction",
   "required": [
     "id",
     "type"
@@ -18,9 +18,16 @@
     },
     {
       "properties": {
-        "NRPci": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+        "cPciConfigurationControl": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "cSonPciList": {
+                "description": "Property. Model:\u0027https://schema.org/Array\u0027",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
         }
 }
     }

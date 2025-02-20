@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.GNBCUUPFunction/GNBCUUPFunction/schema.json",
-  "title": "Smart Data models - GNBCUUPFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.TAIGrp/TAIGrp/schema.json",
+  "title": "Smart Data models - TAIGrp schema",
   "modelTags": "",
-  "description": "This class represents GNBCUUPFunction",
+  "description": "This class represents TAIGrp",
   "required": [
     "id",
     "type"
@@ -18,34 +18,11 @@
     },
     {
       "properties": {
-        "configurable5QISetRef": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
-        },
-        "dynamic5QISetRef": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
-        },
-        "gNBCUUPId": {
+        "nRTAC": {
                 "description": "Property. Model:\u0027https://schema.org/Number\u0027",
                 "type": "number"
         },
-        "gNBId": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
-        },
-        "gNBIdLength": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
-        },
-        "mappingSetIDBackhaulAddressList": {
-                "description": "Property. Model:\u0027https://schema.org/Array\u0027",
-                "items": {
-                        "type": "string"
-                },
-                "type": "array"
-        },
-        "pLMNInfoList": {
+        "pLMNId": {
                 "description": "Property. Model:\u0027https://schema.org/Array\u0027",
                 "items": {
                         "type": "string"

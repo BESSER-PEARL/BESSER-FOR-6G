@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.ExternalEUtranGenericCell/ExternalEUtranGenericCell/schema.json",
-  "title": "Smart Data models - ExternalEUtranGenericCell schema",
+  "$id": "https://smart-data-models.github.io/dataModel.ExternalEUtranCellTDDWrapper/ExternalEUtranCellTDDWrapper/schema.json",
+  "title": "Smart Data models - ExternalEUtranCellTDDWrapper schema",
   "modelTags": "",
-  "description": "This class represents ExternalEUtranGenericCell",
+  "description": "This class represents ExternalEUtranCellTDDWrapper",
   "required": [
     "id",
     "type"
@@ -18,19 +18,7 @@
     },
     {
       "properties": {
-        "cellLocalId": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
-        },
-        "eNBId": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
-        },
-        "pci": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
-        },
-        "plmnIdList": {
+        "ExternalEUtranCellTDD": {
                 "description": "Property. Model:\u0027https://schema.org/Array\u0027",
                 "items": {
                         "type": "string"

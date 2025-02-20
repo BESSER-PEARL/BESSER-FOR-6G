@@ -1,16 +1,35 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
-InterRatEsActivationOriginalCellParameters = Class(name="InterRatEsActivationOriginalCellParameters")
+DESManagementFunction = Class(name="DESManagementFunction")
 
-# InterRatEsActivationOriginalCellParameters class attributes and methods
-InterRatEsActivationOriginalCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
-InterRatEsActivationOriginalCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
-InterRatEsActivationOriginalCellParameters.attributes={InterRatEsActivationOriginalCellParameters_loadThreshold, InterRatEsActivationOriginalCellParameters_timeDuration}
+# DESManagementFunction class attributes and methods
+DESManagementFunction_desSwitch: Property = Property(name="desSwitch", type=BooleanType)
+DESManagementFunction_energySavingState: Property = Property(name="energySavingState", type=EnumerationType)
+DESManagementFunction_esNotAllowedTimePeriod: Property = Property(name="esNotAllowedTimePeriod", type=list)
+DESManagementFunction_interRatEsActivationCandidateCellParameters: Property = Property(name="interRatEsActivationCandidateCellParameters", type=list)
+DESManagementFunction_interRatEsActivationOriginalCellParameters: Property = Property(name="interRatEsActivationOriginalCellParameters", type=list)
+DESManagementFunction_interRatEsDeactivationCandidateCellParameters: Property = Property(name="interRatEsDeactivationCandidateCellParameters", type=list)
+DESManagementFunction_intraRatEsActivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsActivationCandidateCellsLoadParameters", type=list)
+DESManagementFunction_intraRatEsActivationOriginalCellLoadParameters: Property = Property(name="intraRatEsActivationOriginalCellLoadParameters", type=list)
+DESManagementFunction_intraRatEsDeactivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsDeactivationCandidateCellsLoadParameters", type=list)
+DESManagementFunction_isProbingCapable: Property = Property(name="isProbingCapable", type=EnumerationType)
+DESManagementFunction.attributes={DESManagementFunction_desSwitch, DESManagementFunction_energySavingState, DESManagementFunction_esNotAllowedTimePeriod, DESManagementFunction_interRatEsActivationCandidateCellParameters, DESManagementFunction_interRatEsActivationOriginalCellParameters, DESManagementFunction_interRatEsDeactivationCandidateCellParameters, DESManagementFunction_intraRatEsActivationCandidateCellsLoadParameters, DESManagementFunction_intraRatEsActivationOriginalCellLoadParameters, DESManagementFunction_intraRatEsDeactivationCandidateCellsLoadParameters, DESManagementFunction_isProbingCapable}
+
+EsNotAllowedTimePeriod = Class(name="EsNotAllowedTimePeriod")
+
+# EsNotAllowedTimePeriod class attributes and methods
+EsNotAllowedTimePeriod_daysOfWeekList: Property = Property(name="daysOfWeekList", type=StringType)
+EsNotAllowedTimePeriod_listoftimeperiods: Property = Property(name="listoftimeperiods", type=StringType)
+EsNotAllowedTimePeriod_periodOfDay: Property = Property(name="periodOfDay", type=StringType)
+EsNotAllowedTimePeriod_startTimeandendTime: Property = Property(name="startTimeandendTime", type=StringType)
+EsNotAllowedTimePeriod.attributes={EsNotAllowedTimePeriod_daysOfWeekList, EsNotAllowedTimePeriod_listoftimeperiods, EsNotAllowedTimePeriod_periodOfDay, EsNotAllowedTimePeriod_startTimeandendTime}
 
 InterRatEsActivationCandidateCellParameters = Class(name="InterRatEsActivationCandidateCellParameters")
 
@@ -19,34 +38,19 @@ InterRatEsActivationCandidateCellParameters_loadThreshold: Property = Property(n
 InterRatEsActivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
 InterRatEsActivationCandidateCellParameters.attributes={InterRatEsActivationCandidateCellParameters_loadThreshold, InterRatEsActivationCandidateCellParameters_timeDuration}
 
+InterRatEsActivationOriginalCellParameters = Class(name="InterRatEsActivationOriginalCellParameters")
+
+# InterRatEsActivationOriginalCellParameters class attributes and methods
+InterRatEsActivationOriginalCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsActivationOriginalCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsActivationOriginalCellParameters.attributes={InterRatEsActivationOriginalCellParameters_loadThreshold, InterRatEsActivationOriginalCellParameters_timeDuration}
+
 InterRatEsDeactivationCandidateCellParameters = Class(name="InterRatEsDeactivationCandidateCellParameters")
 
 # InterRatEsDeactivationCandidateCellParameters class attributes and methods
 InterRatEsDeactivationCandidateCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
 InterRatEsDeactivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
 InterRatEsDeactivationCandidateCellParameters.attributes={InterRatEsDeactivationCandidateCellParameters_loadThreshold, InterRatEsDeactivationCandidateCellParameters_timeDuration}
-
-DESManagementFunction = Class(name="DESManagementFunction")
-
-# DESManagementFunction class attributes and methods
-DESManagementFunction_desSwitch: Property = Property(name="desSwitch", type=BooleanType)
-DESManagementFunction_energySavingState: Property = Property(name="energySavingState", type=enumeration)
-DESManagementFunction_isProbingCapable: Property = Property(name="isProbingCapable", type=enumeration)
-DESManagementFunction_intraRatEsActivationOriginalCellLoadParameters: Property = Property(name="intraRatEsActivationOriginalCellLoadParameters", type=list)
-DESManagementFunction_intraRatEsActivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsActivationCandidateCellsLoadParameters", type=list)
-DESManagementFunction_intraRatEsDeactivationCandidateCellsLoadParameters: Property = Property(name="intraRatEsDeactivationCandidateCellsLoadParameters", type=list)
-DESManagementFunction_esNotAllowedTimePeriod: Property = Property(name="esNotAllowedTimePeriod", type=list)
-DESManagementFunction_interRatEsActivationOriginalCellParameters: Property = Property(name="interRatEsActivationOriginalCellParameters", type=list)
-DESManagementFunction_interRatEsActivationCandidateCellParameters: Property = Property(name="interRatEsActivationCandidateCellParameters", type=list)
-DESManagementFunction_interRatEsDeactivationCandidateCellParameters: Property = Property(name="interRatEsDeactivationCandidateCellParameters", type=list)
-DESManagementFunction.attributes={DESManagementFunction_desSwitch, DESManagementFunction_energySavingState, DESManagementFunction_isProbingCapable, DESManagementFunction_intraRatEsActivationOriginalCellLoadParameters, DESManagementFunction_intraRatEsActivationCandidateCellsLoadParameters, DESManagementFunction_intraRatEsDeactivationCandidateCellsLoadParameters, DESManagementFunction_esNotAllowedTimePeriod, DESManagementFunction_interRatEsActivationOriginalCellParameters, DESManagementFunction_interRatEsActivationCandidateCellParameters, DESManagementFunction_interRatEsDeactivationCandidateCellParameters}
-
-IntraRatEsActivationOriginalCellLoadParameters = Class(name="IntraRatEsActivationOriginalCellLoadParameters")
-
-# IntraRatEsActivationOriginalCellLoadParameters class attributes and methods
-IntraRatEsActivationOriginalCellLoadParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
-IntraRatEsActivationOriginalCellLoadParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
-IntraRatEsActivationOriginalCellLoadParameters.attributes={IntraRatEsActivationOriginalCellLoadParameters_loadThreshold, IntraRatEsActivationOriginalCellLoadParameters_timeDuration}
 
 IntraRatEsActivationCandidateCellsLoadParameters = Class(name="IntraRatEsActivationCandidateCellsLoadParameters")
 
@@ -55,6 +59,13 @@ IntraRatEsActivationCandidateCellsLoadParameters_loadThreshold: Property = Prope
 IntraRatEsActivationCandidateCellsLoadParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
 IntraRatEsActivationCandidateCellsLoadParameters.attributes={IntraRatEsActivationCandidateCellsLoadParameters_loadThreshold, IntraRatEsActivationCandidateCellsLoadParameters_timeDuration}
 
+IntraRatEsActivationOriginalCellLoadParameters = Class(name="IntraRatEsActivationOriginalCellLoadParameters")
+
+# IntraRatEsActivationOriginalCellLoadParameters class attributes and methods
+IntraRatEsActivationOriginalCellLoadParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+IntraRatEsActivationOriginalCellLoadParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+IntraRatEsActivationOriginalCellLoadParameters.attributes={IntraRatEsActivationOriginalCellLoadParameters_loadThreshold, IntraRatEsActivationOriginalCellLoadParameters_timeDuration}
+
 IntraRatEsDeactivationCandidateCellsLoadParameters = Class(name="IntraRatEsDeactivationCandidateCellsLoadParameters")
 
 # IntraRatEsDeactivationCandidateCellsLoadParameters class attributes and methods
@@ -62,19 +73,10 @@ IntraRatEsDeactivationCandidateCellsLoadParameters_loadThreshold: Property = Pro
 IntraRatEsDeactivationCandidateCellsLoadParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
 IntraRatEsDeactivationCandidateCellsLoadParameters.attributes={IntraRatEsDeactivationCandidateCellsLoadParameters_loadThreshold, IntraRatEsDeactivationCandidateCellsLoadParameters_timeDuration}
 
-EsNotAllowedTimePeriod = Class(name="EsNotAllowedTimePeriod")
-
-# EsNotAllowedTimePeriod class attributes and methods
-EsNotAllowedTimePeriod_startTimeandendTime: Property = Property(name="startTimeandendTime", type=StringType)
-EsNotAllowedTimePeriod_periodOfDay: Property = Property(name="periodOfDay", type=StringType)
-EsNotAllowedTimePeriod_daysOfWeekList: Property = Property(name="daysOfWeekList", type=StringType)
-EsNotAllowedTimePeriod_listoftimeperiods: Property = Property(name="listoftimeperiods", type=StringType)
-EsNotAllowedTimePeriod.attributes={EsNotAllowedTimePeriod_startTimeandendTime, EsNotAllowedTimePeriod_periodOfDay, EsNotAllowedTimePeriod_daysOfWeekList, EsNotAllowedTimePeriod_listoftimeperiods}
-
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-nr-nrm-desmanagementfunction",
-    types={InterRatEsActivationOriginalCellParameters, InterRatEsActivationCandidateCellParameters, InterRatEsDeactivationCandidateCellParameters, DESManagementFunction, IntraRatEsActivationOriginalCellLoadParameters, IntraRatEsActivationCandidateCellsLoadParameters, IntraRatEsDeactivationCandidateCellsLoadParameters, EsNotAllowedTimePeriod},
+    types={DESManagementFunction, EsNotAllowedTimePeriod, InterRatEsActivationCandidateCellParameters, InterRatEsActivationOriginalCellParameters, InterRatEsDeactivationCandidateCellParameters, IntraRatEsActivationCandidateCellsLoadParameters, IntraRatEsActivationOriginalCellLoadParameters, IntraRatEsDeactivationCandidateCellsLoadParameters},
     associations={},
     generalizations={}
 )

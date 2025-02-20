@@ -1,7 +1,9 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes

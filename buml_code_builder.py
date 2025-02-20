@@ -1,6 +1,5 @@
 import os
 from besser.BUML.metamodel.structural.structural import DomainModel, Enumeration
-from besser.utilities import sort_by_timestamp as sort
 
 PRIMITIVE_TYPE_MAPPING = {
     'str': 'StringType',
@@ -39,7 +38,9 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         f.write("# Generated B-UML Model\n")
         f.write("from besser.BUML.metamodel.structural import (\n")
         f.write("    Class, Property, DomainModel,\n")
-        f.write("    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType\n")
+        f.write("    IntegerType, StringType, BooleanType, FloatType,\n")
+        f.write("    TimeType, DateType, DateTimeType, TimeDeltaType,\n")
+        f.write("    PrimitiveDataType, Enumeration, EnumerationLiteral\n")
         f.write(")\n\n")
         
         # Add only needed imports from referenced models
@@ -60,35 +61,61 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         enums = [t for t in model.types if isinstance(t, Enumeration)]
         if enums:
             f.write("# Enumerations\n")
-            for enum in sort(enums):
+            # Sort by name instead of timestamp for enumerations
+            for enum in sorted(enums, key=lambda x: x.name):
                 f.write(f"{enum.name} = Enumeration(name=\"{enum.name}\")\n")
-                for literal in sort(enum.literals):
+                # Sort literals by name as well
+                for literal in sorted(enum.literals, key=lambda x: x.name):
                     f.write(f"{enum.name}_{literal.name} = EnumerationLiteral(")
                     f.write(f"name=\"{literal.name}\", owner={enum.name})\n")
-                f.write(f"{enum.name}.literals = {{{', '.join(f'{enum.name}_{lit.name}' for lit in sort(enum.literals))}}}\n\n")
+                f.write(f"{enum.name}.literals = {{{', '.join(f'{enum.name}_{lit.name}' for lit in sorted(enum.literals, key=lambda x: x.name))}}}\n\n")
 
         # Write classes
         f.write("# Classes\n")
-        for cls in sort(model.get_classes()):
+        # Sort classes by name instead of timestamp
+        for cls in sorted(model.get_classes(), key=lambda x: x.name):
             f.write(f"{cls.name} = Class(name=\"{cls.name}\")\n")
             f.write("\n")
 
             # Write class attributes
             f.write(f"# {cls.name} class attributes and methods\n")
-            for attr in sort(cls.attributes):
-                attr_type = "IntegerType" if attr.type == "int32" else attr.type
-                f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={attr_type})\n")
+            # Sort attributes by name
+            for attr in sorted(cls.attributes, key=lambda x: x.name):
+                # Handle different type scenarios
+                if isinstance(attr.type, str):
+                    if attr.type in PRIMITIVE_TYPE_MAPPING:
+                        type_name = PRIMITIVE_TYPE_MAPPING[attr.type]
+                    elif attr.type == 'list':
+                        type_name = 'list'  # Special case for lists
+                    else:
+                        # Check if it's already a defined primitive type name
+                        if attr.type.endswith('Type'):
+                            type_name = attr.type
+                        else:
+                            # For custom types, reference them directly
+                            type_name = attr.type
+                else:
+                    type_name = str(attr.type)
+                    
+                f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={type_name})\n")
             
             # Write attributes set
-            attrs = [f"{cls.name}_{attr.name}" for attr in sort(cls.attributes)]
+            attrs = [f"{cls.name}_{attr.name}" for attr in sorted(cls.attributes, key=lambda x: x.name)]
             if attrs:
                 f.write(f"{cls.name}.attributes={{{', '.join(attrs)}}}\n\n")
 
-       # Write domain model
+        # Write domain model
         f.write("# Domain Model with References\n")
         f.write("domain_model = DomainModel(\n")
         f.write(f"    name=\"{model.name}\",\n")
-        f.write(f"    types={{{', '.join(cls.name for cls in sort(model.get_classes()))}}},\n")
+        
+        # Get all types including both classes and enumerations
+        all_types = set()
+        all_types.update(sorted(model.get_classes(), key=lambda x: x.name))  # Add classes
+        all_types.update(sorted((t for t in model.types if isinstance(t, Enumeration)), key=lambda x: x.name))  # Add enums
+        
+        # Sort all types by name
+        f.write(f"    types={{{', '.join(t.name for t in sorted(all_types, key=lambda x: x.name))}}},\n")
         f.write("    associations={},\n")
         f.write("    generalizations={}\n")
         f.write(")\n")

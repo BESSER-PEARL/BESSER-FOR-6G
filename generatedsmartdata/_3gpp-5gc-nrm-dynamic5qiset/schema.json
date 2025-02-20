@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.Dynamic5QISet/Dynamic5QISet/schema.json",
-  "title": "Smart Data models - Dynamic5QISet schema",
+  "$id": "https://smart-data-models.github.io/dataModel.Dynamic5QISetSubtree/Dynamic5QISetSubtree/schema.json",
+  "title": "Smart Data models - Dynamic5QISetSubtree schema",
   "modelTags": "",
-  "description": "This class represents Dynamic5QISet",
+  "description": "This class represents Dynamic5QISetSubtree",
   "required": [
     "id",
     "type"
@@ -18,7 +18,7 @@
     },
     {
       "properties": {
-        "dynamic5QIs": {
+        "Dynamic5QISet": {
                 "description": "Property. Model:\u0027https://schema.org/Array\u0027",
                 "items": {
                         "type": "string"

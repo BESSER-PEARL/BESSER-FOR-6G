@@ -1,19 +1,21 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
 UDMFuntion = Class(name="UDMFuntion")
 
 # UDMFuntion class attributes and methods
-UDMFuntion_sBIFQDN: Property = Property(name="sBIFQDN", type=inet:domain-name)
-UDMFuntion_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
-UDMFuntion_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
-UDMFuntion_managedNFProfile: Property = Property(name="managedNFProfile", type=list)
 UDMFuntion_commModelList: Property = Property(name="commModelList", type=list)
-UDMFuntion.attributes={UDMFuntion_sBIFQDN, UDMFuntion_pLMNIdList, UDMFuntion_sNSSAIList, UDMFuntion_managedNFProfile, UDMFuntion_commModelList}
+UDMFuntion_managedNFProfile: Property = Property(name="managedNFProfile", type=list)
+UDMFuntion_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
+UDMFuntion_sBIFQDN: Property = Property(name="sBIFQDN", type=StringType)
+UDMFuntion_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
+UDMFuntion.attributes={UDMFuntion_commModelList, UDMFuntion_managedNFProfile, UDMFuntion_pLMNIdList, UDMFuntion_sBIFQDN, UDMFuntion_sNSSAIList}
 
 # Domain Model with References
 domain_model = DomainModel(

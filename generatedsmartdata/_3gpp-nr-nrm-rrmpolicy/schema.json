@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.RRMPolicy_/RRMPolicy_/schema.json",
-  "title": "Smart Data models - RRMPolicy_ schema",
+  "$id": "https://smart-data-models.github.io/dataModel.rRMPolicyMember/rRMPolicyMember/schema.json",
+  "title": "Smart Data models - rRMPolicyMember schema",
   "modelTags": "",
-  "description": "This class represents RRMPolicy_",
+  "description": "This class represents rRMPolicyMember",
   "required": [
     "id",
     "type"
@@ -17,19 +17,7 @@
       "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
     {
-      "properties": {
-        "rRMPolicyMemberList": {
-                "description": "Property. Model:\u0027https://schema.org/Array\u0027",
-                "items": {
-                        "type": "string"
-                },
-                "type": "array"
-        },
-        "resourceType": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
-        }
-}
+      "properties": {}
     }
   ],
   "derivedFrom": "3GPP TS 28.541",

@@ -1,7 +1,9 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
+    IntegerType, StringType, BooleanType, FloatType,
+    TimeType, DateType, DateTimeType, TimeDeltaType,
+    PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
@@ -9,10 +11,10 @@ ExternalNRCellCU = Class(name="ExternalNRCellCU")
 
 # ExternalNRCellCU class attributes and methods
 ExternalNRCellCU_cellLocalId: Property = Property(name="cellLocalId", type=IntegerType)
-ExternalNRCellCU_nRPCI: Property = Property(name="nRPCI", type=IntegerType)
 ExternalNRCellCU_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=StringType)
+ExternalNRCellCU_nRPCI: Property = Property(name="nRPCI", type=IntegerType)
 ExternalNRCellCU_pLMNIdList: Property = Property(name="pLMNIdList", type=list)
-ExternalNRCellCU.attributes={ExternalNRCellCU_cellLocalId, ExternalNRCellCU_nRPCI, ExternalNRCellCU_nRFrequencyRef, ExternalNRCellCU_pLMNIdList}
+ExternalNRCellCU.attributes={ExternalNRCellCU_cellLocalId, ExternalNRCellCU_nRFrequencyRef, ExternalNRCellCU_nRPCI, ExternalNRCellCU_pLMNIdList}
 
 ExternalNRCellCUWrapper = Class(name="ExternalNRCellCUWrapper")
 
