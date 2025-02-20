@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 NFProfile = Class(name="NFProfile")
@@ -36,32 +32,6 @@ NFProfile_nrfInfo: Property = Property(name="nrfInfo", type=list)
 NFProfile_nfServices: Property = Property(name="nfServices", type=list)
 NFProfile_defaultNotificationSubscriptions: Property = Property(name="defaultNotificationSubscriptions", type=list)
 NFProfile.attributes={NFProfile_nfInstanceID, NFProfile_nfType, NFProfile_nfStatus, NFProfile_heartBeatTimer, NFProfile_fqdn, NFProfile_interPlmnFqdn, NFProfile_priority, NFProfile_capacity, NFProfile_load, NFProfile_locality, NFProfile_customInfo, NFProfile_recoveryTime, NFProfile_nfServicePersistence, NFProfile_nfProfileChangesSupportInd, NFProfile_nfProfileChangesInd, NFProfile_plmnList, NFProfile_sNssais, NFProfile_perPlmnSnssaiList, NFProfile_allowedPlmns, NFProfile_allowedNssais, NFProfile_nrfInfo, NFProfile_nfServices, NFProfile_defaultNotificationSubscriptions}
-
-N2InterfaceAmfInfo = Class(name="N2InterfaceAmfInfo")
-
-# N2InterfaceAmfInfo class attributes and methods
-N2InterfaceAmfInfo_amfName: Property = Property(name="amfName", type=StringType)
-N2InterfaceAmfInfo.attributes={N2InterfaceAmfInfo_amfName}
-
-sNssaiSmfInfoItem = Class(name="sNssaiSmfInfoItem")
-
-# sNssaiSmfInfoItem class attributes and methods
-sNssaiSmfInfoItem_sNssai: Property = Property(name="sNssai", type=list)
-sNssaiSmfInfoItem_dnnSmfInfoList: Property = Property(name="dnnSmfInfoList", type=list)
-sNssaiSmfInfoItem.attributes={sNssaiSmfInfoItem_sNssai, sNssaiSmfInfoItem_dnnSmfInfoList}
-
-DnnSmfInfoItem = Class(name="DnnSmfInfoItem")
-
-# DnnSmfInfoItem class attributes and methods
-DnnSmfInfoItem_dnn: Property = Property(name="dnn", type=StringType)
-DnnSmfInfoItem.attributes={DnnSmfInfoItem_dnn}
-
-PlmnSnssai = Class(name="PlmnSnssai")
-
-# PlmnSnssai class attributes and methods
-PlmnSnssai_plmnId: Property = Property(name="plmnId", type=list)
-PlmnSnssai_sNssaiList: Property = Property(name="sNssaiList", type=list)
-PlmnSnssai.attributes={PlmnSnssai_plmnId, PlmnSnssai_sNssaiList}
 
 SupiRange = Class(name="SupiRange")
 
@@ -135,3 +105,36 @@ TaiRange_plmnId: Property = Property(name="plmnId", type=list)
 TaiRange_tacRangeList: Property = Property(name="tacRangeList", type=list)
 TaiRange.attributes={TaiRange_plmnId, TaiRange_tacRangeList}
 
+N2InterfaceAmfInfo = Class(name="N2InterfaceAmfInfo")
+
+# N2InterfaceAmfInfo class attributes and methods
+N2InterfaceAmfInfo_amfName: Property = Property(name="amfName", type=StringType)
+N2InterfaceAmfInfo.attributes={N2InterfaceAmfInfo_amfName}
+
+sNssaiSmfInfoItem = Class(name="sNssaiSmfInfoItem")
+
+# sNssaiSmfInfoItem class attributes and methods
+sNssaiSmfInfoItem_sNssai: Property = Property(name="sNssai", type=list)
+sNssaiSmfInfoItem_dnnSmfInfoList: Property = Property(name="dnnSmfInfoList", type=list)
+sNssaiSmfInfoItem.attributes={sNssaiSmfInfoItem_sNssai, sNssaiSmfInfoItem_dnnSmfInfoList}
+
+DnnSmfInfoItem = Class(name="DnnSmfInfoItem")
+
+# DnnSmfInfoItem class attributes and methods
+DnnSmfInfoItem_dnn: Property = Property(name="dnn", type=StringType)
+DnnSmfInfoItem.attributes={DnnSmfInfoItem_dnn}
+
+PlmnSnssai = Class(name="PlmnSnssai")
+
+# PlmnSnssai class attributes and methods
+PlmnSnssai_plmnId: Property = Property(name="plmnId", type=list)
+PlmnSnssai_sNssaiList: Property = Property(name="sNssaiList", type=list)
+PlmnSnssai.attributes={PlmnSnssai_plmnId, PlmnSnssai_sNssaiList}
+
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-5gc-nrm-nfprofile",
+    types={NFProfile, SupiRange, IdentityRange, TacRange, SnssaiUpfInfoItem, DnnUpfInfoItem, Snssai, Guami, Tai, InterfaceUpfInfoItem, TaiRange, N2InterfaceAmfInfo, sNssaiSmfInfoItem, DnnSmfInfoItem, PlmnSnssai},
+    associations={},
+    generalizations={}
+)

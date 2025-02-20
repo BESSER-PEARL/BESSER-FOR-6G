@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 GNBCUCPFunction = Class(name="GNBCUCPFunction")
@@ -15,8 +11,15 @@ GNBCUCPFunction = Class(name="GNBCUCPFunction")
 GNBCUCPFunction_gNBId: Property = Property(name="gNBId", type=IntegerType)
 GNBCUCPFunction_gNBIdLength: Property = Property(name="gNBIdLength", type=IntegerType)
 GNBCUCPFunction_gNBCUName: Property = Property(name="gNBCUName", type=StringType)
-GNBCUCPFunction_configurable5QISetRef: Property = Property(name="configurable5QISetRef", type=types3gpp:DistinguishedName)
-GNBCUCPFunction_dynamic5QISetRef: Property = Property(name="dynamic5QISetRef", type=types3gpp:DistinguishedName)
+GNBCUCPFunction_configurable5QISetRef: Property = Property(name="configurable5QISetRef", type=StringType)
+GNBCUCPFunction_dynamic5QISetRef: Property = Property(name="dynamic5QISetRef", type=StringType)
 GNBCUCPFunction_pLMNId: Property = Property(name="pLMNId", type=list)
 GNBCUCPFunction.attributes={GNBCUCPFunction_gNBId, GNBCUCPFunction_gNBIdLength, GNBCUCPFunction_gNBCUName, GNBCUCPFunction_configurable5QISetRef, GNBCUCPFunction_dynamic5QISetRef, GNBCUCPFunction_pLMNId}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-gnbcucpfunction",
+    types={GNBCUCPFunction},
+    associations={},
+    generalizations={}
+)

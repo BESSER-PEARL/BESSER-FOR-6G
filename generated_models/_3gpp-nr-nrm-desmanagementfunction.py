@@ -1,14 +1,31 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
 
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-
 # Classes
+InterRatEsActivationOriginalCellParameters = Class(name="InterRatEsActivationOriginalCellParameters")
+
+# InterRatEsActivationOriginalCellParameters class attributes and methods
+InterRatEsActivationOriginalCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsActivationOriginalCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsActivationOriginalCellParameters.attributes={InterRatEsActivationOriginalCellParameters_loadThreshold, InterRatEsActivationOriginalCellParameters_timeDuration}
+
+InterRatEsActivationCandidateCellParameters = Class(name="InterRatEsActivationCandidateCellParameters")
+
+# InterRatEsActivationCandidateCellParameters class attributes and methods
+InterRatEsActivationCandidateCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsActivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsActivationCandidateCellParameters.attributes={InterRatEsActivationCandidateCellParameters_loadThreshold, InterRatEsActivationCandidateCellParameters_timeDuration}
+
+InterRatEsDeactivationCandidateCellParameters = Class(name="InterRatEsDeactivationCandidateCellParameters")
+
+# InterRatEsDeactivationCandidateCellParameters class attributes and methods
+InterRatEsDeactivationCandidateCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
+InterRatEsDeactivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
+InterRatEsDeactivationCandidateCellParameters.attributes={InterRatEsDeactivationCandidateCellParameters_loadThreshold, InterRatEsDeactivationCandidateCellParameters_timeDuration}
+
 DESManagementFunction = Class(name="DESManagementFunction")
 
 # DESManagementFunction class attributes and methods
@@ -54,24 +71,10 @@ EsNotAllowedTimePeriod_daysOfWeekList: Property = Property(name="daysOfWeekList"
 EsNotAllowedTimePeriod_listoftimeperiods: Property = Property(name="listoftimeperiods", type=StringType)
 EsNotAllowedTimePeriod.attributes={EsNotAllowedTimePeriod_startTimeandendTime, EsNotAllowedTimePeriod_periodOfDay, EsNotAllowedTimePeriod_daysOfWeekList, EsNotAllowedTimePeriod_listoftimeperiods}
 
-InterRatEsActivationOriginalCellParameters = Class(name="InterRatEsActivationOriginalCellParameters")
-
-# InterRatEsActivationOriginalCellParameters class attributes and methods
-InterRatEsActivationOriginalCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
-InterRatEsActivationOriginalCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
-InterRatEsActivationOriginalCellParameters.attributes={InterRatEsActivationOriginalCellParameters_loadThreshold, InterRatEsActivationOriginalCellParameters_timeDuration}
-
-InterRatEsActivationCandidateCellParameters = Class(name="InterRatEsActivationCandidateCellParameters")
-
-# InterRatEsActivationCandidateCellParameters class attributes and methods
-InterRatEsActivationCandidateCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
-InterRatEsActivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
-InterRatEsActivationCandidateCellParameters.attributes={InterRatEsActivationCandidateCellParameters_loadThreshold, InterRatEsActivationCandidateCellParameters_timeDuration}
-
-InterRatEsDeactivationCandidateCellParameters = Class(name="InterRatEsDeactivationCandidateCellParameters")
-
-# InterRatEsDeactivationCandidateCellParameters class attributes and methods
-InterRatEsDeactivationCandidateCellParameters_loadThreshold: Property = Property(name="loadThreshold", type=IntegerType)
-InterRatEsDeactivationCandidateCellParameters_timeDuration: Property = Property(name="timeDuration", type=IntegerType)
-InterRatEsDeactivationCandidateCellParameters.attributes={InterRatEsDeactivationCandidateCellParameters_loadThreshold, InterRatEsDeactivationCandidateCellParameters_timeDuration}
-
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-desmanagementfunction",
+    types={InterRatEsActivationOriginalCellParameters, InterRatEsActivationCandidateCellParameters, InterRatEsDeactivationCandidateCellParameters, DESManagementFunction, IntraRatEsActivationOriginalCellLoadParameters, IntraRatEsActivationCandidateCellsLoadParameters, IntraRatEsDeactivationCandidateCellsLoadParameters, EsNotAllowedTimePeriod},
+    associations={},
+    generalizations={}
+)

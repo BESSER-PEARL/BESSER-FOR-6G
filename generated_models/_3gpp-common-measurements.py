@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 ThresholdInfo = Class(name="ThresholdInfo")
@@ -33,6 +29,13 @@ PerfMetricJob_jobId: Property = Property(name="jobId", type=StringType)
 PerfMetricJob_granularityPeriod: Property = Property(name="granularityPeriod", type=IntegerType)
 PerfMetricJob.attributes={PerfMetricJob_administrativeState, PerfMetricJob_operationalState, PerfMetricJob_jobId, PerfMetricJob_granularityPeriod}
 
+MeasurementSubtree = Class(name="MeasurementSubtree")
+
+# MeasurementSubtree class attributes and methods
+MeasurementSubtree_PerfMetricJob: Property = Property(name="PerfMetricJob", type=list)
+MeasurementSubtree_ThresholdMonitor: Property = Property(name="ThresholdMonitor", type=list)
+MeasurementSubtree.attributes={MeasurementSubtree_PerfMetricJob, MeasurementSubtree_ThresholdMonitor}
+
 ThresholdMonitor = Class(name="ThresholdMonitor")
 
 # ThresholdMonitor class attributes and methods
@@ -42,10 +45,10 @@ ThresholdMonitor_monitorGranularityPeriod: Property = Property(name="monitorGran
 ThresholdMonitor_thresholdInfoList: Property = Property(name="thresholdInfoList", type=list)
 ThresholdMonitor.attributes={ThresholdMonitor_administrativeState, ThresholdMonitor_operationalState, ThresholdMonitor_monitorGranularityPeriod, ThresholdMonitor_thresholdInfoList}
 
-MeasurementSubtree = Class(name="MeasurementSubtree")
-
-# MeasurementSubtree class attributes and methods
-MeasurementSubtree_PerfMetricJob: Property = Property(name="PerfMetricJob", type=list)
-MeasurementSubtree_ThresholdMonitor: Property = Property(name="ThresholdMonitor", type=list)
-MeasurementSubtree.attributes={MeasurementSubtree_PerfMetricJob, MeasurementSubtree_ThresholdMonitor}
-
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-common-measurements",
+    types={ThresholdInfo, SupportedPerfMetricGroup, PerfMetricJob, MeasurementSubtree, ThresholdMonitor},
+    associations={},
+    generalizations={}
+)

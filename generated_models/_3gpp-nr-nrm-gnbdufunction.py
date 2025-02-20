@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 GNBDUFunction = Class(name="GNBDUFunction")
@@ -20,3 +16,10 @@ GNBDUFunction_aggressorSetID: Property = Property(name="aggressorSetID", type=In
 GNBDUFunction_victimSetID: Property = Property(name="victimSetID", type=IntegerType)
 GNBDUFunction.attributes={GNBDUFunction_gNBId, GNBDUFunction_gNBIdLength, GNBDUFunction_gNBDUId, GNBDUFunction_gNBDUName, GNBDUFunction_aggressorSetID, GNBDUFunction_victimSetID}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-gnbdufunction",
+    types={GNBDUFunction},
+    associations={},
+    generalizations={}
+)

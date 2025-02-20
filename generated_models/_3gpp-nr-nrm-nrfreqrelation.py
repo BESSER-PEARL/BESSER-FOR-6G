@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 NRFreqRelation = Class(name="NRFreqRelation")
@@ -25,6 +21,13 @@ NRFreqRelation_threshXLowQ: Property = Property(name="threshXLowQ", type=Integer
 NRFreqRelation_tReselectionNR: Property = Property(name="tReselectionNR", type=IntegerType)
 NRFreqRelation_tReselectionNRSfHigh: Property = Property(name="tReselectionNRSfHigh", type=IntegerType)
 NRFreqRelation_tReselectionNRSfMedium: Property = Property(name="tReselectionNRSfMedium", type=IntegerType)
-NRFreqRelation_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=types3gpp:DistinguishedName)
+NRFreqRelation_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=StringType)
 NRFreqRelation.attributes={NRFreqRelation_cellReselectionPriority, NRFreqRelation_cellReselectionSubPriority, NRFreqRelation_pMax, NRFreqRelation_qOffsetFreq, NRFreqRelation_qQualMin, NRFreqRelation_qRxLevMin, NRFreqRelation_threshXHighP, NRFreqRelation_threshXHighQ, NRFreqRelation_threshXLowP, NRFreqRelation_threshXLowQ, NRFreqRelation_tReselectionNR, NRFreqRelation_tReselectionNRSfHigh, NRFreqRelation_tReselectionNRSfMedium, NRFreqRelation_nRFrequencyRef}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-nrfreqrelation",
+    types={NRFreqRelation},
+    associations={},
+    generalizations={}
+)

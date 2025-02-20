@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 UDSFFuntion = Class(name="UDSFFuntion")
@@ -18,3 +14,10 @@ UDSFFuntion_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
 UDSFFuntion_managedNFProfile: Property = Property(name="managedNFProfile", type=list)
 UDSFFuntion.attributes={UDSFFuntion_sBIFQDN, UDSFFuntion_pLMNIdList, UDSFFuntion_sNSSAIList, UDSFFuntion_managedNFProfile}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-5gc-nrm-udsffunction",
+    types={UDSFFuntion},
+    associations={},
+    generalizations={}
+)

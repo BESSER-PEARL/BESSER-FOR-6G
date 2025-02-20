@@ -1,14 +1,35 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
 
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-
 # Classes
+PccRule = Class(name="PccRule")
+
+# PccRule class attributes and methods
+PccRule_pccRuleId: Property = Property(name="pccRuleId", type=StringType)
+PccRule_applicationId: Property = Property(name="applicationId", type=StringType)
+PccRule_appDescriptor: Property = Property(name="appDescriptor", type=StringType)
+PccRule_contentVersion: Property = Property(name="contentVersion", type=IntegerType)
+PccRule_precedence: Property = Property(name="precedence", type=IntegerType)
+PccRule_afSigProtocol: Property = Property(name="afSigProtocol", type=enumeration)
+PccRule_isAppRelocatable: Property = Property(name="isAppRelocatable", type=BooleanType)
+PccRule_isUeAddrPreserved: Property = Property(name="isUeAddrPreserved", type=BooleanType)
+PccRule.attributes={PccRule_pccRuleId, PccRule_applicationId, PccRule_appDescriptor, PccRule_contentVersion, PccRule_precedence, PccRule_afSigProtocol, PccRule_isAppRelocatable, PccRule_isUeAddrPreserved}
+
+PredefinedPccRuleSet = Class(name="PredefinedPccRuleSet")
+
+# PredefinedPccRuleSet class attributes and methods
+PredefinedPccRuleSet_PredefinedPccRules: Property = Property(name="PredefinedPccRules", type=list)
+PredefinedPccRuleSet.attributes={PredefinedPccRuleSet_PredefinedPccRules}
+
+PredefinedPccRuleSetSubtree = Class(name="PredefinedPccRuleSetSubtree")
+
+# PredefinedPccRuleSetSubtree class attributes and methods
+PredefinedPccRuleSetSubtree_PredefinedPccRuleSet: Property = Property(name="PredefinedPccRuleSet", type=list)
+PredefinedPccRuleSetSubtree.attributes={PredefinedPccRuleSetSubtree_PredefinedPccRuleSet}
+
 TscaiInputContainer = Class(name="TscaiInputContainer")
 
 # TscaiInputContainer class attributes and methods
@@ -121,37 +142,19 @@ EthFlowDescription.attributes={EthFlowDescription_destMacAddr, EthFlowDescriptio
 FlowInformation = Class(name="FlowInformation")
 
 # FlowInformation class attributes and methods
-FlowInformation_flowDescription: Property = Property(name="flowDescription", type=StringType)
 FlowInformation_packFiltId: Property = Property(name="packFiltId", type=StringType)
 FlowInformation_packetFilterUsage: Property = Property(name="packetFilterUsage", type=BooleanType)
 FlowInformation_tosTrafficClass: Property = Property(name="tosTrafficClass", type=StringType)
 FlowInformation_spi: Property = Property(name="spi", type=StringType)
 FlowInformation_flowLabel: Property = Property(name="flowLabel", type=StringType)
 FlowInformation_flowDirection: Property = Property(name="flowDirection", type=enumeration)
-FlowInformation.attributes={FlowInformation_flowDescription, FlowInformation_packFiltId, FlowInformation_packetFilterUsage, FlowInformation_tosTrafficClass, FlowInformation_spi, FlowInformation_flowLabel, FlowInformation_flowDirection}
+FlowInformation_flowDescription: Property = Property(name="flowDescription", type=StringType)
+FlowInformation.attributes={FlowInformation_packFiltId, FlowInformation_packetFilterUsage, FlowInformation_tosTrafficClass, FlowInformation_spi, FlowInformation_flowLabel, FlowInformation_flowDirection, FlowInformation_flowDescription}
 
-PccRule = Class(name="PccRule")
-
-# PccRule class attributes and methods
-PccRule_pccRuleId: Property = Property(name="pccRuleId", type=StringType)
-PccRule_applicationId: Property = Property(name="applicationId", type=StringType)
-PccRule_appDescriptor: Property = Property(name="appDescriptor", type=StringType)
-PccRule_contentVersion: Property = Property(name="contentVersion", type=IntegerType)
-PccRule_precedence: Property = Property(name="precedence", type=IntegerType)
-PccRule_afSigProtocol: Property = Property(name="afSigProtocol", type=enumeration)
-PccRule_isAppRelocatable: Property = Property(name="isAppRelocatable", type=BooleanType)
-PccRule_isUeAddrPreserved: Property = Property(name="isUeAddrPreserved", type=BooleanType)
-PccRule.attributes={PccRule_pccRuleId, PccRule_applicationId, PccRule_appDescriptor, PccRule_contentVersion, PccRule_precedence, PccRule_afSigProtocol, PccRule_isAppRelocatable, PccRule_isUeAddrPreserved}
-
-PredefinedPccRuleSet = Class(name="PredefinedPccRuleSet")
-
-# PredefinedPccRuleSet class attributes and methods
-PredefinedPccRuleSet_PredefinedPccRules: Property = Property(name="PredefinedPccRules", type=list)
-PredefinedPccRuleSet.attributes={PredefinedPccRuleSet_PredefinedPccRules}
-
-PredefinedPccRuleSetSubtree = Class(name="PredefinedPccRuleSetSubtree")
-
-# PredefinedPccRuleSetSubtree class attributes and methods
-PredefinedPccRuleSetSubtree_PredefinedPccRuleSet: Property = Property(name="PredefinedPccRuleSet", type=list)
-PredefinedPccRuleSetSubtree.attributes={PredefinedPccRuleSetSubtree_PredefinedPccRuleSet}
-
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-5gc-nrm-predefinedpccruleset",
+    types={PccRule, PredefinedPccRuleSet, PredefinedPccRuleSetSubtree, TscaiInputContainer, ConditionData, SteeringMode, UpPathChgEvent, RouteInformation, RouteToLocation, RedirectInformaton, TrafficControlDataInformation, ARP, QosDataInformation, EthFlowDescription, FlowInformation},
+    associations={},
+    generalizations={}
+)

@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 PerfReq = Class(name="PerfReq")
@@ -26,3 +22,10 @@ PerfReq_transferIntervalTarget: Property = Property(name="transferIntervalTarget
 PerfReq_survivalTime: Property = Property(name="survivalTime", type=survival-time-string)
 PerfReq.attributes={PerfReq_expDataRateDL, PerfReq_expDataRateUL, PerfReq_areaTrafficCapDL, PerfReq_areaTrafficCapUL, PerfReq_overallUserDensity, PerfReq_activityFactor, PerfReq_cSAvailabilityTarget, PerfReq_cSReliabilityMeanTime, PerfReq_expDataRate, PerfReq_msgSizeByte, PerfReq_transferIntervalTarget, PerfReq_survivalTime}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-ns-nrm-perfreq",
+    types={PerfReq},
+    associations={},
+    generalizations={}
+)

@@ -39,22 +39,22 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         f.write("# Generated B-UML Model\n")
         f.write("from besser.BUML.metamodel.structural import (\n")
         f.write("    Class, Property, DomainModel,\n")
-        f.write("    IntegerType, Enumeration, EnumerationLiteral\n")
+        f.write("    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType\n")
         f.write(")\n\n")
         
         # Add only needed imports from referenced models
-        needed_imports = set()
-        for prefix, module_name in prefix_map.items():
-            if module_name.startswith('_3gpp'):
-                module_path = module_name.replace('-', '_')
-                if prefix in ['types3gpp', 'types5g3gpp']:  # Only import essential types
-                    needed_imports.add(f"from generated_models.{module_path} import domain_model as {prefix}_model")
+        # needed_imports = set()
+        # for prefix, module_name in prefix_map.items():
+        #     if module_name.startswith('_3gpp'):
+        #         module_path = module_name.replace('-', '_')
+        #         if prefix in ['types3gpp', 'types5g3gpp']:  # Only import essential types
+        #             needed_imports.add(f"from generated_models.{module_path} import domain_model as {prefix}_model")
         
-        if needed_imports:
-            f.write("# Import referenced models\n")
-            for import_stmt in sorted(needed_imports):
-                f.write(f"{import_stmt}\n")
-            f.write("\n")
+        # if needed_imports:
+        #     f.write("# Import referenced models\n")
+        #     for import_stmt in sorted(needed_imports):
+        #         f.write(f"{import_stmt}\n")
+        #     f.write("\n")
 
         # Write enumerations
         enums = [t for t in model.types if isinstance(t, Enumeration)]
@@ -84,13 +84,13 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
             if attrs:
                 f.write(f"{cls.name}.attributes={{{', '.join(attrs)}}}\n\n")
 
-        # Write domain model
-        # f.write("# Domain Model with References\n")
-        # f.write("domain_model = DomainModel(\n")
-        # f.write(f"    name=\"{model.name}\",\n")
-        # f.write(f"    types={{{', '.join(cls.name for cls in sort(model.get_classes()))}}},\n")
-        # f.write("    associations={},\n")
-        # f.write("    generalizations={}\n")
-        # f.write(")\n")
+       # Write domain model
+        f.write("# Domain Model with References\n")
+        f.write("domain_model = DomainModel(\n")
+        f.write(f"    name=\"{model.name}\",\n")
+        f.write(f"    types={{{', '.join(cls.name for cls in sort(model.get_classes()))}}},\n")
+        f.write("    associations={},\n")
+        f.write("    generalizations={}\n")
+        f.write(")\n")
 
     print(f"BUML model saved to {file_path}")

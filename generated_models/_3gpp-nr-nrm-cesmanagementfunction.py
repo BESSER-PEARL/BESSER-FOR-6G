@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 CESManagementFunction = Class(name="CESManagementFunction")
@@ -17,3 +13,10 @@ CESManagementFunction_energySavingState: Property = Property(name="energySavingS
 CESManagementFunction_energySavingControl: Property = Property(name="energySavingControl", type=enumeration)
 CESManagementFunction.attributes={CESManagementFunction_cesSwitch, CESManagementFunction_energySavingState, CESManagementFunction_energySavingControl}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-cesmanagementfunction",
+    types={CESManagementFunction},
+    associations={},
+    generalizations={}
+)

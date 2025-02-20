@@ -1,14 +1,16 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
 
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-
 # Classes
+ExternalEUtranCellTDDWrapper = Class(name="ExternalEUtranCellTDDWrapper")
+
+# ExternalEUtranCellTDDWrapper class attributes and methods
+ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD: Property = Property(name="ExternalEUtranCellTDD", type=list)
+ExternalEUtranCellTDDWrapper.attributes={ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD}
+
 ExternalEUtranGenericCell = Class(name="ExternalEUtranGenericCell")
 
 # ExternalEUtranGenericCell class attributes and methods
@@ -37,9 +39,10 @@ ExternalEUtranCellFDDWrapper = Class(name="ExternalEUtranCellFDDWrapper")
 ExternalEUtranCellFDDWrapper_ExternalEUtranCellFDD: Property = Property(name="ExternalEUtranCellFDD", type=list)
 ExternalEUtranCellFDDWrapper.attributes={ExternalEUtranCellFDDWrapper_ExternalEUtranCellFDD}
 
-ExternalEUtranCellTDDWrapper = Class(name="ExternalEUtranCellTDDWrapper")
-
-# ExternalEUtranCellTDDWrapper class attributes and methods
-ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD: Property = Property(name="ExternalEUtranCellTDD", type=list)
-ExternalEUtranCellTDDWrapper.attributes={ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD}
-
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-externaleutrancell",
+    types={ExternalEUtranCellTDDWrapper, ExternalEUtranGenericCell, ExternalEUtranCellFDD, ExternalEUtranCellTDD, ExternalEUtranCellFDDWrapper},
+    associations={},
+    generalizations={}
+)

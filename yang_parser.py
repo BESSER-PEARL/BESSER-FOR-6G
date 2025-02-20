@@ -167,6 +167,10 @@ class YangParser:
         type_info = leaf.get('type', {})
         type_name = type_info.get('@name', 'string')
         
+        # Handle types3gpp:DistinguishedName specifically
+        if type_name == 'types3gpp:DistinguishedName':
+            type_name = 'StringType'
+        
         # Map YANG types to primitive types
         type_mapping = {
             'string': 'StringType',
@@ -181,7 +185,6 @@ class YangParser:
             'int64': 'IntegerType',
             'decimal64': 'FloatType',
             'boolean': 'BooleanType'
-
         }
         type_name = type_mapping.get(type_name, type_name)
 

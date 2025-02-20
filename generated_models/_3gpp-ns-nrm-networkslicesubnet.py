@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 EPTransport = Class(name="EPTransport")
@@ -35,3 +31,10 @@ NetworkSliceSubnet_managedFunctionRef: Property = Property(name="managedFunction
 NetworkSliceSubnet_NetworkSliceSubnet: Property = Property(name="NetworkSliceSubnet", type=list)
 NetworkSliceSubnet.attributes={NetworkSliceSubnet_operationalState, NetworkSliceSubnet_administrativeState, NetworkSliceSubnet_nsInfo, NetworkSliceSubnet_sliceProfileList, NetworkSliceSubnet_managedFunctionRef, NetworkSliceSubnet_NetworkSliceSubnet}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-ns-nrm-networkslicesubnet",
+    types={EPTransport, NsInfo, NetworkSliceSubnet},
+    associations={},
+    generalizations={}
+)

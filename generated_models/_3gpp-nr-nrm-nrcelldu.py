@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 NRCellDU = Class(name="NRCellDU")
@@ -32,3 +28,10 @@ NRCellDU_ssbDuration: Property = Property(name="ssbDuration", type=IntegerType)
 NRCellDU_pLMNInfoList: Property = Property(name="pLMNInfoList", type=list)
 NRCellDU.attributes={NRCellDU_cellLocalId, NRCellDU_operationalState, NRCellDU_administrativeState, NRCellDU_cellState, NRCellDU_nRPCI, NRCellDU_nRTAC, NRCellDU_arfcnDL, NRCellDU_arfcnUL, NRCellDU_arfcnSUL, NRCellDU_bSChannelBwDL, NRCellDU_bSChannelBwUL, NRCellDU_bSChannelBwSUL, NRCellDU_ssbFrequency, NRCellDU_ssbPeriodicity, NRCellDU_ssbSubCarrierSpacing, NRCellDU_ssbOffset, NRCellDU_ssbDuration, NRCellDU_pLMNInfoList}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-nrcelldu",
+    types={NRCellDU},
+    associations={},
+    generalizations={}
+)

@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 CPCIConfigurationFunction = Class(name="CPCIConfigurationFunction")
@@ -22,3 +18,10 @@ CSonPciList = Class(name="CSonPciList")
 CSonPciList_NRPci: Property = Property(name="NRPci", type=IntegerType)
 CSonPciList.attributes={CSonPciList_NRPci}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-cpciconfigurationfunction",
+    types={CPCIConfigurationFunction, CSonPciList},
+    associations={},
+    generalizations={}
+)

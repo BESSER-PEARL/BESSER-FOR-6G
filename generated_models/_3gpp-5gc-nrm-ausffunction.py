@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 AUSFFuntion = Class(name="AUSFFuntion")
@@ -19,3 +15,10 @@ AUSFFuntion_managedNFProfile: Property = Property(name="managedNFProfile", type=
 AUSFFuntion_commModelList: Property = Property(name="commModelList", type=list)
 AUSFFuntion.attributes={AUSFFuntion_sBIFQDN, AUSFFuntion_pLMNIdList, AUSFFuntion_sNSSAIList, AUSFFuntion_managedNFProfile, AUSFFuntion_commModelList}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-5gc-nrm-ausffunction",
+    types={AUSFFuntion},
+    associations={},
+    generalizations={}
+)

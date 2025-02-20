@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 NRFrequency = Class(name="NRFrequency")
@@ -22,3 +18,10 @@ NRFrequencyWrapper = Class(name="NRFrequencyWrapper")
 NRFrequencyWrapper_NRFrequency: Property = Property(name="NRFrequency", type=list)
 NRFrequencyWrapper.attributes={NRFrequencyWrapper_NRFrequency}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-nr-nrm-nrfrequency",
+    types={NRFrequency, NRFrequencyWrapper},
+    associations={},
+    generalizations={}
+)

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.Domain_/Domain_/schema.json",
+  "title": "Smart Data models - Domain_ schema",
+  "modelTags": "",
+  "description": "This class represents Domain_",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "dnPrefix": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "userDefinedNetworkType": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "userLabel": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

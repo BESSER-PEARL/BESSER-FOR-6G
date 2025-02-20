@@ -1,12 +1,8 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
-    IntegerType, Enumeration, EnumerationLiteral
+    IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-
-# Import referenced models
-from generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 NEFFunction = Class(name="NEFFunction")
@@ -18,3 +14,10 @@ NEFFunction_isCAPIFSup: Property = Property(name="isCAPIFSup", type=BooleanType)
 NEFFunction_sNSSAIList: Property = Property(name="sNSSAIList", type=list)
 NEFFunction.attributes={NEFFunction_sBIFQDN, NEFFunction_isINEF, NEFFunction_isCAPIFSup, NEFFunction_sNSSAIList}
 
+# Domain Model with References
+domain_model = DomainModel(
+    name="_3gpp-5gc-nrm-neffunction",
+    types={NEFFunction},
+    associations={},
+    generalizations={}
+)
