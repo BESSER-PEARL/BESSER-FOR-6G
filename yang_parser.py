@@ -160,7 +160,8 @@ class YangParser:
         """Parse a typedef definition and create an enumeration if it defines one."""
         type_info = typedef.get('type', {})
         if isinstance(type_info, dict) and type_info.get('@name') == 'enumeration':
-            enum_name = typedef.get('@name')
+            # Get enum name and replace hyphens with underscores
+            enum_name = typedef.get('@name', '').replace('-', '_')
             
             # Skip if we've already processed this type
             if enum_name in self.processed_types:
@@ -196,7 +197,8 @@ class YangParser:
 
     def parse_grouping(self, grouping: Dict[str, Any]) -> None:
         """Parse a grouping definition and create a class."""
-        class_name = grouping['@name']
+        # Replace hyphens with underscores in class name
+        class_name = grouping['@name'].replace('-', '_')
         
         # Skip if we've already processed this type
         if class_name in self.processed_types:
@@ -233,7 +235,8 @@ class YangParser:
         """Parse augment section which contains the main class definitions."""
         if 'list' in augment:
             list_def = augment['list']
-            class_name = list_def['@name']
+            # Replace hyphens with underscores in class name
+            class_name = list_def['@name'].replace('-', '_')
             class_desc = list_def.get('description', {}).get('text', '')
 
             new_class = Class(name=class_name)
@@ -254,7 +257,8 @@ class YangParser:
 
     def parse_leaf(self, leaf: Dict[str, Any]) -> None:
         """Parse a leaf definition and create a property."""
-        name = leaf['@name']
+        # Replace hyphens with underscores in property name
+        name = leaf['@name'].replace('-', '_')
         desc = leaf.get('description', {}).get('text', '')
         mandatory = leaf.get('mandatory', {}).get('@value', 'false') == 'true'
 
@@ -328,7 +332,8 @@ class YangParser:
 
     def parse_list(self, list_def: Dict[str, Any]) -> None:
         """Parse a list definition and create a property for it."""
-        name = list_def['@name']
+        # Replace hyphens with underscores in property name
+        name = list_def['@name'].replace('-', '_')
         desc = list_def.get('description', {}).get('text', '')
         
         # Set multiplicity based on min-elements if available
@@ -345,6 +350,8 @@ class YangParser:
                 if type_ref and ':' in type_ref:
                     # This is a reference to a type in another module
                     prefix, type_name = type_ref.split(':')
+                    # Replace hyphens with underscores in type name
+                    type_name = type_name.replace('-', '_')
                     if prefix in self.prefix_map:
                         module_name = self.prefix_map[prefix]
                         item_type = f"{module_name}.{type_name}"
@@ -366,7 +373,8 @@ class YangParser:
 
     def parse_uses(self, uses: Dict[str, Any]) -> None:
         """Parse uses statement which references a grouping."""
-        grouping_name = uses.get('@name', '')
+        # Replace hyphens with underscores in grouping name
+        grouping_name = uses.get('@name', '').replace('-', '_')
         # Find referenced class and inherit from it
         referenced_class = self.current_model.get_class_by_name(grouping_name)
         if referenced_class and self.current_class:

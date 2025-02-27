@@ -26,15 +26,15 @@ eventType_TIME_DOMAIN_VIOLATION = EnumerationLiteral(name="TIME_DOMAIN_VIOLATION
 eventType.literals = {eventType_COMMUNICATIONS_ALARM, eventType_ENVIRONMENTAL_ALARM, eventType_EQUIPMENT_ALARM, eventType_INTEGRITY_VIOLATION, eventType_OPERATIONAL_VIOLATION, eventType_PHYSICAL_VIOLATIONu, eventType_PROCESSING_ERROR_ALARM, eventType_QUALITY_OF_SERVICE_ALARM, eventType_SECURITY_SERVICE_OR_MECHANISM_VIOLATION, eventType_TIME_DOMAIN_VIOLATION}
 eventType.synonyms = ["General category for the alarm."]
 
-severity-level = Enumeration(name="severity-level")
-severity-level_CLEARED = EnumerationLiteral(name="CLEARED", owner=severity-level)
-severity-level_CRITICAL = EnumerationLiteral(name="CRITICAL", owner=severity-level)
-severity-level_INDETERMINATE = EnumerationLiteral(name="INDETERMINATE", owner=severity-level)
-severity-level_MAJOR = EnumerationLiteral(name="MAJOR", owner=severity-level)
-severity-level_MINOR = EnumerationLiteral(name="MINOR", owner=severity-level)
-severity-level_WARNING = EnumerationLiteral(name="WARNING", owner=severity-level)
-severity-level.literals = {severity-level_CLEARED, severity-level_CRITICAL, severity-level_INDETERMINATE, severity-level_MAJOR, severity-level_MINOR, severity-level_WARNING}
-severity-level.synonyms = ["The possible alarm serverities. 	Aligned with ERICSSON-ALARM-MIB."]
+severity_level = Enumeration(name="severity_level")
+severity_level_CLEARED = EnumerationLiteral(name="CLEARED", owner=severity_level)
+severity_level_CRITICAL = EnumerationLiteral(name="CRITICAL", owner=severity_level)
+severity_level_INDETERMINATE = EnumerationLiteral(name="INDETERMINATE", owner=severity_level)
+severity_level_MAJOR = EnumerationLiteral(name="MAJOR", owner=severity_level)
+severity_level_MINOR = EnumerationLiteral(name="MINOR", owner=severity_level)
+severity_level_WARNING = EnumerationLiteral(name="WARNING", owner=severity_level)
+severity_level.literals = {severity_level_CLEARED, severity_level_CRITICAL, severity_level_INDETERMINATE, severity_level_MAJOR, severity_level_MINOR, severity_level_WARNING}
+severity_level.synonyms = ["The possible alarm serverities. 	Aligned with ERICSSON-ALARM-MIB."]
 
 # Classes
 AlarmList = Class(name="AlarmList", synonyms=["Represents the AlarmList IOC."])
@@ -90,7 +90,7 @@ FmSubtree.attributes={FmSubtree_AlarmList}
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-common-fm",
-    types={AlarmList, AlarmRecord, FmSubtree, eventType, severity-level},
+    types={AlarmList, AlarmRecord, FmSubtree, eventType, severity_level},
     associations={},
     generalizations={}
 )

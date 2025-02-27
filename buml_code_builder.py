@@ -45,6 +45,25 @@ def sanitize_module_name(module_name):
     
     return sanitized
 
+def sanitize_identifier(name: str) -> str:
+    """
+    Convert a name to a valid Python identifier:
+    - Replace hyphens with underscores
+    - Ensure name does not start with a number
+    - Handle other invalid characters
+    """
+    # Replace hyphens with underscores
+    sanitized = name.replace('-', '_')
+    
+    # If the name starts with a number, prefix with underscore
+    if sanitized and (sanitized[0].isdigit() or sanitized[0] == '-'):
+        sanitized = '_' + sanitized
+    
+    # Replace any other invalid characters with underscores
+    sanitized = re.sub(r'[^a-zA-Z0-9_]', '_', sanitized)
+    
+    return sanitized
+
 def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict, imported_models: dict = None):
     """
     Generates Python code for a B-UML model and writes it to a specified file.
@@ -145,7 +164,7 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict, i
                         prefix = next((p for p, m in prefix_map.items() if m == module_name), None)
                         if prefix:
                             # Ensure we're using a valid Python identifier for the type name
-                            safe_type_name = type_name.replace('-', '_')
+                            safe_type_name = sanitize_identifier(type_name)
                             type_name = f"{prefix}_model.get_type_by_name('{safe_type_name}')"
                         else:
                             type_name = f"'{attr.type}'"  # Fallback to string if not found
