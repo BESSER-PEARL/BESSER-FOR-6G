@@ -7,16 +7,16 @@ from besser.BUML.metamodel.structural import (
 )
 
 # Classes
-EUtranFrequency = Class(name="EUtranFrequency")
+EUtranFrequency = Class(name="EUtranFrequency", synonyms=["Represents the EUtranFrequency IOC."])
 
 # EUtranFrequency class attributes and methods
-EUtranFrequency_earfcnDL: Property = Property(name="earfcnDL", type=IntegerType)
+EUtranFrequency_earfcnDL: Property = Property(name="earfcnDL", type=IntegerType, synonyms=["Specifies the channel number for the central DL frequency."])
 EUtranFrequency.attributes={EUtranFrequency_earfcnDL}
 
 EUtranFrequencyWrapper = Class(name="EUtranFrequencyWrapper")
 
 # EUtranFrequencyWrapper class attributes and methods
-EUtranFrequencyWrapper_EUtranFrequency: Property = Property(name="EUtranFrequency", type=list)
+EUtranFrequencyWrapper_EUtranFrequency: Property = Property(name="EUtranFrequency", type=list, synonyms=["Represents certain E-UTRAN frequency properties."])
 EUtranFrequencyWrapper.attributes={EUtranFrequencyWrapper_EUtranFrequency}
 
 # Domain Model with References
@@ -26,3 +26,4 @@ domain_model = DomainModel(
     associations={},
     generalizations={}
 )
+domain_model.synonyms = ["Defines the YANG mapping of the EUtranFrequency Information Object Class (IOC), that is part of the NR Network Resource Model (NRM)."]

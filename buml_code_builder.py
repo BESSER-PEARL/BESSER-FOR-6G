@@ -14,6 +14,18 @@ PRIMITIVE_TYPE_MAPPING = {
     'datetime': 'DateTimeType',
     'timedelta': 'TimeDeltaType'
 }
+
+def clean_description(desc):
+    """Clean and format description for use in code"""
+    if not desc:
+        return ""
+    # Replace newlines with space and handle quotes
+    cleaned = desc.replace('\n', ' ').replace('\r', ' ').replace('"', '\\"')
+    # Remove multiple spaces
+    while '  ' in cleaned:
+        cleaned = cleaned.replace('  ', ' ')
+    return cleaned.strip()
+
 def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
     """
     Generates Python code for a B-UML model and writes it to a specified file.
@@ -43,20 +55,6 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         f.write("    PrimitiveDataType, Enumeration, EnumerationLiteral\n")
         f.write(")\n\n")
         
-        # Add only needed imports from referenced models
-        # needed_imports = set()
-        # for prefix, module_name in prefix_map.items():
-        #     if module_name.startswith('_3gpp'):
-        #         module_path = module_name.replace('-', '_')
-        #         if prefix in ['types3gpp', 'types5g3gpp']:  # Only import essential types
-        #             needed_imports.add(f"from generated_models.{module_path} import domain_model as {prefix}_model")
-        
-        # if needed_imports:
-        #     f.write("# Import referenced models\n")
-        #     for import_stmt in sorted(needed_imports):
-        #         f.write(f"{import_stmt}\n")
-        #     f.write("\n")
-
         # Write enumerations
         enums = [t for t in model.types if isinstance(t, Enumeration)]
         if enums:
@@ -66,15 +64,33 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
                 f.write(f"{enum.name} = Enumeration(name=\"{enum.name}\")\n")
                 # Sort literals by name as well
                 for literal in sorted(enum.literals, key=lambda x: x.name):
-                    f.write(f"{enum.name}_{literal.name} = EnumerationLiteral(")
-                    f.write(f"name=\"{literal.name}\", owner={enum.name})\n")
-                f.write(f"{enum.name}.literals = {{{', '.join(f'{enum.name}_{lit.name}' for lit in sorted(enum.literals, key=lambda x: x.name))}}}\n\n")
+                    # Include synonyms if available
+                    if literal.synonyms and len(literal.synonyms) > 0:
+                        desc = clean_description(literal.synonyms[0])
+                        f.write(f"{enum.name}_{literal.name} = EnumerationLiteral(")
+                        f.write(f"name=\"{literal.name}\", owner={enum.name}, synonyms=[\"{desc}\"])\n")
+                    else:
+                        f.write(f"{enum.name}_{literal.name} = EnumerationLiteral(")
+                        f.write(f"name=\"{literal.name}\", owner={enum.name})\n")
+                        
+                f.write(f"{enum.name}.literals = {{{', '.join(f'{enum.name}_{lit.name}' for lit in sorted(enum.literals, key=lambda x: x.name))}}}\n")
+                
+                # Add synonyms to enum if available
+                if enum.synonyms and len(enum.synonyms) > 0:
+                    desc = clean_description(enum.synonyms[0])
+                    f.write(f"{enum.name}.synonyms = [\"{desc}\"]\n")
+                f.write("\n")
 
         # Write classes
         f.write("# Classes\n")
         # Sort classes by name instead of timestamp
         for cls in sorted(model.get_classes(), key=lambda x: x.name):
-            f.write(f"{cls.name} = Class(name=\"{cls.name}\")\n")
+            # Include synonyms if available
+            if cls.synonyms and len(cls.synonyms) > 0:
+                desc = clean_description(cls.synonyms[0])
+                f.write(f"{cls.name} = Class(name=\"{cls.name}\", synonyms=[\"{desc}\"])\n")
+            else:
+                f.write(f"{cls.name} = Class(name=\"{cls.name}\")\n")
             f.write("\n")
 
             # Write class attributes
@@ -96,8 +112,13 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
                             type_name = attr.type
                 else:
                     type_name = str(attr.type)
-                    
-                f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={type_name})\n")
+                
+                # Include synonyms if available
+                if attr.synonyms and len(attr.synonyms) > 0:
+                    desc = clean_description(attr.synonyms[0])
+                    f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={type_name}, synonyms=[\"{desc}\"])\n")
+                else:
+                    f.write(f"{cls.name}_{attr.name}: Property = Property(name=\"{attr.name}\", type={type_name})\n")
             
             # Write attributes set
             attrs = [f"{cls.name}_{attr.name}" for attr in sorted(cls.attributes, key=lambda x: x.name)]
@@ -119,5 +140,10 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict):
         f.write("    associations={},\n")
         f.write("    generalizations={}\n")
         f.write(")\n")
+        
+        # Add synonyms to model if available
+        if model.synonyms and len(model.synonyms) > 0:
+            desc = clean_description(model.synonyms[0])
+            f.write(f"domain_model.synonyms = [\"{desc}\"]\n")
 
     print(f"BUML model saved to {file_path}")

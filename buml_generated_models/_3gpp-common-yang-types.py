@@ -8,9 +8,9 @@ from besser.BUML.metamodel.structural import (
 
 # Enumerations
 AdministrativeState = Enumeration(name="AdministrativeState")
-AdministrativeState_LOCKED = EnumerationLiteral(name="LOCKED", owner=AdministrativeState)
-AdministrativeState_SHUTTINGDOWN = EnumerationLiteral(name="SHUTTINGDOWN", owner=AdministrativeState)
-AdministrativeState_UNLOCKED = EnumerationLiteral(name="UNLOCKED", owner=AdministrativeState)
+AdministrativeState_LOCKED = EnumerationLiteral(name="LOCKED", owner=AdministrativeState, synonyms=["The resource is administratively prohibited from performing services for its users."])
+AdministrativeState_SHUTTINGDOWN = EnumerationLiteral(name="SHUTTINGDOWN", owner=AdministrativeState, synonyms=["Use of the resource is administratively permitted to existing instances of use only. While the system remains in the shutting down state the manager or the managed element may at any time cause the resource to transition to the locked state."])
+AdministrativeState_UNLOCKED = EnumerationLiteral(name="UNLOCKED", owner=AdministrativeState, synonyms=["The resource is administratively permitted to perform services for its users. This is independent of its inherent operability."])
 AdministrativeState.literals = {AdministrativeState_LOCKED, AdministrativeState_SHUTTINGDOWN, AdministrativeState_UNLOCKED}
 
 AvailabilityStatus = Enumeration(name="AvailabilityStatus")
@@ -76,8 +76,8 @@ NotificationType_N2_INFORMATION = EnumerationLiteral(name="N2_INFORMATION", owne
 NotificationType.literals = {NotificationType_LOCATION_NOTIFICATION, NotificationType_N1_MESSAGES, NotificationType_N2_INFORMATION}
 
 OperationalState = Enumeration(name="OperationalState")
-OperationalState_DISABLED = EnumerationLiteral(name="DISABLED", owner=OperationalState)
-OperationalState_ENABLED = EnumerationLiteral(name="ENABLED", owner=OperationalState)
+OperationalState_DISABLED = EnumerationLiteral(name="DISABLED", owner=OperationalState, synonyms=["The resource is totally inoperable."])
+OperationalState_ENABLED = EnumerationLiteral(name="ENABLED", owner=OperationalState, synonyms=["The resource is partially or fully operable."])
 OperationalState.literals = {OperationalState_DISABLED, OperationalState_ENABLED}
 
 ResourceSharingLevel = Enumeration(name="ResourceSharingLevel")
@@ -103,6 +103,7 @@ usageState_ACTIVE = EnumerationLiteral(name="ACTIVE", owner=usageState)
 usageState_BUSY = EnumerationLiteral(name="BUSY", owner=usageState)
 usageState_IDLE = EnumerationLiteral(name="IDLE", owner=usageState)
 usageState.literals = {usageState_ACTIVE, usageState_BUSY, usageState_IDLE}
+usageState.synonyms = ["It describes whether or not the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users at that instant. The value is READ-ONLY."]
 
 # Classes
 AddressWithVlan = Class(name="AddressWithVlan")
@@ -112,7 +113,7 @@ AddressWithVlan_ipAddress: Property = Property(name="ipAddress", type=StringType
 AddressWithVlan_vlanId: Property = Property(name="vlanId", type=IntegerType)
 AddressWithVlan.attributes={AddressWithVlan_ipAddress, AddressWithVlan_vlanId}
 
-AmfIdentifier = Class(name="AmfIdentifier")
+AmfIdentifier = Class(name="AmfIdentifier", synonyms=["The AMFI is constructed from an AMF Region ID, an AMF Set ID and an AMF Pointer. The AMF Region ID identifies the region, the AMF Set ID uniquely identifies the AMF Set within the AMF Region, and the AMF Pointer uniquely identifies the AMF within the AMF Set."])
 
 # AmfIdentifier class attributes and methods
 AmfIdentifier_amfPointer: Property = Property(name="amfPointer", type=StringType)
@@ -143,17 +144,17 @@ Ipv6PrefixRange_end: Property = Property(name="end", type=StringType)
 Ipv6PrefixRange_start: Property = Property(name="start", type=StringType)
 Ipv6PrefixRange.attributes={Ipv6PrefixRange_end, Ipv6PrefixRange_start}
 
-ManagedNFProfile = Class(name="ManagedNFProfile")
+ManagedNFProfile = Class(name="ManagedNFProfile", synonyms=["Defines profile for managed NF"])
 
 # ManagedNFProfile class attributes and methods
-ManagedNFProfile_authzInfo: Property = Property(name="authzInfo", type=StringType)
-ManagedNFProfile_capacity: Property = Property(name="capacity", type=IntegerType)
-ManagedNFProfile_hostAddr: Property = Property(name="hostAddr", type=StringType)
+ManagedNFProfile_authzInfo: Property = Property(name="authzInfo", type=StringType, synonyms=["This parameter defines NF Specific Service authorization information. It shall include the NF type (s) and NF realms/origins allowed to consume NF Service(s) of NF Service Producer."])
+ManagedNFProfile_capacity: Property = Property(name="capacity", type=IntegerType, synonyms=["This parameter defines static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value."])
+ManagedNFProfile_hostAddr: Property = Property(name="hostAddr", type=StringType, synonyms=["Host address of a NF"])
 ManagedNFProfile_idx: Property = Property(name="idx", type=IntegerType)
-ManagedNFProfile_location: Property = Property(name="location", type=StringType)
-ManagedNFProfile_nFSrvGroupId: Property = Property(name="nFSrvGroupId", type=StringType)
-ManagedNFProfile_nfInstanceID: Property = Property(name="nfInstanceID", type=StringType)
-ManagedNFProfile_priority: Property = Property(name="priority", type=IntegerType)
+ManagedNFProfile_location: Property = Property(name="location", type=StringType, synonyms=["Information about the location of the NF instance (e.g. geographic location, data center) defined by operator"])
+ManagedNFProfile_nFSrvGroupId: Property = Property(name="nFSrvGroupId", type=StringType, synonyms=["This parameter defines identity of the group that is served by the NF instance. May be config false or true depending on the ManagedFunction. Config=true for Udrinfo. Config=false for UdmInfo and AusfInfo. Shall be present if ../nfType = UDM or AUSF or UDR."])
+ManagedNFProfile_nfInstanceID: Property = Property(name="nfInstanceID", type=StringType, synonyms=["This parameter defines profile for managed NF. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122"])
+ManagedNFProfile_priority: Property = Property(name="priority", type=IntegerType, synonyms=["This parameter defines Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. Shall be present if ../nfType = AMF"])
 ManagedNFProfile.attributes={ManagedNFProfile_authzInfo, ManagedNFProfile_capacity, ManagedNFProfile_hostAddr, ManagedNFProfile_idx, ManagedNFProfile_location, ManagedNFProfile_nFSrvGroupId, ManagedNFProfile_nfInstanceID, ManagedNFProfile_priority}
 
 PLMNId = Class(name="PLMNId")
@@ -163,7 +164,7 @@ PLMNId_mcc: Property = Property(name="mcc", type=StringType)
 PLMNId_mnc: Property = Property(name="mnc", type=StringType)
 PLMNId.attributes={PLMNId_mcc, PLMNId_mnc}
 
-SAP = Class(name="SAP")
+SAP = Class(name="SAP", synonyms=["Service access point."])
 
 # SAP class attributes and methods
 SAP_host: Property = Property(name="host", type=StringType)
@@ -177,3 +178,4 @@ domain_model = DomainModel(
     associations={},
     generalizations={}
 )
+domain_model.synonyms = ["The model defines a YANG mapping of the top level information classes used for management of 5G networks and network slicing."]

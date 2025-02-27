@@ -7,7 +7,7 @@ from besser.BUML.metamodel.structural import (
 )
 
 # Classes
-DNFunction = Class(name="DNFunction")
+DNFunction = Class(name="DNFunction", synonyms=["5G Core DN Function"])
 
 # DNFunction class attributes and methods
 # Domain Model with References
@@ -17,3 +17,4 @@ domain_model = DomainModel(
     associations={},
     generalizations={}
 )
+domain_model.synonyms = ["This IOC is defined only to describe the IOCs representing Data Network (DN) interaction interface with 5GC (i.e. EP_N6). It has no attributes defined."]

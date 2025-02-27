@@ -55,6 +55,12 @@ class YangParser:
         """Parse the module section and create corresponding model elements."""
         module_name = module.get('@name', '')
         self.current_model.name = module_name
+        
+        # Add module description as a synonym for the model if it exists
+        if 'description' in module:
+            desc = module.get('description', {}).get('text', '')
+            if desc:
+                self.current_model.synonyms = [desc]
 
         # Parse imports first to build prefix map
         if 'import' in module:
@@ -94,6 +100,15 @@ class YangParser:
             else:
                 self.parse_list(lists)
 
+        # Parse any augments
+        if 'augment' in module:
+            augments = module['augment']
+            if isinstance(augments, list):
+                for augment in augments:
+                    self.parse_augment(augment)
+            else:
+                self.parse_augment(augments)
+
         return self.cleanup_grp_classes(self.current_model)
 
     def parse_typedef(self, typedef: Dict[str, Any]) -> None:
@@ -101,7 +116,6 @@ class YangParser:
         type_info = typedef.get('type', {})
         if isinstance(type_info, dict) and type_info.get('@name') == 'enumeration':
             enum_name = typedef.get('@name')
-            print(f"Creating enumeration {enum_name}")  # Debug print
             
             # Skip if we've already processed this type
             if enum_name in self.processed_types:
@@ -109,20 +123,31 @@ class YangParser:
             
             enum_type = Enumeration(name=enum_name)
             
+            # Add description as a synonym if available
+            if 'description' in typedef:
+                desc = typedef.get('description', {}).get('text', '')
+                if desc:
+                    enum_type.synonyms = [desc]
+            
             # Add enumeration literals
             if 'enum' in type_info:
                 enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
                 for enum in enums:
                     literal_name = enum.get('@name', '')
                     if literal_name:  # Only add if we have a valid name
-                        print(f"  Adding literal {literal_name}")  # Debug print
                         literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                        
+                        # Add description as a synonym for the literal if available
+                        if 'description' in enum:
+                            literal_desc = enum.get('description', {}).get('text', '')
+                            if literal_desc:
+                                literal.synonyms = [literal_desc]
+                                
                         enum_type.add_literal(literal)
             
             # Add the enumeration to the model
             self.current_model.add_type(enum_type)
             self.processed_types.add(enum_name)
-            print(f"Added enumeration {enum_name} to model")  # Debug print
 
     def parse_grouping(self, grouping: Dict[str, Any]) -> None:
         """Parse a grouping definition and create a class."""
@@ -132,10 +157,16 @@ class YangParser:
         if class_name in self.processed_types:
             return
         
-        class_desc = grouping.get('description', {}).get('text', '')
+        # Get description if available
+        desc = grouping.get('description', {}).get('text', '')
         
         # Create new class
         new_class = Class(name=class_name)
+        
+        # Add description as a synonym if available
+        if desc:
+            new_class.synonyms = [desc]
+            
         self.current_class = new_class
         
         # Add attributes from leaves
@@ -161,6 +192,11 @@ class YangParser:
             class_desc = list_def.get('description', {}).get('text', '')
 
             new_class = Class(name=class_name)
+            
+            # Add description as a synonym if available
+            if class_desc:
+                new_class.synonyms = [class_desc]
+                
             self.current_class = new_class
 
             # Parse attributes container if it exists
@@ -227,6 +263,10 @@ class YangParser:
             owner=self.current_class,
             is_read_only=not mandatory
         )
+        
+        # Add description as a synonym if available
+        if desc:
+            prop.synonyms = [desc]
 
         self.current_class.add_attribute(prop)
 
@@ -241,6 +281,10 @@ class YangParser:
             type='list',  # This could be refined based on the list contents
             owner=self.current_class
         )
+        
+        # Add description as a synonym if available
+        if desc:
+            prop.synonyms = [desc]
 
         self.current_class.add_attribute(prop)
 

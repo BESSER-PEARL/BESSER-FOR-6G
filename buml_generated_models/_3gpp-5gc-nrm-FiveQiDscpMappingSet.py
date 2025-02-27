@@ -13,7 +13,7 @@ FiveQiDscpMapping = Class(name="FiveQiDscpMapping")
 FiveQiDscpMapping_dscp: Property = Property(name="dscp", type=IntegerType)
 FiveQiDscpMapping.attributes={FiveQiDscpMapping_dscp}
 
-FiveQiDscpMappingSet = Class(name="FiveQiDscpMappingSet")
+FiveQiDscpMappingSet = Class(name="FiveQiDscpMappingSet", synonyms=["Represents the FiveQiDscpMappingSet IOC."])
 
 # FiveQiDscpMappingSet class attributes and methods
 FiveQiDscpMappingSet_FiveQiDscpMappingList: Property = Property(name="FiveQiDscpMappingList", type=list)
@@ -22,7 +22,7 @@ FiveQiDscpMappingSet.attributes={FiveQiDscpMappingSet_FiveQiDscpMappingList}
 FiveQiDscpMappingSetSubtree = Class(name="FiveQiDscpMappingSetSubtree")
 
 # FiveQiDscpMappingSetSubtree class attributes and methods
-FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet: Property = Property(name="FiveQiDscpMappingSet", type=list)
+FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet: Property = Property(name="FiveQiDscpMappingSet", type=list, synonyms=["Specifies the mapping between 5QIs and DSCPs."])
 FiveQiDscpMappingSetSubtree.attributes={FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet}
 
 # Domain Model with References
@@ -32,3 +32,4 @@ domain_model = DomainModel(
     associations={},
     generalizations={}
 )
+domain_model.synonyms = ["This IOC represents the set of mapping between 5QIs and DSCP."]

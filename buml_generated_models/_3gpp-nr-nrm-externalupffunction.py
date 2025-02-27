@@ -7,13 +7,13 @@ from besser.BUML.metamodel.structural import (
 )
 
 # Classes
-ExternalUPFFunction = Class(name="ExternalUPFFunction")
+ExternalUPFFunction = Class(name="ExternalUPFFunction", synonyms=["Represents the ExternalUPFFunction IOC."])
 
 # ExternalUPFFunction class attributes and methods
 ExternalUPFFunctionWrapper = Class(name="ExternalUPFFunctionWrapper")
 
 # ExternalUPFFunctionWrapper class attributes and methods
-ExternalUPFFunctionWrapper_ExternalUPFFunction: Property = Property(name="ExternalUPFFunction", type=list)
+ExternalUPFFunctionWrapper_ExternalUPFFunction: Property = Property(name="ExternalUPFFunction", type=list, synonyms=["Represents the properties, known by the management function, of a UPFFunction managed by another management function."])
 ExternalUPFFunctionWrapper.attributes={ExternalUPFFunctionWrapper_ExternalUPFFunction}
 
 # Domain Model with References
@@ -23,3 +23,4 @@ domain_model = DomainModel(
     associations={},
     generalizations={}
 )
+domain_model.synonyms = ["Defines the YANG mapping of the ExternalUPFFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM)."]
