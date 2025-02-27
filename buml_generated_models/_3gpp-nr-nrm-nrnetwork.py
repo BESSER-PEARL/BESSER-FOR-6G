@@ -1,16 +1,19 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
+# Import referenced models
+from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
+
 # Classes
 NRNetwork = Class(name="NRNetwork", synonyms=["Represents the NRNetwork IOC."])
 
 # NRNetwork class attributes and methods
-NRNetwork_NRNetwork: Property = Property(name="NRNetwork", type=list, synonyms=["A subnetwork containing gNB external NR entities."])
+NRNetwork_NRNetwork: Property = Property(name="NRNetwork", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["A subnetwork containing gNB external NR entities."])
 NRNetwork.attributes={NRNetwork_NRNetwork}
 
 # Domain Model with References

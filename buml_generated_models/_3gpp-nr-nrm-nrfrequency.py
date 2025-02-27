@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -17,7 +17,7 @@ NRFrequency.attributes={NRFrequency_absoluteFrequencySSB, NRFrequency_sSBSubCarr
 NRFrequencyWrapper = Class(name="NRFrequencyWrapper")
 
 # NRFrequencyWrapper class attributes and methods
-NRFrequencyWrapper_NRFrequency: Property = Property(name="NRFrequency", type=list, synonyms=["Represents certain NR frequency properties."])
+NRFrequencyWrapper_NRFrequency: Property = Property(name="NRFrequency", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents certain NR frequency properties."])
 NRFrequencyWrapper.attributes={NRFrequencyWrapper_NRFrequency}
 
 # Domain Model with References

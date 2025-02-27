@@ -1,32 +1,28 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
+from buml_generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
 
 # Classes
 NRCellCU = Class(name="NRCellCU", synonyms=["Represents the information required by CU that is responsible for the management of inter-cell mobility and neighbour relations via ANR."])
 
 # NRCellCU class attributes and methods
 NRCellCU_cellLocalId: Property = Property(name="cellLocalId", type=IntegerType, synonyms=["Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI)."])
-NRCellCU_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=StringType, synonyms=["Reference to corresponding NRFrequency instance."])
-NRCellCU_pLMNInfoList: Property = Property(name="pLMNInfoList", type=list, synonyms=["The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported."])
+NRCellCU_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=types3gpp_model.get_type_by_name('DistinguishedName'), synonyms=["Reference to corresponding NRFrequency instance."])
+NRCellCU_pLMNInfoList: Property = Property(name="pLMNInfoList", type=types5g3gpp_model.get_type_by_name('PLMNInfo'), multiplicity=Multiplicity(1, "*"), synonyms=["The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported."])
 NRCellCU.attributes={NRCellCU_cellLocalId, NRCellCU_nRFrequencyRef, NRCellCU_pLMNInfoList}
-
-NRCellCUGrp = Class(name="NRCellCUGrp", synonyms=["Represents the NRCellCU IOC."])
-
-# NRCellCUGrp class attributes and methods
-NRCellCUGrp_cellLocalId: Property = Property(name="cellLocalId", type=IntegerType, synonyms=["Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI)."])
-NRCellCUGrp_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=StringType, synonyms=["Reference to corresponding NRFrequency instance."])
-NRCellCUGrp_pLMNInfoList: Property = Property(name="pLMNInfoList", type=list, synonyms=["The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported."])
-NRCellCUGrp.attributes={NRCellCUGrp_cellLocalId, NRCellCUGrp_nRFrequencyRef, NRCellCUGrp_pLMNInfoList}
 
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-nr-nrm-nrcellcu",
-    types={NRCellCU, NRCellCUGrp},
+    types={NRCellCU},
     associations={},
     generalizations={}
 )

@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -17,7 +17,7 @@ ExternalGNBCUUPFunction.attributes={ExternalGNBCUUPFunction_gNBId, ExternalGNBCU
 ExternalGNBCUUPFunctionWrapper = Class(name="ExternalGNBCUUPFunctionWrapper")
 
 # ExternalGNBCUUPFunctionWrapper class attributes and methods
-ExternalGNBCUUPFunctionWrapper_ExternalGNBCUUPFunction: Property = Property(name="ExternalGNBCUUPFunction", type=list, synonyms=["Represents the properties, known by the management function, of a GNBCUUPFunction managed by another management function."])
+ExternalGNBCUUPFunctionWrapper_ExternalGNBCUUPFunction: Property = Property(name="ExternalGNBCUUPFunction", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the properties, known by the management function, of a GNBCUUPFunction managed by another management function."])
 ExternalGNBCUUPFunctionWrapper.attributes={ExternalGNBCUUPFunctionWrapper_ExternalGNBCUUPFunction}
 
 # Domain Model with References

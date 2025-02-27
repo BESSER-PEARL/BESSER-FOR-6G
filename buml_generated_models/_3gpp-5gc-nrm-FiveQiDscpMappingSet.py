@@ -1,10 +1,13 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 
 # Classes
 FiveQiDscpMapping = Class(name="FiveQiDscpMapping")
@@ -16,13 +19,13 @@ FiveQiDscpMapping.attributes={FiveQiDscpMapping_dscp}
 FiveQiDscpMappingSet = Class(name="FiveQiDscpMappingSet", synonyms=["Represents the FiveQiDscpMappingSet IOC."])
 
 # FiveQiDscpMappingSet class attributes and methods
-FiveQiDscpMappingSet_FiveQiDscpMappingList: Property = Property(name="FiveQiDscpMappingList", type=list)
+FiveQiDscpMappingSet_FiveQiDscpMappingList: Property = Property(name="FiveQiDscpMappingList", type=list, multiplicity=Multiplicity(0, "*"))
 FiveQiDscpMappingSet.attributes={FiveQiDscpMappingSet_FiveQiDscpMappingList}
 
 FiveQiDscpMappingSetSubtree = Class(name="FiveQiDscpMappingSetSubtree")
 
 # FiveQiDscpMappingSetSubtree class attributes and methods
-FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet: Property = Property(name="FiveQiDscpMappingSet", type=list, synonyms=["Specifies the mapping between 5QIs and DSCPs."])
+FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet: Property = Property(name="FiveQiDscpMappingSet", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Specifies the mapping between 5QIs and DSCPs."])
 FiveQiDscpMappingSetSubtree.attributes={FiveQiDscpMappingSetSubtree_FiveQiDscpMappingSet}
 
 # Domain Model with References

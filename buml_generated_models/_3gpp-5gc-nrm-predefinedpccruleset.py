@@ -1,10 +1,14 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
+from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Classes
 ARP = Class(name="ARP", synonyms=["It specifies the allocation and retention priority of a QoS control policy."])
@@ -19,9 +23,9 @@ ConditionData = Class(name="ConditionData", synonyms=["It specifies the specifie
 
 # ConditionData class attributes and methods
 ConditionData_accessType: Property = Property(name="accessType", type=EnumerationType, synonyms=["It provides the condition of access type of the UE when the session AMBR shall be enforced."])
-ConditionData_activationTime: Property = Property(name="activationTime", type=StringType, synonyms=["It indicates the time (in date-time format) when the decision data shall be activated."])
+ConditionData_activationTime: Property = Property(name="activationTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["It indicates the time (in date-time format) when the decision data shall be activated."])
 ConditionData_condId: Property = Property(name="condId", type=StringType, synonyms=["It uniquely identifies the condition data."])
-ConditionData_deactivationTime: Property = Property(name="deactivationTime", type=StringType, synonyms=["It indicates the time (in date-time format) when the decision data shall be deactivated."])
+ConditionData_deactivationTime: Property = Property(name="deactivationTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["It indicates the time (in date-time format) when the decision data shall be deactivated."])
 ConditionData_ratType: Property = Property(name="ratType", type=EnumerationType, synonyms=["It provides the condition of RAT type of the UE when the session AMBR shall be enforced."])
 ConditionData.attributes={ConditionData_accessType, ConditionData_activationTime, ConditionData_condId, ConditionData_deactivationTime, ConditionData_ratType}
 
@@ -65,13 +69,13 @@ PccRule.attributes={PccRule_afSigProtocol, PccRule_appDescriptor, PccRule_applic
 PredefinedPccRuleSet = Class(name="PredefinedPccRuleSet", synonyms=["Represents the PredefinedPccRuleSet IOC."])
 
 # PredefinedPccRuleSet class attributes and methods
-PredefinedPccRuleSet_PredefinedPccRules: Property = Property(name="PredefinedPccRules", type=list, synonyms=["The list of predefined PCC rules."])
+PredefinedPccRuleSet_PredefinedPccRules: Property = Property(name="PredefinedPccRules", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["The list of predefined PCC rules."])
 PredefinedPccRuleSet.attributes={PredefinedPccRuleSet_PredefinedPccRules}
 
 PredefinedPccRuleSetSubtree = Class(name="PredefinedPccRuleSetSubtree", synonyms=["It specifies the PredefinedPccRuleSet IOC with inherited attributes."])
 
 # PredefinedPccRuleSetSubtree class attributes and methods
-PredefinedPccRuleSetSubtree_PredefinedPccRuleSet: Property = Property(name="PredefinedPccRuleSet", type=list, synonyms=["Specifies the predefined PCC rules."])
+PredefinedPccRuleSetSubtree_PredefinedPccRuleSet: Property = Property(name="PredefinedPccRuleSet", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Specifies the predefined PCC rules."])
 PredefinedPccRuleSetSubtree.attributes={PredefinedPccRuleSetSubtree_PredefinedPccRuleSet}
 
 QosDataInformation = Class(name="QosDataInformation", synonyms=["It specifies the QoS control policy data for a service flow of a PCC rule."])
@@ -140,7 +144,7 @@ TrafficControlDataInformation.attributes={TrafficControlDataInformation_flowStat
 TscaiInputContainer = Class(name="TscaiInputContainer", synonyms=["It specifies the transports TSCAI input parameters for TSC traffic at the ingress interface of the DS-TT/UE for a PCC rule."])
 
 # TscaiInputContainer class attributes and methods
-TscaiInputContainer_burstArrivalTime: Property = Property(name="burstArrivalTime", type=StringType, synonyms=["It Indicates the arrival time (in date-time format) of the data burst in reference to the TSN GM."])
+TscaiInputContainer_burstArrivalTime: Property = Property(name="burstArrivalTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["It Indicates the arrival time (in date-time format) of the data burst in reference to the TSN GM."])
 TscaiInputContainer_periodicity: Property = Property(name="periodicity", type=IntegerType, synonyms=["It identifies the time period between the start of two bursts in reference to the TSN GM."])
 TscaiInputContainer.attributes={TscaiInputContainer_burstArrivalTime, TscaiInputContainer_periodicity}
 

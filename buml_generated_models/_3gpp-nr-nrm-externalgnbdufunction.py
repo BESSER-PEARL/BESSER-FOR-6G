@@ -1,10 +1,13 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 ExternalGNBDUFunction = Class(name="ExternalGNBDUFunction", synonyms=["Represets the ExternalGNBDUFunction IOC."])
@@ -12,13 +15,13 @@ ExternalGNBDUFunction = Class(name="ExternalGNBDUFunction", synonyms=["Represets
 # ExternalGNBDUFunction class attributes and methods
 ExternalGNBDUFunction_gNBId: Property = Property(name="gNBId", type=IntegerType, synonyms=["Identifies a gNB within a PLMN."])
 ExternalGNBDUFunction_gNBIdLength: Property = Property(name="gNBIdLength", type=IntegerType, synonyms=["Indicates the number of bits for encoding the gNB ID."])
-ExternalGNBDUFunction_pLMNId: Property = Property(name="pLMNId", type=list, synonyms=["Specifies the PLMN identifier to be used as part of the global RAN node identity."])
+ExternalGNBDUFunction_pLMNId: Property = Property(name="pLMNId", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["Specifies the PLMN identifier to be used as part of the global RAN node identity."])
 ExternalGNBDUFunction.attributes={ExternalGNBDUFunction_gNBId, ExternalGNBDUFunction_gNBIdLength, ExternalGNBDUFunction_pLMNId}
 
 ExternalGNBDUFunctionWrapper = Class(name="ExternalGNBDUFunctionWrapper")
 
 # ExternalGNBDUFunctionWrapper class attributes and methods
-ExternalGNBDUFunctionWrapper_ExternalGNBDUFunction: Property = Property(name="ExternalGNBDUFunction", type=list, synonyms=["Represents the properties, known by the management function, of a GNBDUFunction managed by another management function."])
+ExternalGNBDUFunctionWrapper_ExternalGNBDUFunction: Property = Property(name="ExternalGNBDUFunction", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the properties, known by the management function, of a GNBDUFunction managed by another management function."])
 ExternalGNBDUFunctionWrapper.attributes={ExternalGNBDUFunctionWrapper_ExternalGNBDUFunction}
 
 # Domain Model with References

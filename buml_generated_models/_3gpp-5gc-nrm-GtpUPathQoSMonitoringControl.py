@@ -1,10 +1,13 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
 
 # Classes
 GtpUPathDelayThresholdsType = Class(name="GtpUPathDelayThresholdsType", synonyms=["Thresholds for reporting the packet delay for GTP-U path QoS monitoring"])
@@ -21,33 +24,20 @@ GtpUPathDelayThresholdsType.attributes={GtpUPathDelayThresholdsType_n3AveragePac
 GtpUPathQoSMonitoringControl = Class(name="GtpUPathQoSMonitoringControl", synonyms=["Specifies the capabilities and properties for control of GTP-U path QoS monitoring. For more information about the GTP-U path QoS monitoring."])
 
 # GtpUPathQoSMonitoringControl class attributes and methods
-GtpUPathQoSMonitoringControl_gtpUPathDelayThresholds: Property = Property(name="gtpUPathDelayThresholds", type=list, synonyms=["It specifies the thresholds for reporting the packet delay for the GTO-U path QoS monitoring."])
+GtpUPathQoSMonitoringControl_gtpUPathDelayThresholds: Property = Property(name="gtpUPathDelayThresholds", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["It specifies the thresholds for reporting the packet delay for the GTO-U path QoS monitoring."])
 GtpUPathQoSMonitoringControl_gtpUPathMeasurementPeriod: Property = Property(name="gtpUPathMeasurementPeriod", type=IntegerType, synonyms=["It specifies the period (in seconds) for reporting the packet delay for GTP-U path QoS monitoring."])
 GtpUPathQoSMonitoringControl_gtpUPathMinimumWaitTime: Property = Property(name="gtpUPathMinimumWaitTime", type=IntegerType, synonyms=["It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered GTP-U path QoS monitoring reporting."])
-GtpUPathQoSMonitoringControl_gtpUPathMonitoredSNSSAIs: Property = Property(name="gtpUPathMonitoredSNSSAIs", type=list, synonyms=["The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed."])
+GtpUPathQoSMonitoringControl_gtpUPathMonitoredSNSSAIs: Property = Property(name="gtpUPathMonitoredSNSSAIs", type=types5g3gpp_model.get_type_by_name('SNssai'), multiplicity=Multiplicity(0, "*"), synonyms=["The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed."])
 GtpUPathQoSMonitoringControl_gtpUPathQoSMonitoringState: Property = Property(name="gtpUPathQoSMonitoringState", type=EnumerationType, synonyms=["The state of GTP-U path QoS monitoring."])
 GtpUPathQoSMonitoringControl_isEventTriggeredGtpUPathMonitoringSupported: Property = Property(name="isEventTriggeredGtpUPathMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the event triggered GTP-U path QoS monitoring reporting based on thresholds is supported."])
 GtpUPathQoSMonitoringControl_isImmediateGtpUMonitoringSupported: Property = Property(name="isImmediateGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the immediate GTP-U path QoS monitoring reporting is supported."])
 GtpUPathQoSMonitoringControl_isPeriodicGtpUMonitoringSupported: Property = Property(name="isPeriodicGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the periodic GTP-U path QoS monitoring reporting is supported."])
 GtpUPathQoSMonitoringControl.attributes={GtpUPathQoSMonitoringControl_gtpUPathDelayThresholds, GtpUPathQoSMonitoringControl_gtpUPathMeasurementPeriod, GtpUPathQoSMonitoringControl_gtpUPathMinimumWaitTime, GtpUPathQoSMonitoringControl_gtpUPathMonitoredSNSSAIs, GtpUPathQoSMonitoringControl_gtpUPathQoSMonitoringState, GtpUPathQoSMonitoringControl_isEventTriggeredGtpUPathMonitoringSupported, GtpUPathQoSMonitoringControl_isImmediateGtpUMonitoringSupported, GtpUPathQoSMonitoringControl_isPeriodicGtpUMonitoringSupported}
 
-GtpUPathQoSMonitoringControlGrp = Class(name="GtpUPathQoSMonitoringControlGrp", synonyms=["Represents the GtpUPathQoSMonitoringControl IOC."])
-
-# GtpUPathQoSMonitoringControlGrp class attributes and methods
-GtpUPathQoSMonitoringControlGrp_gtpUPathDelayThresholds: Property = Property(name="gtpUPathDelayThresholds", type=list, synonyms=["It specifies the thresholds for reporting the packet delay for the GTO-U path QoS monitoring."])
-GtpUPathQoSMonitoringControlGrp_gtpUPathMeasurementPeriod: Property = Property(name="gtpUPathMeasurementPeriod", type=IntegerType, synonyms=["It specifies the period (in seconds) for reporting the packet delay for GTP-U path QoS monitoring."])
-GtpUPathQoSMonitoringControlGrp_gtpUPathMinimumWaitTime: Property = Property(name="gtpUPathMinimumWaitTime", type=IntegerType, synonyms=["It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered GTP-U path QoS monitoring reporting."])
-GtpUPathQoSMonitoringControlGrp_gtpUPathMonitoredSNSSAIs: Property = Property(name="gtpUPathMonitoredSNSSAIs", type=list, synonyms=["The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed."])
-GtpUPathQoSMonitoringControlGrp_gtpUPathQoSMonitoringState: Property = Property(name="gtpUPathQoSMonitoringState", type=EnumerationType, synonyms=["The state of GTP-U path QoS monitoring."])
-GtpUPathQoSMonitoringControlGrp_isEventTriggeredGtpUPathMonitoringSupported: Property = Property(name="isEventTriggeredGtpUPathMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the event triggered GTP-U path QoS monitoring reporting based on thresholds is supported."])
-GtpUPathQoSMonitoringControlGrp_isImmediateGtpUMonitoringSupported: Property = Property(name="isImmediateGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the immediate GTP-U path QoS monitoring reporting is supported."])
-GtpUPathQoSMonitoringControlGrp_isPeriodicGtpUMonitoringSupported: Property = Property(name="isPeriodicGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the periodic GTP-U path QoS monitoring reporting is supported."])
-GtpUPathQoSMonitoringControlGrp.attributes={GtpUPathQoSMonitoringControlGrp_gtpUPathDelayThresholds, GtpUPathQoSMonitoringControlGrp_gtpUPathMeasurementPeriod, GtpUPathQoSMonitoringControlGrp_gtpUPathMinimumWaitTime, GtpUPathQoSMonitoringControlGrp_gtpUPathMonitoredSNSSAIs, GtpUPathQoSMonitoringControlGrp_gtpUPathQoSMonitoringState, GtpUPathQoSMonitoringControlGrp_isEventTriggeredGtpUPathMonitoringSupported, GtpUPathQoSMonitoringControlGrp_isImmediateGtpUMonitoringSupported, GtpUPathQoSMonitoringControlGrp_isPeriodicGtpUMonitoringSupported}
-
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-5gc-nrm-GtpUPathQoSMonitoringControl",
-    types={GtpUPathDelayThresholdsType, GtpUPathQoSMonitoringControl, GtpUPathQoSMonitoringControlGrp},
+    types={GtpUPathDelayThresholdsType, GtpUPathQoSMonitoringControl},
     associations={},
     generalizations={}
 )

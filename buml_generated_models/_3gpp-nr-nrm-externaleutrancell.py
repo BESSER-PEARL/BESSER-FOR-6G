@@ -1,10 +1,13 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 ExternalEUtranCellFDD = Class(name="ExternalEUtranCellFDD", synonyms=["Represents the ExternalEUtranCellFDD IOC."])
@@ -17,7 +20,7 @@ ExternalEUtranCellFDD.attributes={ExternalEUtranCellFDD_earfcnDL, ExternalEUtran
 ExternalEUtranCellFDDWrapper = Class(name="ExternalEUtranCellFDDWrapper")
 
 # ExternalEUtranCellFDDWrapper class attributes and methods
-ExternalEUtranCellFDDWrapper_ExternalEUtranCellFDD: Property = Property(name="ExternalEUtranCellFDD", type=list, synonyms=["Represents the common properties of external E-UTRAN FDD cell provided by eNB or NG-RAN FDD cell provided by ng-eNB."])
+ExternalEUtranCellFDDWrapper_ExternalEUtranCellFDD: Property = Property(name="ExternalEUtranCellFDD", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the common properties of external E-UTRAN FDD cell provided by eNB or NG-RAN FDD cell provided by ng-eNB."])
 ExternalEUtranCellFDDWrapper.attributes={ExternalEUtranCellFDDWrapper_ExternalEUtranCellFDD}
 
 ExternalEUtranCellTDD = Class(name="ExternalEUtranCellTDD", synonyms=["Represents the ExternalEUtranCellTDD IOC."])
@@ -29,7 +32,7 @@ ExternalEUtranCellTDD.attributes={ExternalEUtranCellTDD_earfcn}
 ExternalEUtranCellTDDWrapper = Class(name="ExternalEUtranCellTDDWrapper")
 
 # ExternalEUtranCellTDDWrapper class attributes and methods
-ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD: Property = Property(name="ExternalEUtranCellTDD", type=list, synonyms=["Represents the common properties of external E-UTRAN cell TDD provided by eNB or NG-RAN TDD cell provided by ng-eNB."])
+ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD: Property = Property(name="ExternalEUtranCellTDD", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the common properties of external E-UTRAN cell TDD provided by eNB or NG-RAN TDD cell provided by ng-eNB."])
 ExternalEUtranCellTDDWrapper.attributes={ExternalEUtranCellTDDWrapper_ExternalEUtranCellTDD}
 
 ExternalEUtranGenericCell = Class(name="ExternalEUtranGenericCell", synonyms=["Represents the ExternalEUtranGenericCell IOC."])
@@ -38,7 +41,7 @@ ExternalEUtranGenericCell = Class(name="ExternalEUtranGenericCell", synonyms=["R
 ExternalEUtranGenericCell_cellLocalId: Property = Property(name="cellLocalId", type=IntegerType, synonyms=["Unambiguously identifies a cell within an eNodeB."])
 ExternalEUtranGenericCell_eNBId: Property = Property(name="eNBId", type=IntegerType, synonyms=["Unambiguously identifies an eNodeB within a PLMN."])
 ExternalEUtranGenericCell_pci: Property = Property(name="pci", type=IntegerType, synonyms=["The Physical Cell Identity (PCI) of the cell (for NM-Centralized, EM-Centralized and Distributed PCI assignment cases). In the case of NM-Centralized PCI assignment, see 3GPP TS 36.300."])
-ExternalEUtranGenericCell_plmnIdList: Property = Property(name="plmnIdList", type=list, synonyms=["List of unique identities for PLMNs. A cell can broadcast up to 6 PLMN IDs. This is to support the case that one cell can be used by up to 6 operator's core networks. The PLMN(s) included in this list will use the same single tracking area code (TAC) and the same Cell Identity (cellLocalId) for sharing the radio access network resources. One member of plmnIdList is the primary PLMN ID. A PLMN ID included in this list cannot be included in the cellAccessInfoList. The PLMN ID is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."])
+ExternalEUtranGenericCell_plmnIdList: Property = Property(name="plmnIdList", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["List of unique identities for PLMNs. A cell can broadcast up to 6 PLMN IDs. This is to support the case that one cell can be used by up to 6 operator's core networks. The PLMN(s) included in this list will use the same single tracking area code (TAC) and the same Cell Identity (cellLocalId) for sharing the radio access network resources. One member of plmnIdList is the primary PLMN ID. A PLMN ID included in this list cannot be included in the cellAccessInfoList. The PLMN ID is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."])
 ExternalEUtranGenericCell.attributes={ExternalEUtranGenericCell_cellLocalId, ExternalEUtranGenericCell_eNBId, ExternalEUtranGenericCell_pci, ExternalEUtranGenericCell_plmnIdList}
 
 # Domain Model with References

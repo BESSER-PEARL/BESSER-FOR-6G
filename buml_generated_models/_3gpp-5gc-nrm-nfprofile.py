@@ -1,10 +1,16 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
+
+# Import referenced models
+from buml_generated_models.ietf_inet_types import domain_model as inet_model
+from buml_generated_models._3gpp_5gc_nrm_nfservice import domain_model as nfs3gpp_model
+from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
+from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
 AccessType = Enumeration(name="AccessType")
@@ -54,8 +60,8 @@ DnnUpfInfoItem.attributes={DnnUpfInfoItem_dnn}
 Guami = Class(name="Guami")
 
 # Guami class attributes and methods
-Guami_amfId: Property = Property(name="amfId", type=list, synonyms=["AMF Identity."])
-Guami_plmnId: Property = Property(name="plmnId", type=list, synonyms=["PLMN Identity."])
+Guami_amfId: Property = Property(name="amfId", type=types3gpp_model.get_type_by_name('AmfIdentifier'), multiplicity=Multiplicity(1, "*"), synonyms=["AMF Identity."])
+Guami_plmnId: Property = Property(name="plmnId", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN Identity."])
 Guami.attributes={Guami_amfId, Guami_plmnId}
 
 IdentityRange = Class(name="IdentityRange")
@@ -82,36 +88,36 @@ N2InterfaceAmfInfo.attributes={N2InterfaceAmfInfo_amfName}
 NFProfile = Class(name="NFProfile")
 
 # NFProfile class attributes and methods
-NFProfile_allowedNssais: Property = Property(name="allowedNssais", type=list, synonyms=["S-NSSAI of the allowed slices to access the NF instance. If not provided, any slice is allowed to access the NF."])
-NFProfile_allowedPlmns: Property = Property(name="allowedPlmns", type=list, synonyms=["PLMNs allowed to access the NF instance. If not provided, any PLMN is allowed to access the NF."])
+NFProfile_allowedNssais: Property = Property(name="allowedNssais", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["S-NSSAI of the allowed slices to access the NF instance. If not provided, any slice is allowed to access the NF."])
+NFProfile_allowedPlmns: Property = Property(name="allowedPlmns", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMNs allowed to access the NF instance. If not provided, any PLMN is allowed to access the NF."])
 NFProfile_capacity: Property = Property(name="capacity", type=IntegerType, synonyms=["Static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value."])
 NFProfile_customInfo: Property = Property(name="customInfo", type=StringType, synonyms=["Specific data for custom Network Functions."])
-NFProfile_defaultNotificationSubscriptions: Property = Property(name="defaultNotificationSubscriptions", type=list, synonyms=["Notification endpoints for different notification types."])
-NFProfile_fqdn: Property = Property(name="fqdn", type=StringType, synonyms=["FQDN of the Network Function. For AMF, the FQDN registered with the NRF shall be that of the AMF Name."])
+NFProfile_defaultNotificationSubscriptions: Property = Property(name="defaultNotificationSubscriptions", type=types3gpp_model.get_type_by_name('DefaultNotificationSubscription'), multiplicity=Multiplicity(1, "*"), synonyms=["Notification endpoints for different notification types."])
+NFProfile_fqdn: Property = Property(name="fqdn", type=inet_model.get_type_by_name('domain_name'), synonyms=["FQDN of the Network Function. For AMF, the FQDN registered with the NRF shall be that of the AMF Name."])
 NFProfile_heartBeatTimer: Property = Property(name="heartBeatTimer", type=IntegerType, synonyms=["Time in seconds expected between 2 consecutive heart-beat messages from an NF Instance to the NRF. It may be included in the registration request. When present in the request it shall contain the heartbeat time proposed by the NF service consumer."])
-NFProfile_interPlmnFqdn: Property = Property(name="interPlmnFqdn", type=StringType, synonyms=["If the NF needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter-PLMN routing is specified."])
-NFProfile_load: Property = Property(name="load", type=StringType, synonyms=["Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF."])
+NFProfile_interPlmnFqdn: Property = Property(name="interPlmnFqdn", type=inet_model.get_type_by_name('domain_name'), synonyms=["If the NF needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter-PLMN routing is specified."])
+NFProfile_load: Property = Property(name="load", type=types3gpp_model.get_type_by_name('Load'), synonyms=["Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF."])
 NFProfile_locality: Property = Property(name="locality", type=StringType, synonyms=["Operator defined information about the location of the NF instance (e.g. geographic location, data center)."])
 NFProfile_nfInstanceID: Property = Property(name="nfInstanceID", type=StringType, synonyms=["String uniquely identifying a NF instance."])
 NFProfile_nfProfileChangesInd: Property = Property(name="nfProfileChangesInd", type=BooleanType, synonyms=["NF Profile Changes Indicator. This IE shall be absent in the request to the NRF and may be included by the NRF in NFRegister or NFUpdate (NF Profile Complete Replacement) response. true: the NF Profile contains NF Profile changes. false (default): complete NF Profile."])
 NFProfile_nfProfileChangesSupportInd: Property = Property(name="nfProfileChangesSupportInd", type=BooleanType, synonyms=["NF Profile Changes Support Indicator. This IE may be present in the NFRegister or NFUpdate (NF Profile Complete Replacement) request and shall be absent in the response. true: the NF Service Consumer supports receiving NF Profile Changes in the response. false (default): the NF Service Consumer does not support receiving NF Profile Changes in the response."])
 NFProfile_nfServicePersistence: Property = Property(name="nfServicePersistence", type=BooleanType, synonyms=["If present, and set to true, it indicates that the different service instances of a same NF Service in this NF instance, supporting a same API version, are capable to persist their resource state in shared storage and therefore these resources are available after a new NF service instance supporting the same API version is selected by a NF Service Consumer (see 3GPP TS 23.527). Otherwise, it indicates that the NF Service Instances of a same NF Service are not capable to share resource state inside the NF Instance."])
-NFProfile_nfServices: Property = Property(name="nfServices", type=list, synonyms=["List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs."])
+NFProfile_nfServices: Property = Property(name="nfServices", type=nfs3gpp_model.get_type_by_name('NFServiceGrp'), multiplicity=Multiplicity(1, "*"), synonyms=["List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs."])
 NFProfile_nfStatus: Property = Property(name="nfStatus", type=StringType, synonyms=["Status of the NF Instance."])
-NFProfile_nfType: Property = Property(name="nfType", type=StringType, synonyms=["Type of Network Function."])
-NFProfile_nrfInfo: Property = Property(name="nrfInfo", type=list)
-NFProfile_perPlmnSnssaiList: Property = Property(name="perPlmnSnssaiList", type=list, synonyms=["This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different. When present, this IE shall include the S-NSSAIs supported by the Network Function for each PLMN supported by the Network Function. When present, this IE shall override sNssais IE."])
-NFProfile_plmnList: Property = Property(name="plmnList", type=list, synonyms=["PLMN(s) of the Network Function. This IE shall be present if this information is available for the NF. If not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF."])
+NFProfile_nfType: Property = Property(name="nfType", type=types3gpp_model.get_type_by_name('NfType'), synonyms=["Type of Network Function."])
+NFProfile_nrfInfo: Property = Property(name="nrfInfo", type=list, multiplicity=Multiplicity(0, "*"))
+NFProfile_perPlmnSnssaiList: Property = Property(name="perPlmnSnssaiList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different. When present, this IE shall include the S-NSSAIs supported by the Network Function for each PLMN supported by the Network Function. When present, this IE shall override sNssais IE."])
+NFProfile_plmnList: Property = Property(name="plmnList", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN(s) of the Network Function. This IE shall be present if this information is available for the NF. If not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF."])
 NFProfile_priority: Property = Property(name="priority", type=IntegerType, synonyms=["Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. The NRF may overwrite the received priority value when exposing an NFProfile with the Nnrf_NFDiscovery service."])
-NFProfile_recoveryTime: Property = Property(name="recoveryTime", type=StringType, synonyms=["Timestamp when the NF was (re)started."])
-NFProfile_sNssais: Property = Property(name="sNssais", type=list, synonyms=["S-NSSAIs of the Network Function. If not provided, the NF can serve any S-NSSAI. When present this IE represents the list of S-NSSAIs supported in all the PLMNs listed in the plmnList IE."])
+NFProfile_recoveryTime: Property = Property(name="recoveryTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["Timestamp when the NF was (re)started."])
+NFProfile_sNssais: Property = Property(name="sNssais", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["S-NSSAIs of the Network Function. If not provided, the NF can serve any S-NSSAI. When present this IE represents the list of S-NSSAIs supported in all the PLMNs listed in the plmnList IE."])
 NFProfile.attributes={NFProfile_allowedNssais, NFProfile_allowedPlmns, NFProfile_capacity, NFProfile_customInfo, NFProfile_defaultNotificationSubscriptions, NFProfile_fqdn, NFProfile_heartBeatTimer, NFProfile_interPlmnFqdn, NFProfile_load, NFProfile_locality, NFProfile_nfInstanceID, NFProfile_nfProfileChangesInd, NFProfile_nfProfileChangesSupportInd, NFProfile_nfServicePersistence, NFProfile_nfServices, NFProfile_nfStatus, NFProfile_nfType, NFProfile_nrfInfo, NFProfile_perPlmnSnssaiList, NFProfile_plmnList, NFProfile_priority, NFProfile_recoveryTime, NFProfile_sNssais}
 
 PlmnSnssai = Class(name="PlmnSnssai")
 
 # PlmnSnssai class attributes and methods
-PlmnSnssai_plmnId: Property = Property(name="plmnId", type=list, synonyms=["PLMN ID for which list of supported S-NSSAI(s) is provided."])
-PlmnSnssai_sNssaiList: Property = Property(name="sNssaiList", type=list, synonyms=["The specific list of S-NSSAIs supported by the given PLMN."])
+PlmnSnssai_plmnId: Property = Property(name="plmnId", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN ID for which list of supported S-NSSAI(s) is provided."])
+PlmnSnssai_sNssaiList: Property = Property(name="sNssaiList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["The specific list of S-NSSAIs supported by the given PLMN."])
 PlmnSnssai.attributes={PlmnSnssai_plmnId, PlmnSnssai_sNssaiList}
 
 Snssai = Class(name="Snssai")
@@ -124,8 +130,8 @@ Snssai.attributes={Snssai_sd, Snssai_sst}
 SnssaiUpfInfoItem = Class(name="SnssaiUpfInfoItem")
 
 # SnssaiUpfInfoItem class attributes and methods
-SnssaiUpfInfoItem_dnnUpfInfoList: Property = Property(name="dnnUpfInfoList", type=list, synonyms=["List of parameters supported by the UPF per DNN."])
-SnssaiUpfInfoItem_sNssai: Property = Property(name="sNssai", type=list, synonyms=["Supported S-NSSAI."])
+SnssaiUpfInfoItem_dnnUpfInfoList: Property = Property(name="dnnUpfInfoList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["List of parameters supported by the UPF per DNN."])
+SnssaiUpfInfoItem_sNssai: Property = Property(name="sNssai", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["Supported S-NSSAI."])
 SnssaiUpfInfoItem.attributes={SnssaiUpfInfoItem_dnnUpfInfoList, SnssaiUpfInfoItem_sNssai}
 
 SupiRange = Class(name="SupiRange")
@@ -147,22 +153,22 @@ TacRange.attributes={TacRange_end, TacRange_pattern, TacRange_start}
 Tai = Class(name="Tai")
 
 # Tai class attributes and methods
-Tai_plmnId: Property = Property(name="plmnId", type=list, synonyms=["PLMN Identity."])
-Tai_tac: Property = Property(name="tac", type=StringType)
+Tai_plmnId: Property = Property(name="plmnId", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN Identity."])
+Tai_tac: Property = Property(name="tac", type=types3gpp_model.get_type_by_name('Tac'))
 Tai.attributes={Tai_plmnId, Tai_tac}
 
 TaiRange = Class(name="TaiRange")
 
 # TaiRange class attributes and methods
-TaiRange_plmnId: Property = Property(name="plmnId", type=list, synonyms=["PLMN ID related to the TacRange."])
-TaiRange_tacRangeList: Property = Property(name="tacRangeList", type=list, synonyms=["The range of the TACs."])
+TaiRange_plmnId: Property = Property(name="plmnId", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN ID related to the TacRange."])
+TaiRange_tacRangeList: Property = Property(name="tacRangeList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["The range of the TACs."])
 TaiRange.attributes={TaiRange_plmnId, TaiRange_tacRangeList}
 
 sNssaiSmfInfoItem = Class(name="sNssaiSmfInfoItem")
 
 # sNssaiSmfInfoItem class attributes and methods
-sNssaiSmfInfoItem_dnnSmfInfoList: Property = Property(name="dnnSmfInfoList", type=list, synonyms=["List of parameters supported by the SMF per DNN."])
-sNssaiSmfInfoItem_sNssai: Property = Property(name="sNssai", type=list, synonyms=["Supported S-NSSAI."])
+sNssaiSmfInfoItem_dnnSmfInfoList: Property = Property(name="dnnSmfInfoList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["List of parameters supported by the SMF per DNN."])
+sNssaiSmfInfoItem_sNssai: Property = Property(name="sNssai", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["Supported S-NSSAI."])
 sNssaiSmfInfoItem.attributes={sNssaiSmfInfoItem_dnnSmfInfoList, sNssaiSmfInfoItem_sNssai}
 
 # Domain Model with References

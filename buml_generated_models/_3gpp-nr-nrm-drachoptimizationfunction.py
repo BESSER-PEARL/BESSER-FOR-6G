@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -19,8 +19,8 @@ DRACHOptimizationFunction = Class(name="DRACHOptimizationFunction", synonyms=["R
 
 # DRACHOptimizationFunction class attributes and methods
 DRACHOptimizationFunction_drachOptimizationControl: Property = Property(name="drachOptimizationControl", type=BooleanType, synonyms=["This attribute determines whether the RACH Optimization function is enabled or disabled."])
-DRACHOptimizationFunction_ueAccDelayProbilityDist: Property = Property(name="ueAccDelayProbilityDist", type=list, synonyms=["This is a list of target Access Delay probability (ADP) for the RACH optimization function."])
-DRACHOptimizationFunction_ueAccProbilityDist: Property = Property(name="ueAccProbilityDist", type=list, synonyms=["This is a list of target Access Probability (APn) for the RACH optimization function."])
+DRACHOptimizationFunction_ueAccDelayProbilityDist: Property = Property(name="ueAccDelayProbilityDist", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["This is a list of target Access Delay probability (ADP) for the RACH optimization function."])
+DRACHOptimizationFunction_ueAccProbilityDist: Property = Property(name="ueAccProbilityDist", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["This is a list of target Access Probability (APn) for the RACH optimization function."])
 DRACHOptimizationFunction.attributes={DRACHOptimizationFunction_drachOptimizationControl, DRACHOptimizationFunction_ueAccDelayProbilityDist, DRACHOptimizationFunction_ueAccProbilityDist}
 
 UeAccDelayProbilityDist = Class(name="UeAccDelayProbilityDist", synonyms=["Represents the target Access Delay probability (ADP) for the RACH optimization function."])

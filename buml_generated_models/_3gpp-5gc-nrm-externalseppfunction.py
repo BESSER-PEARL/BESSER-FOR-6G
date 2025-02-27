@@ -1,30 +1,26 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
+# Import referenced models
+from buml_generated_models.ietf_inet_types import domain_model as inet_model
+
 # Classes
 ExternalSEPPFunction = Class(name="ExternalSEPPFunction", synonyms=["5G Core SEPP Function"])
 
 # ExternalSEPPFunction class attributes and methods
-ExternalSEPPFunction_fqdn: Property = Property(name="fqdn", type=StringType, synonyms=["The domain name of the SEPP."])
+ExternalSEPPFunction_fqdn: Property = Property(name="fqdn", type=inet_model.get_type_by_name('domain_name'), synonyms=["The domain name of the SEPP."])
 ExternalSEPPFunction_sEPPId: Property = Property(name="sEPPId", type=IntegerType)
 ExternalSEPPFunction.attributes={ExternalSEPPFunction_fqdn, ExternalSEPPFunction_sEPPId}
-
-ExternalSEPPFunctionGrp = Class(name="ExternalSEPPFunctionGrp")
-
-# ExternalSEPPFunctionGrp class attributes and methods
-ExternalSEPPFunctionGrp_fqdn: Property = Property(name="fqdn", type=StringType, synonyms=["The domain name of the SEPP."])
-ExternalSEPPFunctionGrp_sEPPId: Property = Property(name="sEPPId", type=IntegerType)
-ExternalSEPPFunctionGrp.attributes={ExternalSEPPFunctionGrp_fqdn, ExternalSEPPFunctionGrp_sEPPId}
 
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-5gc-nrm-externalseppfunction",
-    types={ExternalSEPPFunction, ExternalSEPPFunctionGrp},
+    types={ExternalSEPPFunction},
     associations={},
     generalizations={}
 )

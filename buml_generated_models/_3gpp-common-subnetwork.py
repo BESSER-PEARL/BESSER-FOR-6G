@@ -1,16 +1,19 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
 )
 
+# Import referenced models
+from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
+
 # Classes
 Domain_ = Class(name="Domain_", synonyms=["A domain is a partition of instances of managed entities such that : - the group represents a topological structure which describes the potential for connectivity - Subject to common administration - With common characteristics"])
 
 # Domain_ class attributes and methods
-Domain__dnPrefix: Property = Property(name="dnPrefix", type=StringType)
+Domain__dnPrefix: Property = Property(name="dnPrefix", type=types3gpp_model.get_type_by_name('DistinguishedName'))
 Domain__userDefinedNetworkType: Property = Property(name="userDefinedNetworkType", type=StringType, synonyms=["Textual information indicating network type, e.g. 'UTRAN'."])
 Domain__userLabel: Property = Property(name="userLabel", type=StringType, synonyms=["A user-friendly (and user assignable) name of this object."])
 Domain_.attributes={Domain__dnPrefix, Domain__userDefinedNetworkType, Domain__userLabel}
@@ -18,7 +21,7 @@ Domain_.attributes={Domain__dnPrefix, Domain__userDefinedNetworkType, Domain__us
 SubNetwork = Class(name="SubNetwork")
 
 # SubNetwork class attributes and methods
-SubNetwork_SubNetwork: Property = Property(name="SubNetwork", type=list, synonyms=["Represents a set of managed entities"])
+SubNetwork_SubNetwork: Property = Property(name="SubNetwork", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents a set of managed entities"])
 SubNetwork_priorityLabel: Property = Property(name="priorityLabel", type=IntegerType)
 SubNetwork.attributes={SubNetwork_SubNetwork, SubNetwork_priorityLabel}
 

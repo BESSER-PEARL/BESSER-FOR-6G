@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -11,7 +11,7 @@ DPCIConfigurationFunction = Class(name="DPCIConfigurationFunction", synonyms=["R
 
 # DPCIConfigurationFunction class attributes and methods
 DPCIConfigurationFunction_dPciConfigurationControl: Property = Property(name="dPciConfigurationControl", type=BooleanType, synonyms=["This attribute determines whether the Distributed SON or Domain-Centralized SON PCI configuration Function is enabled or disabled."])
-DPCIConfigurationFunction_nRPciList: Property = Property(name="nRPciList", type=list, synonyms=["This holds a list of physical cell identities that can be assigned to the NR cells. This attribute shall be supported if D-SON PCI configuration or domain Centralized SON PCI configuration function is supported."])
+DPCIConfigurationFunction_nRPciList: Property = Property(name="nRPciList", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["This holds a list of physical cell identities that can be assigned to the NR cells. This attribute shall be supported if D-SON PCI configuration or domain Centralized SON PCI configuration function is supported."])
 DPCIConfigurationFunction.attributes={DPCIConfigurationFunction_dPciConfigurationControl, DPCIConfigurationFunction_nRPciList}
 
 NRPciList = Class(name="NRPciList", synonyms=["Represents the NR PCI list for the PCI configuration function."])

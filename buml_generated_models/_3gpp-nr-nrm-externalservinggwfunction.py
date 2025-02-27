@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -13,7 +13,7 @@ ExternalServingGWFunction = Class(name="ExternalServingGWFunction", synonyms=["R
 ExternalServingGWFunctionWrapper = Class(name="ExternalServingGWFunctionWrapper")
 
 # ExternalServingGWFunctionWrapper class attributes and methods
-ExternalServingGWFunctionWrapper_ExternalServingGWFunction: Property = Property(name="ExternalServingGWFunction", type=list, synonyms=["Represents the properties, known by the management function, of a ServingGWFunction managed by another management function."])
+ExternalServingGWFunctionWrapper_ExternalServingGWFunction: Property = Property(name="ExternalServingGWFunction", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the properties, known by the management function, of a ServingGWFunction managed by another management function."])
 ExternalServingGWFunctionWrapper.attributes={ExternalServingGWFunctionWrapper_ExternalServingGWFunction}
 
 # Domain Model with References

@@ -1,6 +1,6 @@
 # Generated B-UML Model
 from besser.BUML.metamodel.structural import (
-    Class, Property, DomainModel,
+    Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
     PrimitiveDataType, Enumeration, EnumerationLiteral
@@ -16,7 +16,7 @@ ExternalENBFunction.attributes={ExternalENBFunction_eNBId}
 ExternalENBFunctionWrapper = Class(name="ExternalENBFunctionWrapper")
 
 # ExternalENBFunctionWrapper class attributes and methods
-ExternalENBFunctionWrapper_ExternalENBFunction: Property = Property(name="ExternalENBFunction", type=list, synonyms=["Represents an external eNB functionality."])
+ExternalENBFunctionWrapper_ExternalENBFunction: Property = Property(name="ExternalENBFunction", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents an external eNB functionality."])
 ExternalENBFunctionWrapper.attributes={ExternalENBFunctionWrapper_ExternalENBFunction}
 
 # Domain Model with References
