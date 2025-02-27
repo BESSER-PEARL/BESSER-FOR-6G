@@ -6,7 +6,7 @@ from buml_code_builder import domain_model_to_code
 def main():
     parser = YangParser()
     json_dir = "json_3gpp"
-    output_dir = "generated_models"
+    output_dir = "buml_generated_models"
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
