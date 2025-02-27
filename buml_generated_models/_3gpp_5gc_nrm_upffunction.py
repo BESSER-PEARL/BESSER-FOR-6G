@@ -8,7 +8,7 @@ from besser.BUML.metamodel.structural import (
 
 # Import referenced models
 from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-from _3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
+from buml_generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
 
 # Classes
 UPFFunction = Class(name="UPFFunction", synonyms=["5G Core UPF Function"])
