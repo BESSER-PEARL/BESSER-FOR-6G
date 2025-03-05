@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.Top_/Top_/schema.json",
+  "title": "Smart Data models - Top_ schema",
+  "modelTags": "",
+  "description": "The model defines a YANG mapping of the top level information classes used for management of 5G networks and network slicing.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "id": {
+                "description": "Property. Key leaf (namingAttribute) for a class/list. Should be used as a key leaf for lists representing stage 2 classes.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

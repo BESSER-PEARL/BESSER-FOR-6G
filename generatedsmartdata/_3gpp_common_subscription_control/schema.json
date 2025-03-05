@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.HeartbeatControl/HeartbeatControl/schema.json",
+  "title": "Smart Data models - HeartbeatControl schema",
+  "modelTags": "",
+  "description": "Defines IOCs for subscription and heartbeat control.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "heartbeatNtfPeriod": {
+                "description": "Property. Specifies the periodicity of heartbeat notification emission. The value of zero has the special meaning of stopping the heartbeat notification emission.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

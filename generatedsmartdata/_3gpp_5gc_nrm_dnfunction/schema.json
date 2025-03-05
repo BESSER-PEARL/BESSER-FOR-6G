@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.{{schema.class_name}}/{{schema.class_name}}/schema.json",
-  "title": "Smart Data models - {{schema.class_name}} schema",
+  "$id": "https://smart-data-models.github.io/dataModel.DNFunction/DNFunction/schema.json",
+  "title": "Smart Data models - DNFunction schema",
   "modelTags": "",
-  "description": "{% if schema.model_description %}{{ schema.model_description }}{% else %}This class represents {{schema.class_name}}{% endif %}",
+  "description": "This IOC is defined only to describe the IOCs representing Data Network (DN) interaction interface with 5GC (i.e. EP_N6). It has no attributes defined.",
   "required": [
     "id",
     "type"
@@ -17,7 +17,7 @@
       "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
     {
-      "properties": {{ schema.properties | tojson(indent=8) }}
+      "properties": {}
     }
   ],
   "derivedFrom": "3GPP TS 28.541",

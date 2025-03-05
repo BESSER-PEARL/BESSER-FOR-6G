@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.NEFFunction/NEFFunction/schema.json",
+  "title": "Smart Data models - NEFFunction schema",
+  "modelTags": "",
+  "description": "This IOC represents the NEF function in 5GC. For more information about the NEF, see 3GPP TS 23.501.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "isCAPIFSup": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "isINEF": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "sBIFQDN": {
+                "description": "Property. The FQDN of the registered NF instance in the service-based interface.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "sNSSAIList": {
+                "description": "Property. List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

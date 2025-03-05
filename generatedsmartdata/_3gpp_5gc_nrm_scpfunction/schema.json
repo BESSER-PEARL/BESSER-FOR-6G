@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.SCPFunction/SCPFunction/schema.json",
+  "title": "Smart Data models - SCPFunction schema",
+  "modelTags": "",
+  "description": "This IOC represents the SCP function in 5GC. For more information about the SCP, see 3GPP TS 23.501.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "address": {
+                "description": "Property. The host address of the SCP.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "supportedFuncList": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.PerfReq/PerfReq/schema.json",
+  "title": "Smart Data models - PerfReq schema",
+  "modelTags": "",
+  "description": "The performance requirements for the NSI in terms of the scenarios defined in the 3GPP TS 22.261, such as experienced data rate, area traffic capacity (density) information of UE density.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "activityFactor": {
+                "description": "Property. Percentage value of the amount of simultaneous active UEs to the total number of UEs where active means the UEs are exchanging data with the network.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "areaTrafficCapDL": {
+                "description": "Property. Area traffic capacity over downlink. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "areaTrafficCapUL": {
+                "description": "Property. Area traffic capacity over uplink. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "cSAvailabilityTarget": {
+                "description": "Property. Reliability uptime target. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "cSReliabilityMeanTime": {
+                "description": "Property. Mean time between failures. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "expDataRate": {
+                "description": "Property. User experienced data rate. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "expDataRateDL": {
+                "description": "Property. User experienced data rate over downlink. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "expDataRateUL": {
+                "description": "Property. User experienced data rate over uplink. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "msgSizeByte": {
+                "description": "Property. PDU size. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "overallUserDensity": {
+                "description": "Property. Overall user density. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "survivalTime": {
+                "description": "Property. The time that an application consuming a communication service may continue without an anticipated message. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "transferIntervalTarget": {
+                "description": "Property. Time difference between two consecutive transfers of application data from an application via the service interface to 3GPP system. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

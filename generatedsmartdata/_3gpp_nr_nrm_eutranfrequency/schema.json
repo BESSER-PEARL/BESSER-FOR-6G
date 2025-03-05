@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.EUtranFrequency/EUtranFrequency/schema.json",
+  "title": "Smart Data models - EUtranFrequency schema",
+  "modelTags": "",
+  "description": "Defines the YANG mapping of the EUtranFrequency Information Object Class (IOC), that is part of the NR Network Resource Model (NRM).",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "earfcnDL": {
+                "description": "Property. Specifies the channel number for the central DL frequency.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

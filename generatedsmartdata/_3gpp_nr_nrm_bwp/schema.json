@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.BWP/BWP/schema.json",
+  "title": "Smart Data models - BWP schema",
+  "modelTags": "",
+  "description": "Defines the YANG mapping of the BWP Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "bwpContext": {
+                "description": "Property. Identifies whether the object is used for downlink, uplink or supplementary uplink.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "cyclicPrefix": {
+                "description": "Property. Cyclic prefix, which may be normal or extended.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "isInitialBwp": {
+                "description": "Property. Identifies whether the object is used for initial or other BWP.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "numberOfRBs": {
+                "description": "Property. Number of physical resource blocks for a BWP.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "startRB": {
+                "description": "Property. Offset in common resource blocks to common resource block 0 for the applicable subcarrier spacing for a BWP.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "subCarrierSpacing": {
+                "description": "Property. Subcarrier spacing configuration for a BWP.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.GNBDUFunction/GNBDUFunction/schema.json",
+  "title": "Smart Data models - GNBDUFunction schema",
+  "modelTags": "",
+  "description": "Defines the YANG mapping of the GNBDUFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "aggressorSetID": {
+                "description": "Property. Indicates the associated aggressor gNB Set ID of the cell Valid when Remote Interference Management function is supported.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "gNBDUId": {
+                "description": "Property. Uniquely identifies the DU at least within a gNB.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "gNBDUName": {
+                "description": "Property. Identifies the Distributed Unit of an NR node. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "gNBId": {
+                "description": "Property. Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "gNBIdLength": {
+                "description": "Property. Indicates the number of bits for encoding the gNB ID.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        },
+        "victimSetID": {
+                "description": "Property. Indicates the associated victim gNB Set ID of the cell Valid when Remote Interference Management function is supported.. Model:\u0027https://schema.org/Number\u0027",
+                "type": "number"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

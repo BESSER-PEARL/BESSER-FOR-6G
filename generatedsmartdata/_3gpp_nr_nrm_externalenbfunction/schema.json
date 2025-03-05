@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.ExternalENBFunctionWrapper/ExternalENBFunctionWrapper/schema.json",
+  "title": "Smart Data models - ExternalENBFunctionWrapper schema",
+  "modelTags": "",
+  "description": "Defines the YANG mapping of the ExternalENBFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ExternalENBFunction": {
+                "description": "Property. Represents an external eNB functionality.. Model:\u0027https://schema.org/Array\u0027",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

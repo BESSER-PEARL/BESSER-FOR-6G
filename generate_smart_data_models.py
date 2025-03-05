@@ -14,7 +14,7 @@ def process_model_file(model_file, models_dir, output_base_dir):
             sys.path.append(os.path.dirname(models_dir))
 
         # Import the domain model dynamically
-        module = importlib.import_module(f"generated_models.{model_name}")
+        module = importlib.import_module(f"buml_generated_models.{model_name}")
 
         if hasattr(module, 'domain_model'):
             os.makedirs(model_output_dir, exist_ok=True)
@@ -37,7 +37,7 @@ def process_model_file(model_file, models_dir, output_base_dir):
 
 def create_smart_data_models():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    models_dir = os.path.join(current_dir, "generated_models")
+    models_dir = os.path.join(current_dir, "buml_generated_models")
     output_base_dir = os.path.join(current_dir, "generatedsmartdata")
 
     os.makedirs(output_base_dir, exist_ok=True)

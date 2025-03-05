@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.FiveQiDscpMappingSetSubtree/FiveQiDscpMappingSetSubtree/schema.json",
+  "title": "Smart Data models - FiveQiDscpMappingSetSubtree schema",
+  "modelTags": "",
+  "description": "This IOC represents the set of mapping between 5QIs and DSCP.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "FiveQiDscpMappingSet": {
+                "description": "Property. Specifies the mapping between 5QIs and DSCPs.. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

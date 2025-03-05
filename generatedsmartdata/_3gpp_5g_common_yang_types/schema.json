@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.SupportedFunc/SupportedFunc/schema.json",
+  "title": "Smart Data models - SupportedFunc schema",
+  "modelTags": "",
+  "description": "The model defines common types for 5G networks and network slicing.",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "function": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        },
+        "policy": {
+                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}
