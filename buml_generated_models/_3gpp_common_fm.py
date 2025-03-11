@@ -12,6 +12,17 @@ from buml_generated_models._3gpp_common_yang_types import domain_model as types3
 from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
+AckstateEnum = Enumeration(name="AckstateEnum")
+AckstateEnum_ACKNOWLEDGED = EnumerationLiteral(name="ACKNOWLEDGED", owner=AckstateEnum, synonyms=["The alarm has been acknowledged."])
+AckstateEnum_UNACKNOWLEDGED = EnumerationLiteral(name="UNACKNOWLEDGED", owner=AckstateEnum, synonyms=["The alarm has unacknowledged or the alarm has never been acknowledged."])
+AckstateEnum.literals = {AckstateEnum_ACKNOWLEDGED, AckstateEnum_UNACKNOWLEDGED}
+
+RootcauseindicatorEnum = Enumeration(name="RootcauseindicatorEnum")
+RootcauseindicatorEnum_NO = EnumerationLiteral(name="NO", owner=RootcauseindicatorEnum)
+RootcauseindicatorEnum_YES = EnumerationLiteral(name="YES", owner=RootcauseindicatorEnum)
+RootcauseindicatorEnum.literals = {RootcauseindicatorEnum_NO, RootcauseindicatorEnum_YES}
+RootcauseindicatorEnum.synonyms = ["It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances."]
+
 eventType = Enumeration(name="eventType")
 eventType_COMMUNICATIONS_ALARM = EnumerationLiteral(name="COMMUNICATIONS_ALARM", owner=eventType)
 eventType_ENVIRONMENTAL_ALARM = EnumerationLiteral(name="ENVIRONMENTAL_ALARM", owner=eventType)
@@ -50,7 +61,7 @@ AlarmList.attributes={AlarmList_administrativeState, AlarmList_alarmRecords, Ala
 AlarmRecord = Class(name="AlarmRecord", synonyms=["Contains alarm information of an alarmed object instance. A new record is created in the alarm list when an alarmed object instance generates an alarm and no alarm record exists with the same values for objectInstance, alarmType, probableCause and specificProblem. When a new record is created the MnS producer creates an alarmId, that unambiguously identifies an alarm record in the AlarmList. Alarm records are maintained only for active alarms. Inactive alarms are automatically deleted by the MnS producer from the AlarmList. Active alarms are alarms whose a)	perceivedSeverity is not CLEARED, or whose b)	perceivedSeverity is CLEARED and its ackState is not ACKNOWLEDED."])
 
 # AlarmRecord class attributes and methods
-AlarmRecord_ackState: Property = Property(name="ackState", type=EnumerationType)
+AlarmRecord_ackState: Property = Property(name="ackState", type=AckstateEnum)
 AlarmRecord_ackSystemId: Property = Property(name="ackSystemId", type=StringType, synonyms=["It identifies the system (Management System) that last changed the ackState of an alarm, i.e. acknowledged or unacknowledged the alarm."])
 AlarmRecord_ackTime: Property = Property(name="ackTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["It identifies the time when the alarm has been acknowledged or unacknowledged the last time, i.e. it registers the time when ackState changes."])
 AlarmRecord_ackUserId: Property = Property(name="ackUserId", type=StringType, synonyms=["It identifies the last user who has changed the Acknowledgement State."])
@@ -71,7 +82,7 @@ AlarmRecord_objectInstance: Property = Property(name="objectInstance", type=Stri
 AlarmRecord_perceivedSeverity: Property = Property(name="perceivedSeverity", type=StringType, synonyms=["This is Writable only if producer supports consumer to set perceivedSeverity to CLEARED"])
 AlarmRecord_probableCause: Property = Property(name="probableCause", type=StringType)
 AlarmRecord_proposedRepairActions: Property = Property(name="proposedRepairActions", type=StringType, synonyms=["Indicates proposed repair actions. See definition in ITU-T Recommendation X.733 clause 8.1.2.12."])
-AlarmRecord_rootCauseIndicator: Property = Property(name="rootCauseIndicator", type=EnumerationType, synonyms=["It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances."])
+AlarmRecord_rootCauseIndicator: Property = Property(name="rootCauseIndicator", type=RootcauseindicatorEnum, synonyms=["It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances."])
 AlarmRecord_securityAlarmDetector: Property = Property(name="securityAlarmDetector", type=StringType)
 AlarmRecord_serviceProvider: Property = Property(name="serviceProvider", type=StringType, synonyms=["It identifies the service-provider whose service is requested by the serviceUser and the service request provokes the generation of the security alarm."])
 AlarmRecord_serviceUser: Property = Property(name="serviceUser", type=StringType, synonyms=["It identifies the service-user whose request for service provided by the serviceProvider led to the generation of the security alarm."])
@@ -90,7 +101,7 @@ FmSubtree.attributes={FmSubtree_AlarmList}
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-common-fm",
-    types={AlarmList, AlarmRecord, FmSubtree, eventType, severity_level},
+    types={AckstateEnum, AlarmList, AlarmRecord, FmSubtree, RootcauseindicatorEnum, eventType, severity_level},
     associations={},
     generalizations={}
 )

@@ -9,6 +9,13 @@ from besser.BUML.metamodel.structural import (
 # Import referenced models
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 
+# Enumerations
+ResourcetypeEnum = Enumeration(name="ResourcetypeEnum")
+ResourcetypeEnum_GBR = EnumerationLiteral(name="GBR", owner=ResourcetypeEnum)
+ResourcetypeEnum_NON_GBR = EnumerationLiteral(name="NON_GBR", owner=ResourcetypeEnum)
+ResourcetypeEnum.literals = {ResourcetypeEnum_GBR, ResourcetypeEnum_NON_GBR}
+ResourcetypeEnum.synonyms = ["It indicates the Resource Type of a 5QI, as specified in TS 23.501"]
+
 # Classes
 Configurable5QISet = Class(name="Configurable5QISet", synonyms=["Represents the Configurable5QISet IOC."])
 
@@ -31,7 +38,7 @@ FiveQICharacteristics_maximumDataBurstVolume: Property = Property(name="maximumD
 FiveQICharacteristics_packetDelayBudget: Property = Property(name="packetDelayBudget", type=IntegerType, synonyms=["Indicates the Packet Delay Budget (in unit of 0.5ms)of a 5QI, as specified in TS 23.501"])
 FiveQICharacteristics_packetErrorRate: Property = Property(name="packetErrorRate", type=list, multiplicity=Multiplicity(0, "*"))
 FiveQICharacteristics_priorityLevel: Property = Property(name="priorityLevel", type=IntegerType)
-FiveQICharacteristics_resourceType: Property = Property(name="resourceType", type=EnumerationType, synonyms=["It indicates the Resource Type of a 5QI, as specified in TS 23.501"])
+FiveQICharacteristics_resourceType: Property = Property(name="resourceType", type=ResourcetypeEnum, synonyms=["It indicates the Resource Type of a 5QI, as specified in TS 23.501"])
 FiveQICharacteristics.attributes={FiveQICharacteristics_averagingWindow, FiveQICharacteristics_fiveQIValue, FiveQICharacteristics_maximumDataBurstVolume, FiveQICharacteristics_packetDelayBudget, FiveQICharacteristics_packetErrorRate, FiveQICharacteristics_priorityLevel, FiveQICharacteristics_resourceType}
 
 PacketErrorRate = Class(name="PacketErrorRate")
@@ -44,7 +51,7 @@ PacketErrorRate.attributes={PacketErrorRate_exponent, PacketErrorRate_scalar}
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-5gc-nrm-configurable5qiset",
-    types={Configurable5QISet, Configurable5QISetSubtree, FiveQICharacteristics, PacketErrorRate},
+    types={Configurable5QISet, Configurable5QISetSubtree, FiveQICharacteristics, PacketErrorRate, ResourcetypeEnum},
     associations={},
     generalizations={}
 )

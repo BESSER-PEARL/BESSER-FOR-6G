@@ -9,6 +9,13 @@ from besser.BUML.metamodel.structural import (
 # Import referenced models
 from buml_generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
 
+# Enumerations
+GtpupathqosmonitoringstateEnum = Enumeration(name="GtpupathqosmonitoringstateEnum")
+GtpupathqosmonitoringstateEnum_DISABLED = EnumerationLiteral(name="DISABLED", owner=GtpupathqosmonitoringstateEnum)
+GtpupathqosmonitoringstateEnum_ENABLED = EnumerationLiteral(name="ENABLED", owner=GtpupathqosmonitoringstateEnum)
+GtpupathqosmonitoringstateEnum.literals = {GtpupathqosmonitoringstateEnum_DISABLED, GtpupathqosmonitoringstateEnum_ENABLED}
+GtpupathqosmonitoringstateEnum.synonyms = ["The state of GTP-U path QoS monitoring."]
+
 # Classes
 GtpUPathDelayThresholdsType = Class(name="GtpUPathDelayThresholdsType", synonyms=["Thresholds for reporting the packet delay for GTP-U path QoS monitoring"])
 
@@ -28,7 +35,7 @@ GtpUPathQoSMonitoringControl_gtpUPathDelayThresholds: Property = Property(name="
 GtpUPathQoSMonitoringControl_gtpUPathMeasurementPeriod: Property = Property(name="gtpUPathMeasurementPeriod", type=IntegerType, synonyms=["It specifies the period (in seconds) for reporting the packet delay for GTP-U path QoS monitoring."])
 GtpUPathQoSMonitoringControl_gtpUPathMinimumWaitTime: Property = Property(name="gtpUPathMinimumWaitTime", type=IntegerType, synonyms=["It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered GTP-U path QoS monitoring reporting."])
 GtpUPathQoSMonitoringControl_gtpUPathMonitoredSNSSAIs: Property = Property(name="gtpUPathMonitoredSNSSAIs", type=types5g3gpp_model.get_type_by_name('SNssai'), multiplicity=Multiplicity(0, "*"), synonyms=["The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed."])
-GtpUPathQoSMonitoringControl_gtpUPathQoSMonitoringState: Property = Property(name="gtpUPathQoSMonitoringState", type=EnumerationType, synonyms=["The state of GTP-U path QoS monitoring."])
+GtpUPathQoSMonitoringControl_gtpUPathQoSMonitoringState: Property = Property(name="gtpUPathQoSMonitoringState", type=GtpupathqosmonitoringstateEnum, synonyms=["The state of GTP-U path QoS monitoring."])
 GtpUPathQoSMonitoringControl_isEventTriggeredGtpUPathMonitoringSupported: Property = Property(name="isEventTriggeredGtpUPathMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the event triggered GTP-U path QoS monitoring reporting based on thresholds is supported."])
 GtpUPathQoSMonitoringControl_isImmediateGtpUMonitoringSupported: Property = Property(name="isImmediateGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the immediate GTP-U path QoS monitoring reporting is supported."])
 GtpUPathQoSMonitoringControl_isPeriodicGtpUMonitoringSupported: Property = Property(name="isPeriodicGtpUMonitoringSupported", type=BooleanType, synonyms=["It indicates whether the periodic GTP-U path QoS monitoring reporting is supported."])
@@ -37,7 +44,7 @@ GtpUPathQoSMonitoringControl.attributes={GtpUPathQoSMonitoringControl_gtpUPathDe
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-5gc-nrm-GtpUPathQoSMonitoringControl",
-    types={GtpUPathDelayThresholdsType, GtpUPathQoSMonitoringControl},
+    types={GtpUPathDelayThresholdsType, GtpUPathQoSMonitoringControl, GtpupathqosmonitoringstateEnum},
     associations={},
     generalizations={}
 )

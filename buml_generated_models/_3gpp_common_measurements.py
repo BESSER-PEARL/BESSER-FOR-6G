@@ -10,6 +10,14 @@ from besser.BUML.metamodel.structural import (
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
+# Enumerations
+ThresholddirectionEnum = Enumeration(name="ThresholddirectionEnum")
+ThresholddirectionEnum_DOWN = EnumerationLiteral(name="DOWN", owner=ThresholddirectionEnum)
+ThresholddirectionEnum_UP = EnumerationLiteral(name="UP", owner=ThresholddirectionEnum)
+ThresholddirectionEnum_UP_AND_DOWN = EnumerationLiteral(name="UP_AND_DOWN", owner=ThresholddirectionEnum)
+ThresholddirectionEnum.literals = {ThresholddirectionEnum_DOWN, ThresholddirectionEnum_UP, ThresholddirectionEnum_UP_AND_DOWN}
+ThresholddirectionEnum.synonyms = ["Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to 'UP', the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to 'DOWN', the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to 'UP_AND_DOWN' the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to 'UP_AND_DOWN'."]
+
 # Classes
 MeasurementSubtree = Class(name="MeasurementSubtree", synonyms=["Contains classes that define measurements. Should be used in all classes (or classes inheriting from) - SubNnetwork - ManagedElement - ManagedFunction If a YANG module wants to augment these classes/list/groupings they must augment all user classes! If a class uses this grouping in its list it shall also use the grouping SupportedPerfMetricGroupGrp to add SupportedPerfMetricGroup as an attribute to its grouping"])
 
@@ -37,7 +45,7 @@ ThresholdInfo = Class(name="ThresholdInfo", synonyms=["Defines a single threshol
 
 # ThresholdInfo class attributes and methods
 ThresholdInfo_hysteresis: Property = Property(name="hysteresis", type=StringType, synonyms=["Hysteresis of a threshold. If this attribute is present the monitored performance metric is not compared against the threshold value as specified by the thresholdValue attribute but against a high and low threshold value given by threshold-high = thresholdValue + hysteresis threshold-low = thresholdValue - hysteresis When going up, the threshold is triggered when the performance metric reaches or crosses the high threshold value. When going down, the hreshold is triggered when the performance metric reaches or crosses the low threshold value. A hysteresis may be present only when the monitored performance metric is not of type counter that can go up only. If present for a performance metric of type counter, it shall be ignored."])
-ThresholdInfo_thresholdDirection: Property = Property(name="thresholdDirection", type=EnumerationType, synonyms=["Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to 'UP', the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to 'DOWN', the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to 'UP_AND_DOWN' the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to 'UP_AND_DOWN'."])
+ThresholdInfo_thresholdDirection: Property = Property(name="thresholdDirection", type=ThresholddirectionEnum, synonyms=["Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to 'UP', the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to 'DOWN', the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to 'UP_AND_DOWN' the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to 'UP_AND_DOWN'."])
 ThresholdInfo_thresholdLevel: Property = Property(name="thresholdLevel", type=IntegerType, synonyms=["Number (key) for a single threshold in the threshold list applicable to the monitored performance metric."])
 ThresholdInfo_thresholdValue: Property = Property(name="thresholdValue", type=StringType, synonyms=["Value against which the monitored performance metric is compared at a threshold level in case the hysteresis is zero"])
 ThresholdInfo.attributes={ThresholdInfo_hysteresis, ThresholdInfo_thresholdDirection, ThresholdInfo_thresholdLevel, ThresholdInfo_thresholdValue}
@@ -54,7 +62,7 @@ ThresholdMonitor.attributes={ThresholdMonitor_administrativeState, ThresholdMoni
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-common-measurements",
-    types={MeasurementSubtree, PerfMetricJob, SupportedPerfMetricGroup, ThresholdInfo, ThresholdMonitor},
+    types={MeasurementSubtree, PerfMetricJob, SupportedPerfMetricGroup, ThresholdInfo, ThresholdMonitor, ThresholddirectionEnum},
     associations={},
     generalizations={}
 )

@@ -10,6 +10,18 @@ from besser.BUML.metamodel.structural import (
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
+# Enumerations
+OperationsemanticsEnum = Enumeration(name="OperationsemanticsEnum")
+OperationsemanticsEnum_REQUEST_RESPONSE = EnumerationLiteral(name="REQUEST_RESPONSE", owner=OperationsemanticsEnum)
+OperationsemanticsEnum_SUBSCRIBE_NOTIFY = EnumerationLiteral(name="SUBSCRIBE_NOTIFY", owner=OperationsemanticsEnum)
+OperationsemanticsEnum.literals = {OperationsemanticsEnum_REQUEST_RESPONSE, OperationsemanticsEnum_SUBSCRIBE_NOTIFY}
+OperationsemanticsEnum.synonyms = ["Semantics type of the operation."]
+
+RegistrationstateEnum = Enumeration(name="RegistrationstateEnum")
+RegistrationstateEnum_DEREGISTERED = EnumerationLiteral(name="DEREGISTERED", owner=RegistrationstateEnum)
+RegistrationstateEnum_REGISTERED = EnumerationLiteral(name="REGISTERED", owner=RegistrationstateEnum)
+RegistrationstateEnum.literals = {RegistrationstateEnum_DEREGISTERED, RegistrationstateEnum_REGISTERED}
+
 # Classes
 Function_ = Class(name="Function_", synonyms=["A base grouping for 3GPP functions."])
 
@@ -38,7 +50,7 @@ ManagedNFService_administrativeState: Property = Property(name="administrativeSt
 ManagedNFService_nFServiceType: Property = Property(name="nFServiceType", type=StringType, synonyms=["The type of the managed NF service instance The specifc values allowed are described in clause 7.2 of TS 23.501"])
 ManagedNFService_operationalState: Property = Property(name="operationalState", type=types3gpp_model.get_type_by_name('OperationalState'), synonyms=["Describes whether the resource is installed and working"])
 ManagedNFService_operations: Property = Property(name="operations", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["Set of operations supported by the managed NF service instance"])
-ManagedNFService_registrationState: Property = Property(name="registrationState", type=EnumerationType)
+ManagedNFService_registrationState: Property = Property(name="registrationState", type=RegistrationstateEnum)
 ManagedNFService_sAP: Property = Property(name="sAP", type=types3gpp_model.get_type_by_name('SAP'), multiplicity=Multiplicity(1, "*"), synonyms=["The service access point of the managed NF service instance"])
 ManagedNFService_usageState: Property = Property(name="usageState", type=types3gpp_model.get_type_by_name('usageState'), synonyms=["Describes whether the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users."])
 ManagedNFService_userLabel: Property = Property(name="userLabel", type=StringType, synonyms=["A user-friendly (and user assignable) name of this object."])
@@ -48,13 +60,13 @@ Operation = Class(name="Operation", synonyms=["This data type represents an Oper
 
 # Operation class attributes and methods
 Operation_name: Property = Property(name="name", type=StringType)
-Operation_operationSemantics: Property = Property(name="operationSemantics", type=EnumerationType, synonyms=["Semantics type of the operation."])
+Operation_operationSemantics: Property = Property(name="operationSemantics", type=OperationsemanticsEnum, synonyms=["Semantics type of the operation."])
 Operation.attributes={Operation_name, Operation_operationSemantics}
 
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-common-managed-function",
-    types={Function_, ManagedFunction, ManagedFunctionContainedClasses, ManagedNFService, Operation},
+    types={Function_, ManagedFunction, ManagedFunctionContainedClasses, ManagedNFService, Operation, OperationsemanticsEnum, RegistrationstateEnum},
     associations={},
     generalizations={}
 )

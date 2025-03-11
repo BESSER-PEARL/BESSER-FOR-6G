@@ -20,10 +20,10 @@
       "properties": {
         "CommModelType": {
                 "enum": [
-                        "DIRECT_COMMUNICATION_WO_NRF",
-                        "INDIRECT_COMMUNICATION_WO_DEDICATED_DISCOVERY",
                         "DIRECT_COMMUNICATION_WITH_NRF",
-                        "INDIRECT_COMMUNICATION_WITH_DEDICATED_DISCOVERY"
+                        "INDIRECT_COMMUNICATION_WITH_DEDICATED_DISCOVERY",
+                        "DIRECT_COMMUNICATION_WO_NRF",
+                        "INDIRECT_COMMUNICATION_WO_DEDICATED_DISCOVERY"
                 ],
                 "type": "string"
         },

@@ -257,7 +257,6 @@ class YangParser:
 
     def parse_leaf(self, leaf: Dict[str, Any]) -> None:
         """Parse a leaf definition and create a property."""
-        # Replace hyphens with underscores in property name
         name = leaf['@name'].replace('-', '_')
         desc = leaf.get('description', {}).get('text', '')
         mandatory = leaf.get('mandatory', {}).get('@value', 'false') == 'true'
@@ -266,55 +265,81 @@ class YangParser:
         type_info = leaf.get('type', {})
         raw_type_name = type_info.get('@name', 'string')
         
-        # Check if it's a prefixed type reference
-        if ':' in raw_type_name:
-            # Try to resolve it to an actual type object first
-            resolved_type = self.find_type_in_imported_models(raw_type_name)
-            if resolved_type:
-                # We found the actual type in imported models
-                type_name = resolved_type
+        # Handle enumeration types specifically
+        if raw_type_name == 'enumeration':
+            # Create a new Enumeration type if it doesn't exist
+            enum_name = f"{name.capitalize()}Enum"
+            if enum_name not in self.processed_types:
+                enum_type = Enumeration(name=enum_name)
+                
+                # Add enumeration literals
+                if 'enum' in type_info:
+                    enums = type_info['enum'] if isinstance(type_info['enum'], list) else [type_info['enum']]
+                    for enum in enums:
+                        literal_name = enum.get('@name', '')
+                        if literal_name:
+                            literal = EnumerationLiteral(name=literal_name, owner=enum_type)
+                            if isinstance(enum, dict) and 'description' in enum:
+                                literal_desc = enum.get('description', {}).get('text', '')
+                                if literal_desc:
+                                    literal.synonyms = [literal_desc]
+                            enum_type.add_literal(literal)
+                
+                # Add description as synonym if available
+                if desc:
+                    enum_type.synonyms = [desc]
+                
+                self.current_model.add_type(enum_type)
+                self.processed_types.add(enum_name)
+                type_name = enum_type
             else:
-                # Fall back to type mapping
-                type_name = self.resolve_type_reference(raw_type_name)
+                # Use existing enumeration type
+                type_name = next(t for t in self.current_model.types 
+                               if isinstance(t, Enumeration) and t.name == enum_name)
         else:
-            # Handle special types with hyphens
-            if isinstance(raw_type_name, str) and '-' in raw_type_name:
-                raw_type_name = raw_type_name.replace('-', '_')
-
-            # Map YANG types to primitive types
-            type_mapping = {
-                'string': 'StringType',
-                'boolean': 'BooleanType',
-                'uint8': 'IntegerType',
-                'uint16': 'IntegerType',
-                'uint32': 'IntegerType',
-                'uint64': 'IntegerType',
-                'int8': 'IntegerType',
-                'int16': 'IntegerType',
-                'int32': 'IntegerType',
-                'int64': 'IntegerType',
-                'decimal64': 'FloatType',
-                'integer': 'IntegerType',
-                'integer_percentage': 'IntegerType',
-                'DistinguishedName': 'StringType',
-                'DateAndTime': 'DateTimeType',
-                'DateTime': 'DateTimeType',
-                'Duration': 'TimeDeltaType',
-                'Float': 'FloatType',
-                'domain_name': 'StringType',
-                'ip_address': 'StringType',
-                'host': 'StringType',
-                'date_and_time': 'DateTimeType',
-                'instance_identifier': 'StringType',
-                'enumeration': 'EnumerationType'
-            }
-            
-            # Try to map the type
-            if raw_type_name not in type_mapping:
-                # For unknown types, create a StringType
-                type_name = 'StringType'
+            # Handle other types as before
+            if ':' in raw_type_name:
+                resolved_type = self.find_type_in_imported_models(raw_type_name)
+                type_name = resolved_type if resolved_type else self.resolve_type_reference(raw_type_name)
             else:
-                type_name = type_mapping[raw_type_name]
+                # Handle special types with hyphens
+                if isinstance(raw_type_name, str) and '-' in raw_type_name:
+                    raw_type_name = raw_type_name.replace('-', '_')
+
+                # Map YANG types to primitive types
+                type_mapping = {
+                    'string': 'StringType',
+                    'boolean': 'BooleanType',
+                    'uint8': 'IntegerType',
+                    'uint16': 'IntegerType',
+                    'uint32': 'IntegerType',
+                    'uint64': 'IntegerType',
+                    'int8': 'IntegerType',
+                    'int16': 'IntegerType',
+                    'int32': 'IntegerType',
+                    'int64': 'IntegerType',
+                    'decimal64': 'FloatType',
+                    'integer': 'IntegerType',
+                    'integer_percentage': 'IntegerType',
+                    'DistinguishedName': 'StringType',
+                    'DateAndTime': 'DateTimeType',
+                    'DateTime': 'DateTimeType',
+                    'Duration': 'TimeDeltaType',
+                    'Float': 'FloatType',
+                    'domain_name': 'StringType',
+                    'ip_address': 'StringType',
+                    'host': 'StringType',
+                    'date_and_time': 'DateTimeType',
+                    'instance_identifier': 'StringType',
+                    'enumeration': 'EnumerationType'
+                }
+                
+                # Try to map the type
+                if raw_type_name not in type_mapping:
+                    # For unknown types, create a StringType
+                    type_name = 'StringType'
+                else:
+                    type_name = type_mapping[raw_type_name]
 
         # Create property with proper type
         prop = Property(
