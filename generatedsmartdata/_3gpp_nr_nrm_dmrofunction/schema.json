@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.DMROFunction/DMROFunction/schema.json",
-  "title": "Smart Data models - DMROFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the DMROFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,20 +19,20 @@
     {
       "properties": {
         "dmroControl": {
-                "description": "Property. This attribute determines whether the MRO function is enabled or disabled.. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
+                "description": "This attribute determines whether the MRO function is enabled or disabled.",
+                "type": "boolean"
         },
         "maximumDeviationHoTrigger": {
-                "description": "Property. This parameter defines the maximum allowed absolute deviation of the Handover Trigger, from the default point of operation.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "This parameter defines the maximum allowed absolute deviation of the Handover Trigger, from the default point of operation.",
+                "type": "integer"
         },
         "minimumTimeBetweenHoTriggerChange": {
-                "description": "Property. This parameter defines the minimum allowed time interval between two Handover Trigger change performed by MRO. This is used to control the stability and convergence of the algorithm.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "This parameter defines the minimum allowed time interval between two Handover Trigger change performed by MRO. This is used to control the stability and convergence of the algorithm.",
+                "type": "integer"
         },
         "tstoreUEcntxt": {
-                "description": "Property. The timer used for detection of too early HO, too late HO and HO to wrong cell.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "The timer used for detection of too early HO, too late HO and HO to wrong cell.",
+                "type": "integer"
         }
 }
     }

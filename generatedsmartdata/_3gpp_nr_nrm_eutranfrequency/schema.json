@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.EUtranFrequency/EUtranFrequency/schema.json",
-  "title": "Smart Data models - EUtranFrequency schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the EUtranFrequency Information Object Class (IOC), that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -18,9 +18,16 @@
     },
     {
       "properties": {
+        "EUtranFrequency": {
+                "description": "Represents certain E-UTRAN frequency properties.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
         "earfcnDL": {
-                "description": "Property. Specifies the channel number for the central DL frequency.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Specifies the channel number for the central DL frequency.",
+                "type": "integer"
         }
 }
     }

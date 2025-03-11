@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.NRPciList/NRPciList/schema.json",
-  "title": "Smart Data models - NRPciList schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the DPCIConfigurationFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,8 +19,19 @@
     {
       "properties": {
         "NRPci": {
-                "description": "Property. This attribute determines the NR PCI.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "This attribute determines the NR PCI.",
+                "type": "integer"
+        },
+        "dPciConfigurationControl": {
+                "description": "This attribute determines whether the Distributed SON or Domain-Centralized SON PCI configuration Function is enabled or disabled.",
+                "type": "boolean"
+        },
+        "nRPciList": {
+                "description": "This holds a list of physical cell identities that can be assigned to the NR cells. This attribute shall be supported if D-SON PCI configuration or domain Centralized SON PCI configuration function is supported.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
         }
 }
     }

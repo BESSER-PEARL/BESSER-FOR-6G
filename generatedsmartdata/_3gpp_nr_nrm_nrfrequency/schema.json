@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.NRFrequencyWrapper/NRFrequencyWrapper/schema.json",
-  "title": "Smart Data models - NRFrequencyWrapper schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the NRFrequency Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,11 +19,19 @@
     {
       "properties": {
         "NRFrequency": {
-                "description": "Property. Represents certain NR frequency properties.. Model:\u0027https://schema.org/Array\u0027",
+                "description": "Represents certain NR frequency properties.",
                 "items": {
                         "type": "string"
                 },
                 "type": "array"
+        },
+        "absoluteFrequencySSB": {
+                "description": "The absolute frequency applicable for a downlink NR carrier frequency associated with the SSB, in terms of NR-ARFCN.",
+                "type": "integer"
+        },
+        "sSBSubCarrierSpacing": {
+                "description": "Sub-carrier spacing of the SSB.",
+                "type": "integer"
         }
 }
     }

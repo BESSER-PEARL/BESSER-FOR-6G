@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.BWP/BWP/schema.json",
-  "title": "Smart Data models - BWP schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the BWP Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -18,29 +18,51 @@
     },
     {
       "properties": {
+        "BwpContext": {
+                "enum": [
+                        "UL",
+                        "DL",
+                        "SUL"
+                ],
+                "type": "string"
+        },
+        "CyclicPrefix": {
+                "enum": [
+                        "EXTENDED",
+                        "NORMAL"
+                ],
+                "type": "string"
+        },
+        "IsInitialBwp": {
+                "enum": [
+                        "INITIAL",
+                        "OTHER"
+                ],
+                "type": "string"
+        },
         "bwpContext": {
-                "description": "Property. Identifies whether the object is used for downlink, uplink or supplementary uplink.. Model:\u0027https://schema.org/String\u0027",
+                "description": "Identifies whether the object is used for downlink, uplink or supplementary uplink.",
                 "type": "string"
         },
         "cyclicPrefix": {
-                "description": "Property. Cyclic prefix, which may be normal or extended.. Model:\u0027https://schema.org/String\u0027",
+                "description": "Cyclic prefix, which may be normal or extended.",
                 "type": "string"
         },
         "isInitialBwp": {
-                "description": "Property. Identifies whether the object is used for initial or other BWP.. Model:\u0027https://schema.org/String\u0027",
+                "description": "Identifies whether the object is used for initial or other BWP.",
                 "type": "string"
         },
         "numberOfRBs": {
-                "description": "Property. Number of physical resource blocks for a BWP.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Number of physical resource blocks for a BWP.",
+                "type": "integer"
         },
         "startRB": {
-                "description": "Property. Offset in common resource blocks to common resource block 0 for the applicable subcarrier spacing for a BWP.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Offset in common resource blocks to common resource block 0 for the applicable subcarrier spacing for a BWP.",
+                "type": "integer"
         },
         "subCarrierSpacing": {
-                "description": "Property. Subcarrier spacing configuration for a BWP.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Subcarrier spacing configuration for a BWP.",
+                "type": "integer"
         }
 }
     }

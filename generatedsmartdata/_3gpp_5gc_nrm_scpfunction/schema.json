@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.SCPFunction/SCPFunction/schema.json",
-  "title": "Smart Data models - SCPFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "This IOC represents the SCP function in 5GC. For more information about the SCP, see 3GPP TS 23.501.",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,11 +19,11 @@
     {
       "properties": {
         "address": {
-                "description": "Property. The host address of the SCP.. Model:\u0027https://schema.org/String\u0027",
+                "description": "The host address of the SCP.",
                 "type": "string"
         },
         "supportedFuncList": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+                "description": "Property",
                 "type": "string"
         }
 }

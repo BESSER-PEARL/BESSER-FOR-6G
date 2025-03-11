@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.NRNetwork/NRNetwork/schema.json",
-  "title": "Smart Data models - NRNetwork schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the NRNetwork Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,7 +19,7 @@
     {
       "properties": {
         "NRNetwork": {
-                "description": "Property. A subnetwork containing gNB external NR entities.. Model:\u0027https://schema.org/String\u0027",
+                "description": "A subnetwork containing gNB external NR entities.",
                 "type": "string"
         }
 }

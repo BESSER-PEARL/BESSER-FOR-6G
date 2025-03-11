@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.CSonPciList/CSonPciList/schema.json",
-  "title": "Smart Data models - CSonPciList schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the CPCIConfigurationFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,8 +19,19 @@
     {
       "properties": {
         "NRPci": {
-                "description": "Property. This attribute determines the NR PCI.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "This attribute determines the NR PCI.",
+                "type": "integer"
+        },
+        "cPciConfigurationControl": {
+                "description": "This attribute determines whether the Cross Domain-Centralized SON PCI configuration function is enabled or disabled.",
+                "type": "boolean"
+        },
+        "cSonPciList": {
+                "description": "This holds a list of physical cell identities that can be assigned to the pci attribute by gNB. The assignment algorithm is not specified. This attribute shall be supported if and only if the C-SON PCI configuration is supported.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
         }
 }
     }

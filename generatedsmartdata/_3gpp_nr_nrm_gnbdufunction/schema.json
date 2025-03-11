@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.GNBDUFunction/GNBDUFunction/schema.json",
-  "title": "Smart Data models - GNBDUFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the GNBDUFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,28 +19,28 @@
     {
       "properties": {
         "aggressorSetID": {
-                "description": "Property. Indicates the associated aggressor gNB Set ID of the cell Valid when Remote Interference Management function is supported.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Indicates the associated aggressor gNB Set ID of the cell Valid when Remote Interference Management function is supported.",
+                "type": "integer"
         },
         "gNBDUId": {
-                "description": "Property. Uniquely identifies the DU at least within a gNB.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Uniquely identifies the DU at least within a gNB.",
+                "type": "integer"
         },
         "gNBDUName": {
-                "description": "Property. Identifies the Distributed Unit of an NR node. Model:\u0027https://schema.org/String\u0027",
+                "description": "Identifies the Distributed Unit of an NR node",
                 "type": "string"
         },
         "gNBId": {
-                "description": "Property. Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.",
+                "type": "integer"
         },
         "gNBIdLength": {
-                "description": "Property. Indicates the number of bits for encoding the gNB ID.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Indicates the number of bits for encoding the gNB ID.",
+                "type": "integer"
         },
         "victimSetID": {
-                "description": "Property. Indicates the associated victim gNB Set ID of the cell Valid when Remote Interference Management function is supported.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Indicates the associated victim gNB Set ID of the cell Valid when Remote Interference Management function is supported.",
+                "type": "integer"
         }
 }
     }

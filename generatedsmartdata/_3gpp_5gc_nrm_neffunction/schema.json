@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.NEFFunction/NEFFunction/schema.json",
-  "title": "Smart Data models - NEFFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "This IOC represents the NEF function in 5GC. For more information about the NEF, see 3GPP TS 23.501.",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,19 +19,19 @@
     {
       "properties": {
         "isCAPIFSup": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
+                "description": "Property",
+                "type": "boolean"
         },
         "isINEF": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
-                "type": "string"
+                "description": "Property",
+                "type": "boolean"
         },
         "sBIFQDN": {
-                "description": "Property. The FQDN of the registered NF instance in the service-based interface.. Model:\u0027https://schema.org/String\u0027",
+                "description": "The FQDN of the registered NF instance in the service-based interface.",
                 "type": "string"
         },
         "sNSSAIList": {
-                "description": "Property. List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.. Model:\u0027https://schema.org/String\u0027",
+                "description": "List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.",
                 "type": "string"
         }
 }

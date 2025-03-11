@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.CommonBeamformingFunction/CommonBeamformingFunction/schema.json",
-  "title": "Smart Data models - CommonBeamformingFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the CommonBeamformingFuntion Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,16 +19,16 @@
     {
       "properties": {
         "coverageShape": {
-                "description": "Property. Identifies the sector carrier coverage shape described by the envelope of the contained SSB beams. The coverage shape is implementation dependent.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Identifies the sector carrier coverage shape described by the envelope of the contained SSB beams. The coverage shape is implementation dependent.",
+                "type": "integer"
         },
         "digitalAzimuth": {
-                "description": "Property. Digitally-controlled azimuth through beamforming. It represents the horizontal pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical horizontal pan of the selected coverageShape. Positive value gives azimuth to the right and negative value gives an azimuth to the left.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Digitally-controlled azimuth through beamforming. It represents the horizontal pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical horizontal pan of the selected coverageShape. Positive value gives azimuth to the right and negative value gives an azimuth to the left.",
+                "type": "integer"
         },
         "digitalTilt": {
-                "description": "Property. Digitally-controlled tilt through beamforming. It represents the vertical pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical vertical tilt of the selected coverageShape. Positive value gives downwards tilt and negative value gives upwards tilt.. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Digitally-controlled tilt through beamforming. It represents the vertical pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical vertical tilt of the selected coverageShape. Positive value gives downwards tilt and negative value gives upwards tilt.",
+                "type": "integer"
         }
 }
     }

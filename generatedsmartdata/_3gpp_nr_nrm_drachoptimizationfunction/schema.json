@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.UeAccDelayProbilityDist/UeAccDelayProbilityDist/schema.json",
-  "title": "Smart Data models - UeAccDelayProbilityDist schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the DRACHOptimizationFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -18,13 +18,44 @@
     },
     {
       "properties": {
+        "TargetProbability": {
+                "enum": [
+                        "90",
+                        "25",
+                        "75",
+                        "50"
+                ],
+                "type": "string"
+        },
         "accessdelay": {
-                "description": "Property. This attribute determines the access delay.. Model:\u0027https://schema.org/String\u0027",
+                "description": "This attribute determines the access delay.",
+                "type": "string"
+        },
+        "drachOptimizationControl": {
+                "description": "This attribute determines whether the RACH Optimization function is enabled or disabled.",
+                "type": "boolean"
+        },
+        "numberofpreamblessent": {
+                "description": "This attribute determines the number of preambles sent.",
                 "type": "string"
         },
         "targetProbability": {
-                "description": "Property. This attribute determines the target Probability.. Model:\u0027https://schema.org/String\u0027",
+                "description": "This attribute determines the target Probability.",
                 "type": "string"
+        },
+        "ueAccDelayProbilityDist": {
+                "description": "This is a list of target Access Delay probability (ADP) for the RACH optimization function.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "ueAccProbilityDist": {
+                "description": "This is a list of target Access Probability (APn) for the RACH optimization function.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
         }
 }
     }

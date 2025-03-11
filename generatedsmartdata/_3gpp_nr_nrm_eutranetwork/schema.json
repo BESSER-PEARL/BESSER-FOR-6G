@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.EUtraNetwork/EUtraNetwork/schema.json",
-  "title": "Smart Data models - EUtraNetwork schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the EUtraNetwork Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,7 +19,7 @@
     {
       "properties": {
         "EUtraNetwork": {
-                "description": "Property. A subnetwork containing gNB external E-UTRAN entities.. Model:\u0027https://schema.org/String\u0027",
+                "description": "A subnetwork containing gNB external E-UTRAN entities.",
                 "type": "string"
         }
 }

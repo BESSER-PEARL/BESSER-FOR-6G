@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.ExternalServingGWFunction/ExternalServingGWFunction/schema.json",
-  "title": "Smart Data models - ExternalServingGWFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the ExternalServingGWFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -17,7 +17,15 @@
       "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
     {
-      "properties": {}
+      "properties": {
+        "ExternalServingGWFunction": {
+                "description": "Represents the properties, known by the management function, of a ServingGWFunction managed by another management function.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
     }
   ],
   "derivedFrom": "3GPP TS 28.541",

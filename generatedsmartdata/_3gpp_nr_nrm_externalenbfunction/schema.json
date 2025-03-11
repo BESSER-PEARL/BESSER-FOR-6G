@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.ExternalENBFunctionWrapper/ExternalENBFunctionWrapper/schema.json",
-  "title": "Smart Data models - ExternalENBFunctionWrapper schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "Defines the YANG mapping of the ExternalENBFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,11 +19,15 @@
     {
       "properties": {
         "ExternalENBFunction": {
-                "description": "Property. Represents an external eNB functionality.. Model:\u0027https://schema.org/Array\u0027",
+                "description": "Represents an external eNB functionality.",
                 "items": {
                         "type": "string"
                 },
                 "type": "array"
+        },
+        "eNBId": {
+                "description": "Unambiguously identifies an eNodeB within a PLMN.",
+                "type": "integer"
         }
 }
     }

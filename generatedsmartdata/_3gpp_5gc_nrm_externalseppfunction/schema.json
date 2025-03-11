@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.ExternalSEPPFunction/ExternalSEPPFunction/schema.json",
-  "title": "Smart Data models - ExternalSEPPFunction schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "This IOC represents the external SEPP function which support message filtering and policing on inter-PLMN control plane interface. For more information about the SEPP, see 3GPP TS 23.501.",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -19,12 +19,12 @@
     {
       "properties": {
         "fqdn": {
-                "description": "Property. The domain name of the SEPP.. Model:\u0027https://schema.org/String\u0027",
+                "description": "The domain name of the SEPP.",
                 "type": "string"
         },
         "sEPPId": {
-                "description": "Property. Model:\u0027https://schema.org/Number\u0027",
-                "type": "number"
+                "description": "Property",
+                "type": "integer"
         }
 }
     }

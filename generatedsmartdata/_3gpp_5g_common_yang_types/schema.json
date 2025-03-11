@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.SupportedFunc/SupportedFunc/schema.json",
-  "title": "Smart Data models - SupportedFunc schema",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
   "modelTags": "",
-  "description": "The model defines common types for 5G networks and network slicing.",
+  "description": "This class represents ",
   "required": [
     "id",
     "type"
@@ -18,13 +18,42 @@
     },
     {
       "properties": {
-        "function": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+        "CommModelType": {
+                "enum": [
+                        "DIRECT_COMMUNICATION_WO_NRF",
+                        "INDIRECT_COMMUNICATION_WO_DEDICATED_DISCOVERY",
+                        "DIRECT_COMMUNICATION_WITH_NRF",
+                        "INDIRECT_COMMUNICATION_WITH_DEDICATED_DISCOVERY"
+                ],
                 "type": "string"
         },
-        "policy": {
-                "description": "Property. Model:\u0027https://schema.org/String\u0027",
+        "commModelConfiguration": {
+                "description": "Property",
                 "type": "string"
+        },
+        "commModelType": {
+                "description": "Property",
+                "type": "string"
+        },
+        "function": {
+                "description": "Property",
+                "type": "string"
+        },
+        "groupId": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "policy": {
+                "description": "Property",
+                "type": "string"
+        },
+        "sd": {
+                "description": "Slice Differentiator If not needed, the value can be set to FFFFFF.",
+                "type": "string"
+        },
+        "sst": {
+                "description": "Slice/Service Type. Values 0 to 127 belong to standardized SST range and are defined in 3GPP TS 23.501. Values 128 to 255 belong to operator-specific range.",
+                "type": "integer"
         }
 }
     }
