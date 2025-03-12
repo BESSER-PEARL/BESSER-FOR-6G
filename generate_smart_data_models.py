@@ -2,7 +2,7 @@ import os
 import sys
 import importlib
 import traceback
-from besser_generator.json_schema_generator import JSONSchemaGenerator
+from besser_generator.smart_data_model.json_schema_generator import JSONSchemaGenerator
 
 def process_model_file(model_file, models_dir, output_base_dir):
     model_name = os.path.splitext(model_file)[0]

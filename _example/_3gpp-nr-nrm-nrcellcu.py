@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel,
     IntegerType, Enumeration, EnumerationLiteral, StringType, BooleanType
 )
-from besser_generator.json_schema_generator import JSONSchemaGenerator
+from besser_generator.smart_data_model.json_schema_generator import JSONSchemaGenerator
 
 # Import referenced models
 
