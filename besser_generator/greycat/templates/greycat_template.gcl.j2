@@ -1,0 +1,51 @@
+/*
+ * Generated GreyCat Network Model
+ * This file was automatically generated from B-UML models
+ */
+
+{% if data.enumerations %}
+// Enumerations
+{% for enum in data.enumerations %}
+enum {{ enum.name }} {
+{% for lit in enum.literals %}
+    {{ lit }}("{{ lit }}");
+{% endfor %}
+}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if data.classes %}
+// Types
+{% for class in data.classes %}
+{% if class.description %}
+/*
+ * {{ class.description }}
+ */
+{% endif %}
+type {{ class.name }} {
+{% for prop in class.properties %}
+    {% if prop.description %}
+    // {{ prop.description }}
+    {% endif %}
+    {% if prop.is_node %}
+    {{ prop.name }}: node<{{ prop.type }}>;
+    {% elif prop.is_array %}
+    {{ prop.name }}: {{ prop.type }}[];
+    {% else %}
+    {{ prop.name }}: {{ prop.type }};
+    {% endif %}
+{% endfor %}
+}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+{% endif %}
+
+type Ran {
+    nrCellCus: node<NRCellCU>[];
+    nrCellDus: node<NRCellDU>[];
+}
