@@ -37,7 +37,7 @@ def main():
     # Generate the GreyCat model
     output_path = generator.generate()
     
-    print(f"GreyCat model successfully generated at: {output_path}")
+    # print(f"GreyCat model successfully generated at: {output_path}")
 
 if __name__ == "__main__":
     main()

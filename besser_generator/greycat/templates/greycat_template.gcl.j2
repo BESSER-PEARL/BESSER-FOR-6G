@@ -28,24 +28,44 @@ enum {{ enum.name }} {
 type {{ class.name }} {
 {% for prop in class.properties %}
     {% if prop.description %}
-    // {{ prop.description }}
-    {% endif %}
-    {% if prop.is_node %}
-    {{ prop.name }}: node<{{ prop.type }}>;
-    {% elif prop.is_array %}
-    {{ prop.name }}: {{ prop.type }}[];
-    {% else %}
-    {{ prop.name }}: {{ prop.type }};
-    {% endif %}
+    // {{ prop.description }}{% endif %}
+    {% if prop.is_node %}{{ prop.name }}: node<{{ prop.type }}>;{% elif prop.is_array %}
+    {{ prop.name }}: {{ prop.type }}[];{% else -%}{{ prop.name }}: {{ prop.type }};{% endif -%}
 {% endfor %}
-}
 {% if not loop.last %}
-
 {% endif %}
 {% endfor %}
-{% endif %}
 
 type Ran {
+{% for class in data.classes %}
+{{ class.name }}s: node<{{ class.name }}>[];
+{% endfor -%}
+}
+{% endif %}
+
+{# type Ran {
     nrCellCus: node<NRCellCU>[];
     nrCellDus: node<NRCellDU>[];
-}
+} 
+#}
+
+{#From pdf paper#}
+
+type BWP {
+    subCarrierSpacing : int; //unit KhZ always?
+    numberOfRBs : int;
+   }
+   
+   type UE {
+    // position will be the prepared points on the floor map
+    id : int;
+    RNTI : String;   
+    position : int; 
+    synchronizationSignal : node<SynchronizationSignal>;
+   }
+   
+   type SynchronizationSignal {
+    RSRP : int ;
+    RSRQ : float;
+    SINR : float;
+   }
