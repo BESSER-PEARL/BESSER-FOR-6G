@@ -6,6 +6,13 @@
 
 
 
+type Ran {
+    
+    NRCellCUs: node<NRCellCU>[];
+    
+    NRCellDUs: node<NRCellDU>[];
+    }
+    
 // Types
 
 
@@ -19,12 +26,6 @@ type NRCellCU {
     // List of PLMN information for the cell.
     pLMNInfoList: node<PLMNInfo>;
     
-    // Reference to the corresponding NR sector carrier.
-    nRSectorCarrierRef: node<str>;
-    
-    // The Physical Cell Identity (PCI) of the NR cell.
-    nRPCI: node<int>;
-    
     // Identifies an NR cell of a gNB. Together with the corresponding gNB identifier it forms the NR Cell Identity (NCI).
     cellLocalId: node<int>;
     
@@ -33,6 +34,12 @@ type NRCellCU {
     
     // Cell state of the NRCellCU instance.
     cellState: node<CellState>;
+    
+    // Reference to the corresponding NR sector carrier.
+    nRSectorCarrierRef: node<str>;
+    
+    // The Physical Cell Identity (PCI) of the NR cell.
+    nRPCI: node<int>;
 
 
 
@@ -43,36 +50,6 @@ type NRCellCU {
 
 type NRCellDU {
 
-    
-    // Indicates cell defining SSB time domain position. Defined as the offset of the measurement window, in which to receive SS/PBCH blocks, where allowed values depend on the ssbPeriodicity (ssbOffset < ssbPeriodicity).
-    ssbOffset: node<int>;
-    
-    // The Physical Cell Identity (PCI) of the NR cell.
-    nRPCI: node<int>;
-    
-    // Base station channel bandwidth for downlink.
-    bSChannelBwDL: node<int>;
-    
-    // Indicates cell defining SSB frequency domain position. Frequency (in terms of NR-ARFCN) of the cell defining SSB transmission. The frequency identifies the position of resource element RE=#0 (subcarrier #0) of resource block RB#10 of the SS block. The frequency must be positioned on the NR global frequency raster, as defined in 3GPP TS 38.101-1, and within bSChannelBwDL.
-    ssbFrequency: node<int>;
-    
-    // Indicates cell defined SSB periodicity. The SSB periodicity is used for the rate matching purpose.
-    ssbPeriodicity: node<int>;
-    
-    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for supplementary uplink.
-    arfcnSUL: node<int>;
-    
-    // Base station channel bandwidth for supplementary uplink.
-    bSChannelBwSUL: node<int>;
-    
-    // The common 5GS Tracking Area Code for the PLMNs.
-    nRTAC: node<Tac>;
-    
-    // The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported. The plMNId of the first entry of the list is the PLMNId used to construct the nCGI for the NR cell.
-    pLMNInfoList: node<PLMNInfo>;
-    
-    // Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz (< 6 GHz), 120 kHz or 240 kHz (> 6 GHz) are applicable.
-    ssbSubCarrierSpacing: node<int>;
     
     // Base station channel bandwidth for uplink.
     bSChannelBwUL: node<int>;
@@ -92,23 +69,41 @@ type NRCellDU {
     // Cell state of the NRCellDU instance. Indicates whether the cell is not currently in use (IDLE), or currently in use but not configured to carry traffic (INACTIVE), or currently in use and is configured to carry traffic (ACTIVE).
     cellState: node<CellState>;
     
-    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink.
-    arfcnDL: node<int>;
+    // Indicates cell defining SSB frequency domain position. Frequency (in terms of NR-ARFCN) of the cell defining SSB transmission. The frequency identifies the position of resource element RE=#0 (subcarrier #0) of resource block RB#10 of the SS block. The frequency must be positioned on the NR global frequency raster, as defined in 3GPP TS 38.101-1, and within bSChannelBwDL.
+    ssbFrequency: node<int>;
     
     // Operational state of the NRCellDU instance. Indicates whether the resource is installed and partially or fully operable (ENABLED) or the resource is not installed or not operable (DISABLED).
     operationalState: node<OperationalState>;
-
-
-
-type Ran {
-
-NRCellCUs: node<NRCellCU>[];
-
-NRCellDUs: node<NRCellDU>[];
-}
-
-
-
+    
+    // Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz (< 6 GHz), 120 kHz or 240 kHz (> 6 GHz) are applicable.
+    ssbSubCarrierSpacing: node<int>;
+    
+    // Indicates cell defining SSB time domain position. Defined as the offset of the measurement window, in which to receive SS/PBCH blocks, where allowed values depend on the ssbPeriodicity (ssbOffset < ssbPeriodicity).
+    ssbOffset: node<int>;
+    
+    // The Physical Cell Identity (PCI) of the NR cell.
+    nRPCI: node<int>;
+    
+    // Base station channel bandwidth for downlink.
+    bSChannelBwDL: node<int>;
+    
+    // Indicates cell defined SSB periodicity. The SSB periodicity is used for the rate matching purpose.
+    ssbPeriodicity: node<int>;
+    
+    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for supplementary uplink.
+    arfcnSUL: node<int>;
+    
+    // Base station channel bandwidth for supplementary uplink.
+    bSChannelBwSUL: node<int>;
+    
+    // The common 5GS Tracking Area Code for the PLMNs.
+    nRTAC: node<Tac>;
+    
+    // The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported. The plMNId of the first entry of the list is the PLMNId used to construct the nCGI for the NR cell.
+    pLMNInfoList: node<PLMNInfo>;
+    
+    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink.
+    arfcnDL: node<int>;
 
 
 
@@ -117,7 +112,7 @@ type BWP {
     numberOfRBs : int;
    }
    
-   type UE {
+type UE {
     // position will be the prepared points on the floor map
     id : int;
     RNTI : String;   
@@ -125,7 +120,7 @@ type BWP {
     synchronizationSignal : node<SynchronizationSignal>;
    }
    
-   type SynchronizationSignal {
+type SynchronizationSignal {
     RSRP : int ;
     RSRQ : float;
     SINR : float;

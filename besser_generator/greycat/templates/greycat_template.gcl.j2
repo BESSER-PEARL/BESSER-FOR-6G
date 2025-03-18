@@ -18,6 +18,12 @@ enum {{ enum.name }} {
 {% endif %}
 
 {% if data.classes %}
+type Ran {
+    {% for class in data.classes %}
+    {{ class.name }}s: node<{{ class.name }}>[];
+    {% endfor -%}
+    }
+    {% endif %}
 // Types
 {% for class in data.classes %}
 {% if class.description %}
@@ -35,28 +41,13 @@ type {{ class.name }} {
 {% if not loop.last %}
 {% endif %}
 {% endfor %}
-
-type Ran {
-{% for class in data.classes %}
-{{ class.name }}s: node<{{ class.name }}>[];
-{% endfor -%}
-}
-{% endif %}
-
-{# type Ran {
-    nrCellCus: node<NRCellCU>[];
-    nrCellDus: node<NRCellDU>[];
-} 
-#}
-
 {#From pdf paper#}
-
 type BWP {
     subCarrierSpacing : int; //unit KhZ always?
     numberOfRBs : int;
    }
    
-   type UE {
+type UE {
     // position will be the prepared points on the floor map
     id : int;
     RNTI : String;   
@@ -64,7 +55,7 @@ type BWP {
     synchronizationSignal : node<SynchronizationSignal>;
    }
    
-   type SynchronizationSignal {
+type SynchronizationSignal {
     RSRP : int ;
     RSRQ : float;
     SINR : float;
