@@ -21,9 +21,9 @@
         "TargetProbability": {
                 "enum": [
                         "50",
-                        "75",
+                        "90",
                         "25",
-                        "90"
+                        "75"
                 ],
                 "type": "string"
         },

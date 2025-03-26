@@ -36,14 +36,14 @@
         "ThresholddirectionEnum": {
                 "description": "Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to \u0027UP\u0027, the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to \u0027DOWN\u0027, the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to \u0027UP_AND_DOWN\u0027 the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to \u0027UP_AND_DOWN\u0027.",
                 "enum": [
-                        "DOWN",
                         "UP",
-                        "UP_AND_DOWN"
+                        "UP_AND_DOWN",
+                        "DOWN"
                 ],
                 "type": "string"
         },
         "administrativeState": {
-                "description": "Enables or disables the ThresholdMonitor.",
+                "description": "Enable or disables production of the metrics",
                 "type": "string"
         },
         "granularityPeriod": {
@@ -63,15 +63,15 @@
                 "type": "integer"
         },
         "operationalState": {
-                "description": "Indicates whether the ThresholdMonitor is working.",
+                "description": "Indicates whether the PerfMetricJob is working.",
                 "type": "string"
         },
         "thresholdDirection": {
                 "description": "Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to \u0027UP\u0027, the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to \u0027DOWN\u0027, the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to \u0027UP_AND_DOWN\u0027 the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to \u0027UP_AND_DOWN\u0027.",
                 "enum": [
-                        "DOWN",
                         "UP",
-                        "UP_AND_DOWN"
+                        "UP_AND_DOWN",
+                        "DOWN"
                 ],
                 "type": "string"
         },

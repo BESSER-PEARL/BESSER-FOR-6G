@@ -20,8 +20,8 @@
       "properties": {
         "ActionAllowed": {
                 "enum": [
-                        "YES",
-                        "NO"
+                        "NO",
+                        "YES"
                 ],
                 "type": "string"
         },
@@ -34,9 +34,9 @@
         },
         "EnergySavingCoverage": {
                 "enum": [
-                        "PARTIAL",
                         "NO",
-                        "YES"
+                        "YES",
+                        "PARTIAL"
                 ],
                 "type": "string"
         },

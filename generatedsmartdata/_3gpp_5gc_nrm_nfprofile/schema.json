@@ -43,19 +43,19 @@
         },
         "PduSessionType": {
                 "enum": [
-                        "IPV4V6",
                         "UNSTRUCTURED",
-                        "ETHERNET",
                         "IPV6",
-                        "IPV4"
+                        "IPV4V6",
+                        "IPV4",
+                        "ETHERNET"
                 ],
                 "type": "string"
         },
         "UPInterfaceType": {
                 "enum": [
-                        "N9",
                         "N6",
-                        "N3"
+                        "N3",
+                        "N9"
                 ],
                 "type": "string"
         },
@@ -91,7 +91,7 @@
                 "type": "string"
         },
         "dnn": {
-                "description": "Supported DNN.",
+                "description": "String representing a Data Network.",
                 "type": "string"
         },
         "dnnSmfInfoList": {
@@ -109,7 +109,7 @@
                 "type": "array"
         },
         "end": {
-                "description": "Last value identifying the end of a SUPI range. To be used when the range of SUPI\u0027s can be represented as a numeric range (e.g. IMSI ranges).",
+                "description": "Last value identifying the end of a TAC range, to be used when the range of TAC\u0027s can be represented as a hexadecimal range (e.g. TAC ranges).",
                 "type": "string"
         },
         "fqdn": {
@@ -176,7 +176,7 @@
                 "type": "array"
         },
         "pattern": {
-                "description": "Pattern representing the set of SUPI\u0027s belonging to this range. A SUPI value is considered part of the range if and only if the SUPI string fully matches the regular expression.",
+                "description": "Pattern representing the set of TAC\u0027s belonging to this range.",
                 "type": "string"
         },
         "perPlmnSnssaiList": {
@@ -187,7 +187,7 @@
                 "type": "array"
         },
         "plmnId": {
-                "description": "PLMN Identity.",
+                "description": "PLMN ID for which list of supported S-NSSAI(s) is provided.",
                 "type": "string"
         },
         "plmnList": {
@@ -232,7 +232,7 @@
                 "type": "integer"
         },
         "start": {
-                "description": "First value identifying the start of a SUPI range. To be used when the range of SUPI\u0027s can be represented as a numeric range (e.g., IMSI ranges).",
+                "description": "First value identifying the start of a TAC range, to be used when the range of TAC\u0027s can be represented as a hexadecimal range (e.g., TAC ranges).",
                 "type": "string"
         },
         "tac": {

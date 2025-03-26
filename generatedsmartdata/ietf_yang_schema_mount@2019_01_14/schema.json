@@ -23,7 +23,7 @@
                 "type": "boolean"
         },
         "description": {
-                "description": "This node indicates that the server has mounted at least the module \u0027ietf-yang-library\u0027 at the mount point, and its instantiation provides the information about the mounted schema. When XPath expressions in the mounted schema are evaluated, the \u0027parent-reference\u0027 leaf-list is taken into account. Different instances of the mount point MUST have the same schema mounted.",
+                "description": "This node indicates that the server has mounted at least the module \u0027ietf-yang-library\u0027 at the mount point, and its instantiation provides the information about the mounted schema. Different instances of the mount point may have different schemas mounted.",
                 "type": "string"
         },
         "inlineSchema": {
@@ -55,7 +55,7 @@
                 "type": "string"
         },
         "presence": {
-                "description": "The mounted schema together with the \u0027parent-reference\u0027 make up the schema for this mount point.",
+                "description": "A complete self-contained schema is mounted at the mount point.",
                 "type": "boolean"
         },
         "schemaType": {

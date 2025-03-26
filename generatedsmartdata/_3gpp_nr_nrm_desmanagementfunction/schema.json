@@ -29,8 +29,8 @@
         "IsprobingcapableEnum": {
                 "description": "This attribute indicates whether this cell is capable of performing the ES probing procedure.",
                 "enum": [
-                        "no",
-                        "yes"
+                        "yes",
+                        "no"
                 ],
                 "type": "string"
         },
@@ -102,8 +102,8 @@
         "isProbingCapable": {
                 "description": "This attribute indicates whether this cell is capable of performing the ES probing procedure.",
                 "enum": [
-                        "no",
-                        "yes"
+                        "yes",
+                        "no"
                 ],
                 "type": "string"
         },
@@ -124,7 +124,7 @@
                 "type": "string"
         },
         "timeDuration": {
-                "description": "The time duration indicates how long the load needs to have been below the threshold.",
+                "description": "The time duration indicates how long the traffic load (both for UL and DL) in the candidate cell needs to have been below the threshold before any original cells which will be provided backup coverage by the candidate cell enters energySaving state.",
                 "type": "integer"
         }
 }

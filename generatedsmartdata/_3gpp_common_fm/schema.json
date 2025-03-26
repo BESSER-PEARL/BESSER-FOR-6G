@@ -32,8 +32,8 @@
         "RootcauseindicatorEnum": {
                 "description": "It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances.",
                 "enum": [
-                        "YES",
-                        "NO"
+                        "NO",
+                        "YES"
                 ],
                 "type": "string"
         },
@@ -115,16 +115,16 @@
         "eventType": {
                 "description": "General category for the alarm.",
                 "enum": [
-                        "ENVIRONMENTAL_ALARM",
                         "EQUIPMENT_ALARM",
-                        "OPERATIONAL_VIOLATION",
-                        "COMMUNICATIONS_ALARM",
-                        "INTEGRITY_VIOLATION",
-                        "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
                         "QUALITY_OF_SERVICE_ALARM",
-                        "PROCESSING_ERROR_ALARM",
+                        "ENVIRONMENTAL_ALARM",
                         "TIME_DOMAIN_VIOLATION",
-                        "PHYSICAL_VIOLATIONu"
+                        "COMMUNICATIONS_ALARM",
+                        "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
+                        "PHYSICAL_VIOLATIONu",
+                        "PROCESSING_ERROR_ALARM",
+                        "OPERATIONAL_VIOLATION",
+                        "INTEGRITY_VIOLATION"
                 ],
                 "type": "string"
         },
@@ -167,8 +167,8 @@
         "rootCauseIndicator": {
                 "description": "It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances.",
                 "enum": [
-                        "YES",
-                        "NO"
+                        "NO",
+                        "YES"
                 ],
                 "type": "string"
         },
@@ -187,12 +187,12 @@
         "severity_level": {
                 "description": "The possible alarm serverities. \tAligned with ERICSSON-ALARM-MIB.",
                 "enum": [
-                        "WARNING",
-                        "MINOR",
                         "CLEARED",
                         "INDETERMINATE",
+                        "WARNING",
                         "CRITICAL",
-                        "MAJOR"
+                        "MAJOR",
+                        "MINOR"
                 ],
                 "type": "string"
         },

@@ -27,16 +27,16 @@
         },
         "BwpContext": {
                 "enum": [
-                        "UL",
                         "DL",
+                        "UL",
                         "SUL"
                 ],
                 "type": "string"
         },
         "CyclicPrefix": {
                 "enum": [
-                        "EXTENDED",
-                        "NORMAL"
+                        "NORMAL",
+                        "EXTENDED"
                 ],
                 "type": "string"
         },

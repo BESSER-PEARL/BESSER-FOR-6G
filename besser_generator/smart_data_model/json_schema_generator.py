@@ -80,4 +80,4 @@ class JSONSchemaGenerator(GeneratorInterface):
         with open(file_path, mode="w", encoding='utf-8') as f:
             generated_schema = template.render(schema=schema_data)
             f.write(generated_schema)
-            print(f"Schema generated successfully at: {file_path}")
+            # print(f"Schema generated successfully at: {file_path}")

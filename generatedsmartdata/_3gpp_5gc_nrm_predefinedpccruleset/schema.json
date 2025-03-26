@@ -21,8 +21,8 @@
         "AccesstypeEnum": {
                 "description": "It provides the condition of access type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "NON_3GPP_ACCESS",
-                        "3GPP_ACCESS"
+                        "3GPP_ACCESS",
+                        "NON_3GPP_ACCESS"
                 ],
                 "type": "string"
         },
@@ -37,8 +37,8 @@
         "AfsigprotocolEnum": {
                 "description": "Indicates the protocol used for signalling between the UE and the AF, the default value is NO_INFORMATION.",
                 "enum": [
-                        "NO_INFORMATION",
-                        "SIP"
+                        "SIP",
+                        "NO_INFORMATION"
                 ],
                 "type": "string"
         },
@@ -54,18 +54,18 @@
         "FdirEnum": {
                 "description": "It indicates the packet filter direction.",
                 "enum": [
-                        "DOWNLINK",
-                        "UPLINK"
+                        "UPLINK",
+                        "DOWNLINK"
                 ],
                 "type": "string"
         },
         "FlowdirectionEnum": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "BIDIRECTIONAL",
                         "UPLINK",
                         "UNSPECIFIED",
-                        "DOWNLINK"
+                        "DOWNLINK",
+                        "BIDIRECTIONAL"
                 ],
                 "type": "string"
         },
@@ -83,8 +83,8 @@
         "MulaccctrlEnum": {
                 "description": "It indicates whether the service data flow, corresponding to the service data flow template, is allowed or not allowed.",
                 "enum": [
-                        "NOT_ALLOWED",
-                        "ALLOWED"
+                        "ALLOWED",
+                        "NOT_ALLOWED"
                 ],
                 "type": "string"
         },
@@ -102,16 +102,16 @@
         "PreemptcapEnum": {
                 "description": "It defines whether a service data flow may get resources that were already assigned to another service data flow with a lower priority level.",
                 "enum": [
-                        "NOT_PREEMPT",
-                        "MAY_PREEMPT"
+                        "MAY_PREEMPT",
+                        "NOT_PREEMPT"
                 ],
                 "type": "string"
         },
         "PreemptvulnEnum": {
                 "description": "It defines whether a service data flow may lose the resources assigned to it in order to admit a service data flow with higher priority level.",
                 "enum": [
-                        "NOT_PREEMPTABLE",
-                        "PREEMPTABLE"
+                        "PREEMPTABLE",
+                        "NOT_PREEMPTABLE"
                 ],
                 "type": "string"
         },
@@ -126,8 +126,6 @@
         "RattypeEnum": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "GERA",
-                        "WIRELINE_CABLE",
                         "TRUSTED_WLAN",
                         "WLAN",
                         "LTE_M",
@@ -140,17 +138,19 @@
                         "NR_U",
                         "EUTRA_U",
                         "WIRELINE_BBF",
-                        "TRUSTED_N3GA"
+                        "TRUSTED_N3GA",
+                        "GERA",
+                        "WIRELINE_CABLE"
                 ],
                 "type": "string"
         },
         "RedirectaddresstypeEnum": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "SIP_URI",
                         "IPV6_ADDR",
                         "IPV4_ADDR",
-                        "URL"
+                        "URL",
+                        "SIP_URI"
                 ],
                 "type": "string"
         },
@@ -165,26 +165,26 @@
         "SteerfunEnum": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "ATSSS_LL",
-                        "MPTCP"
+                        "MPTCP",
+                        "ATSSS_LL"
                 ],
                 "type": "string"
         },
         "SteermodevalueEnum": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "ACTIVE_STANDBY",
-                        "SMALLEST_DELAY",
                         "PRIORITY_BASED",
-                        "LOAD_BALANCING"
+                        "LOAD_BALANCING",
+                        "ACTIVE_STANDBY",
+                        "SMALLEST_DELAY"
                 ],
                 "type": "string"
         },
         "accessType": {
                 "description": "It provides the condition of access type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "NON_3GPP_ACCESS",
-                        "3GPP_ACCESS"
+                        "3GPP_ACCESS",
+                        "NON_3GPP_ACCESS"
                 ],
                 "type": "string"
         },
@@ -207,8 +207,8 @@
         "afSigProtocol": {
                 "description": "Indicates the protocol used for signalling between the UE and the AF, the default value is NO_INFORMATION.",
                 "enum": [
-                        "NO_INFORMATION",
-                        "SIP"
+                        "SIP",
+                        "NO_INFORMATION"
                 ],
                 "type": "string"
         },
@@ -272,8 +272,8 @@
         "fDir": {
                 "description": "It indicates the packet filter direction.",
                 "enum": [
-                        "DOWNLINK",
-                        "UPLINK"
+                        "UPLINK",
+                        "DOWNLINK"
                 ],
                 "type": "string"
         },
@@ -288,10 +288,10 @@
         "flowDirection": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "BIDIRECTIONAL",
                         "UPLINK",
                         "UNSPECIFIED",
-                        "DOWNLINK"
+                        "DOWNLINK",
+                        "BIDIRECTIONAL"
                 ],
                 "type": "string"
         },
@@ -353,8 +353,8 @@
         "mulAccCtrl": {
                 "description": "It indicates whether the service data flow, corresponding to the service data flow template, is allowed or not allowed.",
                 "enum": [
-                        "NOT_ALLOWED",
-                        "ALLOWED"
+                        "ALLOWED",
+                        "NOT_ALLOWED"
                 ],
                 "type": "string"
         },
@@ -397,16 +397,16 @@
         "preemptCap": {
                 "description": "It defines whether a service data flow may get resources that were already assigned to another service data flow with a lower priority level.",
                 "enum": [
-                        "NOT_PREEMPT",
-                        "MAY_PREEMPT"
+                        "MAY_PREEMPT",
+                        "NOT_PREEMPT"
                 ],
                 "type": "string"
         },
         "preemptVuln": {
                 "description": "It defines whether a service data flow may lose the resources assigned to it in order to admit a service data flow with higher priority level.",
                 "enum": [
-                        "NOT_PREEMPTABLE",
-                        "PREEMPTABLE"
+                        "PREEMPTABLE",
+                        "NOT_PREEMPTABLE"
                 ],
                 "type": "string"
         },
@@ -433,8 +433,6 @@
         "ratType": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "GERA",
-                        "WIRELINE_CABLE",
                         "TRUSTED_WLAN",
                         "WLAN",
                         "LTE_M",
@@ -447,17 +445,19 @@
                         "NR_U",
                         "EUTRA_U",
                         "WIRELINE_BBF",
-                        "TRUSTED_N3GA"
+                        "TRUSTED_N3GA",
+                        "GERA",
+                        "WIRELINE_CABLE"
                 ],
                 "type": "string"
         },
         "redirectAddressType": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "SIP_URI",
                         "IPV6_ADDR",
                         "IPV4_ADDR",
-                        "URL"
+                        "URL",
+                        "SIP_URI"
                 ],
                 "type": "string"
         },
@@ -508,18 +508,18 @@
         "steerFun": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "ATSSS_LL",
-                        "MPTCP"
+                        "MPTCP",
+                        "ATSSS_LL"
                 ],
                 "type": "string"
         },
         "steerModeValue": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "ACTIVE_STANDBY",
-                        "SMALLEST_DELAY",
                         "PRIORITY_BASED",
-                        "LOAD_BALANCING"
+                        "LOAD_BALANCING",
+                        "ACTIVE_STANDBY",
+                        "SMALLEST_DELAY"
                 ],
                 "type": "string"
         },

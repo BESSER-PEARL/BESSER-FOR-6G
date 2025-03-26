@@ -20,55 +20,62 @@
       "properties": {
         "AdministrativeState": {
                 "enum": [
+                        "LOCKED",
                         "UNLOCKED",
-                        "SHUTTINGDOWN",
-                        "LOCKED"
+                        "SHUTTINGDOWN"
                 ],
                 "type": "string"
         },
         "AvailabilityStatus": {
                 "enum": [
+                        "FAILED",
+                        "DEGRADED",
+                        "POWER_OFF",
                         "IN_TEST",
                         "LOG_FULL",
                         "NOT_INSTALLED",
                         "OFF_DUTY",
                         "DEPENDENCY",
-                        "OFF_LINE",
-                        "FAILED",
-                        "DEGRADED",
-                        "POWER_OFF"
+                        "OFF_LINE"
                 ],
                 "type": "string"
         },
         "CellState": {
                 "enum": [
-                        "IDLE",
                         "ACTIVE",
-                        "INACTIVE"
+                        "INACTIVE",
+                        "IDLE"
                 ],
                 "type": "string"
         },
         "N1MessageClass": {
                 "enum": [
-                        "LPP",
                         "5GMM",
                         "SMS",
-                        "SM"
+                        "SM",
+                        "LPP"
                 ],
                 "type": "string"
         },
         "N2InformationClass": {
                 "enum": [
+                        "SM",
                         "NRPPA",
                         "PWS",
                         "PWS_BCAL",
-                        "PWS_RF",
-                        "SM"
+                        "PWS_RF"
                 ],
                 "type": "string"
         },
         "NfType": {
                 "enum": [
+                        "SMF",
+                        "SMSF",
+                        "UDM",
+                        "UDR",
+                        "UDSF",
+                        "UPF",
+                        "5G_EIR",
                         "AF",
                         "AMF",
                         "AUSF",
@@ -81,14 +88,7 @@
                         "NRF",
                         "NSSF",
                         "PCF",
-                        "SEPP",
-                        "SMF",
-                        "SMSF",
-                        "UDM",
-                        "5G_EIR",
-                        "UDR",
-                        "UDSF",
-                        "UPF"
+                        "SEPP"
                 ],
                 "type": "string"
         },
@@ -116,18 +116,18 @@
         },
         "TxDirection": {
                 "enum": [
-                        "DL_AND_UL",
                         "DL",
-                        "UL"
+                        "UL",
+                        "DL_AND_UL"
                 ],
                 "type": "string"
         },
         "UeMobilityLevel": {
                 "enum": [
-                        "NOMADIC",
                         "FULLY_MOBILITY",
                         "STATIONARY",
-                        "RESTRICTED_MOBILITY"
+                        "RESTRICTED_MOBILITY",
+                        "NOMADIC"
                 ],
                 "type": "string"
         },
@@ -222,9 +222,9 @@
         "usageState": {
                 "description": "It describes whether or not the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users at that instant. The value is READ-ONLY.",
                 "enum": [
-                        "ACTIVE",
                         "IDLE",
-                        "BUSY"
+                        "BUSY",
+                        "ACTIVE"
                 ],
                 "type": "string"
         },

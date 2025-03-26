@@ -27,8 +27,8 @@
         },
         "SEPPType": {
                 "enum": [
-                        "CSEPP",
-                        "PSEPP"
+                        "PSEPP",
+                        "CSEPP"
                 ],
                 "type": "string"
         },
@@ -43,8 +43,8 @@
         "sEPPType": {
                 "description": "Property",
                 "enum": [
-                        "CSEPP",
-                        "PSEPP"
+                        "PSEPP",
+                        "CSEPP"
                 ],
                 "type": "string"
         }

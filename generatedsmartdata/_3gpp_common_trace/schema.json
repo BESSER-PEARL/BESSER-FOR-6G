@@ -21,13 +21,13 @@
         "TjjobtypeEnum": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
-                        "IMMEDIATE_MDT_ONLY",
                         "LOGGED_MDT_ONLY",
-                        "RCEF_REPORT_ONLY",
-                        "RLF_REPORT_ONLY",
                         "IMMEDIATE_MDT_AND_TRACE",
                         "TRACE_ONLY",
-                        "LOGGED_MBSFN_MDT"
+                        "LOGGED_MBSFN_MDT",
+                        "RLF_REPORT_ONLY",
+                        "RCEF_REPORT_ONLY",
+                        "IMMEDIATE_MDT_ONLY"
                 ],
                 "type": "string"
         },
@@ -50,21 +50,21 @@
         "TjmdtpositioningmethodEnum": {
                 "description": "It specifies what positioning method should be used in the MDT job.",
                 "enum": [
-                        "GNSS",
-                        "E_CELL_ID"
+                        "E_CELL_ID",
+                        "GNSS"
                 ],
                 "type": "string"
         },
         "TjmdtreportingtriggerEnum": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "A2_TRIGGERED_PERIODIC_FOR_LTE",
-                        "A2_FOR_LTE",
-                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "1F_FOR_UMTS",
                         "1I_FOR_UMTS_MCPS_TDD",
+                        "A2_TRIGGERED_PERIODIC_FOR_LTE",
                         "ALL_CONFIGURED_RRM_FOR_UMTS",
-                        "PERIODICAL",
-                        "1F_FOR_UMTS"
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "A2_FOR_LTE",
+                        "PERIODICAL"
                 ],
                 "type": "string"
         },
@@ -83,8 +83,8 @@
                         "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
-                        "VENDORMINIMUM",
-                        "MAXIMUM"
+                        "MAXIMUM",
+                        "VENDORMINIMUM"
                 ],
                 "type": "string"
         },
@@ -103,13 +103,13 @@
         "tjJobType": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
-                        "IMMEDIATE_MDT_ONLY",
                         "LOGGED_MDT_ONLY",
-                        "RCEF_REPORT_ONLY",
-                        "RLF_REPORT_ONLY",
                         "IMMEDIATE_MDT_AND_TRACE",
                         "TRACE_ONLY",
-                        "LOGGED_MBSFN_MDT"
+                        "LOGGED_MBSFN_MDT",
+                        "RLF_REPORT_ONLY",
+                        "RCEF_REPORT_ONLY",
+                        "IMMEDIATE_MDT_ONLY"
                 ],
                 "type": "string"
         },
@@ -190,8 +190,8 @@
         "tjMDTPositioningMethod": {
                 "description": "It specifies what positioning method should be used in the MDT job.",
                 "enum": [
-                        "GNSS",
-                        "E_CELL_ID"
+                        "E_CELL_ID",
+                        "GNSS"
                 ],
                 "type": "string"
         },
@@ -214,13 +214,13 @@
         "tjMDTReportingTrigger": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "A2_TRIGGERED_PERIODIC_FOR_LTE",
-                        "A2_FOR_LTE",
-                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "1F_FOR_UMTS",
                         "1I_FOR_UMTS_MCPS_TDD",
+                        "A2_TRIGGERED_PERIODIC_FOR_LTE",
                         "ALL_CONFIGURED_RRM_FOR_UMTS",
-                        "PERIODICAL",
-                        "1F_FOR_UMTS"
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "A2_FOR_LTE",
+                        "PERIODICAL"
                 ],
                 "type": "string"
         },
@@ -251,8 +251,8 @@
                         "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
-                        "VENDORMINIMUM",
-                        "MAXIMUM"
+                        "MAXIMUM",
+                        "VENDORMINIMUM"
                 ],
                 "type": "string"
         },

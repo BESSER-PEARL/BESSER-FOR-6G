@@ -25,8 +25,8 @@
         "ResourcetypeEnum": {
                 "description": "It indicates the Resource Type of a 5QI, as specified in TS 23.501",
                 "enum": [
-                        "NON_GBR",
-                        "GBR"
+                        "GBR",
+                        "NON_GBR"
                 ],
                 "type": "string"
         },
@@ -71,8 +71,8 @@
         "resourceType": {
                 "description": "It indicates the Resource Type of a 5QI, as specified in TS 23.501",
                 "enum": [
-                        "NON_GBR",
-                        "GBR"
+                        "GBR",
+                        "NON_GBR"
                 ],
                 "type": "string"
         },

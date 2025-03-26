@@ -21,8 +21,8 @@
         "NFServiceStatus": {
                 "enum": [
                         "SUSPENDED",
-                        "REGISTERED",
-                        "UNDISCOVERABLE"
+                        "UNDISCOVERABLE",
+                        "REGISTERED"
                 ],
                 "type": "string"
         },
@@ -43,8 +43,8 @@
                         "NNWDAF_EVENTSSUBSCRIPTION",
                         "NPCF_AM-POLICY-CONTROL",
                         "NPCF_BDTPOLICYCONTROL",
-                        "NPCF_EVENTEXPOSURE",
                         "N5G_EIR_EIC",
+                        "NPCF_EVENTEXPOSURE",
                         "NPCF_POLICYAUTHORIZATION",
                         "NAMF_COMM",
                         "NAMF_EVTS",

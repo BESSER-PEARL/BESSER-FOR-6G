@@ -75,12 +75,8 @@
                 "type": "number"
         },
         "availability": {
-                "description": "Whether deterministic communication is available",
-                "enum": [
-                        "NOT_SUPPORTED",
-                        "SUPPORTED"
-                ],
-                "type": "string"
+                "description": "Availability requirement as percentage",
+                "type": "number"
         },
         "category": {
                 "description": "Category of a service requirement/attribute of GST",
@@ -231,7 +227,7 @@
                 "type": "integer"
         },
         "support": {
-                "description": "Whether NB-IoT is supported in the RAN",
+                "description": "Whether network slice supports user management capability",
                 "enum": [
                         "NOT_SUPPORTED",
                         "SUPPORTED"
