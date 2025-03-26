@@ -2,8 +2,8 @@ import os
 import json
 import glob
 import re
-from yang_parser import YangParser
-from buml_code_builder import domain_model_to_code, sanitize_module_name
+from besser_parser.yang_parser import YangParser
+from besser_parser.buml_code_builder import domain_model_to_code, sanitize_module_name
 
 class ModelProcessor:
     def __init__(self, json_dir, output_dir):

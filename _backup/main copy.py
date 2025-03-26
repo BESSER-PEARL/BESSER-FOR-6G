@@ -1,4 +1,4 @@
-from yang_parser import YangParser
+from besser_parser.yang_parser import YangParser
 from structural import Class, Enumeration
 from besser.utilities.buml_code_builder import domain_model_to_code
 

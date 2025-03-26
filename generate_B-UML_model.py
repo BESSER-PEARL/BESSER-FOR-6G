@@ -1,7 +1,7 @@
 import os
-from yang_parser import YangParser
+from besser_parser.yang_parser import YangParser
 from besser.BUML.metamodel.structural import Class, Enumeration
-from buml_code_builder import domain_model_to_code
+from besser_parser.buml_code_builder import domain_model_to_code
 
 """Generate B-UML models from JSON converted 3GPP YANG specifications 
 and save them to the output directory."""
