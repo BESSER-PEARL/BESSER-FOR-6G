@@ -18,42 +18,37 @@
     },
     {
       "properties": {
-        "CommModelType": {
-                "enum": [
-                        "DIRECT_COMMUNICATION_WITH_NRF",
-                        "DIRECT_COMMUNICATION_WO_NRF",
-                        "INDIRECT_COMMUNICATION_WITH_DEDICATED_DISCOVERY",
-                        "INDIRECT_COMMUNICATION_WO_DEDICATED_DISCOVERY"
-                ],
-                "type": "string"
-        },
-        "commModelConfiguration": {
+        "EP_Common": {
                 "description": "Property",
                 "type": "string"
         },
-        "commModelType": {
+        "n32cParas": {
                 "description": "Property",
                 "type": "string"
         },
-        "function": {
+        "n32fPolicy": {
                 "description": "Property",
                 "type": "string"
         },
-        "groupId": {
+        "remotePlmnId": {
+                "description": "Property",
+                "type": "string"
+        },
+        "remoteSeppAddress": {
+                "description": "Property",
+                "type": "string"
+        },
+        "remoteSeppId": {
                 "description": "Property",
                 "type": "integer"
         },
-        "policy": {
+        "sBIService": {
                 "description": "Property",
                 "type": "string"
         },
-        "sd": {
-                "description": "Slice Differentiator If not needed, the value can be set to FFFFFF.",
-                "type": "string"
-        },
-        "sst": {
-                "description": "Slice/Service Type. Values 0 to 127 belong to standardized SST range and are defined in 3GPP TS 23.501. Values 128 to 255 belong to operator-specific range.",
-                "type": "integer"
+        "withIPX": {
+                "description": "Property",
+                "type": "boolean"
         }
 }
     }

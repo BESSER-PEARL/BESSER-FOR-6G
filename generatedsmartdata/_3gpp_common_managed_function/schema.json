@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ManagedNFService": {
+                "description": "Represents a Network Function (NF)",
+                "type": "string"
+        },
+        "OperationsemanticsEnum": {
+                "description": "Semantics type of the operation.",
+                "enum": [
+                        "SUBSCRIBE_NOTIFY",
+                        "REQUEST_RESPONSE"
+                ],
+                "type": "string"
+        },
+        "RegistrationstateEnum": {
+                "enum": [
+                        "REGISTERED",
+                        "DEREGISTERED"
+                ],
+                "type": "string"
+        },
+        "administrativeState": {
+                "description": "Permission to use or prohibition against using the instance",
+                "type": "string"
+        },
+        "nFServiceType": {
+                "description": "The type of the managed NF service instance The specifc values allowed are described in clause 7.2 of TS 23.501",
+                "type": "string"
+        },
+        "name": {
+                "description": "Property",
+                "type": "string"
+        },
+        "operationSemantics": {
+                "description": "Semantics type of the operation.",
+                "enum": [
+                        "SUBSCRIBE_NOTIFY",
+                        "REQUEST_RESPONSE"
+                ],
+                "type": "string"
+        },
+        "operationalState": {
+                "description": "Describes whether the resource is installed and working",
+                "type": "string"
+        },
+        "operations": {
+                "description": "Set of operations supported by the managed NF service instance",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "peeParametersList": {
+                "description": "Contains the parameter set for the control and monitoring of power, energy and environmental parameters of ManagedFunction instance(s).",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "priorityLabel": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "registrationState": {
+                "description": "Property",
+                "enum": [
+                        "REGISTERED",
+                        "DEREGISTERED"
+                ],
+                "type": "string"
+        },
+        "sAP": {
+                "description": "The service access point of the managed NF service instance",
+                "type": "string"
+        },
+        "usageState": {
+                "description": "Describes whether the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users.",
+                "type": "string"
+        },
+        "userLabel": {
+                "description": "A user-friendly (and user assignable) name of this object.",
+                "type": "string"
+        },
+        "vnfParametersList": {
+                "description": "Contains the parameter set of the VNF instance(s) corresponding to an NE. The presence of this list indicates that the ManagedFunction represented is realized by one or more VNF instance(s). Otherwise it shall be absent. The presence of a vnfParametersList entry, whose vnfInstanceId with a string length of zero, in createMO operation can trigger the instantiation of the related VNF/VNFC instances.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

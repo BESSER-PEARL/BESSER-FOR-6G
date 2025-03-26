@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "EnergySavingControl": {
+                "enum": [
+                        "toBeEnergySaving",
+                        "toBeNotEnergySaving"
+                ],
+                "type": "string"
+        },
+        "EnergySavingState": {
+                "enum": [
+                        "isNotEnergySaving",
+                        "isEnergySaving"
+                ],
+                "type": "string"
+        },
+        "cesSwitch": {
+                "description": "This attribute determines whether the Cross Domain-Centralized SON energy saving function is enabled or disabled.",
+                "type": "boolean"
+        },
+        "energySavingControl": {
+                "description": "This attribute allows the Cross Domain-Centralized SON energy saving function to initiate energy saving activation or deactivation.",
+                "enum": [
+                        "toBeEnergySaving",
+                        "toBeNotEnergySaving"
+                ],
+                "type": "string"
+        },
+        "energySavingState": {
+                "description": "Specifies the status regarding the energy saving in the cell. If the value of energySavingControl is toBeEnergySaving, then it shall be tried to achieve the value isEnergySaving for the energySavingState. If the value of energySavingControl is toBeNotEnergySaving, then it shall be tried to achieve the value isNotEnergySaving for the energySavingState.",
+                "enum": [
+                        "isNotEnergySaving",
+                        "isEnergySaving"
+                ],
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

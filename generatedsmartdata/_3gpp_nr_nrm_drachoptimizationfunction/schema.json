@@ -20,10 +20,10 @@
       "properties": {
         "TargetProbability": {
                 "enum": [
-                        "90",
-                        "25",
                         "50",
-                        "75"
+                        "75",
+                        "25",
+                        "90"
                 ],
                 "type": "string"
         },

@@ -1,0 +1,254 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "AccessType": {
+                "enum": [
+                        "3GPP_ACCESS",
+                        "NON_3GPP_ACCESS"
+                ],
+                "type": "string"
+        },
+        "DataSetId": {
+                "enum": [
+                        "APPLICATION",
+                        "SUBSCRIPTION",
+                        "POLICY",
+                        "EXPOSURE"
+                ],
+                "type": "string"
+        },
+        "NFStatus": {
+                "enum": [
+                        "SUSPENDED",
+                        "REGISTERED"
+                ],
+                "type": "string"
+        },
+        "PduSessionType": {
+                "enum": [
+                        "IPV4V6",
+                        "UNSTRUCTURED",
+                        "ETHERNET",
+                        "IPV6",
+                        "IPV4"
+                ],
+                "type": "string"
+        },
+        "UPInterfaceType": {
+                "enum": [
+                        "N9",
+                        "N6",
+                        "N3"
+                ],
+                "type": "string"
+        },
+        "allowedNssais": {
+                "description": "S-NSSAI of the allowed slices to access the NF instance. If not provided, any slice is allowed to access the NF.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "allowedPlmns": {
+                "description": "PLMNs allowed to access the NF instance. If not provided, any PLMN is allowed to access the NF.",
+                "type": "string"
+        },
+        "amfId": {
+                "description": "AMF Identity.",
+                "type": "string"
+        },
+        "amfName": {
+                "description": "AMF name.",
+                "type": "string"
+        },
+        "capacity": {
+                "description": "Static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value.",
+                "type": "integer"
+        },
+        "customInfo": {
+                "description": "Specific data for custom Network Functions.",
+                "type": "string"
+        },
+        "defaultNotificationSubscriptions": {
+                "description": "Notification endpoints for different notification types.",
+                "type": "string"
+        },
+        "dnn": {
+                "description": "Supported DNN.",
+                "type": "string"
+        },
+        "dnnSmfInfoList": {
+                "description": "List of parameters supported by the SMF per DNN.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "dnnUpfInfoList": {
+                "description": "List of parameters supported by the UPF per DNN.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "end": {
+                "description": "Last value identifying the end of a SUPI range. To be used when the range of SUPI\u0027s can be represented as a numeric range (e.g. IMSI ranges).",
+                "type": "string"
+        },
+        "fqdn": {
+                "description": "FQDN of the Network Function. For AMF, the FQDN registered with the NRF shall be that of the AMF Name.",
+                "type": "string"
+        },
+        "heartBeatTimer": {
+                "description": "Time in seconds expected between 2 consecutive heart-beat messages from an NF Instance to the NRF. It may be included in the registration request. When present in the request it shall contain the heartbeat time proposed by the NF service consumer.",
+                "type": "integer"
+        },
+        "interPlmnFqdn": {
+                "description": "If the NF needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter-PLMN routing is specified.",
+                "type": "string"
+        },
+        "interfaceType": {
+                "description": "User Plane interface type.",
+                "type": "string"
+        },
+        "load": {
+                "description": "Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF.",
+                "type": "string"
+        },
+        "locality": {
+                "description": "Operator defined information about the location of the NF instance (e.g. geographic location, data center).",
+                "type": "string"
+        },
+        "networkInstance": {
+                "description": "Network Instance associated to the User Plane interface.",
+                "type": "string"
+        },
+        "nfInstanceID": {
+                "description": "String uniquely identifying a NF instance.",
+                "type": "string"
+        },
+        "nfProfileChangesInd": {
+                "description": "NF Profile Changes Indicator. This IE shall be absent in the request to the NRF and may be included by the NRF in NFRegister or NFUpdate (NF Profile Complete Replacement) response. true: the NF Profile contains NF Profile changes. false (default): complete NF Profile.",
+                "type": "boolean"
+        },
+        "nfProfileChangesSupportInd": {
+                "description": "NF Profile Changes Support Indicator. This IE may be present in the NFRegister or NFUpdate (NF Profile Complete Replacement) request and shall be absent in the response. true: the NF Service Consumer supports receiving NF Profile Changes in the response. false (default): the NF Service Consumer does not support receiving NF Profile Changes in the response.",
+                "type": "boolean"
+        },
+        "nfServicePersistence": {
+                "description": "If present, and set to true, it indicates that the different service instances of a same NF Service in this NF instance, supporting a same API version, are capable to persist their resource state in shared storage and therefore these resources are available after a new NF service instance supporting the same API version is selected by a NF Service Consumer (see 3GPP TS 23.527). Otherwise, it indicates that the NF Service Instances of a same NF Service are not capable to share resource state inside the NF Instance.",
+                "type": "boolean"
+        },
+        "nfServices": {
+                "description": "List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs.",
+                "type": "string"
+        },
+        "nfStatus": {
+                "description": "Status of the NF Instance.",
+                "type": "string"
+        },
+        "nfType": {
+                "description": "Type of Network Function.",
+                "type": "string"
+        },
+        "nrfInfo": {
+                "description": "Property",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "pattern": {
+                "description": "Pattern representing the set of SUPI\u0027s belonging to this range. A SUPI value is considered part of the range if and only if the SUPI string fully matches the regular expression.",
+                "type": "string"
+        },
+        "perPlmnSnssaiList": {
+                "description": "This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different. When present, this IE shall include the S-NSSAIs supported by the Network Function for each PLMN supported by the Network Function. When present, this IE shall override sNssais IE.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "plmnId": {
+                "description": "PLMN Identity.",
+                "type": "string"
+        },
+        "plmnList": {
+                "description": "PLMN(s) of the Network Function. This IE shall be present if this information is available for the NF. If not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF.",
+                "type": "string"
+        },
+        "priority": {
+                "description": "Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. The NRF may overwrite the received priority value when exposing an NFProfile with the Nnrf_NFDiscovery service.",
+                "type": "integer"
+        },
+        "recoveryTime": {
+                "description": "Timestamp when the NF was (re)started.",
+                "type": "string"
+        },
+        "sNssai": {
+                "description": "Supported S-NSSAI.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "sNssaiList": {
+                "description": "The specific list of S-NSSAIs supported by the given PLMN.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "sNssais": {
+                "description": "S-NSSAIs of the Network Function. If not provided, the NF can serve any S-NSSAI. When present this IE represents the list of S-NSSAIs supported in all the PLMNs listed in the plmnList IE.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "sd": {
+                "description": "3-octet string, representing the Slice Differentiator, in hexadecimal representation.",
+                "type": "string"
+        },
+        "sst": {
+                "description": "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type. It indicates the expected Network Slice behaviour in terms of features and services.",
+                "type": "integer"
+        },
+        "start": {
+                "description": "First value identifying the start of a SUPI range. To be used when the range of SUPI\u0027s can be represented as a numeric range (e.g., IMSI ranges).",
+                "type": "string"
+        },
+        "tac": {
+                "description": "Property",
+                "type": "string"
+        },
+        "tacRangeList": {
+                "description": "The range of the TACs.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

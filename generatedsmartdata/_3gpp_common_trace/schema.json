@@ -21,13 +21,13 @@
         "TjjobtypeEnum": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
-                        "IMMEDIATE_MDT_AND_TRACE",
-                        "LOGGED_MBSFN_MDT",
-                        "RCEF_REPORT_ONLY",
                         "IMMEDIATE_MDT_ONLY",
+                        "LOGGED_MDT_ONLY",
+                        "RCEF_REPORT_ONLY",
                         "RLF_REPORT_ONLY",
+                        "IMMEDIATE_MDT_AND_TRACE",
                         "TRACE_ONLY",
-                        "LOGGED_MDT_ONLY"
+                        "LOGGED_MBSFN_MDT"
                 ],
                 "type": "string"
         },
@@ -42,8 +42,8 @@
         "TjmdteventlistfortriggeredmeasurementEnum": {
                 "description": "Specifies event types for event triggered measurement in the case of logged NR MDT. Each trace session may configure at most one event. The UE shall perform logging of measurements only upon certain condition being fulfilled: - Out of coverage. - A2 event.",
                 "enum": [
-                        "OUT_OF_COVERAGE",
-                        "A2_EVENT"
+                        "A2_EVENT",
+                        "OUT_OF_COVERAGE"
                 ],
                 "type": "string"
         },
@@ -58,13 +58,13 @@
         "TjmdtreportingtriggerEnum": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "ALL_CONFIGURED_RRM_FOR_LTE",
-                        "1F_FOR_UMTS",
                         "A2_TRIGGERED_PERIODIC_FOR_LTE",
+                        "A2_FOR_LTE",
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "1I_FOR_UMTS_MCPS_TDD",
                         "ALL_CONFIGURED_RRM_FOR_UMTS",
                         "PERIODICAL",
-                        "1I_FOR_UMTS_MCPS_TDD",
-                        "A2_FOR_LTE"
+                        "1F_FOR_UMTS"
                 ],
                 "type": "string"
         },
@@ -79,12 +79,12 @@
         "TjtracedepthEnum": {
                 "description": "Specifies how detailed information should be recorded in the Network Element. The Trace Depth is a paremeter for Trace Session level, i.e., the Trace Depth is the same for all of the NEs to be traced in the same Trace Session. The attribute is applicable only for Trace, otherwise it carries a null semantic.",
                 "enum": [
-                        "MAXIMUM",
                         "MEDIUM",
                         "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
-                        "VENDORMINIMUM"
+                        "VENDORMINIMUM",
+                        "MAXIMUM"
                 ],
                 "type": "string"
         },
@@ -103,13 +103,13 @@
         "tjJobType": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
-                        "IMMEDIATE_MDT_AND_TRACE",
-                        "LOGGED_MBSFN_MDT",
-                        "RCEF_REPORT_ONLY",
                         "IMMEDIATE_MDT_ONLY",
+                        "LOGGED_MDT_ONLY",
+                        "RCEF_REPORT_ONLY",
                         "RLF_REPORT_ONLY",
+                        "IMMEDIATE_MDT_AND_TRACE",
                         "TRACE_ONLY",
-                        "LOGGED_MDT_ONLY"
+                        "LOGGED_MBSFN_MDT"
                 ],
                 "type": "string"
         },
@@ -150,8 +150,8 @@
         "tjMDTEventListForTriggeredMeasurement": {
                 "description": "Specifies event types for event triggered measurement in the case of logged NR MDT. Each trace session may configure at most one event. The UE shall perform logging of measurements only upon certain condition being fulfilled: - Out of coverage. - A2 event.",
                 "enum": [
-                        "OUT_OF_COVERAGE",
-                        "A2_EVENT"
+                        "A2_EVENT",
+                        "OUT_OF_COVERAGE"
                 ],
                 "type": "string"
         },
@@ -214,13 +214,13 @@
         "tjMDTReportingTrigger": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "ALL_CONFIGURED_RRM_FOR_LTE",
-                        "1F_FOR_UMTS",
                         "A2_TRIGGERED_PERIODIC_FOR_LTE",
+                        "A2_FOR_LTE",
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
+                        "1I_FOR_UMTS_MCPS_TDD",
                         "ALL_CONFIGURED_RRM_FOR_UMTS",
                         "PERIODICAL",
-                        "1I_FOR_UMTS_MCPS_TDD",
-                        "A2_FOR_LTE"
+                        "1F_FOR_UMTS"
                 ],
                 "type": "string"
         },
@@ -247,12 +247,12 @@
         "tjTraceDepth": {
                 "description": "Specifies how detailed information should be recorded in the Network Element. The Trace Depth is a paremeter for Trace Session level, i.e., the Trace Depth is the same for all of the NEs to be traced in the same Trace Session. The attribute is applicable only for Trace, otherwise it carries a null semantic.",
                 "enum": [
-                        "MAXIMUM",
                         "MEDIUM",
                         "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
-                        "VENDORMINIMUM"
+                        "VENDORMINIMUM",
+                        "MAXIMUM"
                 ],
                 "type": "string"
         },

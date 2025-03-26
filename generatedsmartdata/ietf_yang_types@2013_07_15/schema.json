@@ -18,14 +18,13 @@
     },
     {
       "properties": {
-        "ip_version": {
-                "description": "This value represents the version of the IP protocol. In the value set and its semantics, this type is equivalent to the InetVersion textual convention of the SMIv2.",
-                "enum": [
-                        "ipv6",
-                        "ipv4",
-                        "unknown"
-                ],
+        "expression": {
+                "description": "Represents an XPATH 1.0 expression.",
                 "type": "string"
+        },
+        "value": {
+                "description": "Represents a non-negative integer that represents the time, modulo 2^32, in hundredths of a second between two epochs.",
+                "type": "integer"
         }
 }
     }

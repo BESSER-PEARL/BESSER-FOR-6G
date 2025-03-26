@@ -14,7 +14,7 @@ from buml_generated_models._3gpp_common_ep_rp import EP_Common
 # Classes
 EP_N2Grp = Class(
     name="EP_N2Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -22,7 +22,7 @@ EP_N2Grp.synonyms = ["Represents the EP_N2 IOC."]
 
 EP_N3Grp = Class(
     name="EP_N3Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -30,7 +30,7 @@ EP_N3Grp.synonyms = ["Represents the EP_N3 IOC."]
 
 EP_N4Grp = Class(
     name="EP_N4Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -38,7 +38,7 @@ EP_N4Grp.synonyms = ["Represents the EP_N4 IOC."]
 
 EP_N5Grp = Class(
     name="EP_N5Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -46,7 +46,7 @@ EP_N5Grp.synonyms = ["Represents the EP_N5 IOC."]
 
 EP_N6Grp = Class(
     name="EP_N6Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -54,7 +54,7 @@ EP_N6Grp.synonyms = ["Represents the EP_N6 IOC."]
 
 EP_N7Grp = Class(
     name="EP_N7Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -62,7 +62,7 @@ EP_N7Grp.synonyms = ["Represents the EP_N7 IOC."]
 
 EP_N8Grp = Class(
     name="EP_N8Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -70,7 +70,7 @@ EP_N8Grp.synonyms = ["Represents the EP_N8 IOC."]
 
 EP_N9Grp = Class(
     name="EP_N9Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -78,7 +78,7 @@ EP_N9Grp.synonyms = ["Represents the EP_N9 IOC."]
 
 EP_N10Grp = Class(
     name="EP_N10Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -86,7 +86,7 @@ EP_N10Grp.synonyms = ["Represents the EP_N10 IOC."]
 
 EP_N11Grp = Class(
     name="EP_N11Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -94,7 +94,7 @@ EP_N11Grp.synonyms = ["Represents the EP_N11 IOC."]
 
 EP_N12Grp = Class(
     name="EP_N12Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -102,7 +102,7 @@ EP_N12Grp.synonyms = ["Represents the EP_N12 IOC."]
 
 EP_N13Grp = Class(
     name="EP_N13Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -110,7 +110,7 @@ EP_N13Grp.synonyms = ["Represents the EP_N13 IOC."]
 
 EP_N14Grp = Class(
     name="EP_N14Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -118,7 +118,7 @@ EP_N14Grp.synonyms = ["Represents the EP_N14 IOC."]
 
 EP_N15Grp = Class(
     name="EP_N15Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -126,7 +126,7 @@ EP_N15Grp.synonyms = ["Represents the EP_N15 IOC."]
 
 EP_N16Grp = Class(
     name="EP_N16Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -134,7 +134,7 @@ EP_N16Grp.synonyms = ["Represents the EP_N16 IOC."]
 
 EP_N17Grp = Class(
     name="EP_N17Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -142,7 +142,7 @@ EP_N17Grp.synonyms = ["Represents the EP_N17 IOC."]
 
 EP_N20Grp = Class(
     name="EP_N20Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -150,7 +150,7 @@ EP_N20Grp.synonyms = ["Represents the EP_N20 IOC."]
 
 EP_N21Grp = Class(
     name="EP_N21Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -158,7 +158,7 @@ EP_N21Grp.synonyms = ["Represents the EP_N21 IOC."]
 
 EP_N22Grp = Class(
     name="EP_N22Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -166,7 +166,7 @@ EP_N22Grp.synonyms = ["Represents the EP_N22 IOC."]
 
 EP_N26Grp = Class(
     name="EP_N26Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -174,7 +174,7 @@ EP_N26Grp.synonyms = ["Represents the EP_N26 IOC."]
 
 EP_N27Grp = Class(
     name="EP_N27Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -182,7 +182,7 @@ EP_N27Grp.synonyms = ["Represents the EP_N27 IOC."]
 
 EP_N31Grp = Class(
     name="EP_N31Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -190,21 +190,21 @@ EP_N31Grp.synonyms = ["Represents the EP_N31 IOC."]
 
 EP_N32Grp = Class(
     name="EP_N32Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common),
-        Property(name="remotePlmnId", type=StringType()),
-        Property(name="remoteSeppAddress", type=StringType()),
-        Property(name="remoteSeppId", type=IntegerType()),
-        Property(name="n32cParas", type=StringType()),
-        Property(name="n32fPolicy", type=StringType()),
-        Property(name="withIPX", type=BooleanType())
+        Property(name="remotePlmnId", type=StringType),
+        Property(name="remoteSeppAddress", type=StringType),
+        Property(name="remoteSeppId", type=IntegerType),
+        Property(name="n32cParas", type=StringType),
+        Property(name="n32fPolicy", type=StringType),
+        Property(name="withIPX", type=BooleanType)
     ]
 )
 EP_N32Grp.synonyms = ["Represents the EP_N32 IOC."]
 
 EP_S5CGrp = Class(
     name="EP_S5CGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -212,7 +212,7 @@ EP_S5CGrp.synonyms = ["Represents the EP_S5C IOC."]
 
 EP_S5UGrp = Class(
     name="EP_S5UGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -220,7 +220,7 @@ EP_S5UGrp.synonyms = ["Represents the EP_S5U IOC."]
 
 EP_RxGrp = Class(
     name="EP_RxGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -228,7 +228,7 @@ EP_RxGrp.synonyms = ["Represents the EP_Rx IOC."]
 
 EP_MAP_SMSCGrp = Class(
     name="EP_MAP_SMSCGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -236,7 +236,7 @@ EP_MAP_SMSCGrp.synonyms = ["Represents the EP_MAP_SMSC IOC."]
 
 EP_NLSGrp = Class(
     name="EP_NLSGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -244,7 +244,7 @@ EP_NLSGrp.synonyms = ["Represents the EP_NLS IOC."]
 
 EP_NLGGrp = Class(
     name="EP_NLGGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -252,9 +252,9 @@ EP_NLGGrp.synonyms = ["Represents the EP_NLG IOC."]
 
 EP_SBI_IPXGrp = Class(
     name="EP_SBI_IPXGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common),
-        Property(name="sBIService", type=StringType(), multiplicity=Multiplicity(1, "*"))
+        Property(name="sBIService", type=StringType, multiplicity=Multiplicity(1, "*"))
     ]
 )
 EP_SBI_IPXGrp.synonyms = ["Represents the EP_SBI_IPX IOC."]

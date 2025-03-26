@@ -21,8 +21,8 @@
         "EnergysavingstateEnum": {
                 "description": "Specifies the status regarding the energy saving in the cell.",
                 "enum": [
-                        "isNotEnergySaving",
-                        "isEnergySaving"
+                        "isEnergySaving",
+                        "isNotEnergySaving"
                 ],
                 "type": "string"
         },
@@ -45,8 +45,8 @@
         "energySavingState": {
                 "description": "Specifies the status regarding the energy saving in the cell.",
                 "enum": [
-                        "isNotEnergySaving",
-                        "isEnergySaving"
+                        "isEnergySaving",
+                        "isNotEnergySaving"
                 ],
                 "type": "string"
         },
@@ -112,7 +112,7 @@
                 "type": "string"
         },
         "loadThreshold": {
-                "description": "The time duration indicates how long the traffic load (both for UL and DL) needs to have been below the threshold.",
+                "description": "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.",
                 "type": "integer"
         },
         "periodOfDay": {

@@ -18,13 +18,12 @@
     },
     {
       "properties": {
-        "ip_version": {
-                "description": "This value represents the version of the IP protocol. In the value set and its semantics, this type is equivalent to the InetVersion textual convention of the SMIv2.",
-                "enum": [
-                        "ipv6",
-                        "ipv4",
-                        "unknown"
-                ],
+        "description": {
+                "description": "Specifies a value that the system will set for a leaf leaf-list if a value is not specified for it when its parent list or container is created.",
+                "type": "string"
+        },
+        "value": {
+                "description": "The initial value to be used",
                 "type": "string"
         }
 }

@@ -20,23 +20,23 @@
       "properties": {
         "AdministrativeState": {
                 "enum": [
+                        "UNLOCKED",
                         "SHUTTINGDOWN",
-                        "LOCKED",
-                        "UNLOCKED"
+                        "LOCKED"
                 ],
                 "type": "string"
         },
         "AvailabilityStatus": {
                 "enum": [
-                        "DEGRADED",
+                        "IN_TEST",
+                        "LOG_FULL",
                         "NOT_INSTALLED",
                         "OFF_DUTY",
                         "DEPENDENCY",
                         "OFF_LINE",
                         "FAILED",
-                        "POWER_OFF",
-                        "IN_TEST",
-                        "LOG_FULL"
+                        "DEGRADED",
+                        "POWER_OFF"
                 ],
                 "type": "string"
         },
@@ -59,21 +59,16 @@
         },
         "N2InformationClass": {
                 "enum": [
+                        "NRPPA",
+                        "PWS",
                         "PWS_BCAL",
                         "PWS_RF",
-                        "SM",
-                        "NRPPA",
-                        "PWS"
+                        "SM"
                 ],
                 "type": "string"
         },
         "NfType": {
                 "enum": [
-                        "UDM",
-                        "UDR",
-                        "UDSF",
-                        "UPF",
-                        "5G_EIR",
                         "AF",
                         "AMF",
                         "AUSF",
@@ -88,7 +83,12 @@
                         "PCF",
                         "SEPP",
                         "SMF",
-                        "SMSF"
+                        "SMSF",
+                        "UDM",
+                        "5G_EIR",
+                        "UDR",
+                        "UDSF",
+                        "UPF"
                 ],
                 "type": "string"
         },

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "Beam": {
+                "description": "Represents the per-Beam information required for, e.g. beam performance management utilizing measurements generated in the RAN. Can have spatial attributes of horizontal/azimuth (ie: Phi ?-axis) and vertical/tilt (ie: Theta ?-axis) beam pointing direction and beam width attributes.",
+                "type": "string"
+        },
+        "BeamType": {
+                "enum": [
+                        "SSB-BEAM"
+                ],
+                "type": "string"
+        },
+        "beamAzimuth": {
+                "description": "The azimuth of a beam transmission, which means the horizontal beamforming pointing angle (beam peak direction) in the (Phi) ?-axis in 1/10th degree resolution. The pointing angle is the direction equal to the geometric centre of the half-power contour of the beam relative to the reference plane. Zero degree implies explicit antenna bearing (boresight). Positive angle implies clockwise from the antenna bearing.",
+                "type": "integer"
+        },
+        "beamHorizWidth": {
+                "description": "The Horizontal beamWidth of a beam transmission, which means the horizontal beamforming half-power (3dB down) beamwidth in the (Phi) ?-axis in 1/10th degree resolution.",
+                "type": "integer"
+        },
+        "beamIndex": {
+                "description": "Index of the beam.",
+                "type": "integer"
+        },
+        "beamTilt": {
+                "description": "The tilt of a beam transmission, which means the vertical beamforming pointing angle (beam peak direction) in the (Theta) ?-axis in 1/10th degree resolution. The pointing angle is the direction equal to the geometric centre of the half-power contour of the beam relative to the reference plane. Positive value implies downtilt.",
+                "type": "integer"
+        },
+        "beamType": {
+                "description": "The type of the beam.",
+                "type": "string"
+        },
+        "beamVertWidth": {
+                "description": "The Vertical beamWidth of a beam transmission, which means the vertical beamforming half-power (3dB down) beamwidth in the (Theta) ?-axis in 1/10th degree resolution.",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

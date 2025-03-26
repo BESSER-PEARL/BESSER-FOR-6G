@@ -28,8 +28,8 @@
         "BwpContext": {
                 "enum": [
                         "UL",
-                        "SUL",
-                        "DL"
+                        "DL",
+                        "SUL"
                 ],
                 "type": "string"
         },
@@ -42,8 +42,8 @@
         },
         "IsInitialBwp": {
                 "enum": [
-                        "INITIAL",
-                        "OTHER"
+                        "OTHER",
+                        "INITIAL"
                 ],
                 "type": "string"
         },

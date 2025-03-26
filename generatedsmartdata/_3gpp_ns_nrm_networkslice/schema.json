@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NetworkSlice": {
+                "description": "Represents the properties of a network slice instance in a 5G network.",
+                "type": "string"
+        },
+        "administrativeState": {
+                "description": "The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services.",
+                "type": "string"
+        },
+        "networkSliceSubnetRef": {
+                "description": "The NetworkSliceSubnet that the NetworkSlice is associated with.",
+                "type": "string"
+        },
+        "operationalState": {
+                "description": "The operational state of the network slice instance. It describes whether or not the resource is physically installed and working.",
+                "type": "string"
+        },
+        "serviceProfileList": {
+                "description": "A list of service profiles supported by the network slice instance.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

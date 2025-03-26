@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NRCellDU": {
+                "description": "Represents the information of a cell known by DU.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "administrativeState": {
+                "description": "Administrative state of the NRCellDU. Indicates the permission to use or prohibition against using the cell, imposed through the OAM services.",
+                "type": "string"
+        },
+        "arfcnDL": {
+                "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink.",
+                "type": "integer"
+        },
+        "arfcnSUL": {
+                "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for supplementary uplink.",
+                "type": "integer"
+        },
+        "arfcnUL": {
+                "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for uplink.",
+                "type": "integer"
+        },
+        "bSChannelBwDL": {
+                "description": "Base station channel bandwidth for downlink.",
+                "type": "integer"
+        },
+        "bSChannelBwSUL": {
+                "description": "Base station channel bandwidth for supplementary uplink.",
+                "type": "integer"
+        },
+        "bSChannelBwUL": {
+                "description": "Base station channel bandwidth for uplink.",
+                "type": "integer"
+        },
+        "cellLocalId": {
+                "description": "Identifies an NR cell of a gNB. Together with the corresponding gNB identifier in forms the NR Cell Identity (NCI).",
+                "type": "integer"
+        },
+        "cellState": {
+                "description": "Cell state of the NRCellDU instance. Indicates whether the cell is not currently in use (IDLE), or currently in use but not configured to carry traffic (INACTIVE), or currently in use and is configured to carry traffic (ACTIVE).",
+                "type": "string"
+        },
+        "nRPCI": {
+                "description": "The Physical Cell Identity (PCI) of the NR cell.",
+                "type": "integer"
+        },
+        "nRTAC": {
+                "description": "The common 5GS Tracking Area Code for the PLMNs.",
+                "type": "string"
+        },
+        "operationalState": {
+                "description": "Operational state of the NRCellDU instance. Indicates whether the resource is installed and partially or fully operable (ENABLED) or the resource is not installed or not operable (DISABLED).",
+                "type": "string"
+        },
+        "pLMNInfoList": {
+                "description": "The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported. The plMNId of the first entry of the list is the PLMNId used to construct the nCGI for the NR cell.",
+                "type": "string"
+        },
+        "ssbDuration": {
+                "description": "Duration of the measurement window in which to receive SS/PBCH blocks.",
+                "type": "integer"
+        },
+        "ssbFrequency": {
+                "description": "Indicates cell defining SSB frequency domain position. Frequency (in terms of NR-ARFCN) of the cell defining SSB transmission. The frequency identifies the position of resource element RE=#0 (subcarrier #0) of resource block RB#10 of the SS block. The frequency must be positioned on the NR global frequency raster, as defined in 3GPP TS 38.101-1, and within bSChannelBwDL.",
+                "type": "integer"
+        },
+        "ssbOffset": {
+                "description": "Indicates cell defining SSB time domain position. Defined as the offset of the measurement window, in which to receive SS/PBCH blocks, where allowed values depend on the ssbPeriodicity (ssbOffset \u003c ssbPeriodicity).",
+                "type": "integer"
+        },
+        "ssbPeriodicity": {
+                "description": "Indicates cell defined SSB periodicity. The SSB periodicity is used for the rate matching purpose.",
+                "type": "integer"
+        },
+        "ssbSubCarrierSpacing": {
+                "description": "Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz (\u003c 6 GHz), 120 kHz or 240 kHz (\u003e 6 GHz) are applicable.",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

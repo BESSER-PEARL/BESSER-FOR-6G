@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "config": {
+                "description": "If this leaf is set to \u0027false\u0027, then all data nodes in the mounted schema are read-only (\u0027config false\u0027), regardless of their \u0027config\u0027 property.",
+                "type": "boolean"
+        },
+        "description": {
+                "description": "This node indicates that the server has mounted at least the module \u0027ietf-yang-library\u0027 at the mount point, and its instantiation provides the information about the mounted schema. When XPath expressions in the mounted schema are evaluated, the \u0027parent-reference\u0027 leaf-list is taken into account. Different instances of the mount point MUST have the same schema mounted.",
+                "type": "string"
+        },
+        "inlineSchema": {
+                "description": "Contains information about an inline schema mount point.",
+                "type": "string"
+        },
+        "label": {
+                "description": "Label for the mount point.",
+                "type": "string"
+        },
+        "module": {
+                "description": "Name of a module containing the mount point.",
+                "type": "string"
+        },
+        "mountPoint": {
+                "description": "Each entry of this list specifies a schema for a particular mount point.",
+                "type": "string"
+        },
+        "namespace": {
+                "description": "This list provides a mapping of namespace prefixes that are used in XPath expressions of \u0027parent-reference\u0027 leafs to the corresponding namespace URI references.",
+                "type": "string"
+        },
+        "parentReference": {
+                "description": "XPath 1.0 expressions that are evaluated in the parent data tree context.",
+                "type": "string"
+        },
+        "prefix": {
+                "description": "Namespace prefix.",
+                "type": "string"
+        },
+        "presence": {
+                "description": "The mounted schema together with the \u0027parent-reference\u0027 make up the schema for this mount point.",
+                "type": "boolean"
+        },
+        "schemaType": {
+                "description": "Schema type, can be \u0027inline\u0027 or \u0027shared\u0027",
+                "type": "string"
+        },
+        "sharedSchema": {
+                "description": "Contains information about a shared schema mount point.",
+                "type": "string"
+        },
+        "uri": {
+                "description": "Namespace URI reference.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

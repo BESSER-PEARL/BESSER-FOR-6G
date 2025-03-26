@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ResourceSharingLevel": {
+                "enum": [
+                        "SHARED",
+                        "NON_SHARED"
+                ],
+                "type": "string"
+        },
+        "UeMobilityLevel": {
+                "enum": [
+                        "STATIONARY",
+                        "NOMADIC",
+                        "RESTRICTED_MOBILITY",
+                        "FULLY_MOBILITY"
+                ],
+                "type": "string"
+        },
+        "coverageAreaTAList": {
+                "description": "List of TrackingAreas where the NSI can be selected",
+                "type": "string"
+        },
+        "latency": {
+                "description": "Packet transmission latency through the RAN, CN, and TN part of 5G network",
+                "type": "integer"
+        },
+        "maxNumberofUEs": {
+                "description": "Maximum number of UEs may simultaneously access the network slice instance",
+                "type": "integer"
+        },
+        "mcc": {
+                "description": "Property",
+                "type": "string"
+        },
+        "mnc": {
+                "description": "Property",
+                "type": "string"
+        },
+        "pLMNIdList": {
+                "description": "List of PLMN Identifiers (1-6 entries)",
+                "type": "string"
+        },
+        "perfMetric": {
+                "description": "Property",
+                "type": "string"
+        },
+        "perfReq": {
+                "description": "Performance requirements for the NSI",
+                "type": "string"
+        },
+        "resourceSharingLevel": {
+                "description": "Whether resources may be shared with another network slice subnet instance(s)",
+                "enum": [
+                        "SHARED",
+                        "NON_SHARED"
+                ],
+                "type": "string"
+        },
+        "sNSSAIList": {
+                "description": "List of S-NSSAIs the managed object is capable of supporting",
+                "type": "string"
+        },
+        "sd": {
+                "description": "Property",
+                "type": "string"
+        },
+        "sliceProfileId": {
+                "description": "A unique identifier of the property of network slice subnet related requirement",
+                "type": "string"
+        },
+        "sst": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "uEMobilityLevel": {
+                "description": "Mobility level of UE accessing the network slice instance",
+                "enum": [
+                        "STATIONARY",
+                        "NOMADIC",
+                        "RESTRICTED_MOBILITY",
+                        "FULLY_MOBILITY"
+                ],
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

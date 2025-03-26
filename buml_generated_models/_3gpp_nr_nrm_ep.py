@@ -13,7 +13,7 @@ from buml_generated_models._3gpp_common_ep_rp import EP_Common
 # Classes
 EP_E1Grp = Class(
     name="EP_E1Grp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -21,7 +21,7 @@ EP_E1Grp.synonyms = ["Represents the EP_E1 IOC."]
 
 EP_F1CGrp = Class(
     name="EP_F1CGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -29,7 +29,7 @@ EP_F1CGrp.synonyms = ["Represents the EP_F1C IOC."]
 
 EP_F1UGrp = Class(
     name="EP_F1UGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -37,7 +37,7 @@ EP_F1UGrp.synonyms = ["Represents the EP_F1U IOC."]
 
 EP_XnCGrp = Class(
     name="EP_XnCGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -45,7 +45,7 @@ EP_XnCGrp.synonyms = ["Represents the EP_XnC IOC."]
 
 EP_XnUGrp = Class(
     name="EP_XnUGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -53,7 +53,7 @@ EP_XnUGrp.synonyms = ["Represents the EP_XnU IOC."]
 
 EP_NgCGrp = Class(
     name="EP_NgCGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -61,7 +61,7 @@ EP_NgCGrp.synonyms = ["Represents the EP_NgC IOC."]
 
 EP_NgUGrp = Class(
     name="EP_NgUGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -69,7 +69,7 @@ EP_NgUGrp.synonyms = ["Represents the EP_NgU IOC."]
 
 EP_X2CGrp = Class(
     name="EP_X2CGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -77,7 +77,7 @@ EP_X2CGrp.synonyms = ["Represents the EP_X2C IOC."]
 
 EP_X2UGrp = Class(
     name="EP_X2UGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )
@@ -85,7 +85,7 @@ EP_X2UGrp.synonyms = ["Represents the EP_X2U IOC."]
 
 EP_S1UGrp = Class(
     name="EP_S1UGrp",
-    properties=[
+    attributes=[
         Property(name="EP_Common", type=EP_Common)
     ]
 )

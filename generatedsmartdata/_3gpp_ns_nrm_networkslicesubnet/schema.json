@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NetworkSliceSubnet": {
+                "description": "Represents the properties of a network slice subnet instance in a 5G network.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "administrativeState": {
+                "description": "The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services.",
+                "type": "string"
+        },
+        "description": {
+                "description": "Human readable description of the NS instance.",
+                "type": "string"
+        },
+        "ipAddress": {
+                "description": "This parameter specifies the IP address assigned to a logical transport interface/endpoint. It can be an IPv4 address (See RFC 791) or an IPv6 address (See RFC 2373).",
+                "type": "string"
+        },
+        "logicInterfaceId": {
+                "description": "This parameter specifies the identify of a logical transport interface. It could be VLAN ID (See IEEE 802.1Q), MPLS Tag or Segment ID.",
+                "type": "string"
+        },
+        "managedFunctionRef": {
+                "description": "The managed functions that the NetworkSliceSubnet is associated with.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "nSInstanceId": {
+                "description": "Uniquely identifies the NS instance.",
+                "type": "string"
+        },
+        "nsInfo": {
+                "description": "This list represents the properties of network service information corresponding to the network slice subnet instance.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "nsName": {
+                "description": "Human readable name of the NS instance.",
+                "type": "string"
+        },
+        "operationalState": {
+                "description": "The operational state of the network slice instance. It describes whether or not the resource is physically installed and working.",
+                "type": "string"
+        },
+        "sliceProfileList": {
+                "description": "List of SliceProfiles supported by the network slice subnet instance",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

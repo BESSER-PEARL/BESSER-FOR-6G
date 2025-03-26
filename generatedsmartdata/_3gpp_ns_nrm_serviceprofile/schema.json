@@ -1,0 +1,301 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "Category-enum": {
+                "enum": [
+                        "character",
+                        "scalability"
+                ],
+                "type": "string"
+        },
+        "Exposure-enum": {
+                "enum": [
+                        "API",
+                        "KPI"
+                ],
+                "type": "string"
+        },
+        "ResourceSharingLevel": {
+                "enum": [
+                        "SHARED",
+                        "NON_SHARED"
+                ],
+                "type": "string"
+        },
+        "Support-enum": {
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED"
+                ],
+                "type": "string"
+        },
+        "Tagging-enum": {
+                "enum": [
+                        "performance",
+                        "function",
+                        "operation"
+                ],
+                "type": "string"
+        },
+        "UeMobilityLevel": {
+                "enum": [
+                        "STATIONARY",
+                        "NOMADIC",
+                        "RESTRICTED_MOBILITY",
+                        "FULLY_MOBILITY"
+                ],
+                "type": "string"
+        },
+        "V2XMode-enum": {
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED_BY_NR"
+                ],
+                "type": "string"
+        },
+        "activityFactor": {
+                "description": "Percentage of simultaneous active UEs to total UEs",
+                "type": "number"
+        },
+        "availability": {
+                "description": "Whether deterministic communication is available",
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED"
+                ],
+                "type": "string"
+        },
+        "category": {
+                "description": "Category of a service requirement/attribute of GST",
+                "enum": [
+                        "character",
+                        "scalability"
+                ],
+                "type": "string"
+        },
+        "coverageArea": {
+                "description": "List of TrackingAreas where the NSI can be selected",
+                "type": "string"
+        },
+        "dLThptPerSlice": {
+                "description": "Downlink throughput for the entire slice",
+                "type": "string"
+        },
+        "dLThptPerUE": {
+                "description": "Downlink throughput per UE",
+                "type": "string"
+        },
+        "delayTolerance": {
+                "description": "attributes of service delivery flexibility",
+                "type": "string"
+        },
+        "density": {
+                "description": "Overall user density over the coverage area in users/km2",
+                "type": "integer"
+        },
+        "deterministicComm": {
+                "description": "attributes of deterministic communication for periodic traffic",
+                "type": "string"
+        },
+        "exposure": {
+                "description": "Exposure mode of a service requirement/attribute of GST",
+                "enum": [
+                        "API",
+                        "KPI"
+                ],
+                "type": "string"
+        },
+        "guaThpt": {
+                "description": "The guaranteed data rate in kbits/s",
+                "type": "integer"
+        },
+        "jitter": {
+                "description": "Deviation from desired value when assessing time parameters",
+                "type": "integer"
+        },
+        "kPIList": {
+                "description": "Name list of KQIs and KPIs available for performance monitoring",
+                "type": "string"
+        },
+        "kPIMonitoring": {
+                "description": "Performance monitoring",
+                "type": "string"
+        },
+        "latency": {
+                "description": "Packet transmission latency through the RAN, CN, and TN part of 5G network",
+                "type": "integer"
+        },
+        "maxDLDataVolume": {
+                "description": "Maximum downlink data volume",
+                "type": "string"
+        },
+        "maxNumberofPDUSessions": {
+                "description": "Maximum number of concurrent PDU sessions",
+                "type": "string"
+        },
+        "maxNumberofUEs": {
+                "description": "Maximum number of UEs that may simultaneously access the network slice instance",
+                "type": "integer"
+        },
+        "maxPktSize": {
+                "description": "Maximum packet size supported",
+                "type": "string"
+        },
+        "maxSize": {
+                "description": "Maximum packet size in bytes",
+                "type": "integer"
+        },
+        "maxThpt": {
+                "description": "The maximum data rate in kbits/s",
+                "type": "integer"
+        },
+        "maxULDataVolume": {
+                "description": "Maximum uplink data volume",
+                "type": "string"
+        },
+        "mcc": {
+                "description": "Mobile Country Code",
+                "type": "string"
+        },
+        "mnc": {
+                "description": "Mobile Network Code",
+                "type": "string"
+        },
+        "nBIoT": {
+                "description": "NB-IoT support in the RAN",
+                "type": "string"
+        },
+        "nOofPDUSessions": {
+                "description": "Number of PDU sessions",
+                "type": "integer"
+        },
+        "pLMNIdList": {
+                "description": "List of PLMN IDs",
+                "type": "string"
+        },
+        "periodicityList": {
+                "description": "List of periodicities",
+                "type": "string"
+        },
+        "reliability": {
+                "description": "Percentage of successfully delivered network layer packets",
+                "type": "string"
+        },
+        "resourceSharingLevel": {
+                "description": "Whether resources may be shared with another network slice instance(s)",
+                "enum": [
+                        "SHARED",
+                        "NON_SHARED"
+                ],
+                "type": "string"
+        },
+        "sNSSAIList": {
+                "description": "List of S-NSSAIs to be supported",
+                "type": "string"
+        },
+        "sST": {
+                "description": "Slice/service type",
+                "type": "integer"
+        },
+        "sd": {
+                "description": "Slice Differentiator",
+                "type": "string"
+        },
+        "servAttrCom": {
+                "description": "Common attributes of service requirement related attributes",
+                "type": "string"
+        },
+        "serviceProfileId": {
+                "description": "Service profile identifier",
+                "type": "string"
+        },
+        "sst": {
+                "description": "Slice/Service type",
+                "type": "integer"
+        },
+        "support": {
+                "description": "Whether NB-IoT is supported in the RAN",
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED"
+                ],
+                "type": "string"
+        },
+        "survivalTime": {
+                "description": "Time an application may continue without an anticipated message",
+                "type": "string"
+        },
+        "tagging": {
+                "description": "Tagging of a service requirement/attribute of GST in character category",
+                "enum": [
+                        "performance",
+                        "function",
+                        "operation"
+                ],
+                "type": "string"
+        },
+        "termDensity": {
+                "description": "Overall user density over coverage area",
+                "type": "string"
+        },
+        "uEMobilityLevel": {
+                "description": "Mobility level of UE accessing the network slice instance",
+                "enum": [
+                        "STATIONARY",
+                        "NOMADIC",
+                        "RESTRICTED_MOBILITY",
+                        "FULLY_MOBILITY"
+                ],
+                "type": "string"
+        },
+        "uESpeed": {
+                "description": "Maximum speed supported by the network slice in km/hour",
+                "type": "integer"
+        },
+        "uLThptPerSlic": {
+                "description": "Uplink throughput for the entire slice",
+                "type": "string"
+        },
+        "uLThptPerUE": {
+                "description": "Uplink throughput per UE",
+                "type": "string"
+        },
+        "userMgmtOpen": {
+                "description": "User management capability support",
+                "type": "string"
+        },
+        "v2XCommModels": {
+                "description": "V2X communication mode support",
+                "type": "string"
+        },
+        "v2XMode": {
+                "description": "Whether V2X communication mode is supported",
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED_BY_NR"
+                ],
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

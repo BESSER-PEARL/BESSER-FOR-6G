@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NFServiceStatus": {
+                "enum": [
+                        "SUSPENDED",
+                        "REGISTERED",
+                        "UNDISCOVERABLE"
+                ],
+                "type": "string"
+        },
+        "ServiceName": {
+                "enum": [
+                        "NCHF_SPENDINGLIMITCONTROL",
+                        "NUDM_SDM",
+                        "NLMF_LOC",
+                        "NUDM_UEAU",
+                        "NNEF_PFDMANAGEMENT",
+                        "NUDM_UECM",
+                        "NNRF_DISC",
+                        "NUDR_DR",
+                        "NNRF_NFM",
+                        "NNSSF_NSSAIAVAILABILITY",
+                        "NNSSF_NSSELECTION",
+                        "NNWDAF_ANALYTICSINFO",
+                        "NNWDAF_EVENTSSUBSCRIPTION",
+                        "NPCF_AM-POLICY-CONTROL",
+                        "NPCF_BDTPOLICYCONTROL",
+                        "NPCF_EVENTEXPOSURE",
+                        "N5G_EIR_EIC",
+                        "NPCF_POLICYAUTHORIZATION",
+                        "NAMF_COMM",
+                        "NAMF_EVTS",
+                        "NPCF_SMPOLICYCONTROL",
+                        "NAMF_LOC",
+                        "NPCF_UE_POLICY_CONTROL",
+                        "NAMF_MT",
+                        "NSMF_EVENT-EXPOSURE",
+                        "NAUSF_AUTH",
+                        "NSMF_PDUSESSION",
+                        "NAUSF_SORPROTECTION",
+                        "NSMSF_SMS",
+                        "NBSF_MANAGEMENT",
+                        "NUDM_EE",
+                        "NCHF_CONVERGEDCHARGING",
+                        "NUDM_PP"
+                ],
+                "type": "string"
+        },
+        "TransportProtocol": {
+                "enum": [
+                        "STCP",
+                        "UDP",
+                        "TCP"
+                ],
+                "type": "string"
+        },
+        "UriScheme": {
+                "enum": [
+                        "HTTP",
+                        "HTTPS"
+                ],
+                "type": "string"
+        },
+        "allowedNssais": {
+                "description": "S-NSSAI of the allowed slices to access the service instance. The absence of this attribute indicates that any slice is allowed to access the service instance.",
+                "type": "string"
+        },
+        "allowedPlmns": {
+                "description": "PLMNs allowed to access the service instance. The absence of this attribute indicates that any PLMN is allowed to access the service instance.",
+                "type": "string"
+        },
+        "apiFullVersion": {
+                "description": "Property",
+                "type": "string"
+        },
+        "apiPrefix": {
+                "description": "Optional path segment(s) used to construct the {apiRoot} variable of the different API URIs.",
+                "type": "string"
+        },
+        "apiVersionInUri": {
+                "description": "Property",
+                "type": "string"
+        },
+        "capacity": {
+                "description": "Static capacity information in the range of 0-65535, expressed as a weight relative to other services of the same type.",
+                "type": "integer"
+        },
+        "chfServiceInfo": {
+                "description": "Specific data for a CHF service instance.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "defaultNotificationSubscriptions": {
+                "description": "Notification endpoints for different notification types.",
+                "type": "string"
+        },
+        "expiry": {
+                "description": "Property",
+                "type": "string"
+        },
+        "fqdn": {
+                "description": "FQDN of the NF Service Instance.",
+                "type": "string"
+        },
+        "interPlmnFqdn": {
+                "description": "If the NF service needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter PLMN routing.",
+                "type": "string"
+        },
+        "ipEndPoints": {
+                "description": "IP address(es) and port information of the Network Function (including IPv4 and/or IPv6 address)where the service is listening for incoming service requests.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "load": {
+                "description": "Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF Service.",
+                "type": "string"
+        },
+        "nfServiceStatus": {
+                "description": "Status of the NF Service Instance.",
+                "type": "string"
+        },
+        "port": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "primaryChfServiceInstance": {
+                "description": "Shall be present if the CHF service instance serves as a secondary CHF instance of another primary CHF service instance.",
+                "type": "string"
+        },
+        "priority": {
+                "description": "Priority (relative to other services of the same type) in the range of 0-65535, to be used for NF Service selection; lower values indicate a higher priority.",
+                "type": "integer"
+        },
+        "recoveryTime": {
+                "description": "Timestamp when the NF was (re)started.",
+                "type": "string"
+        },
+        "scheme": {
+                "description": "URI scheme (e.g. \u0027http\u0027, \u0027https\u0027).",
+                "type": "string"
+        },
+        "secondaryChfServiceInstance": {
+                "description": "Shall be present if the CHF service instance serves as a primary CHF instance of another secondary CHF service instance.",
+                "type": "string"
+        },
+        "serviceInstanceID": {
+                "description": "Unique ID of the service instance within a given NF Instance.",
+                "type": "string"
+        },
+        "serviceName": {
+                "description": "Name of the service instance (e.g. \u0027nudm-sdm\u0027).",
+                "type": "string"
+        },
+        "supportedFeatures": {
+                "description": "Supported Features of the NF Service instance.",
+                "type": "string"
+        },
+        "transport": {
+                "description": "Property",
+                "type": "string"
+        },
+        "versions": {
+                "description": "API versions supported by the NF Service and if available, the corresponding retirement date of the NF Service.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

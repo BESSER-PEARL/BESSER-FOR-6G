@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NRSectorCarrier": {
+                "description": "Represents the resources of each transmission point included in the cell.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "arfcnDL": {
+                "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink. Condition: The sector-carrier has a downlink AND the value differs from the referring cell\u0027s value of arfcnDL.",
+                "type": "integer"
+        },
+        "arfcnUL": {
+                "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for uplink. Condition: The sector-carrier has an uplink AND the value differs from the referring cell\u0027s value of arfcnUL.",
+                "type": "integer"
+        },
+        "bSChannelBwDL": {
+                "description": "Base station channel bandwitdth for downlink. Condition: The sector-carrier has a downlink AND the value differs from the referring cell\u0027s value of bSChannelBwDL.",
+                "type": "integer"
+        },
+        "bSChannelBwUL": {
+                "description": "Base station channel bandwitdth for uplink.",
+                "type": "integer"
+        },
+        "configuredMaxTxEIRP": {
+                "description": "The maximum emitted isotroptic radiated power (EIRP) in dBm for all downlink channels, used simultaneously in a cell, added together. Condition: the sector-carrier has a downlink and the configuration of emitted isotropic radiated power is supported",
+                "type": "integer"
+        },
+        "configuredMaxTxPower": {
+                "description": "Maximum transmisssion power at the antenna port for all downlink channels, used simultaneously in a cell, added together. Condition: The sector-carrier has a downlink and the configuration of Tx power at antenna port reference point is supported.",
+                "type": "integer"
+        },
+        "sectorEquipmentFunctionRef": {
+                "description": "Reference to corresponding SectorEquipmentFunction instance.",
+                "type": "string"
+        },
+        "txDirection": {
+                "description": "Indicates if the transmission direction is downlink, uplink, or both downlink and uplink.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

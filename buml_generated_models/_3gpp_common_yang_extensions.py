@@ -6,12 +6,42 @@ from besser.BUML.metamodel.structural import (
     PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
-# Classes
+# Create Extension classes
+in_variant_extension = Class(
+    name="InVariantExtension",
+    attributes=[
+        Property(
+            name="description",
+            type=StringType,
+            multiplicity=Multiplicity(1, 1),
+            synonyms=["Indicates that the value for the data node can only be set when its parent data node is being created. To change the value after that, the parent data node must be deleted and recreated with the data node having the new value."]
+        )
+    ]
+)
+
+initial_value_extension = Class(
+    name="InitialValueExtension",
+    attributes=[
+        Property(
+            name="description",
+            type=StringType,
+            multiplicity=Multiplicity(1, 1),
+            synonyms=["Specifies a value that the system will set for a leaf leaf-list if a value is not specified for it when its parent list or container is created."]
+        ),
+        Property(
+            name="value",
+            type=StringType,
+            multiplicity=Multiplicity(1, 1),
+            synonyms=["The initial value to be used"]
+        )
+    ]
+)
+
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-common-yang-extensions",
-    types={},
+    types={in_variant_extension, initial_value_extension},
     associations={},
     generalizations={}
 )
-domain_model.synonyms = ["The module defines YANG extensions needed 3GPP YANG modeling. Copyright (c) 2019 3GPP. All rights reserved. Extensions MUST be defined with the following structure in the description statement: - What is this statement. - Newline, - This statement can be a substatement of the xxx statements with cardinality x..y. - This statement can have the following substatements with cardinality x..y. - Newline - Is changing this statement an editorial, BC(backwards compatible) or NBC(non-BC) change? - Newline. - The argument its meaning and type. Preferably use YANG types and constraints to define the argument's type. Any extension statement can be added with a deviation/deviate add statement. In this case the restriction about the parent statement of the extension SHALL be evaluated based on the target of the deviation statement. Support for this module does not mean that a YANG server implements support for each of these extensions. Implementers of each specific module using an extensions MUST check if the server implements support for the used extension. Note: modules use many extensions which individual implementations MAY or MAY NOT support. If support for an extension is missing the extension statement needs individual handling or it SHOULD be removed from the module using the extension e.g. with a deviation."]
+domain_model.synonyms = ["The module defines YANG extensions needed 3GPP YANG modeling."]
