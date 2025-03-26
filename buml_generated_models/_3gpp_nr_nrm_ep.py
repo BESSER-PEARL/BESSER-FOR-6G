@@ -8,8 +8,89 @@ from besser.BUML.metamodel.structural import (
 
 # Import referenced models
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
+from buml_generated_models._3gpp_common_ep_rp import EP_Common
 
 # Classes
+EP_E1Grp = Class(
+    name="EP_E1Grp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_E1Grp.synonyms = ["Represents the EP_E1 IOC."]
+
+EP_F1CGrp = Class(
+    name="EP_F1CGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_F1CGrp.synonyms = ["Represents the EP_F1C IOC."]
+
+EP_F1UGrp = Class(
+    name="EP_F1UGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_F1UGrp.synonyms = ["Represents the EP_F1U IOC."]
+
+EP_XnCGrp = Class(
+    name="EP_XnCGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_XnCGrp.synonyms = ["Represents the EP_XnC IOC."]
+
+EP_XnUGrp = Class(
+    name="EP_XnUGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_XnUGrp.synonyms = ["Represents the EP_XnU IOC."]
+
+EP_NgCGrp = Class(
+    name="EP_NgCGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_NgCGrp.synonyms = ["Represents the EP_NgC IOC."]
+
+EP_NgUGrp = Class(
+    name="EP_NgUGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_NgUGrp.synonyms = ["Represents the EP_NgU IOC."]
+
+EP_X2CGrp = Class(
+    name="EP_X2CGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_X2CGrp.synonyms = ["Represents the EP_X2C IOC."]
+
+EP_X2UGrp = Class(
+    name="EP_X2UGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_X2UGrp.synonyms = ["Represents the EP_X2U IOC."]
+
+EP_S1UGrp = Class(
+    name="EP_S1UGrp",
+    properties=[
+        Property(name="EP_Common", type=EP_Common)
+    ]
+)
+EP_S1UGrp.synonyms = ["Represents the EP_S1U IOC."]
+
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-nr-nrm-ep",

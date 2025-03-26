@@ -14,7 +14,7 @@ def convert_filename(name):
 def main():
     parser = YangParser()
     json_dir = "json_3gpp"
-    output_dir = "buml_generated_models"
+    output_dir = "buml_generated_models_brut"
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

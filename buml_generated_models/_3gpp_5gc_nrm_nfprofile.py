@@ -10,7 +10,7 @@ from besser.BUML.metamodel.structural import (
 from buml_generated_models.ietf_inet_types import domain_model as inet_model
 from buml_generated_models._3gpp_5gc_nrm_nfservice import domain_model as nfs3gpp_model
 from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
-from buml_generated_models.ietf_yang_types import domain_model as yang_model
+# from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
 AccessType = Enumeration(name="AccessType")
@@ -104,7 +104,7 @@ NFProfile_nfProfileChangesSupportInd: Property = Property(name="nfProfileChanges
 NFProfile_nfServicePersistence: Property = Property(name="nfServicePersistence", type=BooleanType, synonyms=["If present, and set to true, it indicates that the different service instances of a same NF Service in this NF instance, supporting a same API version, are capable to persist their resource state in shared storage and therefore these resources are available after a new NF service instance supporting the same API version is selected by a NF Service Consumer (see 3GPP TS 23.527). Otherwise, it indicates that the NF Service Instances of a same NF Service are not capable to share resource state inside the NF Instance."])
 NFProfile_nfServices: Property = Property(name="nfServices", type=DataType('NFServiceGrp'), multiplicity=Multiplicity(1, "*"), synonyms=["List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs."])
 NFProfile_nfStatus: Property = Property(name="nfStatus", type=StringType, synonyms=["Status of the NF Instance."])
-NFProfile_nfType: Property = Property(name="nfType", type=NfType, synonyms=["Type of Network Function."])
+NFProfile_nfType: Property = Property(name="nfType", type=DataType("NfType"), synonyms=["Type of Network Function."])
 NFProfile_nrfInfo: Property = Property(name="nrfInfo", type=list, multiplicity=Multiplicity(0, "*"))
 NFProfile_perPlmnSnssaiList: Property = Property(name="perPlmnSnssaiList", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different. When present, this IE shall include the S-NSSAIs supported by the Network Function for each PLMN supported by the Network Function. When present, this IE shall override sNssais IE."])
 NFProfile_plmnList: Property = Property(name="plmnList", type=DataType('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMN(s) of the Network Function. This IE shall be present if this information is available for the NF. If not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF."])

@@ -1,4 +1,4 @@
-# Generated B-UML Model
+# Generated B_UML Model
 from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
@@ -8,7 +8,7 @@ from besser.BUML.metamodel.structural import (
 
 # Import referenced models
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
-from buml_generated_models.ietf_yang_types import domain_model as yang_model
+# from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
 AccesstypeEnum = Enumeration(name="AccesstypeEnum")
@@ -53,10 +53,10 @@ FlowdirectionEnum.synonyms = ["It indicates the direction/directions that a filt
 FlowstatusEnum = Enumeration(name="FlowstatusEnum")
 FlowstatusEnum_DISABLED = EnumerationLiteral(name="DISABLED", owner=FlowstatusEnum)
 FlowstatusEnum_ENABLED = EnumerationLiteral(name="ENABLED", owner=FlowstatusEnum)
-FlowstatusEnum_ENABLED-DOWNLINK = EnumerationLiteral(name="ENABLED-DOWNLINK", owner=FlowstatusEnum)
-FlowstatusEnum_ENABLED-UPLINK = EnumerationLiteral(name="ENABLED-UPLINK", owner=FlowstatusEnum)
+FlowstatusEnum_ENABLED_DOWNLINK = EnumerationLiteral(name="ENABLED_DOWNLINK", owner=FlowstatusEnum)
+FlowstatusEnum_ENABLED_UPLINK = EnumerationLiteral(name="ENABLED_UPLINK", owner=FlowstatusEnum)
 FlowstatusEnum_REMOVED = EnumerationLiteral(name="REMOVED", owner=FlowstatusEnum)
-FlowstatusEnum.literals = {FlowstatusEnum_DISABLED, FlowstatusEnum_ENABLED, FlowstatusEnum_ENABLED-DOWNLINK, FlowstatusEnum_ENABLED-UPLINK, FlowstatusEnum_REMOVED}
+FlowstatusEnum.literals = {FlowstatusEnum_DISABLED, FlowstatusEnum_ENABLED, FlowstatusEnum_ENABLED_DOWNLINK, FlowstatusEnum_ENABLED_UPLINK, FlowstatusEnum_REMOVED}
 FlowstatusEnum.synonyms = ["It represents whether the service data flow(s) are enabled or disabled."]
 
 MulaccctrlEnum = Enumeration(name="MulaccctrlEnum")
@@ -87,7 +87,7 @@ RattypeEnum = Enumeration(name="RattypeEnum")
 RattypeEnum_EUTRA = EnumerationLiteral(name="EUTRA", owner=RattypeEnum)
 RattypeEnum_EUTRA_U = EnumerationLiteral(name="EUTRA_U", owner=RattypeEnum)
 RattypeEnum_GERA = EnumerationLiteral(name="GERA", owner=RattypeEnum)
-RattypeEnum_LTE-M = EnumerationLiteral(name="LTE-M", owner=RattypeEnum)
+RattypeEnum_LTE_M = EnumerationLiteral(name="LTE_M", owner=RattypeEnum)
 RattypeEnum_NBIOT = EnumerationLiteral(name="NBIOT", owner=RattypeEnum)
 RattypeEnum_NR = EnumerationLiteral(name="NR", owner=RattypeEnum)
 RattypeEnum_NR_U = EnumerationLiteral(name="NR_U", owner=RattypeEnum)
@@ -99,7 +99,7 @@ RattypeEnum_WIRELINE = EnumerationLiteral(name="WIRELINE", owner=RattypeEnum)
 RattypeEnum_WIRELINE_BBF = EnumerationLiteral(name="WIRELINE_BBF", owner=RattypeEnum)
 RattypeEnum_WIRELINE_CABLE = EnumerationLiteral(name="WIRELINE_CABLE", owner=RattypeEnum)
 RattypeEnum_WLAN = EnumerationLiteral(name="WLAN", owner=RattypeEnum)
-RattypeEnum.literals = {RattypeEnum_EUTRA, RattypeEnum_EUTRA_U, RattypeEnum_GERA, RattypeEnum_LTE-M, RattypeEnum_NBIOT, RattypeEnum_NR, RattypeEnum_NR_U, RattypeEnum_TRUSTED_N3GA, RattypeEnum_TRUSTED_WLAN, RattypeEnum_UTRA, RattypeEnum_VIRTUAL, RattypeEnum_WIRELINE, RattypeEnum_WIRELINE_BBF, RattypeEnum_WIRELINE_CABLE, RattypeEnum_WLAN}
+RattypeEnum.literals = {RattypeEnum_EUTRA, RattypeEnum_EUTRA_U, RattypeEnum_GERA, RattypeEnum_LTE_M, RattypeEnum_NBIOT, RattypeEnum_NR, RattypeEnum_NR_U, RattypeEnum_TRUSTED_N3GA, RattypeEnum_TRUSTED_WLAN, RattypeEnum_UTRA, RattypeEnum_VIRTUAL, RattypeEnum_WIRELINE, RattypeEnum_WIRELINE_BBF, RattypeEnum_WIRELINE_CABLE, RattypeEnum_WLAN}
 RattypeEnum.synonyms = ["It provides the condition of RAT type of the UE when the session AMBR shall be enforced."]
 
 RedirectaddresstypeEnum = Enumeration(name="RedirectaddresstypeEnum")
@@ -143,9 +143,9 @@ ConditionData = Class(name="ConditionData", synonyms=["It specifies the specifie
 
 # ConditionData class attributes and methods
 ConditionData_accessType: Property = Property(name="accessType", type=AccesstypeEnum, synonyms=["It provides the condition of access type of the UE when the session AMBR shall be enforced."])
-ConditionData_activationTime: Property = Property(name="activationTime", type=DataType('date_and_time'), synonyms=["It indicates the time (in date-time format) when the decision data shall be activated."])
+ConditionData_activationTime: Property = Property(name="activationTime", type=DataType('date_and_time'), synonyms=["It indicates the time (in date_time format) when the decision data shall be activated."])
 ConditionData_condId: Property = Property(name="condId", type=StringType, synonyms=["It uniquely identifies the condition data."])
-ConditionData_deactivationTime: Property = Property(name="deactivationTime", type=DataType('date_and_time'), synonyms=["It indicates the time (in date-time format) when the decision data shall be deactivated."])
+ConditionData_deactivationTime: Property = Property(name="deactivationTime", type=DataType('date_and_time'), synonyms=["It indicates the time (in date_time format) when the decision data shall be deactivated."])
 ConditionData_ratType: Property = Property(name="ratType", type=RattypeEnum, synonyms=["It provides the condition of RAT type of the UE when the session AMBR shall be enforced."])
 ConditionData.attributes={ConditionData_accessType, ConditionData_activationTime, ConditionData_condId, ConditionData_deactivationTime, ConditionData_ratType}
 
@@ -154,11 +154,11 @@ EthFlowDescription = Class(name="EthFlowDescription", synonyms=["It describes an
 # EthFlowDescription class attributes and methods
 EthFlowDescription_destMacAddr: Property = Property(name="destMacAddr", type=StringType, synonyms=["It specifies the destination MAC address formatted in the hexadecimal ."])
 EthFlowDescription_destMacAddrEnd: Property = Property(name="destMacAddrEnd", type=StringType, synonyms=["It specifies the destination MAC address end. If this attribute is present, the destMacAddr attribute specifies the destination MAC address start."])
-EthFlowDescription_ethType: Property = Property(name="ethType", type=StringType, synonyms=["A two-octet string that represents the Ethertype."])
+EthFlowDescription_ethType: Property = Property(name="ethType", type=StringType, synonyms=["A two_octet string that represents the Ethertype."])
 EthFlowDescription_fDesc: Property = Property(name="fDesc", type=StringType, synonyms=["It contains the flow description for the Uplink or Downlink IP flow. It shall be present when the ethtype is IP."])
 EthFlowDescription_fDir: Property = Property(name="fDir", type=FdirEnum, synonyms=["It indicates the packet filter direction."])
 EthFlowDescription_sourceMacAddr: Property = Property(name="sourceMacAddr", type=StringType, synonyms=["It specifies the source MAC address formatted in the hexadecimal notation."])
-EthFlowDescription_srcMacAddrEnd: Property = Property(name="srcMacAddrEnd", type=StringType, synonyms=["It specifies the source MAC address end. If this attribute is present, the sourceMacAddr attribute specifies the source MAC address start. E.g. srcMacAddrEnd with value 00-10-A4-23-3E-FE and sourceMacAddr with value 00-10-A4-23-3E-02 means all MAC addresses from 00-10-A4-23-3E-02 up to and including 00-10-A4-23-3E-FE."])
+EthFlowDescription_srcMacAddrEnd: Property = Property(name="srcMacAddrEnd", type=StringType, synonyms=["It specifies the source MAC address end. If this attribute is present, the sourceMacAddr attribute specifies the source MAC address start. E.g. srcMacAddrEnd with value 00_10_A4_23_3E_FE and sourceMacAddr with value 00_10_A4_23_3E_02 means all MAC addresses from 00_10_A4_23_3E_02 up to and including 00_10_A4_23_3E_FE."])
 EthFlowDescription.attributes={EthFlowDescription_destMacAddr, EthFlowDescription_destMacAddrEnd, EthFlowDescription_ethType, EthFlowDescription_fDesc, EthFlowDescription_fDir, EthFlowDescription_sourceMacAddr, EthFlowDescription_srcMacAddrEnd}
 
 FlowInformation = Class(name="FlowInformation", synonyms=["It specifies the flow information of a PCC rule."])
@@ -170,7 +170,7 @@ FlowInformation_flowLabel: Property = Property(name="flowLabel", type=StringType
 FlowInformation_packFiltId: Property = Property(name="packFiltId", type=StringType, synonyms=["It is the identifier of the packet filter."])
 FlowInformation_packetFilterUsage: Property = Property(name="packetFilterUsage", type=BooleanType, synonyms=["It indicates if the packet shall be sent to the UE."])
 FlowInformation_spi: Property = Property(name="spi", type=StringType, synonyms=["It is the security parameter index of the IPSec packet."])
-FlowInformation_tosTrafficClass: Property = Property(name="tosTrafficClass", type=StringType, synonyms=["It contains the Ipv4 Type-of-Service and mask field or the Ipv6 Traffic-Class field and mask field."])
+FlowInformation_tosTrafficClass: Property = Property(name="tosTrafficClass", type=StringType, synonyms=["It contains the Ipv4 Type_of_Service and mask field or the Ipv6 Traffic_Class field and mask field."])
 FlowInformation.attributes={FlowInformation_flowDescription, FlowInformation_flowDirection, FlowInformation_flowLabel, FlowInformation_packFiltId, FlowInformation_packetFilterUsage, FlowInformation_spi, FlowInformation_tosTrafficClass}
 
 PccRule = Class(name="PccRule", synonyms=["It specifies the PCC rule, see TS 29.512"])
@@ -201,7 +201,7 @@ PredefinedPccRuleSetSubtree.attributes={PredefinedPccRuleSetSubtree_PredefinedPc
 QosDataInformation = Class(name="QosDataInformation", synonyms=["It specifies the QoS control policy data for a service flow of a PCC rule."])
 
 # QosDataInformation class attributes and methods
-QosDataInformation_extMaxDataBurstVol: Property = Property(name="extMaxDataBurstVol", type=IntegerType, synonyms=["It denotes the largest amount of data that is required to be transferred within a period of 5G-AN PDB, see TS 29.512"])
+QosDataInformation_extMaxDataBurstVol: Property = Property(name="extMaxDataBurstVol", type=IntegerType, synonyms=["It denotes the largest amount of data that is required to be transferred within a period of 5G_AN PDB, see TS 29.512"])
 QosDataInformation_fiveQIValue: Property = Property(name="fiveQIValue", type=IntegerType, synonyms=["It indicates the 5QI value."])
 QosDataInformation_gbrDl: Property = Property(name="gbrDl", type=StringType, synonyms=["It represents the guaranteed downlink bandwidth."])
 QosDataInformation_gbrUl: Property = Property(name="gbrUl", type=StringType, synonyms=["It represents the guaranteed uplink bandwidth."])
@@ -210,8 +210,8 @@ QosDataInformation_maxPacketLossRateUl: Property = Property(name="maxPacketLossR
 QosDataInformation_maxbrDl: Property = Property(name="maxbrDl", type=StringType, synonyms=["It represents the maximum downlink bandwidth."])
 QosDataInformation_maxbrUl: Property = Property(name="maxbrUl", type=StringType, synonyms=["It represents the maximum uplink bandwidth."])
 QosDataInformation_qosId: Property = Property(name="qosId", type=StringType, synonyms=["It identifies the QoS control policy data for a PCC rule."])
-QosDataInformation_qosNotificationControl: Property = Property(name="qosNotificationControl", type=BooleanType, synonyms=["It indicates whether notifications are requested from 3GPP NG-RAN when the GFBR can no longer (or again) be guaranteed for a QoS Flow during the lifetime of the QoS Flow."])
-QosDataInformation_reflectiveQos: Property = Property(name="reflectiveQos", type=BooleanType, synonyms=["Indicates whether the QoS information is reflective for the corresponding non-GBR service data flow"])
+QosDataInformation_qosNotificationControl: Property = Property(name="qosNotificationControl", type=BooleanType, synonyms=["It indicates whether notifications are requested from 3GPP NG_RAN when the GFBR can no longer (or again) be guaranteed for a QoS Flow during the lifetime of the QoS Flow."])
+QosDataInformation_reflectiveQos: Property = Property(name="reflectiveQos", type=BooleanType, synonyms=["Indicates whether the QoS information is reflective for the corresponding non_GBR service data flow"])
 QosDataInformation_sharingKeyDl: Property = Property(name="sharingKeyDl", type=StringType, synonyms=["It indicates, by containing the same value, what PCC rules may share resource in downlink direction."])
 QosDataInformation_sharingKeyUl: Property = Property(name="sharingKeyUl", type=StringType, synonyms=["It indicates, by containing the same value, what PCC rules may share resource in uplink direction."])
 QosDataInformation.attributes={QosDataInformation_extMaxDataBurstVol, QosDataInformation_fiveQIValue, QosDataInformation_gbrDl, QosDataInformation_gbrUl, QosDataInformation_maxPacketLossRateDl, QosDataInformation_maxPacketLossRateUl, QosDataInformation_maxbrDl, QosDataInformation_maxbrUl, QosDataInformation_qosId, QosDataInformation_qosNotificationControl, QosDataInformation_reflectiveQos, QosDataInformation_sharingKeyDl, QosDataInformation_sharingKeyUl}
@@ -257,14 +257,14 @@ TrafficControlDataInformation_mulAccCtrl: Property = Property(name="mulAccCtrl",
 TrafficControlDataInformation_muteNotif: Property = Property(name="muteNotif", type=BooleanType, synonyms=["It indicates whether applicat'on's start or stop notification is to be muted."])
 TrafficControlDataInformation_steerFun: Property = Property(name="steerFun", type=SteerfunEnum, synonyms=["It indicates the applicable traffic steering functionality."])
 TrafficControlDataInformation_tcId: Property = Property(name="tcId", type=StringType, synonyms=["It univocally identifies the traffic control policy data within a PDU session."])
-TrafficControlDataInformation_trafficSteeringPolIdDl: Property = Property(name="trafficSteeringPolIdDl", type=StringType, synonyms=["It references to a pre-configured traffic steering policy for downlink traffic at the SMF, see TS 29.512"])
-TrafficControlDataInformation_trafficSteeringPolIdUl: Property = Property(name="trafficSteeringPolIdUl", type=StringType, synonyms=["It references to a pre-configured traffic steering policy for uplink traffic at the SMF, see TS 29.512"])
+TrafficControlDataInformation_trafficSteeringPolIdDl: Property = Property(name="trafficSteeringPolIdDl", type=StringType, synonyms=["It references to a pre_configured traffic steering policy for downlink traffic at the SMF, see TS 29.512"])
+TrafficControlDataInformation_trafficSteeringPolIdUl: Property = Property(name="trafficSteeringPolIdUl", type=StringType, synonyms=["It references to a pre_configured traffic steering policy for uplink traffic at the SMF, see TS 29.512"])
 TrafficControlDataInformation.attributes={TrafficControlDataInformation_flowStatus, TrafficControlDataInformation_mulAccCtrl, TrafficControlDataInformation_muteNotif, TrafficControlDataInformation_steerFun, TrafficControlDataInformation_tcId, TrafficControlDataInformation_trafficSteeringPolIdDl, TrafficControlDataInformation_trafficSteeringPolIdUl}
 
-TscaiInputContainer = Class(name="TscaiInputContainer", synonyms=["It specifies the transports TSCAI input parameters for TSC traffic at the ingress interface of the DS-TT/UE for a PCC rule."])
+TscaiInputContainer = Class(name="TscaiInputContainer", synonyms=["It specifies the transports TSCAI input parameters for TSC traffic at the ingress interface of the DS_TT/UE for a PCC rule."])
 
 # TscaiInputContainer class attributes and methods
-TscaiInputContainer_burstArrivalTime: Property = Property(name="burstArrivalTime", type=DataType('date_and_time'), synonyms=["It Indicates the arrival time (in date-time format) of the data burst in reference to the TSN GM."])
+TscaiInputContainer_burstArrivalTime: Property = Property(name="burstArrivalTime", type=DataType('date_and_time'), synonyms=["It Indicates the arrival time (in date_time format) of the data burst in reference to the TSN GM."])
 TscaiInputContainer_periodicity: Property = Property(name="periodicity", type=IntegerType, synonyms=["It identifies the time period between the start of two bursts in reference to the TSN GM."])
 TscaiInputContainer.attributes={TscaiInputContainer_burstArrivalTime, TscaiInputContainer_periodicity}
 
@@ -279,7 +279,7 @@ UpPathChgEvent.attributes={UpPathChgEvent_afAckInd, UpPathChgEvent_dnaiChgType, 
 
 # Domain Model with References
 domain_model = DomainModel(
-    name="_3gpp-5gc-nrm-predefinedpccruleset",
+    name="_3gpp_5gc_nrm_predefinedpccruleset",
     types={ARP, AccesstypeEnum, ActiveEnum, AfsigprotocolEnum, ConditionData, DnaichgtypeEnum, EthFlowDescription, FdirEnum, FlowInformation, FlowdirectionEnum, FlowstatusEnum, MulaccctrlEnum, PccRule, PredefinedPccRuleSet, PredefinedPccRuleSetSubtree, PreemptcapEnum, PreemptvulnEnum, PrioaccEnum, QosDataInformation, RattypeEnum, RedirectInformaton, RedirectaddresstypeEnum, RouteInformation, RouteToLocation, StandbyEnum, SteerfunEnum, SteeringMode, SteermodevalueEnum, TrafficControlDataInformation, TscaiInputContainer, UpPathChgEvent},
     associations={},
     generalizations={}

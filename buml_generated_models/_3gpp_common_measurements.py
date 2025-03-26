@@ -28,10 +28,10 @@ MeasurementSubtree.attributes={MeasurementSubtree_PerfMetricJob, MeasurementSubt
 PerfMetricJob = Class(name="PerfMetricJob", synonyms=["Represents the attributtes of the IOC PerfMetricJob"])
 
 # PerfMetricJob class attributes and methods
-PerfMetricJob_administrativeState: Property = Property(name="administrativeState", type=AdministrativeState, synonyms=["Enable or disables production of the metrics"])
+PerfMetricJob_administrativeState: Property = Property(name="administrativeState", type=DataType("AdministrativeState"), synonyms=["Enable or disables production of the metrics"])
 PerfMetricJob_granularityPeriod: Property = Property(name="granularityPeriod", type=IntegerType, synonyms=["Granularity period used to produce measurements. The value must be one of the supported granularity periods for the metric."])
 PerfMetricJob_jobId: Property = Property(name="jobId", type=StringType, synonyms=["Id for a PerfMetricJob job."])
-PerfMetricJob_operationalState: Property = Property(name="operationalState", type=OperationalState, synonyms=["Indicates whether the PerfMetricJob is working."])
+PerfMetricJob_operationalState: Property = Property(name="operationalState", type=DataType("OperationalState"), synonyms=["Indicates whether the PerfMetricJob is working."])
 PerfMetricJob.attributes={PerfMetricJob_administrativeState, PerfMetricJob_granularityPeriod, PerfMetricJob_jobId, PerfMetricJob_operationalState}
 
 SupportedPerfMetricGroup = Class(name="SupportedPerfMetricGroup")
@@ -52,9 +52,9 @@ ThresholdInfo.attributes={ThresholdInfo_hysteresis, ThresholdInfo_thresholdDirec
 ThresholdMonitor = Class(name="ThresholdMonitor", synonyms=["A threshold monitor that is created by the consumer for the monitored entities whose measurements are required by consumer to monitor."])
 
 # ThresholdMonitor class attributes and methods
-ThresholdMonitor_administrativeState: Property = Property(name="administrativeState", type=AdministrativeState, synonyms=["Enables or disables the ThresholdMonitor."])
+ThresholdMonitor_administrativeState: Property = Property(name="administrativeState", type=DataType("AdministrativeState"), synonyms=["Enables or disables the ThresholdMonitor."])
 ThresholdMonitor_monitorGranularityPeriod: Property = Property(name="monitorGranularityPeriod", type=IntegerType, synonyms=["Granularity period used to monitor measurements for threshold crossings."])
-ThresholdMonitor_operationalState: Property = Property(name="operationalState", type=OperationalState, synonyms=["Indicates whether the ThresholdMonitor is working."])
+ThresholdMonitor_operationalState: Property = Property(name="operationalState", type=DataType("OperationalState"), synonyms=["Indicates whether the ThresholdMonitor is working."])
 ThresholdMonitor_thresholdInfoList: Property = Property(name="thresholdInfoList", type=list, multiplicity=Multiplicity(1, "*"))
 ThresholdMonitor.attributes={ThresholdMonitor_administrativeState, ThresholdMonitor_monitorGranularityPeriod, ThresholdMonitor_operationalState, ThresholdMonitor_thresholdInfoList}
 

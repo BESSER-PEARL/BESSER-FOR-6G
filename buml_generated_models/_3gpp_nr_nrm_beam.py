@@ -11,8 +11,8 @@ from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 
 # Enumerations
 BeamType = Enumeration(name="BeamType")
-BeamType_SSB-BEAM = EnumerationLiteral(name="SSB-BEAM", owner=BeamType)
-BeamType.literals = {BeamType_SSB-BEAM}
+BeamType_SSB_BEAM = EnumerationLiteral(name="SSB-BEAM", owner=BeamType)
+BeamType.literals = {BeamType_SSB_BEAM}
 
 # Classes
 Beam = Class(name="Beam", synonyms=["Represents the Beam IOC."])

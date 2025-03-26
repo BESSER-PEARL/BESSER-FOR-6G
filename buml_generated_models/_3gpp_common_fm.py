@@ -8,7 +8,7 @@ from besser.BUML.metamodel.structural import (
 
 # Import referenced models
 from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
-from buml_generated_models.ietf_yang_types import domain_model as yang_model
+# from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
 AckstateEnum = Enumeration(name="AckstateEnum")
@@ -50,11 +50,11 @@ severity_level.synonyms = ["The possible alarm serverities. 	Aligned with ERICSS
 AlarmList = Class(name="AlarmList", synonyms=["Represents the AlarmList IOC."])
 
 # AlarmList class attributes and methods
-AlarmList_administrativeState: Property = Property(name="administrativeState", type=AdministrativeState, synonyms=["When set to UNLOCKED, the alarm list is updated. When the set to LOCKED, the existing alarm records are not updated, and new alarm records are not added to the alarm list."])
+AlarmList_administrativeState: Property = Property(name="administrativeState", type=DataType("AdministrativeState"), synonyms=["When set to UNLOCKED, the alarm list is updated. When the set to LOCKED, the existing alarm records are not updated, and new alarm records are not added to the alarm list."])
 AlarmList_alarmRecords: Property = Property(name="alarmRecords", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["List of alarmRecords"])
 AlarmList_lastModification: Property = Property(name="lastModification", type=DataType('date_and_time'), synonyms=["The last time when an alarm record was modified"])
 AlarmList_numOfAlarmRecords: Property = Property(name="numOfAlarmRecords", type=IntegerType, synonyms=["The number of alarm records in the AlarmList"])
-AlarmList_operationalState: Property = Property(name="operationalState", type=OperationalState, synonyms=["The producer sets this attribute to ENABLED, indicating that it has the resource and ability to record alarm in AlarmList else, it sets the attribute to DISABLED."])
+AlarmList_operationalState: Property = Property(name="operationalState", type=DataType("OperationalState"), synonyms=["The producer sets this attribute to ENABLED, indicating that it has the resource and ability to record alarm in AlarmList else, it sets the attribute to DISABLED."])
 AlarmList.attributes={AlarmList_administrativeState, AlarmList_alarmRecords, AlarmList_lastModification, AlarmList_numOfAlarmRecords, AlarmList_operationalState}
 
 AlarmRecord = Class(name="AlarmRecord", synonyms=["Contains alarm information of an alarmed object instance. A new record is created in the alarm list when an alarmed object instance generates an alarm and no alarm record exists with the same values for objectInstance, alarmType, probableCause and specificProblem. When a new record is created the MnS producer creates an alarmId, that unambiguously identifies an alarm record in the AlarmList. Alarm records are maintained only for active alarms. Inactive alarms are automatically deleted by the MnS producer from the AlarmList. Active alarms are alarms whose a)	perceivedSeverity is not CLEARED, or whose b)	perceivedSeverity is CLEARED and its ackState is not ACKNOWLEDED."])

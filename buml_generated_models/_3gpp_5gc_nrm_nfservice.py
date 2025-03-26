@@ -10,7 +10,7 @@ from besser.BUML.metamodel.structural import (
 from buml_generated_models.ietf_inet_types import domain_model as inet_model
 from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 from buml_generated_models._3gpp_5g_common_yang_types import domain_model as types5g3gpp_model
-from buml_generated_models.ietf_yang_types import domain_model as yang_model
+# from buml_generated_models.ietf_yang_types import domain_model as yang_model
 
 # Enumerations
 NFServiceStatus = Enumeration(name="NFServiceStatus")
@@ -38,13 +38,13 @@ ServiceName_NNSSF_NSSAIAVAILABILITY = EnumerationLiteral(name="NNSSF_NSSAIAVAILA
 ServiceName_NNSSF_NSSELECTION = EnumerationLiteral(name="NNSSF_NSSELECTION", owner=ServiceName)
 ServiceName_NNWDAF_ANALYTICSINFO = EnumerationLiteral(name="NNWDAF_ANALYTICSINFO", owner=ServiceName)
 ServiceName_NNWDAF_EVENTSSUBSCRIPTION = EnumerationLiteral(name="NNWDAF_EVENTSSUBSCRIPTION", owner=ServiceName)
-ServiceName_NPCF_AM-POLICY-CONTROL = EnumerationLiteral(name="NPCF_AM-POLICY-CONTROL", owner=ServiceName)
+ServiceName_NPCF_AM_POLICY_CONTROL = EnumerationLiteral(name="NPCF_AM-POLICY-CONTROL", owner=ServiceName)
 ServiceName_NPCF_BDTPOLICYCONTROL = EnumerationLiteral(name="NPCF_BDTPOLICYCONTROL", owner=ServiceName)
 ServiceName_NPCF_EVENTEXPOSURE = EnumerationLiteral(name="NPCF_EVENTEXPOSURE", owner=ServiceName)
 ServiceName_NPCF_POLICYAUTHORIZATION = EnumerationLiteral(name="NPCF_POLICYAUTHORIZATION", owner=ServiceName)
 ServiceName_NPCF_SMPOLICYCONTROL = EnumerationLiteral(name="NPCF_SMPOLICYCONTROL", owner=ServiceName)
 ServiceName_NPCF_UE_POLICY_CONTROL = EnumerationLiteral(name="NPCF_UE_POLICY_CONTROL", owner=ServiceName)
-ServiceName_NSMF_EVENT-EXPOSURE = EnumerationLiteral(name="NSMF_EVENT-EXPOSURE", owner=ServiceName)
+ServiceName_NSMF_EVENT_EXPOSURE = EnumerationLiteral(name="NSMF_EVENT-EXPOSURE", owner=ServiceName)
 ServiceName_NSMF_PDUSESSION = EnumerationLiteral(name="NSMF_PDUSESSION", owner=ServiceName)
 ServiceName_NSMSF_SMS = EnumerationLiteral(name="NSMSF_SMS", owner=ServiceName)
 ServiceName_NUDM_EE = EnumerationLiteral(name="NUDM_EE", owner=ServiceName)
@@ -53,7 +53,7 @@ ServiceName_NUDM_SDM = EnumerationLiteral(name="NUDM_SDM", owner=ServiceName)
 ServiceName_NUDM_UEAU = EnumerationLiteral(name="NUDM_UEAU", owner=ServiceName)
 ServiceName_NUDM_UECM = EnumerationLiteral(name="NUDM_UECM", owner=ServiceName)
 ServiceName_NUDR_DR = EnumerationLiteral(name="NUDR_DR", owner=ServiceName)
-ServiceName.literals = {ServiceName_N5G_EIR_EIC, ServiceName_NAMF_COMM, ServiceName_NAMF_EVTS, ServiceName_NAMF_LOC, ServiceName_NAMF_MT, ServiceName_NAUSF_AUTH, ServiceName_NAUSF_SORPROTECTION, ServiceName_NBSF_MANAGEMENT, ServiceName_NCHF_CONVERGEDCHARGING, ServiceName_NCHF_SPENDINGLIMITCONTROL, ServiceName_NLMF_LOC, ServiceName_NNEF_PFDMANAGEMENT, ServiceName_NNRF_DISC, ServiceName_NNRF_NFM, ServiceName_NNSSF_NSSAIAVAILABILITY, ServiceName_NNSSF_NSSELECTION, ServiceName_NNWDAF_ANALYTICSINFO, ServiceName_NNWDAF_EVENTSSUBSCRIPTION, ServiceName_NPCF_AM-POLICY-CONTROL, ServiceName_NPCF_BDTPOLICYCONTROL, ServiceName_NPCF_EVENTEXPOSURE, ServiceName_NPCF_POLICYAUTHORIZATION, ServiceName_NPCF_SMPOLICYCONTROL, ServiceName_NPCF_UE_POLICY_CONTROL, ServiceName_NSMF_EVENT-EXPOSURE, ServiceName_NSMF_PDUSESSION, ServiceName_NSMSF_SMS, ServiceName_NUDM_EE, ServiceName_NUDM_PP, ServiceName_NUDM_SDM, ServiceName_NUDM_UEAU, ServiceName_NUDM_UECM, ServiceName_NUDR_DR}
+ServiceName.literals = {ServiceName_N5G_EIR_EIC, ServiceName_NAMF_COMM, ServiceName_NAMF_EVTS, ServiceName_NAMF_LOC, ServiceName_NAMF_MT, ServiceName_NAUSF_AUTH, ServiceName_NAUSF_SORPROTECTION, ServiceName_NBSF_MANAGEMENT, ServiceName_NCHF_CONVERGEDCHARGING, ServiceName_NCHF_SPENDINGLIMITCONTROL, ServiceName_NLMF_LOC, ServiceName_NNEF_PFDMANAGEMENT, ServiceName_NNRF_DISC, ServiceName_NNRF_NFM, ServiceName_NNSSF_NSSAIAVAILABILITY, ServiceName_NNSSF_NSSELECTION, ServiceName_NNWDAF_ANALYTICSINFO, ServiceName_NNWDAF_EVENTSSUBSCRIPTION, ServiceName_NPCF_AM_POLICY_CONTROL, ServiceName_NPCF_BDTPOLICYCONTROL, ServiceName_NPCF_EVENTEXPOSURE, ServiceName_NPCF_POLICYAUTHORIZATION, ServiceName_NPCF_SMPOLICYCONTROL, ServiceName_NPCF_UE_POLICY_CONTROL, ServiceName_NSMF_EVENT_EXPOSURE, ServiceName_NSMF_PDUSESSION, ServiceName_NSMSF_SMS, ServiceName_NUDM_EE, ServiceName_NUDM_PP, ServiceName_NUDM_SDM, ServiceName_NUDM_UEAU, ServiceName_NUDM_UECM, ServiceName_NUDR_DR}
 
 TransportProtocol = Enumeration(name="TransportProtocol")
 TransportProtocol_STCP = EnumerationLiteral(name="STCP", owner=TransportProtocol)
