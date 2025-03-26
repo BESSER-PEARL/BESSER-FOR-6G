@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "SEPPFunction": {
+                "description": "5G Core SEPP Function",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "SEPPType": {
+                "enum": [
+                        "CSEPP",
+                        "PSEPP"
+                ],
+                "type": "string"
+        },
+        "fqdn": {
+                "description": "The domain name of the SEPP.",
+                "type": "string"
+        },
+        "sEPPId": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "sEPPType": {
+                "description": "Property",
+                "enum": [
+                        "CSEPP",
+                        "PSEPP"
+                ],
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

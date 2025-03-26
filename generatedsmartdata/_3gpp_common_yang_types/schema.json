@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "AdministrativeState": {
+                "enum": [
+                        "SHUTTINGDOWN",
+                        "LOCKED",
+                        "UNLOCKED"
+                ],
+                "type": "string"
+        },
+        "AvailabilityStatus": {
+                "enum": [
+                        "DEGRADED",
+                        "NOT_INSTALLED",
+                        "OFF_DUTY",
+                        "DEPENDENCY",
+                        "OFF_LINE",
+                        "FAILED",
+                        "POWER_OFF",
+                        "IN_TEST",
+                        "LOG_FULL"
+                ],
+                "type": "string"
+        },
+        "CellState": {
+                "enum": [
+                        "IDLE",
+                        "ACTIVE",
+                        "INACTIVE"
+                ],
+                "type": "string"
+        },
+        "N1MessageClass": {
+                "enum": [
+                        "LPP",
+                        "5GMM",
+                        "SMS",
+                        "SM"
+                ],
+                "type": "string"
+        },
+        "N2InformationClass": {
+                "enum": [
+                        "PWS_BCAL",
+                        "PWS_RF",
+                        "SM",
+                        "NRPPA",
+                        "PWS"
+                ],
+                "type": "string"
+        },
+        "NfType": {
+                "enum": [
+                        "UDM",
+                        "UDR",
+                        "UDSF",
+                        "UPF",
+                        "5G_EIR",
+                        "AF",
+                        "AMF",
+                        "AUSF",
+                        "BSF",
+                        "CHF",
+                        "GMLC",
+                        "LMF",
+                        "N3IWF",
+                        "NEF",
+                        "NRF",
+                        "NSSF",
+                        "PCF",
+                        "SEPP",
+                        "SMF",
+                        "SMSF"
+                ],
+                "type": "string"
+        },
+        "NotificationType": {
+                "enum": [
+                        "N2_INFORMATION",
+                        "N1_MESSAGES",
+                        "LOCATION_NOTIFICATION"
+                ],
+                "type": "string"
+        },
+        "OperationalState": {
+                "enum": [
+                        "ENABLED",
+                        "DISABLED"
+                ],
+                "type": "string"
+        },
+        "ResourceSharingLevel": {
+                "enum": [
+                        "NOT_SHARED",
+                        "SHARED"
+                ],
+                "type": "string"
+        },
+        "TxDirection": {
+                "enum": [
+                        "DL_AND_UL",
+                        "DL",
+                        "UL"
+                ],
+                "type": "string"
+        },
+        "UeMobilityLevel": {
+                "enum": [
+                        "NOMADIC",
+                        "FULLY_MOBILITY",
+                        "STATIONARY",
+                        "RESTRICTED_MOBILITY"
+                ],
+                "type": "string"
+        },
+        "amfPointer": {
+                "description": "Property",
+                "type": "string"
+        },
+        "amfRegionId": {
+                "description": "Property",
+                "type": "string"
+        },
+        "amfSetId": {
+                "description": "Property",
+                "type": "string"
+        },
+        "authzInfo": {
+                "description": "This parameter defines NF Specific Service authorization information. It shall include the NF type (s) and NF realms/origins allowed to consume NF Service(s) of NF Service Producer.",
+                "type": "string"
+        },
+        "callbackUri": {
+                "description": "Property",
+                "type": "string"
+        },
+        "capacity": {
+                "description": "This parameter defines static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value.",
+                "type": "integer"
+        },
+        "end": {
+                "description": "Property",
+                "type": "string"
+        },
+        "host": {
+                "description": "Property",
+                "type": "string"
+        },
+        "hostAddr": {
+                "description": "Host address of a NF",
+                "type": "string"
+        },
+        "idx": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "ipAddress": {
+                "description": "Property",
+                "type": "string"
+        },
+        "location": {
+                "description": "Information about the location of the NF instance (e.g. geographic location, data center) defined by operator",
+                "type": "string"
+        },
+        "mcc": {
+                "description": "Property",
+                "type": "string"
+        },
+        "mnc": {
+                "description": "Property",
+                "type": "string"
+        },
+        "n1MessageClass": {
+                "description": "Property",
+                "type": "string"
+        },
+        "n2InformationClass": {
+                "description": "Property",
+                "type": "string"
+        },
+        "nFSrvGroupId": {
+                "description": "This parameter defines identity of the group that is served by the NF instance. May be config false or true depending on the ManagedFunction. Config=true for Udrinfo. Config=false for UdmInfo and AusfInfo. Shall be present if ../nfType = UDM or AUSF or UDR.",
+                "type": "string"
+        },
+        "nfInstanceID": {
+                "description": "This parameter defines profile for managed NF. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122",
+                "type": "string"
+        },
+        "notificationType": {
+                "description": "Property",
+                "type": "string"
+        },
+        "port": {
+                "description": "Property",
+                "type": "string"
+        },
+        "priority": {
+                "description": "This parameter defines Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. Shall be present if ../nfType = AMF",
+                "type": "integer"
+        },
+        "start": {
+                "description": "Property",
+                "type": "string"
+        },
+        "usageState": {
+                "description": "It describes whether or not the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users at that instant. The value is READ-ONLY.",
+                "enum": [
+                        "ACTIVE",
+                        "IDLE",
+                        "BUSY"
+                ],
+                "type": "string"
+        },
+        "vlanId": {
+                "description": "Property",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

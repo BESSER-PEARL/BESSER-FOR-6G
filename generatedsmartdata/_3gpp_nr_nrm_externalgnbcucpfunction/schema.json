@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ExternalGNBCUCPFunction": {
+                "description": "Represents the properties, known by the management function, of a GNBCUCPFunction managed by another management function.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "gNBId": {
+                "description": "Identifies a gNB within a PLMN.",
+                "type": "integer"
+        },
+        "gNBIdLength": {
+                "description": "Indicates the number of bits for encoding the gNB ID.",
+                "type": "integer"
+        },
+        "pLMNId": {
+                "description": "Specifies the PLMN identifier to be used as part of the global RAN node identity.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

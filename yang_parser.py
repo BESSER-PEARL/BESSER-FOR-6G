@@ -122,7 +122,56 @@ class YangParser:
             else:
                 self.parse_augment(augments)
 
+        # Process any groupings that aren't used in augments to ensure they're included
+        # This ensures standalone groupings become classes even if not referenced by augment
+        self.process_unused_groupings(module)
+
         return self.cleanup_grp_classes(self.current_model)
+
+    def process_unused_groupings(self, module: Dict[str, Any]) -> None:
+        """Process groupings that aren't used in augments to ensure they're included in the model."""
+        if 'grouping' not in module:
+            return
+            
+        # Get all groupings
+        groupings = module['grouping']
+        if not isinstance(groupings, list):
+            groupings = [groupings]
+        
+        # Important groupings we want to force-process (with and without 'Grp' suffix)
+        important_patterns = ['DESManagement', 'IntraRatEs', 'InterRatEs', 'EsNotAllowed']
+        
+        # Check if there are any classes that haven't been created yet
+        for grouping in groupings:
+            group_name = grouping.get('@name', '').replace('-', '_')
+            
+            # Force processing of important groupings (including both base and Grp versions)
+            # Check if any of our important patterns is in the group name
+            is_important = any(pattern in group_name for pattern in important_patterns)
+            
+            if is_important or group_name not in self.processed_types:
+                # If it ends with 'Grp', also create the base class
+                if group_name.endswith('Grp'):
+                    base_name = group_name[:-3]  # Remove 'Grp' suffix
+                    
+                    # Create base class if it doesn't exist yet
+                    if base_name not in self.processed_types:
+                        base_class = Class(name=base_name)
+                        
+                        # Add description as a synonym if available
+                        if 'description' in grouping:
+                            desc = grouping.get('description', {}).get('text', '')
+                            if desc:
+                                base_class.synonyms = [desc]
+                                
+                        self.current_model.add_type(base_class)
+                        self.processed_types.add(base_name)
+                        print(f"Created base class {base_name} from {group_name}")
+                
+                # Now create the grouping class if it's not already processed
+                if group_name not in self.processed_types:
+                    self.parse_grouping(grouping)
+                    print(f"Processed grouping {group_name}")
 
     def find_type_in_imported_models(self, type_name: str) -> Any:
         """Find a type in imported models by name"""
@@ -233,27 +282,69 @@ class YangParser:
 
     def parse_augment(self, augment: Dict[str, Any]) -> None:
         """Parse augment section which contains the main class definitions."""
+        # Check if the augment contains a 'uses' statement directly
+        if 'uses' in augment:
+            uses_info = augment['uses']
+            if isinstance(uses_info, dict):
+                group_name = uses_info.get('@name', '')
+                # If the group name refers to one of our defined groupings
+                if group_name and group_name.replace('-', '_') in self.processed_types:
+                    # The class already exists from the grouping, no need to create it again
+                    pass
+                else:
+                    # This is a reference to a grouping we need to create a class for
+                    self.parse_uses_as_class(uses_info)
+        
+        # Also check if there are lists or containers inside the augment
         if 'list' in augment:
-            list_def = augment['list']
-            # Replace hyphens with underscores in class name
-            class_name = list_def['@name'].replace('-', '_')
-            class_desc = list_def.get('description', {}).get('text', '')
-
-            new_class = Class(name=class_name)
+            lists = augment['list']
+            if isinstance(lists, list):
+                for list_def in lists:
+                    self.parse_list(list_def)
+            else:
+                self.parse_list(lists)
+        
+        # Process containers with uses directives
+        if 'container' in augment:
+            containers = augment['container']
+            containers_list = containers if isinstance(containers, list) else [containers]
             
-            # Add description as a synonym if available
-            if class_desc:
-                new_class.synonyms = [class_desc]
-                
-            self.current_class = new_class
-
-            # Parse attributes container if it exists
-            if 'container' in list_def:
-                container = list_def['container']
+            for container in containers_list:
                 if 'uses' in container:
-                    self.parse_uses(container['uses'])
+                    self.parse_uses_as_class(container['uses'])
 
+    def parse_uses_as_class(self, uses: Dict[str, Any]) -> None:
+        """Parse a uses statement and create a class based on the referenced grouping."""
+        if isinstance(uses, dict):
+            group_name = uses.get('@name', '')
+            
+            # Skip if it's not a valid group name
+            if not group_name:
+                return
+                
+            # Skip if this is a generic Top_Grp grouping or similar utility grouping
+            if 'Top_Grp' in group_name:
+                return
+                
+            # Clean up the group name (remove prefix if it exists)
+            if ':' in group_name:
+                _, group_name = group_name.split(':', 1)
+                
+            # Replace hyphens with underscores
+            class_name = group_name.replace('-', '_')
+            
+            # Skip if we've already processed this type
+            if class_name in self.processed_types:
+                return
+                
+            # Create a new class based on the grouping
+            new_class = Class(name=class_name)
+            self.current_class = new_class
             self.current_model.add_type(new_class)
+            self.processed_types.add(class_name)
+            
+            # Note: this only creates the class, attributes would be added 
+            # when we process the actual grouping elsewhere
 
     def parse_leaf(self, leaf: Dict[str, Any]) -> None:
         """Parse a leaf definition and create a property."""

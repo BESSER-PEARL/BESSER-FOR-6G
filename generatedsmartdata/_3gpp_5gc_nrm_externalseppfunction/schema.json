@@ -18,6 +18,10 @@
     },
     {
       "properties": {
+        "ExternalSEPPFunction": {
+                "description": "5G Core SEPP Function",
+                "type": "string"
+        },
         "fqdn": {
                 "description": "The domain name of the SEPP.",
                 "type": "string"

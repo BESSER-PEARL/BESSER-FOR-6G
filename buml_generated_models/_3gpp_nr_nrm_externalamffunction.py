@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -13,7 +13,7 @@ from buml_generated_models._3gpp_common_yang_types import domain_model as types3
 ExternalAMFFunction = Class(name="ExternalAMFFunction", synonyms=["Represents the ExternalAMFFunction IOC."])
 
 # ExternalAMFFunction class attributes and methods
-ExternalAMFFunction_pLMNIdList: Property = Property(name="pLMNIdList", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["List of at most six entries of PLMN Identifiers, but at least one (the primary PLMN Id). The PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."])
+ExternalAMFFunction_pLMNIdList: Property = Property(name="pLMNIdList", type=DataType('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["List of at most six entries of PLMN Identifiers, but at least one (the primary PLMN Id). The PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC)."])
 ExternalAMFFunction.attributes={ExternalAMFFunction_pLMNIdList}
 
 ExternalAMFFunctionWrapper = Class(name="ExternalAMFFunctionWrapper")

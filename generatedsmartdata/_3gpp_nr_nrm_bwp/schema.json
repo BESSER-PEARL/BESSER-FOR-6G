@@ -18,6 +18,13 @@
     },
     {
       "properties": {
+        "BWP": {
+                "description": "Represents a bandwidth part (BWP).",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
         "BwpContext": {
                 "enum": [
                         "UL",
@@ -35,8 +42,8 @@
         },
         "IsInitialBwp": {
                 "enum": [
-                        "OTHER",
-                        "INITIAL"
+                        "INITIAL",
+                        "OTHER"
                 ],
                 "type": "string"
         },

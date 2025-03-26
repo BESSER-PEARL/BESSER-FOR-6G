@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NRCellCU": {
+                "description": "Represents the information required by CU that is responsible for the management of inter-cell mobility and neighbour relations via ANR.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "cellLocalId": {
+                "description": "Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI).",
+                "type": "integer"
+        },
+        "nRFrequencyRef": {
+                "description": "Reference to corresponding NRFrequency instance.",
+                "type": "string"
+        },
+        "pLMNInfoList": {
+                "description": "The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

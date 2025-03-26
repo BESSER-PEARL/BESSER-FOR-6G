@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NRFreqRelation": {
+                "description": "Together with the target NRFrequency, it represents the frequency properties applicable to the referencing NRFreqRelation.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "cellReselectionPriority": {
+                "description": "The absolute priority of the carrier frequency used by the cell reselection procedure. Value 0 means lowest priority. The value must not already used by other RAT, i.e. equal priorities between RATs are not supported. The UE behaviour when no value is entered is specified in subclause 5.2.4.1 of 3GPP TS 38.304.",
+                "type": "integer"
+        },
+        "cellReselectionSubPriority": {
+                "description": "Indicates a fractional value to be added to the value of cellReselectionPriority to obtain the absolute priority of the concerned carrier frequency for E-UTRA and NR.",
+                "type": "integer"
+        },
+        "nRFrequencyRef": {
+                "description": "Reference to a corresponding NRFrequency instance.",
+                "type": "string"
+        },
+        "pMax": {
+                "description": "Used for calculation of the parameter Pcompensation (defined in 3GPP TS 38.304), at cell reselection to a cell.",
+                "type": "integer"
+        },
+        "qOffsetFreq": {
+                "description": "The frequency specific offset applied when evaluating candidates for cell reselection.",
+                "type": "string"
+        },
+        "qQualMin": {
+                "description": "Indicates the minimum required quality level in the cell. Value 0 means that it is not sent and UE applies in such case the (default) value of negative infinity for Qqualmin. Sent in SIB3 or SIB5.",
+                "type": "integer"
+        },
+        "qRxLevMin": {
+                "description": "Indicates the required minimum received Reference Symbol Received Power (RSRP) level in the NR frequency for cell reselection. Broadcast in SIB3 or SIB5, depending on whether the related frequency is intra- or inter-frequency. Resolution is 2.",
+                "type": "integer"
+        },
+        "tReselectionNR": {
+                "description": "Cell reselection timer for NR.",
+                "type": "integer"
+        },
+        "tReselectionNRSfHigh": {
+                "description": "The attribute tReselectionNr (parameter TreselectionNR in 3GPP TS 38.304) is multiplied with this scaling factor if the UE is in high mobility state.",
+                "type": "integer"
+        },
+        "tReselectionNRSfMedium": {
+                "description": "The attribute tReselectionNr (parameter TreselectionNR in 3GPP TS 38.304) multiplied with this scaling factor if the UE is in medium mobility state.",
+                "type": "integer"
+        },
+        "threshXHighP": {
+                "description": "Specifies the Srxlev threshold used by the UE when reselecting towards a higher priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold. Resolution is 2.",
+                "type": "integer"
+        },
+        "threshXHighQ": {
+                "description": "Specifies the Squal threshold used by the UE when reselecting towards a higher priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold.",
+                "type": "integer"
+        },
+        "threshXLowP": {
+                "description": "Specifies the Srxlev threshold used by the UE when reselecting towards a lower priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold. Resolution is 2.",
+                "type": "integer"
+        },
+        "threshXLowQ": {
+                "description": "Specifies the Squal threshold used by the UE when reselecting towards a lower priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold.",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

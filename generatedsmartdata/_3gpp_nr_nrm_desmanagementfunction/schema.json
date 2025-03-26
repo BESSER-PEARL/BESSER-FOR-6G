@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "EnergysavingstateEnum": {
+                "description": "Specifies the status regarding the energy saving in the cell.",
+                "enum": [
+                        "isNotEnergySaving",
+                        "isEnergySaving"
+                ],
+                "type": "string"
+        },
+        "IsprobingcapableEnum": {
+                "description": "This attribute indicates whether this cell is capable of performing the ES probing procedure.",
+                "enum": [
+                        "no",
+                        "yes"
+                ],
+                "type": "string"
+        },
+        "daysOfWeekList": {
+                "description": "This field indicate the list of weekday.",
+                "type": "string"
+        },
+        "desSwitch": {
+                "description": "This attribute determines whether the Distributed SON or Domain-Centralized SON energy saving function is enabled or disabled.",
+                "type": "boolean"
+        },
+        "energySavingState": {
+                "description": "Specifies the status regarding the energy saving in the cell.",
+                "enum": [
+                        "isNotEnergySaving",
+                        "isEnergySaving"
+                ],
+                "type": "string"
+        },
+        "esNotAllowedTimePeriod": {
+                "description": "This attribute indicates a list of time periods during which inter-RAT energy saving is not allowed.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "interRatEsActivationCandidateCellParameters": {
+                "description": "This attribute indicates the traffic load threshold and the time duration, which are used by distributed inter-RAT ES algorithms to allow an original cell to enter the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "interRatEsActivationOriginalCellParameters": {
+                "description": "This attribute indicates the traffic load threshold and the time duration, which are used by distributed inter-RAT ES algorithms to allow an original cell to enter the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "interRatEsDeactivationCandidateCellParameters": {
+                "description": "This attribute indicates the traffic load threshold and the time duration which is used by distributed inter-RAT ES algorithms to allow an original cell to leave the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "intraRatEsActivationCandidateCellsLoadParameters": {
+                "description": "This attribute indicates the traffic load threshold and the time duration, which are used by distributed ES algorithms level to allow a n \u0027original\u0027 cell to enter the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "intraRatEsActivationOriginalCellLoadParameters": {
+                "description": "This attributes is relevant, if the cell acts as an original cell.This attribute indicates the traffic load threshold and the time duration, which are used by distributed ES algorithms to allow a cell to enter the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "intraRatEsDeactivationCandidateCellsLoadParameters": {
+                "description": "This attributes is relevant, if the cell acts as a candidate cell.This attribute indicates the traffic load threshold and the time duration which is used by distributed ES algorithms to allow a cell to leave the energySaving state.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "isProbingCapable": {
+                "description": "This attribute indicates whether this cell is capable of performing the ES probing procedure.",
+                "enum": [
+                        "no",
+                        "yes"
+                ],
+                "type": "string"
+        },
+        "listoftimeperiods": {
+                "description": "This field indicate the list of time periods.",
+                "type": "string"
+        },
+        "loadThreshold": {
+                "description": "The time duration indicates how long the traffic load (both for UL and DL) needs to have been below the threshold.",
+                "type": "integer"
+        },
+        "periodOfDay": {
+                "description": "This field indicate the period of day.",
+                "type": "string"
+        },
+        "startTimeandendTime": {
+                "description": "This field indicate valid UTC time.",
+                "type": "string"
+        },
+        "timeDuration": {
+                "description": "The time duration indicates how long the load needs to have been below the threshold.",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ManagedElement": {
+                "description": "Represents telecommunications equipment or TMN entities within the telecommunications network providing support and/or service to the subscriber. An ManagedElement IOC is used to represent a Network Element defined in TS 32.101 including virtualizeation or non-virtualization scenario. An ManagedElement instance is used for communicating with a manager (directly or indirectly) over one or more management interfaces for the purpose of being monitored and/or controlled. ManagedElement may or may not additionally perform element management functionality. An ManagedElement contains equipment that may or may not be geographically distributed. A telecommunication equipment has software and hardware components. The ManagedElement IOC described above represents following two case: - In the case when the software component is designed to run on dedicated hardware component, the ManagedElement IOC description includes both software and hardware components. - In the case when the software is designed to run on ETSI NFV defined NFVI [15], the ManagedElement IOC description would exclude the NFVI component supporting the above mentioned subject software. A ManagedElement may be contained in either a SubNetwork or in a MeContext instance. A single ManagedElement may also exist stand-alone with no parent at all. The relation of ManagedElement IOC and ManagedFunction IOC can be described as following: - A ManaagedElement instance may have 1..1 containment relationship to a ManagedFunction instance. In this case, the ManagedElement IOC may be used to represent a NE with single functionality. For example, a ManagedElement is used to represent the 3GPP defined RNC node; - A ManagedElement instance may have 1..N containment relationship to multiple ManagedFunction IOC instances. In this case, the ManagedElement IOC may be used to represent a NE with combined ManagedFunction funcationality (as indicated by the managedElementType attribute and the contained instances of different ManagedFunction IOCs).For example, a ManagedElement is used to represent the combined functionality of 3GPP defined gNBCUCPFuntion, gNBCUUPFunction and gNBDUFunction",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "dnPrefix": {
+                "description": "Provides naming context that allows the Managed Elements to be partitioned into logical domains. A Distingushed Name(DN) is defined by 3GPP TS 32.300, which splits the DN into a DN Prefix and Local DN",
+                "type": "string"
+        },
+        "locationName": {
+                "description": "The physical location (e.g. an address) of an entity represented by a (derivative of) ManagedElement_. It may contain no information to support the case where the derivative of ManagedElement_ needs to represent a distributed multi-location NE.",
+                "type": "string"
+        },
+        "priorityLabel": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "swVersion": {
+                "description": "Property",
+                "type": "string"
+        },
+        "userDefinedState": {
+                "description": "An operator defined state for operator specific usage",
+                "type": "string"
+        },
+        "userLabel": {
+                "description": "A user-friendly (and user assignable) name of this object.",
+                "type": "string"
+        },
+        "vendorName": {
+                "description": "Property",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

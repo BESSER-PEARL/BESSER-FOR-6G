@@ -95,7 +95,7 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict, i
         f.write("    Class, Property, DomainModel, Multiplicity,\n")
         f.write("    IntegerType, StringType, BooleanType, FloatType,\n")
         f.write("    TimeType, DateType, DateTimeType, TimeDeltaType,\n")
-        f.write("    PrimitiveDataType, Enumeration, EnumerationLiteral\n")
+        f.write("    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral\n")
         f.write(")\n\n")
         
         # Add imports for referenced models
@@ -165,7 +165,7 @@ def domain_model_to_code(model: DomainModel, file_path: str, prefix_map: dict, i
                         if prefix:
                             # Ensure we're using a valid Python identifier for the type name
                             safe_type_name = sanitize_identifier(type_name)
-                            # type_name = f"{prefix}_model.get_type_by_name('{safe_type_name}')"
+                            # type_name = f"{prefix}_model.get_type_by_name('{safe_type_name}')" #TODO: Implement get_type_by_name
                             type_name = f"DataType('{safe_type_name}')" # Use DataType for now futur references possibles
                         else:
                             type_name = f"'{attr.type}'"  # Fallback to string if not found

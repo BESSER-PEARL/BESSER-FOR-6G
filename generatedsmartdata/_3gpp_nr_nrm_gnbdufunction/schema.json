@@ -18,6 +18,13 @@
     },
     {
       "properties": {
+        "GNBDUFunction": {
+                "description": "Represents the logical function DU of gNB or en-gNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
         "aggressorSetID": {
                 "description": "Indicates the associated aggressor gNB Set ID of the cell Valid when Remote Interference Management function is supported.",
                 "type": "integer"

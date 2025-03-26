@@ -17,7 +17,12 @@
       "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
     {
-      "properties": {}
+      "properties": {
+        "AFFunction": {
+                "description": "5G Core AF Function",
+                "type": "string"
+        }
+}
     }
   ],
   "derivedFrom": "3GPP TS 28.541",

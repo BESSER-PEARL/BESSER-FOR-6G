@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -26,7 +26,7 @@ Configurable5QISet.attributes={Configurable5QISet_configurable5QIs}
 Configurable5QISetSubtree = Class(name="Configurable5QISetSubtree")
 
 # Configurable5QISetSubtree class attributes and methods
-Configurable5QISetSubtree_Configurable5QISet: Property = Property(name="Configurable5QISet", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Specifies the non-standardized 5QIs, including their QoS characteristics, that need to be pre-configured (and configurable) to the 5G NFs, see 3GPP TS 23.501."])
+Configurable5QISetSubtree_Configurable5QISet: Property = Property(name="Configurable5QISet", type=DataType('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Specifies the non-standardized 5QIs, including their QoS characteristics, that need to be pre-configured (and configurable) to the 5G NFs, see 3GPP TS 23.501."])
 Configurable5QISetSubtree.attributes={Configurable5QISetSubtree_Configurable5QISet}
 
 FiveQICharacteristics = Class(name="FiveQICharacteristics")

@@ -3,11 +3,8 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
-
-# Import referenced models
-from buml_generated_models._3gpp_common_yang_types import domain_model as types3gpp_model
 
 # Classes
 EPTransport = Class(name="EPTransport")
@@ -21,10 +18,10 @@ NetworkSliceSubnet = Class(name="NetworkSliceSubnet")
 
 # NetworkSliceSubnet class attributes and methods
 NetworkSliceSubnet_NetworkSliceSubnet: Property = Property(name="NetworkSliceSubnet", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents the properties of a network slice subnet instance in a 5G network."])
-NetworkSliceSubnet_administrativeState: Property = Property(name="administrativeState", type=types3gpp_model.get_type_by_name('AdministrativeState'), synonyms=["The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services."])
+NetworkSliceSubnet_administrativeState: Property = Property(name="administrativeState", type=AdministrativeState, synonyms=["The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services."])
 NetworkSliceSubnet_managedFunctionRef: Property = Property(name="managedFunctionRef", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["The managed functions that the NetworkSliceSubnet is associated with."])
 NetworkSliceSubnet_nsInfo: Property = Property(name="nsInfo", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["This list represents the properties of network service information corresponding to the network slice subnet instance."])
-NetworkSliceSubnet_operationalState: Property = Property(name="operationalState", type=types3gpp_model.get_type_by_name('OperationalState'), synonyms=["The operational state of the network slice instance. It describes whether or not the resource is physically installed and working."])
+NetworkSliceSubnet_operationalState: Property = Property(name="operationalState", type=OperationalState, synonyms=["The operational state of the network slice instance. It describes whether or not the resource is physically installed and working."])
 NetworkSliceSubnet_sliceProfileList: Property = Property(name="sliceProfileList", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["List of SliceProfiles supported by the network slice subnet instance"])
 NetworkSliceSubnet.attributes={NetworkSliceSubnet_NetworkSliceSubnet, NetworkSliceSubnet_administrativeState, NetworkSliceSubnet_managedFunctionRef, NetworkSliceSubnet_nsInfo, NetworkSliceSubnet_operationalState, NetworkSliceSubnet_sliceProfileList}
 

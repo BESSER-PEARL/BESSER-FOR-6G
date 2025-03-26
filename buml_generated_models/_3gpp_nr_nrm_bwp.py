@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Enumerations
@@ -24,16 +24,17 @@ IsInitialBwp_OTHER = EnumerationLiteral(name="OTHER", owner=IsInitialBwp)
 IsInitialBwp.literals = {IsInitialBwp_INITIAL, IsInitialBwp_OTHER}
 
 # Classes
-BWP = Class(name="BWP", synonyms=["Represents a bandwidth part (BWP)."])
+BWP = Class(name="BWP", synonyms=["Represents the BWP IOC."])
 
 # BWP class attributes and methods
+BWP_BWP: Property = Property(name="BWP", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Represents a bandwidth part (BWP)."])
 BWP_bwpContext: Property = Property(name="bwpContext", type=StringType, synonyms=["Identifies whether the object is used for downlink, uplink or supplementary uplink."])
 BWP_cyclicPrefix: Property = Property(name="cyclicPrefix", type=StringType, synonyms=["Cyclic prefix, which may be normal or extended."])
 BWP_isInitialBwp: Property = Property(name="isInitialBwp", type=StringType, synonyms=["Identifies whether the object is used for initial or other BWP."])
 BWP_numberOfRBs: Property = Property(name="numberOfRBs", type=IntegerType, synonyms=["Number of physical resource blocks for a BWP."])
 BWP_startRB: Property = Property(name="startRB", type=IntegerType, synonyms=["Offset in common resource blocks to common resource block 0 for the applicable subcarrier spacing for a BWP."])
 BWP_subCarrierSpacing: Property = Property(name="subCarrierSpacing", type=IntegerType, synonyms=["Subcarrier spacing configuration for a BWP."])
-BWP.attributes={BWP_bwpContext, BWP_cyclicPrefix, BWP_isInitialBwp, BWP_numberOfRBs, BWP_startRB, BWP_subCarrierSpacing}
+BWP.attributes={BWP_BWP, BWP_bwpContext, BWP_cyclicPrefix, BWP_isInitialBwp, BWP_numberOfRBs, BWP_startRB, BWP_subCarrierSpacing}
 
 # Domain Model with References
 domain_model = DomainModel(

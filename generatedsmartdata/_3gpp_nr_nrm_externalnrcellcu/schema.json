@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ExternalNRCellCU": {
+                "description": "Represents the properties of an NRCellCU controlled by another Management Service Provider.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "cellLocalId": {
+                "description": "Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI).",
+                "type": "integer"
+        },
+        "nRFrequencyRef": {
+                "description": "Reference to corresponding NRFrequency instance.",
+                "type": "string"
+        },
+        "nRPCI": {
+                "description": "The Physical Cell Identity (PCI) of the NR cell.",
+                "type": "integer"
+        },
+        "pLMNIdList": {
+                "description": "Defines which PLMNs that are assumed to be served by the NR cell in another gNB CU-CP. This list is either updated by the managed element itself (e.g. due to ANR, signalling over Xn, etc.) or by consumer over the standard interface.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

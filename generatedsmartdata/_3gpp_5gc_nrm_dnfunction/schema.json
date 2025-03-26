@@ -17,7 +17,15 @@
       "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
     },
     {
-      "properties": {}
+      "properties": {
+        "DNFunction": {
+                "description": "5G Core DN Function",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
     }
   ],
   "derivedFrom": "3GPP TS 28.541",

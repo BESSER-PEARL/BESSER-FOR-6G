@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "Configurable5QISet": {
+                "description": "Specifies the non-standardized 5QIs, including their QoS characteristics, that need to be pre-configured (and configurable) to the 5G NFs, see 3GPP TS 23.501.",
+                "type": "string"
+        },
+        "ResourcetypeEnum": {
+                "description": "It indicates the Resource Type of a 5QI, as specified in TS 23.501",
+                "enum": [
+                        "NON_GBR",
+                        "GBR"
+                ],
+                "type": "string"
+        },
+        "averagingWindow": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "configurable5QIs": {
+                "description": "Property",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "exponent": {
+                "description": "The Packet Error Rate of a 5QI expressed as Scalar x 10-k, where k is the Exponent.",
+                "type": "integer"
+        },
+        "fiveQIValue": {
+                "description": "Identifies the 5QI value.",
+                "type": "integer"
+        },
+        "maximumDataBurstVolume": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "packetDelayBudget": {
+                "description": "Indicates the Packet Delay Budget (in unit of 0.5ms)of a 5QI, as specified in TS 23.501",
+                "type": "integer"
+        },
+        "packetErrorRate": {
+                "description": "Property",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "priorityLevel": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "resourceType": {
+                "description": "It indicates the Resource Type of a 5QI, as specified in TS 23.501",
+                "enum": [
+                        "NON_GBR",
+                        "GBR"
+                ],
+                "type": "string"
+        },
+        "scalar": {
+                "description": "The Packet Error Rate of a 5QI expressed as Scalar x 10-k where k is the Exponent.",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

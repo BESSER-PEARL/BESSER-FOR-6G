@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -13,7 +13,7 @@ from buml_generated_models._3gpp_common_top import domain_model as top3gpp_model
 RRMPolicyRatio = Class(name="RRMPolicyRatio", synonyms=["Represents the RRMPolicyRatio concrete IOC."])
 
 # RRMPolicyRatio class attributes and methods
-RRMPolicyRatio_RRMPolicyRatio: Property = Property(name="RRMPolicyRatio", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["The RRMPolicyRatio IOC is one realization of a RRMPolicy_ IOC, see the inheritance in Figure 4.2.1.2-1. This RRM framework allows adding new policies, both standardized (like RRMPolicyRatio) or as vendor specific, by inheriting from the abstract RRMPolicy_ IOC. For details see subclause 4.3.36."])
+RRMPolicyRatio_RRMPolicyRatio: Property = Property(name="RRMPolicyRatio", type=DataType('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["The RRMPolicyRatio IOC is one realization of a RRMPolicy_ IOC, see the inheritance in Figure 4.2.1.2-1. This RRM framework allows adding new policies, both standardized (like RRMPolicyRatio) or as vendor specific, by inheriting from the abstract RRMPolicy_ IOC. For details see subclause 4.3.36."])
 RRMPolicyRatio_rRMPolicyDedicatedRatio: Property = Property(name="rRMPolicyDedicatedRatio", type=IntegerType, synonyms=["This attribute specifies the percentage of radio resource that dedicatedly used by the associated rRMPolicyMemberList. The sum of the rRMPolicyDeidctaedRatio values assigned to all RRMPolicyRatio(s) name-contained by same ManagedEntity shall be less or equal 100."])
 RRMPolicyRatio_rRMPolicyMaxRatio: Property = Property(name="rRMPolicyMaxRatio", type=IntegerType, synonyms=["This attribute specifies the maximum percentage of radio resource that can be used by the associated rRMPolicyMemberList. The maximum percentage of radio resource include at least one of the shared resources, prioritized resources and dedicated resources. The sum of the rRMPolicyMaxRatio values assigned to all RRMPolicyRatio(s) name-contained by same ManagedEntity can be greater that 100."])
 RRMPolicyRatio_rRMPolicyMinRatio: Property = Property(name="rRMPolicyMinRatio", type=IntegerType, synonyms=["This attribute specifies the minimum percentage of radio resources that can be used by the associated rRMPolicyMemberList. The minimum percentage of radio resources including at least one of prioritized resources and dedicated resources. The sum of the rRMPolicyMinRatio values assigned to all RRM PolicyRatio(s) name-contained by same ManagedEntity shall be less or equal 100."])

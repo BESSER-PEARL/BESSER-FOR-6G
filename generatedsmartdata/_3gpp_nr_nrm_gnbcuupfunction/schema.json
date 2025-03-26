@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "GNBCUUPFunction": {
+                "description": "Represents the logical function CU-UP of gNB or en-gNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "backhaulAddress": {
+                "description": "Indicates the backhauladdress of gNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "configurable5QISetRef": {
+                "description": "DN of the Configurable5QISet that the GNBCUUPFunction supports (is associated to).",
+                "type": "string"
+        },
+        "dynamic5QISetRef": {
+                "description": "DN of the Dynamic5QISet that the GNBCUUPFunction supports (is associated to).",
+                "type": "string"
+        },
+        "gNBCUUPId": {
+                "description": "Identifies the gNB-CU-UP at least within a gNB-CU-CP",
+                "type": "integer"
+        },
+        "gNBId": {
+                "description": "It identifies a gNB within a PLMN. The gNB ID is part of the NR Cell Identifier (NCI) of the gNB cells.",
+                "type": "integer"
+        },
+        "gNBIdLength": {
+                "description": "Indicates the number of bits for encoding the gNB Id.",
+                "type": "integer"
+        },
+        "idx": {
+                "description": "ID value",
+                "type": "integer"
+        },
+        "mappingSetIDBackhaulAddressList": {
+                "description": "Specifies a list of mappingSetIDBackhaulAddress used to retrieve the backhaul address of the victim set. Must be present if Remote Interference Management function is supported.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "nRTAC": {
+                "description": "Identity of the common Tracking Area Code for the PLMNs allowedValues: a) It is the TAC or Extended-TAC. b) A cell can only broadcast one TAC or Extended-TAC. See TS 36.300, subclause 10.1.7 (PLMNID and TAC relation). c) TAC is defined in subclause 19.4.2.3 of 3GPP TS 23.003 and Extended-TAC is defined in subclause 9.3.1.29 of 3GPP TS 38.473. d) For a 5G SA (Stand Alone), it has a non-null value.",
+                "type": "integer"
+        },
+        "pLMNId": {
+                "description": "PLMN IDs for the Tracking area",
+                "type": "string"
+        },
+        "pLMNInfoList": {
+                "description": "The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the GNBCUUPFunction and which S-NSSAIs can be supported by the GNBCUUPFunction for corresponding PLMN in case of network slicing feature is supported",
+                "type": "string"
+        },
+        "setID": {
+                "description": "Indicates the setID of gNB.",
+                "type": "integer"
+        },
+        "tAI": {
+                "description": "Tracking Area Identity",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

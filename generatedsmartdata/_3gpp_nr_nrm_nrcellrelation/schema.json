@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "NRCellRelation": {
+                "description": "Represents a neighbour cell relation from a source cell to a target cell, where the target cell is an NRCellCU or ExternalNRCellCU instance.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "adjacentNRCellRef": {
+                "description": "Reference to an adjacent NR cell (NRCellCU or ExternalNRCellCU).",
+                "type": "string"
+        },
+        "isESCoveredBy": {
+                "description": "Indicates whether the adjacent cell provides no, partial or full coverage for the parent cell instance. Adjacent cells with this attribute equal to FULL are recommended to be considered as candidate cells to take over the coverage when the original cell is about to be changed to energy saving state. All adjacent cells with this property equal to PARTIAL are recommended to be considered as entirety of candidate cells to take over the coverage when the original cell is about to be changed to energy saving state.",
+                "type": "string"
+        },
+        "isHOAllowed": {
+                "description": "True if handovers are allowed over this relation.",
+                "type": "boolean"
+        },
+        "isRemoveAllowed": {
+                "description": "True if the ANR function in the node is allowed to remove this relation.",
+                "type": "boolean"
+        },
+        "nRFreqRelationRef": {
+                "description": "Reference to a corresponding NRFreqRelation instance.",
+                "type": "string"
+        },
+        "nRTCI": {
+                "description": "Target NR Cell Identifier. It consists of NR Cell Identifier (NCI) and Physical Cell Identifier of the target NR cell (nRPCI).",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

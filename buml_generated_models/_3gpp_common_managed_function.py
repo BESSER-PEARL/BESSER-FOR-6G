@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -40,19 +40,19 @@ ManagedFunction.attributes={ManagedFunction_peeParametersList, ManagedFunction_p
 ManagedFunctionContainedClasses = Class(name="ManagedFunctionContainedClasses", synonyms=["A grouping used to containe classes (lists) contained by the abstract IOC ManagedFunction"])
 
 # ManagedFunctionContainedClasses class attributes and methods
-ManagedFunctionContainedClasses_ManagedNFService: Property = Property(name="ManagedNFService", type=top3gpp_model.get_type_by_name('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Represents a Network Function (NF)"])
+ManagedFunctionContainedClasses_ManagedNFService: Property = Property(name="ManagedNFService", type=DataType('Top_Grp'), multiplicity=Multiplicity(0, "*"), synonyms=["Represents a Network Function (NF)"])
 ManagedFunctionContainedClasses.attributes={ManagedFunctionContainedClasses_ManagedNFService}
 
 ManagedNFService = Class(name="ManagedNFService", synonyms=["A ManagedNFService represents a Network Function (NF) service."])
 
 # ManagedNFService class attributes and methods
-ManagedNFService_administrativeState: Property = Property(name="administrativeState", type=types3gpp_model.get_type_by_name('AdministrativeState'), synonyms=["Permission to use or prohibition against using the instance"])
+ManagedNFService_administrativeState: Property = Property(name="administrativeState", type=AdministrativeState, synonyms=["Permission to use or prohibition against using the instance"])
 ManagedNFService_nFServiceType: Property = Property(name="nFServiceType", type=StringType, synonyms=["The type of the managed NF service instance The specifc values allowed are described in clause 7.2 of TS 23.501"])
-ManagedNFService_operationalState: Property = Property(name="operationalState", type=types3gpp_model.get_type_by_name('OperationalState'), synonyms=["Describes whether the resource is installed and working"])
+ManagedNFService_operationalState: Property = Property(name="operationalState", type=OperationalState, synonyms=["Describes whether the resource is installed and working"])
 ManagedNFService_operations: Property = Property(name="operations", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["Set of operations supported by the managed NF service instance"])
 ManagedNFService_registrationState: Property = Property(name="registrationState", type=RegistrationstateEnum)
-ManagedNFService_sAP: Property = Property(name="sAP", type=types3gpp_model.get_type_by_name('SAP'), multiplicity=Multiplicity(1, "*"), synonyms=["The service access point of the managed NF service instance"])
-ManagedNFService_usageState: Property = Property(name="usageState", type=types3gpp_model.get_type_by_name('usageState'), synonyms=["Describes whether the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users."])
+ManagedNFService_sAP: Property = Property(name="sAP", type=DataType('SAP'), multiplicity=Multiplicity(1, "*"), synonyms=["The service access point of the managed NF service instance"])
+ManagedNFService_usageState: Property = Property(name="usageState", type=usageState, synonyms=["Describes whether the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users."])
 ManagedNFService_userLabel: Property = Property(name="userLabel", type=StringType, synonyms=["A user-friendly (and user assignable) name of this object."])
 ManagedNFService.attributes={ManagedNFService_administrativeState, ManagedNFService_nFServiceType, ManagedNFService_operationalState, ManagedNFService_operations, ManagedNFService_registrationState, ManagedNFService_sAP, ManagedNFService_usageState, ManagedNFService_userLabel}
 

@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -77,19 +77,19 @@ ChfServiceInfo.attributes={ChfServiceInfo_primaryChfServiceInstance, ChfServiceI
 NFService = Class(name="NFService", synonyms=["Represents the NFService IOC"])
 
 # NFService class attributes and methods
-NFService_allowedNssais: Property = Property(name="allowedNssais", type=types5g3gpp_model.get_type_by_name('SNssai'), multiplicity=Multiplicity(1, "*"), synonyms=["S-NSSAI of the allowed slices to access the service instance. The absence of this attribute indicates that any slice is allowed to access the service instance."])
-NFService_allowedPlmns: Property = Property(name="allowedPlmns", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMNs allowed to access the service instance. The absence of this attribute indicates that any PLMN is allowed to access the service instance."])
+NFService_allowedNssais: Property = Property(name="allowedNssais", type=DataType('SNssai'), multiplicity=Multiplicity(1, "*"), synonyms=["S-NSSAI of the allowed slices to access the service instance. The absence of this attribute indicates that any slice is allowed to access the service instance."])
+NFService_allowedPlmns: Property = Property(name="allowedPlmns", type=DataType('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["PLMNs allowed to access the service instance. The absence of this attribute indicates that any PLMN is allowed to access the service instance."])
 NFService_apiPrefix: Property = Property(name="apiPrefix", type=StringType, synonyms=["Optional path segment(s) used to construct the {apiRoot} variable of the different API URIs."])
 NFService_capacity: Property = Property(name="capacity", type=IntegerType, synonyms=["Static capacity information in the range of 0-65535, expressed as a weight relative to other services of the same type."])
 NFService_chfServiceInfo: Property = Property(name="chfServiceInfo", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["Specific data for a CHF service instance."])
-NFService_defaultNotificationSubscriptions: Property = Property(name="defaultNotificationSubscriptions", type=types3gpp_model.get_type_by_name('DefaultNotificationSubscription'), multiplicity=Multiplicity(1, "*"), synonyms=["Notification endpoints for different notification types."])
-NFService_fqdn: Property = Property(name="fqdn", type=inet_model.get_type_by_name('domain_name'), synonyms=["FQDN of the NF Service Instance."])
-NFService_interPlmnFqdn: Property = Property(name="interPlmnFqdn", type=inet_model.get_type_by_name('domain_name'), synonyms=["If the NF service needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter PLMN routing."])
+NFService_defaultNotificationSubscriptions: Property = Property(name="defaultNotificationSubscriptions", type=DataType('DefaultNotificationSubscription'), multiplicity=Multiplicity(1, "*"), synonyms=["Notification endpoints for different notification types."])
+NFService_fqdn: Property = Property(name="fqdn", type=DataType('domain_name'), synonyms=["FQDN of the NF Service Instance."])
+NFService_interPlmnFqdn: Property = Property(name="interPlmnFqdn", type=DataType('domain_name'), synonyms=["If the NF service needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter PLMN routing."])
 NFService_ipEndPoints: Property = Property(name="ipEndPoints", type=list, multiplicity=Multiplicity(1, "*"), synonyms=["IP address(es) and port information of the Network Function (including IPv4 and/or IPv6 address)where the service is listening for incoming service requests."])
-NFService_load: Property = Property(name="load", type=types3gpp_model.get_type_by_name('Load'), synonyms=["Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF Service."])
+NFService_load: Property = Property(name="load", type=DataType('Load'), synonyms=["Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF Service."])
 NFService_nfServiceStatus: Property = Property(name="nfServiceStatus", type=StringType, synonyms=["Status of the NF Service Instance."])
 NFService_priority: Property = Property(name="priority", type=IntegerType, synonyms=["Priority (relative to other services of the same type) in the range of 0-65535, to be used for NF Service selection; lower values indicate a higher priority."])
-NFService_recoveryTime: Property = Property(name="recoveryTime", type=yang_model.get_type_by_name('date_and_time'), synonyms=["Timestamp when the NF was (re)started."])
+NFService_recoveryTime: Property = Property(name="recoveryTime", type=DataType('date_and_time'), synonyms=["Timestamp when the NF was (re)started."])
 NFService_scheme: Property = Property(name="scheme", type=StringType, synonyms=["URI scheme (e.g. 'http', 'https')."])
 NFService_serviceInstanceID: Property = Property(name="serviceInstanceID", type=StringType, synonyms=["Unique ID of the service instance within a given NF Instance."])
 NFService_serviceName: Property = Property(name="serviceName", type=StringType, synonyms=["Name of the service instance (e.g. 'nudm-sdm')."])
@@ -102,7 +102,7 @@ NFServiceVersion = Class(name="NFServiceVersion")
 # NFServiceVersion class attributes and methods
 NFServiceVersion_apiFullVersion: Property = Property(name="apiFullVersion", type=StringType)
 NFServiceVersion_apiVersionInUri: Property = Property(name="apiVersionInUri", type=StringType)
-NFServiceVersion_expiry: Property = Property(name="expiry", type=yang_model.get_type_by_name('date_and_time'))
+NFServiceVersion_expiry: Property = Property(name="expiry", type=DataType('date_and_time'))
 NFServiceVersion.attributes={NFServiceVersion_apiFullVersion, NFServiceVersion_apiVersionInUri, NFServiceVersion_expiry}
 
 ipEndPoint = Class(name="ipEndPoint")

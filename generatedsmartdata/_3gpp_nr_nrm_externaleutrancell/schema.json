@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "ExternalEUtranCellFDD": {
+                "description": "Represents the common properties of external E-UTRAN FDD cell provided by eNB or NG-RAN FDD cell provided by ng-eNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "ExternalEUtranCellTDD": {
+                "description": "Represents the common properties of external E-UTRAN cell TDD provided by eNB or NG-RAN TDD cell provided by ng-eNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "cellLocalId": {
+                "description": "Unambiguously identifies a cell within an eNodeB.",
+                "type": "integer"
+        },
+        "eNBId": {
+                "description": "Unambiguously identifies an eNodeB within a PLMN.",
+                "type": "integer"
+        },
+        "earfcn": {
+                "description": "The frequency number for the central frequency.",
+                "type": "integer"
+        },
+        "earfcnDL": {
+                "description": "The channel number for the central DL frequency.",
+                "type": "integer"
+        },
+        "earfcnUL": {
+                "description": "The channel number for the central UL frequency. Value 0 means that the UL channel number is N/A for the DL-only bands.",
+                "type": "integer"
+        },
+        "pci": {
+                "description": "The Physical Cell Identity (PCI) of the cell (for NM-Centralized, EM-Centralized and Distributed PCI assignment cases). In the case of NM-Centralized PCI assignment, see 3GPP TS 36.300.",
+                "type": "integer"
+        },
+        "plmnIdList": {
+                "description": "List of unique identities for PLMNs. A cell can broadcast up to 6 PLMN IDs. This is to support the case that one cell can be used by up to 6 operator\u0027s core networks. The PLMN(s) included in this list will use the same single tracking area code (TAC) and the same Cell Identity (cellLocalId) for sharing the radio access network resources. One member of plmnIdList is the primary PLMN ID. A PLMN ID included in this list cannot be included in the cellAccessInfoList. The PLMN ID is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC).",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

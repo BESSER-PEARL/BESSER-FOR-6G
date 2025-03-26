@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -14,9 +14,9 @@ ExternalNRCellCU = Class(name="ExternalNRCellCU", synonyms=["Represents the Exte
 
 # ExternalNRCellCU class attributes and methods
 ExternalNRCellCU_cellLocalId: Property = Property(name="cellLocalId", type=IntegerType, synonyms=["Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI)."])
-ExternalNRCellCU_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=types3gpp_model.get_type_by_name('DistinguishedName'), synonyms=["Reference to corresponding NRFrequency instance."])
+ExternalNRCellCU_nRFrequencyRef: Property = Property(name="nRFrequencyRef", type=DataType('DistinguishedName'), synonyms=["Reference to corresponding NRFrequency instance."])
 ExternalNRCellCU_nRPCI: Property = Property(name="nRPCI", type=IntegerType, synonyms=["The Physical Cell Identity (PCI) of the NR cell."])
-ExternalNRCellCU_pLMNIdList: Property = Property(name="pLMNIdList", type=types3gpp_model.get_type_by_name('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["Defines which PLMNs that are assumed to be served by the NR cell in another gNB CU-CP. This list is either updated by the managed element itself (e.g. due to ANR, signalling over Xn, etc.) or by consumer over the standard interface."])
+ExternalNRCellCU_pLMNIdList: Property = Property(name="pLMNIdList", type=DataType('PLMNId'), multiplicity=Multiplicity(1, "*"), synonyms=["Defines which PLMNs that are assumed to be served by the NR cell in another gNB CU-CP. This list is either updated by the managed element itself (e.g. due to ANR, signalling over Xn, etc.) or by consumer over the standard interface."])
 ExternalNRCellCU.attributes={ExternalNRCellCU_cellLocalId, ExternalNRCellCU_nRFrequencyRef, ExternalNRCellCU_nRPCI, ExternalNRCellCU_pLMNIdList}
 
 ExternalNRCellCUWrapper = Class(name="ExternalNRCellCUWrapper")

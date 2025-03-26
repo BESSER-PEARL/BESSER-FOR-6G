@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "GNBCUCPFunction": {
+                "description": "Represents the logical function CU-CP of gNB and en-gNB.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "configurable5QISetRef": {
+                "description": "DN of the Configurable5QISet that the GNBCUCPFunction supports (is associated to).",
+                "type": "string"
+        },
+        "dynamic5QISetRef": {
+                "description": "DN of the Dynamic5QISet that the GNBCUCPFunction supports (is associated to).",
+                "type": "string"
+        },
+        "gNBCUName": {
+                "description": "Identifies the Central Unit of an gNB.",
+                "type": "string"
+        },
+        "gNBId": {
+                "description": "Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.",
+                "type": "integer"
+        },
+        "gNBIdLength": {
+                "description": "Indicates the number of bits for encoding the gNB ID.",
+                "type": "integer"
+        },
+        "pLMNId": {
+                "description": "The PLMN identifier to be used as part of the global RAN node identity.",
+                "type": "string"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

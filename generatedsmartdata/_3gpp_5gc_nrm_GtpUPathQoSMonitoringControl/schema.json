@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "GtpUPathQoSMonitoringControl": {
+                "description": "Specifies the capabilities and properties for control of GTP-U path QoS monitoring. For more information about the GTP-U path QoS monitoring.",
+                "type": "string"
+        },
+        "GtpupathqosmonitoringstateEnum": {
+                "description": "The state of GTP-U path QoS monitoring.",
+                "enum": [
+                        "DISABLED",
+                        "ENABLED"
+                ],
+                "type": "string"
+        },
+        "gtpUPathDelayThresholds": {
+                "description": "It specifies the thresholds for reporting the packet delay for the GTO-U path QoS monitoring.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "gtpUPathMeasurementPeriod": {
+                "description": "It specifies the period (in seconds) for reporting the packet delay for GTP-U path QoS monitoring.",
+                "type": "integer"
+        },
+        "gtpUPathMinimumWaitTime": {
+                "description": "It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered GTP-U path QoS monitoring reporting.",
+                "type": "integer"
+        },
+        "gtpUPathMonitoredSNSSAIs": {
+                "description": "The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed.",
+                "type": "string"
+        },
+        "gtpUPathQoSMonitoringState": {
+                "description": "The state of GTP-U path QoS monitoring.",
+                "enum": [
+                        "DISABLED",
+                        "ENABLED"
+                ],
+                "type": "string"
+        },
+        "isEventTriggeredGtpUPathMonitoringSupported": {
+                "description": "It indicates whether the event triggered GTP-U path QoS monitoring reporting based on thresholds is supported.",
+                "type": "boolean"
+        },
+        "isImmediateGtpUMonitoringSupported": {
+                "description": "It indicates whether the immediate GTP-U path QoS monitoring reporting is supported.",
+                "type": "boolean"
+        },
+        "isPeriodicGtpUMonitoringSupported": {
+                "description": "It indicates whether the periodic GTP-U path QoS monitoring reporting is supported.",
+                "type": "boolean"
+        },
+        "n3AveragePacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "n3MaxPacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "n3MinPacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "n9AveragePacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "n9MaxPacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        },
+        "n9MinPacketDelayThreshold": {
+                "description": "Property",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

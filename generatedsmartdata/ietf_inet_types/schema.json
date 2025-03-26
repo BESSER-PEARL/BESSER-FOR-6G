@@ -21,9 +21,9 @@
         "ip_version": {
                 "description": "This value represents the version of the IP protocol. In the value set and its semantics, this type is equivalent to the InetVersion textual convention of the SMIv2.",
                 "enum": [
-                        "ipv6",
+                        "unknown",
                         "ipv4",
-                        "unknown"
+                        "ipv6"
                 ],
                 "type": "string"
         }

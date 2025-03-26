@@ -18,6 +18,10 @@
     },
     {
       "properties": {
+        "NEFFunction": {
+                "description": "5G Core NEF Function",
+                "type": "string"
+        },
         "isCAPIFSup": {
                 "description": "Property",
                 "type": "boolean"

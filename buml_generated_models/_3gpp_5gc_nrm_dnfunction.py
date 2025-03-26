@@ -3,13 +3,16 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Classes
-DNFunction = Class(name="DNFunction", synonyms=["5G Core DN Function"])
+DNFunction = Class(name="DNFunction")
 
 # DNFunction class attributes and methods
+DNFunction_DNFunction: Property = Property(name="DNFunction", type=list, multiplicity=Multiplicity(0, "*"), synonyms=["5G Core DN Function"])
+DNFunction.attributes={DNFunction_DNFunction}
+
 # Domain Model with References
 domain_model = DomainModel(
     name="_3gpp-5gc-nrm-dnfunction",

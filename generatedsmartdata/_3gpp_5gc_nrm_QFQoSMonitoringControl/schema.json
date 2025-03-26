@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
+  "title": "Smart Data models -  schema",
+  "modelTags": "",
+  "description": "This class represents ",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "QFQoSMonitoringControl": {
+                "description": "Represents the QFQoSMonitoringControl IOC.",
+                "type": "string"
+        },
+        "QfqosmonitoringstateEnum": {
+                "description": "The state of QoS monitoring per QoS flow per UE.",
+                "enum": [
+                        "DISABLED",
+                        "ENABLED"
+                ],
+                "type": "string"
+        },
+        "isEventTriggeredQFMonitoringSupported": {
+                "description": "It indicates whether the event based QoS monitoring reporting per QoS flow per UE is supported.",
+                "type": "boolean"
+        },
+        "isPeriodicQFMonitoringSupported": {
+                "description": "It indicates whether the periodic QoS monitoring reporting per QoS flow per UE is supported.",
+                "type": "boolean"
+        },
+        "isSessionReleasedQFMonitoringSupported": {
+                "description": "It indicates whether the session release based QoS monitoring reporting per QoS flow per UE is supported.",
+                "type": "boolean"
+        },
+        "qFMeasurementPeriod": {
+                "description": "It specifies the period (in seconds) for reporting the packet delay for QoS monitoring per QoS flow per UE.",
+                "type": "integer"
+        },
+        "qFMinimumWaitTime": {
+                "description": "It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered QoS monitoring reporting per QoS flow per UE.",
+                "type": "integer"
+        },
+        "qFMonitoredSNSSAIs": {
+                "description": "The S-NSSAIs for which the QoS monitoring per QoS flow per UE is to be performed.",
+                "type": "string"
+        },
+        "qFPacketDelayThresholds": {
+                "description": "It specifies the thresholds for reporting the packet delay between PSA and UE for QoS monitoring per QoS flow per UE.",
+                "items": {
+                        "type": "string"
+                },
+                "type": "array"
+        },
+        "qFQoSMonitoringState": {
+                "description": "The state of QoS monitoring per QoS flow per UE.",
+                "enum": [
+                        "DISABLED",
+                        "ENABLED"
+                ],
+                "type": "string"
+        },
+        "thresholdDl": {
+                "description": "Downlink threshold",
+                "type": "integer"
+        },
+        "thresholdRtt": {
+                "description": "Round trip threshold",
+                "type": "integer"
+        },
+        "thresholdUl": {
+                "description": "Uplink threshold",
+                "type": "integer"
+        }
+}
+    }
+  ],
+  "derivedFrom": "3GPP TS 28.541",
+  "license": ""
+}

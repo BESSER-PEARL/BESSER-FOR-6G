@@ -18,6 +18,10 @@
     },
     {
       "properties": {
+        "CommonBeamformingFunction": {
+                "description": "Represents common beamforming functionality (eg: SSB beams) for the NRSectorCarrier.",
+                "type": "string"
+        },
         "coverageShape": {
                 "description": "Identifies the sector carrier coverage shape described by the envelope of the contained SSB beams. The coverage shape is implementation dependent.",
                 "type": "integer"

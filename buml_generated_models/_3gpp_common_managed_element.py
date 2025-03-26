@@ -3,7 +3,7 @@ from besser.BUML.metamodel.structural import (
     Class, Property, DomainModel, Multiplicity,
     IntegerType, StringType, BooleanType, FloatType,
     TimeType, DateType, DateTimeType, TimeDeltaType,
-    PrimitiveDataType, Enumeration, EnumerationLiteral
+    PrimitiveDataType, DataType, Enumeration, EnumerationLiteral
 )
 
 # Import referenced models
@@ -23,7 +23,7 @@ ManagedElement.attributes={ManagedElement_ManagedElement, ManagedElement_priorit
 ManagedElement_ = Class(name="ManagedElement_", synonyms=["Abstract class representing telecommunications resources. An ME communicates with a manager (directly or indirectly) for the purpose of being monitored and/or controlled. MEs may perform element management functionality. An ME (and its contained Function_(s)) may or may not be geographically distributed. An ME (and its contained Function_(s)) is often referred to as a Network Element"])
 
 # ManagedElement_ class attributes and methods
-ManagedElement__dnPrefix: Property = Property(name="dnPrefix", type=types3gpp_model.get_type_by_name('DistinguishedName'), synonyms=["Provides naming context that allows the Managed Elements to be partitioned into logical domains. A Distingushed Name(DN) is defined by 3GPP TS 32.300, which splits the DN into a DN Prefix and Local DN"])
+ManagedElement__dnPrefix: Property = Property(name="dnPrefix", type=DataType('DistinguishedName'), synonyms=["Provides naming context that allows the Managed Elements to be partitioned into logical domains. A Distingushed Name(DN) is defined by 3GPP TS 32.300, which splits the DN into a DN Prefix and Local DN"])
 ManagedElement__locationName: Property = Property(name="locationName", type=StringType, synonyms=["The physical location (e.g. an address) of an entity represented by a (derivative of) ManagedElement_. It may contain no information to support the case where the derivative of ManagedElement_ needs to represent a distributed multi-location NE."])
 ManagedElement__userLabel: Property = Property(name="userLabel", type=StringType, synonyms=["A user-friendly (and user assignable) name of this object."])
 ManagedElement_.attributes={ManagedElement__dnPrefix, ManagedElement__locationName, ManagedElement__userLabel}
