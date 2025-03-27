@@ -20,7 +20,7 @@
       "properties": {
         "AFFunction": {
                 "description": "5G Core AF Function",
-                "type": "string"
+                "type": "Top_Grp"
         }
 }
     }

@@ -20,7 +20,7 @@
       "properties": {
         "QFQoSMonitoringControl": {
                 "description": "Represents the QFQoSMonitoringControl IOC.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "QfqosmonitoringstateEnum": {
                 "description": "The state of QoS monitoring per QoS flow per UE.",
@@ -32,27 +32,27 @@
         },
         "isEventTriggeredQFMonitoringSupported": {
                 "description": "It indicates whether the event based QoS monitoring reporting per QoS flow per UE is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isPeriodicQFMonitoringSupported": {
                 "description": "It indicates whether the periodic QoS monitoring reporting per QoS flow per UE is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isSessionReleasedQFMonitoringSupported": {
                 "description": "It indicates whether the session release based QoS monitoring reporting per QoS flow per UE is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "qFMeasurementPeriod": {
                 "description": "It specifies the period (in seconds) for reporting the packet delay for QoS monitoring per QoS flow per UE.",
-                "type": "integer"
+                "type": "int"
         },
         "qFMinimumWaitTime": {
                 "description": "It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered QoS monitoring reporting per QoS flow per UE.",
-                "type": "integer"
+                "type": "int"
         },
         "qFMonitoredSNSSAIs": {
                 "description": "The S-NSSAIs for which the QoS monitoring per QoS flow per UE is to be performed.",
-                "type": "string"
+                "type": "SNssai"
         },
         "qFPacketDelayThresholds": {
                 "description": "It specifies the thresholds for reporting the packet delay between PSA and UE for QoS monitoring per QoS flow per UE.",
@@ -67,19 +67,19 @@
                         "ENABLED",
                         "DISABLED"
                 ],
-                "type": "string"
+                "type": "QfqosmonitoringstateEnum"
         },
         "thresholdDl": {
                 "description": "Downlink threshold",
-                "type": "integer"
+                "type": "int"
         },
         "thresholdRtt": {
                 "description": "Round trip threshold",
-                "type": "integer"
+                "type": "int"
         },
         "thresholdUl": {
                 "description": "Uplink threshold",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

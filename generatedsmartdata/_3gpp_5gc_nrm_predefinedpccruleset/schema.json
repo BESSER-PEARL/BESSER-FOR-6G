@@ -45,9 +45,9 @@
         "DnaichgtypeEnum": {
                 "description": "It indicates the type of DNAI change, see TS 29.512",
                 "enum": [
-                        "EARLY_LATE",
+                        "LATE",
                         "EARLY",
-                        "LATE"
+                        "EARLY_LATE"
                 ],
                 "type": "string"
         },
@@ -62,35 +62,35 @@
         "FlowdirectionEnum": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "UPLINK",
-                        "UNSPECIFIED",
                         "DOWNLINK",
-                        "BIDIRECTIONAL"
+                        "BIDIRECTIONAL",
+                        "UPLINK",
+                        "UNSPECIFIED"
                 ],
                 "type": "string"
         },
         "FlowstatusEnum": {
                 "description": "It represents whether the service data flow(s) are enabled or disabled.",
                 "enum": [
-                        "ENABLED",
-                        "ENABLED_DOWNLINK",
                         "ENABLED_UPLINK",
                         "REMOVED",
-                        "DISABLED"
+                        "DISABLED",
+                        "ENABLED",
+                        "ENABLED_DOWNLINK"
                 ],
                 "type": "string"
         },
         "MulaccctrlEnum": {
                 "description": "It indicates whether the service data flow, corresponding to the service data flow template, is allowed or not allowed.",
                 "enum": [
-                        "ALLOWED",
-                        "NOT_ALLOWED"
+                        "NOT_ALLOWED",
+                        "ALLOWED"
                 ],
                 "type": "string"
         },
         "PredefinedPccRuleSet": {
                 "description": "Specifies the predefined PCC rules.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "PredefinedPccRules": {
                 "description": "The list of predefined PCC rules.",
@@ -102,8 +102,8 @@
         "PreemptcapEnum": {
                 "description": "It defines whether a service data flow may get resources that were already assigned to another service data flow with a lower priority level.",
                 "enum": [
-                        "MAY_PREEMPT",
-                        "NOT_PREEMPT"
+                        "NOT_PREEMPT",
+                        "MAY_PREEMPT"
                 ],
                 "type": "string"
         },
@@ -126,11 +126,6 @@
         "RattypeEnum": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "TRUSTED_WLAN",
-                        "WLAN",
-                        "LTE_M",
-                        "UTRA",
-                        "NBIOT",
                         "VIRTUAL",
                         "NR",
                         "EUTRA",
@@ -140,17 +135,22 @@
                         "WIRELINE_BBF",
                         "TRUSTED_N3GA",
                         "GERA",
-                        "WIRELINE_CABLE"
+                        "WIRELINE_CABLE",
+                        "TRUSTED_WLAN",
+                        "WLAN",
+                        "LTE_M",
+                        "UTRA",
+                        "NBIOT"
                 ],
                 "type": "string"
         },
         "RedirectaddresstypeEnum": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "IPV6_ADDR",
-                        "IPV4_ADDR",
                         "URL",
-                        "SIP_URI"
+                        "SIP_URI",
+                        "IPV6_ADDR",
+                        "IPV4_ADDR"
                 ],
                 "type": "string"
         },
@@ -165,18 +165,18 @@
         "SteerfunEnum": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "MPTCP",
-                        "ATSSS_LL"
+                        "ATSSS_LL",
+                        "MPTCP"
                 ],
                 "type": "string"
         },
         "SteermodevalueEnum": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "PRIORITY_BASED",
                         "LOAD_BALANCING",
                         "ACTIVE_STANDBY",
-                        "SMALLEST_DELAY"
+                        "SMALLEST_DELAY",
+                        "PRIORITY_BASED"
                 ],
                 "type": "string"
         },
@@ -186,11 +186,11 @@
                         "3GPP_ACCESS",
                         "NON_3GPP_ACCESS"
                 ],
-                "type": "string"
+                "type": "AccesstypeEnum"
         },
         "activationTime": {
                 "description": "It indicates the time (in date_time format) when the decision data shall be activated.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "active": {
                 "description": "It indicates the active access, see TS 29.571.",
@@ -198,11 +198,11 @@
                         "NON_3GPP_ACCESS",
                         "3GPP_ACCESS"
                 ],
-                "type": "string"
+                "type": "ActiveEnum"
         },
         "afAckInd": {
                 "description": "It identifies whether the AF acknowledgement of UP path event notification is expected.",
-                "type": "boolean"
+                "type": "bool"
         },
         "afSigProtocol": {
                 "description": "Indicates the protocol used for signalling between the UE and the AF, the default value is NO_INFORMATION.",
@@ -210,64 +210,64 @@
                         "SIP",
                         "NO_INFORMATION"
                 ],
-                "type": "string"
+                "type": "AfsigprotocolEnum"
         },
         "appDescriptor": {
                 "description": "It is the ATSSS rule application descriptor.",
-                "type": "string"
+                "type": "str"
         },
         "applicationId": {
                 "description": "A reference to the application detection filter configured at the UPF.",
-                "type": "string"
+                "type": "str"
         },
         "burstArrivalTime": {
                 "description": "It Indicates the arrival time (in date_time format) of the data burst in reference to the TSN GM.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "condId": {
                 "description": "It uniquely identifies the condition data.",
-                "type": "string"
+                "type": "str"
         },
         "contentVersion": {
                 "description": "Indicates the content version of the PCC rule.",
-                "type": "integer"
+                "type": "int"
         },
         "deactivationTime": {
                 "description": "It indicates the time (in date_time format) when the decision data shall be deactivated.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "destMacAddr": {
                 "description": "It specifies the destination MAC address formatted in the hexadecimal .",
-                "type": "string"
+                "type": "str"
         },
         "destMacAddrEnd": {
                 "description": "It specifies the destination MAC address end. If this attribute is present, the destMacAddr attribute specifies the destination MAC address start.",
-                "type": "string"
+                "type": "str"
         },
         "dnai": {
                 "description": "It represents the DNAI (Data network access identifier).",
-                "type": "string"
+                "type": "str"
         },
         "dnaiChgType": {
                 "description": "It indicates the type of DNAI change, see TS 29.512",
                 "enum": [
-                        "EARLY_LATE",
+                        "LATE",
                         "EARLY",
-                        "LATE"
+                        "EARLY_LATE"
                 ],
-                "type": "string"
+                "type": "DnaichgtypeEnum"
         },
         "ethType": {
                 "description": "A two_octet string that represents the Ethertype.",
-                "type": "string"
+                "type": "str"
         },
         "extMaxDataBurstVol": {
                 "description": "It denotes the largest amount of data that is required to be transferred within a period of 5G_AN PDB, see TS 29.512",
-                "type": "integer"
+                "type": "int"
         },
         "fDesc": {
                 "description": "It contains the flow description for the Uplink or Downlink IP flow. It shall be present when the ethtype is IP.",
-                "type": "string"
+                "type": "str"
         },
         "fDir": {
                 "description": "It indicates the packet filter direction.",
@@ -275,132 +275,132 @@
                         "UPLINK",
                         "DOWNLINK"
                 ],
-                "type": "string"
+                "type": "FdirEnum"
         },
         "fiveQIValue": {
                 "description": "It indicates the 5QI value.",
-                "type": "integer"
+                "type": "int"
         },
         "flowDescription": {
                 "description": "It defines a packet filter for an IP flow.",
-                "type": "string"
+                "type": "str"
         },
         "flowDirection": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "UPLINK",
-                        "UNSPECIFIED",
                         "DOWNLINK",
-                        "BIDIRECTIONAL"
+                        "BIDIRECTIONAL",
+                        "UPLINK",
+                        "UNSPECIFIED"
                 ],
-                "type": "string"
+                "type": "FlowdirectionEnum"
         },
         "flowLabel": {
                 "description": "It specifies the Ipv6 flow label header field.",
-                "type": "string"
+                "type": "str"
         },
         "flowStatus": {
                 "description": "It represents whether the service data flow(s) are enabled or disabled.",
                 "enum": [
-                        "ENABLED",
-                        "ENABLED_DOWNLINK",
                         "ENABLED_UPLINK",
                         "REMOVED",
-                        "DISABLED"
+                        "DISABLED",
+                        "ENABLED",
+                        "ENABLED_DOWNLINK"
                 ],
-                "type": "string"
+                "type": "FlowstatusEnum"
         },
         "gbrDl": {
                 "description": "It represents the guaranteed downlink bandwidth.",
-                "type": "string"
+                "type": "str"
         },
         "gbrUl": {
                 "description": "It represents the guaranteed uplink bandwidth.",
-                "type": "string"
+                "type": "str"
         },
         "ipv4Addr": {
                 "description": "It defines the Ipv4 address of the tunnel end point in the data network, formatted in the dotted decimal notation.",
-                "type": "string"
+                "type": "str"
         },
         "ipv6Addr": {
                 "description": "It defines the Ipv6 address of the tunnel end point in the data network.",
-                "type": "string"
+                "type": "str"
         },
         "isAppRelocatable": {
                 "description": "It indicates the application relocation possibility, the default value is NO_INFORMATION.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isUeAddrPreserved": {
                 "description": "It Indicates whether UE IP address should be preserved.",
-                "type": "boolean"
+                "type": "bool"
         },
         "maxPacketLossRateDl": {
                 "description": "It indicates the downlink maximum rate for lost packets that can be tolerated for the service data flow.",
-                "type": "integer"
+                "type": "int"
         },
         "maxPacketLossRateUl": {
                 "description": "It indicates the uplink maximum rate for lost packets that can be tolerated for the service data flow.",
-                "type": "integer"
+                "type": "int"
         },
         "maxbrDl": {
                 "description": "It represents the maximum downlink bandwidth.",
-                "type": "string"
+                "type": "str"
         },
         "maxbrUl": {
                 "description": "It represents the maximum uplink bandwidth.",
-                "type": "string"
+                "type": "str"
         },
         "mulAccCtrl": {
                 "description": "It indicates whether the service data flow, corresponding to the service data flow template, is allowed or not allowed.",
                 "enum": [
-                        "ALLOWED",
-                        "NOT_ALLOWED"
+                        "NOT_ALLOWED",
+                        "ALLOWED"
                 ],
-                "type": "string"
+                "type": "MulaccctrlEnum"
         },
         "muteNotif": {
                 "description": "It indicates whether applicat\u0027on\u0027s start or stop notification is to be muted.",
-                "type": "boolean"
+                "type": "bool"
         },
         "notifCorreId": {
                 "description": "It is used to set the value of Notification Correlation ID in the notification sent by the SMF, see TS 29.512",
-                "type": "string"
+                "type": "str"
         },
         "notificationUri": {
                 "description": "It provides notification address (Uri) of AF receiving the event notification.",
-                "type": "string"
+                "type": "str"
         },
         "packFiltId": {
                 "description": "It is the identifier of the packet filter.",
-                "type": "string"
+                "type": "str"
         },
         "packetFilterUsage": {
                 "description": "It indicates if the packet shall be sent to the UE.",
-                "type": "boolean"
+                "type": "bool"
         },
         "pccRuleId": {
                 "description": "It identifies the PCC rule.",
-                "type": "string"
+                "type": "str"
         },
         "periodicity": {
                 "description": "It identifies the time period between the start of two bursts in reference to the TSN GM.",
-                "type": "integer"
+                "type": "int"
         },
         "portNumber": {
                 "description": "It defines the UDP port number of the tunnel end point in the data network, see TS 29.571",
-                "type": "integer"
+                "type": "int"
         },
         "precedence": {
                 "description": "It indicates the order in which this PCC rule is applied relative to other PCC rules within the same PDU session.",
-                "type": "integer"
+                "type": "int"
         },
         "preemptCap": {
                 "description": "It defines whether a service data flow may get resources that were already assigned to another service data flow with a lower priority level.",
                 "enum": [
-                        "MAY_PREEMPT",
-                        "NOT_PREEMPT"
+                        "NOT_PREEMPT",
+                        "MAY_PREEMPT"
                 ],
-                "type": "string"
+                "type": "PreemptcapEnum"
         },
         "preemptVuln": {
                 "description": "It defines whether a service data flow may lose the resources assigned to it in order to admit a service data flow with higher priority level.",
@@ -408,7 +408,7 @@
                         "PREEMPTABLE",
                         "NOT_PREEMPTABLE"
                 ],
-                "type": "string"
+                "type": "PreemptvulnEnum"
         },
         "prioAcc": {
                 "description": "It indicates the high priority access.",
@@ -416,28 +416,23 @@
                         "NON_3GPP_ACCESS",
                         "3GPP_ACCESS"
                 ],
-                "type": "string"
+                "type": "PrioaccEnum"
         },
         "priorityLevel": {
                 "description": "It defines the relative importance of a resource request.",
-                "type": "integer"
+                "type": "int"
         },
         "qosId": {
                 "description": "It identifies the QoS control policy data for a PCC rule.",
-                "type": "string"
+                "type": "str"
         },
         "qosNotificationControl": {
                 "description": "It indicates whether notifications are requested from 3GPP NG_RAN when the GFBR can no longer (or again) be guaranteed for a QoS Flow during the lifetime of the QoS Flow.",
-                "type": "boolean"
+                "type": "bool"
         },
         "ratType": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
-                        "TRUSTED_WLAN",
-                        "WLAN",
-                        "LTE_M",
-                        "UTRA",
-                        "NBIOT",
                         "VIRTUAL",
                         "NR",
                         "EUTRA",
@@ -447,55 +442,60 @@
                         "WIRELINE_BBF",
                         "TRUSTED_N3GA",
                         "GERA",
-                        "WIRELINE_CABLE"
+                        "WIRELINE_CABLE",
+                        "TRUSTED_WLAN",
+                        "WLAN",
+                        "LTE_M",
+                        "UTRA",
+                        "NBIOT"
                 ],
-                "type": "string"
+                "type": "RattypeEnum"
         },
         "redirectAddressType": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "IPV6_ADDR",
-                        "IPV4_ADDR",
                         "URL",
-                        "SIP_URI"
+                        "SIP_URI",
+                        "IPV6_ADDR",
+                        "IPV4_ADDR"
                 ],
-                "type": "string"
+                "type": "RedirectaddresstypeEnum"
         },
         "redirectEnabled": {
                 "description": "It indicates whether the redirect instruction is enabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "redirectServerAddress": {
                 "description": "It indicates the address of the redirect server.",
-                "type": "string"
+                "type": "str"
         },
         "reflectiveQos": {
                 "description": "Indicates whether the QoS information is reflective for the corresponding non_GBR service data flow",
-                "type": "boolean"
+                "type": "bool"
         },
         "routeProfId": {
                 "description": "It identifies the routing profile.",
-                "type": "string"
+                "type": "str"
         },
         "sharingKeyDl": {
                 "description": "It indicates, by containing the same value, what PCC rules may share resource in downlink direction.",
-                "type": "string"
+                "type": "str"
         },
         "sharingKeyUl": {
                 "description": "It indicates, by containing the same value, what PCC rules may share resource in uplink direction.",
-                "type": "string"
+                "type": "str"
         },
         "sourceMacAddr": {
                 "description": "It specifies the source MAC address formatted in the hexadecimal notation.",
-                "type": "string"
+                "type": "str"
         },
         "spi": {
                 "description": "It is the security parameter index of the IPSec packet.",
-                "type": "string"
+                "type": "str"
         },
         "srcMacAddrEnd": {
                 "description": "It specifies the source MAC address end. If this attribute is present, the sourceMacAddr attribute specifies the source MAC address start. E.g. srcMacAddrEnd with value 00_10_A4_23_3E_FE and sourceMacAddr with value 00_10_A4_23_3E_02 means all MAC addresses from 00_10_A4_23_3E_02 up to and including 00_10_A4_23_3E_FE.",
-                "type": "string"
+                "type": "str"
         },
         "standby": {
                 "description": "It indicates the Standby access, see TS 29.571.",
@@ -503,45 +503,45 @@
                         "NON_3GPP_ACCESS",
                         "3GPP_ACCESS"
                 ],
-                "type": "string"
+                "type": "StandbyEnum"
         },
         "steerFun": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "MPTCP",
-                        "ATSSS_LL"
+                        "ATSSS_LL",
+                        "MPTCP"
                 ],
-                "type": "string"
+                "type": "SteerfunEnum"
         },
         "steerModeValue": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "PRIORITY_BASED",
                         "LOAD_BALANCING",
                         "ACTIVE_STANDBY",
-                        "SMALLEST_DELAY"
+                        "SMALLEST_DELAY",
+                        "PRIORITY_BASED"
                 ],
-                "type": "string"
+                "type": "SteermodevalueEnum"
         },
         "tcId": {
                 "description": "It univocally identifies the traffic control policy data within a PDU session.",
-                "type": "string"
+                "type": "str"
         },
         "threeGLoad": {
                 "description": "It indicates the traffic load to steer to the 3GPP Access expressed in one percent.",
-                "type": "integer"
+                "type": "int"
         },
         "tosTrafficClass": {
                 "description": "It contains the Ipv4 Type_of_Service and mask field or the Ipv6 Traffic_Class field and mask field.",
-                "type": "string"
+                "type": "str"
         },
         "trafficSteeringPolIdDl": {
                 "description": "It references to a pre_configured traffic steering policy for downlink traffic at the SMF, see TS 29.512",
-                "type": "string"
+                "type": "str"
         },
         "trafficSteeringPolIdUl": {
                 "description": "It references to a pre_configured traffic steering policy for uplink traffic at the SMF, see TS 29.512",
-                "type": "string"
+                "type": "str"
         }
 }
     }
