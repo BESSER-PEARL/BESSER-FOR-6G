@@ -19,6 +19,10 @@ class JSONSchemaGenerator(GeneratorInterface):
             list: "array"
         }
         
+        # Check if property_type is a datatype with a name attribute
+        if hasattr(property_type, 'name'): #TODO: maybe remove to have default return
+            return property_type.name
+        
         if isinstance(property_type, Enumeration):
             return "string"
         return type_mapping.get(property_type, "string")

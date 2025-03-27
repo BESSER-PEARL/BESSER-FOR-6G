@@ -17,93 +17,95 @@ type Ran {
 
 
 /*
- * Represents the information of a cell known by CU.
+ * Represents the NRCellCU IOC.
  */
 
 type NRCellCU {
 
     
-    // List of PLMN information for the cell.
+    // Represents the information required by CU that is responsible for the management of inter-cell mobility and neighbour relations via ANR.
+    
+    NRCellCU: String[];
+    
+    // Reference to corresponding NRFrequency instance.
+    nRFrequencyRef: node<DistinguishedName>;
+    
+    // The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported.
     pLMNInfoList: node<PLMNInfo>;
     
-    // Identifies an NR cell of a gNB. Together with the corresponding gNB identifier it forms the NR Cell Identity (NCI).
+    // Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI).
     cellLocalId: node<int>;
-    
-    // Reference to the NR frequency the cell belongs to.
-    nRFrequencyRef: node<str>;
-    
-    // Cell state of the NRCellCU instance.
-    cellState: node<CellState>;
-    
-    // Reference to the corresponding NR sector carrier.
-    nRSectorCarrierRef: node<str>;
-    
-    // The Physical Cell Identity (PCI) of the NR cell.
-    nRPCI: node<int>;
 
 
+}
 
 
 /*
- * Represents the information of a cell known by DU.
+ * Represents the NRCellDU IOC.
  */
 
 type NRCellDU {
 
     
-    // Base station channel bandwidth for uplink.
-    bSChannelBwUL: node<int>;
-    
-    // Administrative state of the NRCellDU. Indicates the permission to use or prohibition against using the cell, imposed through the OAM services.
-    administrativeState: node<AdministrativeState>;
-    
-    // Duration of the measurement window in which to receive SS/PBCH blocks.
-    ssbDuration: node<int>;
-    
-    // Identifies an NR cell of a gNB. Together with the corresponding gNB identifier in forms the NR Cell Identity (NCI).
-    cellLocalId: node<int>;
-    
-    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for uplink.
-    arfcnUL: node<int>;
-    
-    // Cell state of the NRCellDU instance. Indicates whether the cell is not currently in use (IDLE), or currently in use but not configured to carry traffic (INACTIVE), or currently in use and is configured to carry traffic (ACTIVE).
-    cellState: node<CellState>;
-    
-    // Indicates cell defining SSB frequency domain position. Frequency (in terms of NR-ARFCN) of the cell defining SSB transmission. The frequency identifies the position of resource element RE=#0 (subcarrier #0) of resource block RB#10 of the SS block. The frequency must be positioned on the NR global frequency raster, as defined in 3GPP TS 38.101-1, and within bSChannelBwDL.
-    ssbFrequency: node<int>;
-    
-    // Operational state of the NRCellDU instance. Indicates whether the resource is installed and partially or fully operable (ENABLED) or the resource is not installed or not operable (DISABLED).
-    operationalState: node<OperationalState>;
-    
-    // Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz (< 6 GHz), 120 kHz or 240 kHz (> 6 GHz) are applicable.
-    ssbSubCarrierSpacing: node<int>;
-    
-    // Indicates cell defining SSB time domain position. Defined as the offset of the measurement window, in which to receive SS/PBCH blocks, where allowed values depend on the ssbPeriodicity (ssbOffset < ssbPeriodicity).
-    ssbOffset: node<int>;
-    
-    // The Physical Cell Identity (PCI) of the NR cell.
-    nRPCI: node<int>;
-    
     // Base station channel bandwidth for downlink.
     bSChannelBwDL: node<int>;
-    
-    // Indicates cell defined SSB periodicity. The SSB periodicity is used for the rate matching purpose.
-    ssbPeriodicity: node<int>;
-    
-    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for supplementary uplink.
-    arfcnSUL: node<int>;
     
     // Base station channel bandwidth for supplementary uplink.
     bSChannelBwSUL: node<int>;
     
+    // Base station channel bandwidth for uplink.
+    bSChannelBwUL: node<int>;
+    
+    // Identifies an NR cell of a gNB. Together with the corresponding gNB identifier in forms the NR Cell Identity (NCI).
+    cellLocalId: node<int>;
+    
+    // The Physical Cell Identity (PCI) of the NR cell.
+    nRPCI: node<int>;
+    
     // The common 5GS Tracking Area Code for the PLMNs.
     nRTAC: node<Tac>;
+    
+    // Operational state of the NRCellDU instance. Indicates whether the resource is installed and partially or fully operable (ENABLED) or the resource is not installed or not operable (DISABLED).
+    operationalState: node<OperationalState>;
+    
+    // Represents the information of a cell known by DU.
+    
+    NRCellDU: String[];
     
     // The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported. The plMNId of the first entry of the list is the PLMNId used to construct the nCGI for the NR cell.
     pLMNInfoList: node<PLMNInfo>;
     
+    // Duration of the measurement window in which to receive SS/PBCH blocks.
+    ssbDuration: node<int>;
+    
+    // Indicates cell defining SSB frequency domain position. Frequency (in terms of NR-ARFCN) of the cell defining SSB transmission. The frequency identifies the position of resource element RE=#0 (subcarrier #0) of resource block RB#10 of the SS block. The frequency must be positioned on the NR global frequency raster, as defined in 3GPP TS 38.101-1, and within bSChannelBwDL.
+    ssbFrequency: node<int>;
+    
+    // Indicates cell defining SSB time domain position. Defined as the offset of the measurement window, in which to receive SS/PBCH blocks, where allowed values depend on the ssbPeriodicity (ssbOffset < ssbPeriodicity).
+    ssbOffset: node<int>;
+    
+    // Indicates cell defined SSB periodicity. The SSB periodicity is used for the rate matching purpose.
+    ssbPeriodicity: node<int>;
+    
+    // Administrative state of the NRCellDU. Indicates the permission to use or prohibition against using the cell, imposed through the OAM services.
+    administrativeState: node<AdministrativeState>;
+    
     // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink.
     arfcnDL: node<int>;
+    
+    // Subcarrier spacing of SSB. Only the values 15 kHz or 30 kHz (< 6 GHz), 120 kHz or 240 kHz (> 6 GHz) are applicable.
+    ssbSubCarrierSpacing: node<int>;
+    
+    // Cell state of the NRCellDU instance. Indicates whether the cell is not currently in use (IDLE), or currently in use but not configured to carry traffic (INACTIVE), or currently in use and is configured to carry traffic (ACTIVE).
+    cellState: node<CellState>;
+    
+    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for supplementary uplink.
+    arfcnSUL: node<int>;
+    
+    // NR Absolute Radio Frequency Channel Number (NR-ARFCN) for uplink.
+    arfcnUL: node<int>;
+
+}
 
 
 

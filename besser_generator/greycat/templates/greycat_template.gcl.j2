@@ -40,7 +40,9 @@ type {{ class.name }} {
 {% endfor %}
 {% if not loop.last %}
 {% endif %}
+}
 {% endfor %}
+
 {#From pdf paper#}
 type BWP {
     subCarrierSpacing : int; //unit KhZ always?
