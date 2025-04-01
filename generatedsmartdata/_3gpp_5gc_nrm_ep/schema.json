@@ -20,35 +20,35 @@
       "properties": {
         "EP_Common": {
                 "description": "Property",
-                "type": "string"
+                "type": "EP_Common"
         },
         "n32cParas": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "n32fPolicy": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "remotePlmnId": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "remoteSeppAddress": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "remoteSeppId": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "sBIService": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "withIPX": {
                 "description": "Property",
-                "type": "boolean"
+                "type": "bool"
         }
 }
     }

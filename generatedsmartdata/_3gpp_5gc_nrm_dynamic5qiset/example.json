@@ -1,0 +1,30 @@
+{
+  "id": "5QISet001",
+  "type": "Dynamic5QISet",
+  "Dynamic5QISet": {
+    "priorityLevel": 2,
+    "packetDelayBudget": 10,
+    "packetErrorRate": 0.01,
+    "averagingWindow": 10,
+    "maxDataBurstVolume": 2000
+  },
+  "dynamic5QIs": {
+    "qosIdentifier": 1,
+    "priorityLevel": 1,
+    "packetDelayBudget": 10,
+    "packetErrorRate": 0.01,
+    "averagingWindow": 10,
+    "maxDataBurstVolume": 2000
+  },
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, -74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway",
+    "postalCode": "10007"
+  }
+}

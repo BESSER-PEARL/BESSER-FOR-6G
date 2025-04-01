@@ -1,0 +1,43 @@
+{
+  "id": "ausfFunction1",
+  "type": "5GC_NRM_AUSFFunction",
+  "AUSFFunction": [
+    "ausf1",
+    "ausf2"
+  ],
+  "commModelList": {
+    "commModel1": {
+      "id": "commModel1",
+      "type": "CommModel"
+    },
+    "commModel2": {
+      "id": "commModel2",
+      "type": "CommModel"
+    }
+  },
+  "managedNFProfile": {
+    "id": "managedNFProfile1",
+    "type": "ManagedNFProfile"
+  },
+  "pLMNIdList": {
+    "plmnId1": {
+      "id": "plmnId1",
+      "type": "PLMNId"
+    },
+    "plmnId2": {
+      "id": "plmnId2",
+      "type": "PLMNId"
+    }
+  },
+  "sBIFQDN": "ausf.example.com",
+  "sNSSAIList": {
+    "sNssai1": {
+      "id": "sNssai1",
+      "type": "SNssai"
+    },
+    "sNssai2": {
+      "id": "sNssai2",
+      "type": "SNssai"
+    }
+  }
+}

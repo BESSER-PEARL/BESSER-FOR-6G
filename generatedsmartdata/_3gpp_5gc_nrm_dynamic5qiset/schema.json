@@ -20,11 +20,11 @@
       "properties": {
         "Dynamic5QISet": {
                 "description": "Specifies the dynamic 5QIs including their QoS characteristics, see 3GPP TS 23.501.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "dynamic5QIs": {
                 "description": "Represents the Dynamic5QISet IOC.",
-                "type": "string"
+                "type": "FiveQICharacteristics"
         }
 }
     }

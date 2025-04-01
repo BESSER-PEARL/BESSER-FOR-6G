@@ -1,0 +1,22 @@
+{
+  "id": "1",
+  "type": "5G",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway"
+  },
+  "CommModelType": "DIRECT_COMMUNICATION_WITH_NRF",
+  "commModelConfiguration": "Configuration1",
+  "commModelType": "Type1",
+  "function": "Function1",
+  "groupId": 1,
+  "policy": "Policy1",
+  "sd": "FFFFFF",
+  "sst": 127
+}

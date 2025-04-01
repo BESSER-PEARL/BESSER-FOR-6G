@@ -1,0 +1,25 @@
+{
+  "id": "5QISet1",
+  "type": "5QISet",
+  "Configurable5QISet": {
+    "description": "Non-standardized 5QIs",
+    "type": "Top_Grp"
+  },
+  "ResourcetypeEnum": "GBR",
+  "averagingWindow": 10,
+  "configurable5QIs": [
+    "5QI1",
+    "5QI2"
+  ],
+  "exponent": 3,
+  "fiveQIValue": 5,
+  "maximumDataBurstVolume": 1000,
+  "packetDelayBudget": 20,
+  "packetErrorRate": [
+    "0.01",
+    "0.02"
+  ],
+  "priorityLevel": 1,
+  "resourceType": "GBR",
+  "scalar": 2
+}

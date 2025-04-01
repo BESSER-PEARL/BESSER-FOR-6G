@@ -1,0 +1,15 @@
+{
+  "id": "1234",
+  "type": "SmartData",
+  "EP_Common": {
+    "description": "Common Endpoint",
+    "type": "EP_Common"
+  },
+  "n32cParas": "n32c parameters",
+  "n32fPolicy": "n32f policy",
+  "remotePlmnId": "remote PLMN ID",
+  "remoteSeppAddress": "192.168.1.1",
+  "remoteSeppId": 5678,
+  "sBIService": "SBI service",
+  "withIPX": true
+}

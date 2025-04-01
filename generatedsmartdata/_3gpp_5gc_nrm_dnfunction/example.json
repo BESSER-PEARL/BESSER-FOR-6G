@@ -1,0 +1,16 @@
+{
+  "id": "DNFunction1",
+  "type": "5GCore",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "5th Avenue",
+    "postalCode": "10011"
+  },
+  "DNFunction": ["Function1", "Function2", "Function3"]
+}
