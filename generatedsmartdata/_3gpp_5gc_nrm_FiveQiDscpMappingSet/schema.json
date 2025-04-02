@@ -27,11 +27,11 @@
         },
         "FiveQiDscpMappingSet": {
                 "description": "Specifies the mapping between 5QIs and DSCPs.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "dscp": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

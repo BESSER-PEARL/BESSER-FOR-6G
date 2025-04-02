@@ -20,7 +20,7 @@
       "properties": {
         "GtpUPathQoSMonitoringControl": {
                 "description": "Specifies the capabilities and properties for control of GTP-U path QoS monitoring. For more information about the GTP-U path QoS monitoring.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "GtpupathqosmonitoringstateEnum": {
                 "description": "The state of GTP-U path QoS monitoring.",
@@ -39,15 +39,15 @@
         },
         "gtpUPathMeasurementPeriod": {
                 "description": "It specifies the period (in seconds) for reporting the packet delay for GTP-U path QoS monitoring.",
-                "type": "integer"
+                "type": "int"
         },
         "gtpUPathMinimumWaitTime": {
                 "description": "It specifies the minimum waiting time (in seconds) between two consecutive reports for event triggered GTP-U path QoS monitoring reporting.",
-                "type": "integer"
+                "type": "int"
         },
         "gtpUPathMonitoredSNSSAIs": {
                 "description": "The S-NSSAIs for which the the GTP-U path QoS monitoring is to be performed.",
-                "type": "string"
+                "type": "SNssai"
         },
         "gtpUPathQoSMonitoringState": {
                 "description": "The state of GTP-U path QoS monitoring.",
@@ -55,43 +55,43 @@
                         "DISABLED",
                         "ENABLED"
                 ],
-                "type": "string"
+                "type": "GtpupathqosmonitoringstateEnum"
         },
         "isEventTriggeredGtpUPathMonitoringSupported": {
                 "description": "It indicates whether the event triggered GTP-U path QoS monitoring reporting based on thresholds is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isImmediateGtpUMonitoringSupported": {
                 "description": "It indicates whether the immediate GTP-U path QoS monitoring reporting is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isPeriodicGtpUMonitoringSupported": {
                 "description": "It indicates whether the periodic GTP-U path QoS monitoring reporting is supported.",
-                "type": "boolean"
+                "type": "bool"
         },
         "n3AveragePacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "n3MaxPacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "n3MinPacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "n9AveragePacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "n9MaxPacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "n9MinPacketDelayThreshold": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

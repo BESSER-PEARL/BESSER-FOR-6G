@@ -1,0 +1,20 @@
+{
+  "id": "1",
+  "type": "GtpUPathQoSMonitoringControl",
+  "GtpUPathQoSMonitoringControl": "Top_Grp",
+  "GtpupathqosmonitoringstateEnum": "ENABLED",
+  "gtpUPathDelayThresholds": ["10ms", "20ms", "30ms"],
+  "gtpUPathMeasurementPeriod": 60,
+  "gtpUPathMinimumWaitTime": 10,
+  "gtpUPathMonitoredSNSSAIs": "SNssai",
+  "gtpUPathQoSMonitoringState": "DISABLED",
+  "isEventTriggeredGtpUPathMonitoringSupported": true,
+  "isImmediateGtpUMonitoringSupported": false,
+  "isPeriodicGtpUMonitoringSupported": true,
+  "n3AveragePacketDelayThreshold": 15,
+  "n3MaxPacketDelayThreshold": 30,
+  "n3MinPacketDelayThreshold": 5,
+  "n9AveragePacketDelayThreshold": 20,
+  "n9MaxPacketDelayThreshold": 40,
+  "n9MinPacketDelayThreshold": 10
+}

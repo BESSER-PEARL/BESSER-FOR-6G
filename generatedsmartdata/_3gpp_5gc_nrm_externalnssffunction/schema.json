@@ -27,7 +27,7 @@
         },
         "pLMNIdList": {
                 "description": "List of at most six entries of PLMN Identifiers, but at least one (the primary PLMN Id). The PLMN Identifier is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC).",
-                "type": "string"
+                "type": "PLMNId"
         }
 }
     }

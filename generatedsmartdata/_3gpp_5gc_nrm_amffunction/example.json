@@ -1,0 +1,32 @@
+{
+  "id": "5GCoreAMF001",
+  "type": "AMFFunction",
+  "AMFFunction": [
+    "AMF1",
+    "AMF2",
+    "AMF3"
+  ],
+  "commModelList": {
+    "commModel1": {
+      "name": "Communication Model 1",
+      "description": "This is a description of Communication Model 1"
+    },
+    "commModel2": {
+      "name": "Communication Model 2",
+      "description": "This is a description of Communication Model 2"
+    }
+  },
+  "managedNFProfile": {
+    "profileName": "Managed NF Profile 1",
+    "description": "This is a description of Managed NF Profile 1"
+  },
+  "pLMNIdList": {
+    "mcc": "310",
+    "mnc": "410"
+  },
+  "sBIFQDN": "nf-instance.example.com",
+  "sNSSAIList": {
+    "sst": "1",
+    "sd": "DNN1"
+  }
+}
