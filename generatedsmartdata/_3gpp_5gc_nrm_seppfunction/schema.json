@@ -27,26 +27,26 @@
         },
         "SEPPType": {
                 "enum": [
-                        "PSEPP",
-                        "CSEPP"
+                        "CSEPP",
+                        "PSEPP"
                 ],
                 "type": "string"
         },
         "fqdn": {
                 "description": "The domain name of the SEPP.",
-                "type": "string"
+                "type": "domain_name"
         },
         "sEPPId": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "sEPPType": {
                 "description": "Property",
                 "enum": [
-                        "PSEPP",
-                        "CSEPP"
+                        "CSEPP",
+                        "PSEPP"
                 ],
-                "type": "string"
+                "type": "SEPPType"
         }
 }
     }

@@ -27,27 +27,27 @@
         },
         "adjacentNRCellRef": {
                 "description": "Reference to an adjacent NR cell (NRCellCU or ExternalNRCellCU).",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "isESCoveredBy": {
                 "description": "Indicates whether the adjacent cell provides no, partial or full coverage for the parent cell instance. Adjacent cells with this attribute equal to FULL are recommended to be considered as candidate cells to take over the coverage when the original cell is about to be changed to energy saving state. All adjacent cells with this property equal to PARTIAL are recommended to be considered as entirety of candidate cells to take over the coverage when the original cell is about to be changed to energy saving state.",
-                "type": "string"
+                "type": "str"
         },
         "isHOAllowed": {
                 "description": "True if handovers are allowed over this relation.",
-                "type": "boolean"
+                "type": "bool"
         },
         "isRemoveAllowed": {
                 "description": "True if the ANR function in the node is allowed to remove this relation.",
-                "type": "boolean"
+                "type": "bool"
         },
         "nRFreqRelationRef": {
                 "description": "Reference to a corresponding NRFreqRelation instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "nRTCI": {
                 "description": "Target NR Cell Identifier. It consists of NR Cell Identifier (NCI) and Physical Cell Identifier of the target NR cell (nRPCI).",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

@@ -1,0 +1,23 @@
+{
+  "id": "cellDU_001",
+  "type": "NRCellDU",
+  "NRCellDU": ["cell_001", "cell_002"],
+  "administrativeState": "ENABLED",
+  "arfcnDL": 12345,
+  "arfcnSUL": 23456,
+  "arfcnUL": 34567,
+  "bSChannelBwDL": 100,
+  "bSChannelBwSUL": 200,
+  "bSChannelBwUL": 300,
+  "cellLocalId": 1,
+  "cellState": "ACTIVE",
+  "nRPCI": 10,
+  "nRTAC": "tac_001",
+  "operationalState": "ENABLED",
+  "pLMNInfoList": "plmnInfo_001",
+  "ssbDuration": 20,
+  "ssbFrequency": 45678,
+  "ssbOffset": 5,
+  "ssbPeriodicity": 30,
+  "ssbSubCarrierSpacing": 15
+}

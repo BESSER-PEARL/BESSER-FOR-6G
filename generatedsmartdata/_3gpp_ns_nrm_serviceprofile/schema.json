@@ -72,11 +72,15 @@
         },
         "activityFactor": {
                 "description": "Percentage of simultaneous active UEs to total UEs",
-                "type": "number"
+                "type": "float"
         },
         "availability": {
-                "description": "Availability requirement as percentage",
-                "type": "number"
+                "description": "Whether deterministic communication is available",
+                "enum": [
+                        "NOT_SUPPORTED",
+                        "SUPPORTED"
+                ],
+                "type": "Support-enum"
         },
         "category": {
                 "description": "Category of a service requirement/attribute of GST",
@@ -84,31 +88,31 @@
                         "character",
                         "scalability"
                 ],
-                "type": "string"
+                "type": "Category-enum"
         },
         "coverageArea": {
                 "description": "List of TrackingAreas where the NSI can be selected",
-                "type": "string"
+                "type": "str"
         },
         "dLThptPerSlice": {
                 "description": "Downlink throughput for the entire slice",
-                "type": "string"
+                "type": "DLThptGrp"
         },
         "dLThptPerUE": {
                 "description": "Downlink throughput per UE",
-                "type": "string"
+                "type": "DLThptGrp"
         },
         "delayTolerance": {
                 "description": "attributes of service delivery flexibility",
-                "type": "string"
+                "type": "DelayTolerance"
         },
         "density": {
                 "description": "Overall user density over the coverage area in users/km2",
-                "type": "integer"
+                "type": "int"
         },
         "deterministicComm": {
                 "description": "attributes of deterministic communication for periodic traffic",
-                "type": "string"
+                "type": "DeterministicComm"
         },
         "exposure": {
                 "description": "Exposure mode of a service requirement/attribute of GST",
@@ -116,83 +120,83 @@
                         "API",
                         "KPI"
                 ],
-                "type": "string"
+                "type": "Exposure-enum"
         },
         "guaThpt": {
                 "description": "The guaranteed data rate in kbits/s",
-                "type": "integer"
+                "type": "int"
         },
         "jitter": {
                 "description": "Deviation from desired value when assessing time parameters",
-                "type": "integer"
+                "type": "int"
         },
         "kPIList": {
                 "description": "Name list of KQIs and KPIs available for performance monitoring",
-                "type": "string"
+                "type": "str"
         },
         "kPIMonitoring": {
                 "description": "Performance monitoring",
-                "type": "string"
+                "type": "KPIMonitoring"
         },
         "latency": {
                 "description": "Packet transmission latency through the RAN, CN, and TN part of 5G network",
-                "type": "integer"
+                "type": "int"
         },
         "maxDLDataVolume": {
                 "description": "Maximum downlink data volume",
-                "type": "string"
+                "type": "str"
         },
         "maxNumberofPDUSessions": {
                 "description": "Maximum number of concurrent PDU sessions",
-                "type": "string"
+                "type": "MaxNumberofPDUSessions"
         },
         "maxNumberofUEs": {
                 "description": "Maximum number of UEs that may simultaneously access the network slice instance",
-                "type": "integer"
+                "type": "int"
         },
         "maxPktSize": {
                 "description": "Maximum packet size supported",
-                "type": "string"
+                "type": "MaxPktSize"
         },
         "maxSize": {
                 "description": "Maximum packet size in bytes",
-                "type": "integer"
+                "type": "int"
         },
         "maxThpt": {
                 "description": "The maximum data rate in kbits/s",
-                "type": "integer"
+                "type": "int"
         },
         "maxULDataVolume": {
                 "description": "Maximum uplink data volume",
-                "type": "string"
+                "type": "str"
         },
         "mcc": {
                 "description": "Mobile Country Code",
-                "type": "string"
+                "type": "str"
         },
         "mnc": {
                 "description": "Mobile Network Code",
-                "type": "string"
+                "type": "str"
         },
         "nBIoT": {
                 "description": "NB-IoT support in the RAN",
-                "type": "string"
+                "type": "NBIoT"
         },
         "nOofPDUSessions": {
                 "description": "Number of PDU sessions",
-                "type": "integer"
+                "type": "int"
         },
         "pLMNIdList": {
                 "description": "List of PLMN IDs",
-                "type": "string"
+                "type": "PLMNId"
         },
         "periodicityList": {
                 "description": "List of periodicities",
-                "type": "string"
+                "type": "str"
         },
         "reliability": {
                 "description": "Percentage of successfully delivered network layer packets",
-                "type": "string"
+                "type": "str"
         },
         "resourceSharingLevel": {
                 "description": "Whether resources may be shared with another network slice instance(s)",
@@ -200,43 +204,43 @@
                         "SHARED",
                         "NON_SHARED"
                 ],
-                "type": "string"
+                "type": "ResourceSharingLevel"
         },
         "sNSSAIList": {
                 "description": "List of S-NSSAIs to be supported",
-                "type": "string"
+                "type": "SNssai"
         },
         "sST": {
                 "description": "Slice/service type",
-                "type": "integer"
+                "type": "int"
         },
         "sd": {
                 "description": "Slice Differentiator",
-                "type": "string"
+                "type": "str"
         },
         "servAttrCom": {
                 "description": "Common attributes of service requirement related attributes",
-                "type": "string"
+                "type": "ServAttrComGrp"
         },
         "serviceProfileId": {
                 "description": "Service profile identifier",
-                "type": "string"
+                "type": "str"
         },
         "sst": {
                 "description": "Slice/Service type",
-                "type": "integer"
+                "type": "int"
         },
         "support": {
-                "description": "Whether network slice supports user management capability",
+                "description": "Whether network slice supports service delivery flexibility",
                 "enum": [
                         "NOT_SUPPORTED",
                         "SUPPORTED"
                 ],
-                "type": "string"
+                "type": "Support-enum"
         },
         "survivalTime": {
                 "description": "Time an application may continue without an anticipated message",
-                "type": "string"
+                "type": "str"
         },
         "tagging": {
                 "description": "Tagging of a service requirement/attribute of GST in character category",
@@ -245,11 +249,11 @@
                         "function",
                         "operation"
                 ],
-                "type": "string"
+                "type": "Tagging-enum"
         },
         "termDensity": {
                 "description": "Overall user density over coverage area",
-                "type": "string"
+                "type": "TermDensity"
         },
         "uEMobilityLevel": {
                 "description": "Mobility level of UE accessing the network slice instance",
@@ -259,27 +263,27 @@
                         "RESTRICTED_MOBILITY",
                         "FULLY_MOBILITY"
                 ],
-                "type": "string"
+                "type": "UeMobilityLevel"
         },
         "uESpeed": {
                 "description": "Maximum speed supported by the network slice in km/hour",
-                "type": "integer"
+                "type": "int"
         },
         "uLThptPerSlic": {
                 "description": "Uplink throughput for the entire slice",
-                "type": "string"
+                "type": "DLThptGrp"
         },
         "uLThptPerUE": {
                 "description": "Uplink throughput per UE",
-                "type": "string"
+                "type": "DLThptGrp"
         },
         "userMgmtOpen": {
                 "description": "User management capability support",
-                "type": "string"
+                "type": "UserMgmtOpen"
         },
         "v2XCommModels": {
                 "description": "V2X communication mode support",
-                "type": "string"
+                "type": "V2XCommModels"
         },
         "v2XMode": {
                 "description": "Whether V2X communication mode is supported",
@@ -287,7 +291,7 @@
                         "NOT_SUPPORTED",
                         "SUPPORTED_BY_NR"
                 ],
-                "type": "string"
+                "type": "V2XMode-enum"
         }
 }
     }

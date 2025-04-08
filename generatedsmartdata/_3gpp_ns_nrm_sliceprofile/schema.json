@@ -36,35 +36,35 @@
         },
         "coverageAreaTAList": {
                 "description": "List of TrackingAreas where the NSI can be selected",
-                "type": "string"
+                "type": "str"
         },
         "latency": {
                 "description": "Packet transmission latency through the RAN, CN, and TN part of 5G network",
-                "type": "integer"
+                "type": "int"
         },
         "maxNumberofUEs": {
                 "description": "Maximum number of UEs may simultaneously access the network slice instance",
-                "type": "integer"
+                "type": "int"
         },
         "mcc": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "mnc": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "pLMNIdList": {
                 "description": "List of PLMN Identifiers (1-6 entries)",
-                "type": "string"
+                "type": "PLMNId"
         },
         "perfMetric": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "perfReq": {
                 "description": "Performance requirements for the NSI",
-                "type": "string"
+                "type": "PerfReqGrp"
         },
         "resourceSharingLevel": {
                 "description": "Whether resources may be shared with another network slice subnet instance(s)",
@@ -72,23 +72,23 @@
                         "SHARED",
                         "NON_SHARED"
                 ],
-                "type": "string"
+                "type": "ResourceSharingLevel"
         },
         "sNSSAIList": {
                 "description": "List of S-NSSAIs the managed object is capable of supporting",
-                "type": "string"
+                "type": "SNssai"
         },
         "sd": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "sliceProfileId": {
                 "description": "A unique identifier of the property of network slice subnet related requirement",
-                "type": "string"
+                "type": "str"
         },
         "sst": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "uEMobilityLevel": {
                 "description": "Mobility level of UE accessing the network slice instance",
@@ -98,7 +98,7 @@
                         "RESTRICTED_MOBILITY",
                         "FULLY_MOBILITY"
                 ],
-                "type": "string"
+                "type": "UeMobilityLevel"
         }
 }
     }

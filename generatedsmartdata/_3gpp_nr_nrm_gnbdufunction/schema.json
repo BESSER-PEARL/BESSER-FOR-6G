@@ -27,27 +27,27 @@
         },
         "aggressorSetID": {
                 "description": "Indicates the associated aggressor gNB Set ID of the cell Valid when Remote Interference Management function is supported.",
-                "type": "integer"
+                "type": "int"
         },
         "gNBDUId": {
                 "description": "Uniquely identifies the DU at least within a gNB.",
-                "type": "integer"
+                "type": "int"
         },
         "gNBDUName": {
                 "description": "Identifies the Distributed Unit of an NR node",
-                "type": "string"
+                "type": "str"
         },
         "gNBId": {
                 "description": "Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.",
-                "type": "integer"
+                "type": "int"
         },
         "gNBIdLength": {
                 "description": "Indicates the number of bits for encoding the gNB ID.",
-                "type": "integer"
+                "type": "int"
         },
         "victimSetID": {
                 "description": "Indicates the associated victim gNB Set ID of the cell Valid when Remote Interference Management function is supported.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

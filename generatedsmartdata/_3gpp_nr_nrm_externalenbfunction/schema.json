@@ -27,7 +27,7 @@
         },
         "eNBId": {
                 "description": "Unambiguously identifies an eNodeB within a PLMN.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

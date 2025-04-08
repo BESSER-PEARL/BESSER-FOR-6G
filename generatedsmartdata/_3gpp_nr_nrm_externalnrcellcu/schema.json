@@ -27,19 +27,19 @@
         },
         "cellLocalId": {
                 "description": "Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI).",
-                "type": "integer"
+                "type": "int"
         },
         "nRFrequencyRef": {
                 "description": "Reference to corresponding NRFrequency instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "nRPCI": {
                 "description": "The Physical Cell Identity (PCI) of the NR cell.",
-                "type": "integer"
+                "type": "int"
         },
         "pLMNIdList": {
                 "description": "Defines which PLMNs that are assumed to be served by the NR cell in another gNB CU-CP. This list is either updated by the managed element itself (e.g. due to ANR, signalling over Xn, etc.) or by consumer over the standard interface.",
-                "type": "string"
+                "type": "PLMNId"
         }
 }
     }

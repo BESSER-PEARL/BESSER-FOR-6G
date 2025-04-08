@@ -20,11 +20,11 @@
       "properties": {
         "NRPci": {
                 "description": "This attribute determines the NR PCI.",
-                "type": "integer"
+                "type": "int"
         },
         "cPciConfigurationControl": {
                 "description": "This attribute determines whether the Cross Domain-Centralized SON PCI configuration function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "cSonPciList": {
                 "description": "This holds a list of physical cell identities that can be assigned to the pci attribute by gNB. The assignment algorithm is not specified. This attribute shall be supported if and only if the C-SON PCI configuration is supported.",

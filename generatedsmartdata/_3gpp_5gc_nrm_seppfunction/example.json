@@ -1,0 +1,9 @@
+{
+  "id": "SEPP001",
+  "type": "SEPPFunction",
+  "SEPPFunction": ["Function1", "Function2"],
+  "SEPPType": "CSEPP",
+  "fqdn": "sepp.domain.com",
+  "sEPPId": 123,
+  "sEPPType": "PSEPP"
+}

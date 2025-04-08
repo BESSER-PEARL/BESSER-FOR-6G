@@ -20,19 +20,19 @@
       "properties": {
         "NetworkSlice": {
                 "description": "Represents the properties of a network slice instance in a 5G network.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "administrativeState": {
                 "description": "The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services.",
-                "type": "string"
+                "type": "AdministrativeState"
         },
         "networkSliceSubnetRef": {
                 "description": "The NetworkSliceSubnet that the NetworkSlice is associated with.",
-                "type": "string"
+                "type": "str"
         },
         "operationalState": {
                 "description": "The operational state of the network slice instance. It describes whether or not the resource is physically installed and working.",
-                "type": "string"
+                "type": "OperationalState"
         },
         "serviceProfileList": {
                 "description": "A list of service profiles supported by the network slice instance.",

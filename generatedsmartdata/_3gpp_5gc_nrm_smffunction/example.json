@@ -1,0 +1,24 @@
+{
+  "id": "SMF001",
+  "type": "SMFFunction",
+  "SMFFunction": ["SMF1", "SMF2", "SMF3"],
+  "commModelList": {
+    "commModel1": "Model1",
+    "commModel2": "Model2"
+  },
+  "configurable5QISetRef": "DN001",
+  "dynamic5QISetRef": "DN002",
+  "managedNFProfile": {
+    "profile1": "Profile1",
+    "profile2": "Profile2"
+  },
+  "pLMNIdList": {
+    "MCC": "001",
+    "MNC": "01"
+  },
+  "sBIFQDN": "smf.example.com",
+  "sNSSAIList": {
+    "SST": "1",
+    "SD": "D1"
+  }
+}

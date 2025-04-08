@@ -1,0 +1,20 @@
+{
+  "id": "eutranFreqRelation1",
+  "type": "EutranFreqRelation",
+  "EUtranFreqRelation": ["relation1", "relation2"],
+  "cellIndividualOffset": "QOffsetRange1",
+  "cellReselectionPriority": 2,
+  "cellReselectionSubPriority": 1,
+  "eUtranFrequencyRef": "EUtranFrequency1",
+  "pMax": 5,
+  "qOffsetFreq": 3,
+  "qQualMin": 0,
+  "qRxLevMin": -70,
+  "tReselectionEutra": 10,
+  "tReselectionEutraSfHigh": 2,
+  "tReselectionEutraSfMedium": 1,
+  "threshXHighP": 30,
+  "threshXHighQ": 20,
+  "threshXLowP": 10,
+  "threshXLowQ": 5
+}

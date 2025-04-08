@@ -1,0 +1,34 @@
+{
+  "id": "NSSFFunction1",
+  "type": "NSSFFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.418889, -3.691944]
+  },
+  "address": {
+    "addressCountry": "ES",
+    "addressRegion": "Madrid",
+    "addressLocality": "Madrid",
+    "streetAddress": "Calle de Alcalá, 50"
+  },
+  "dateCreated": "2020-01-01T01:01:01Z",
+  "dateModified": "2020-05-01T01:01:01Z",
+  "NSSFFunction": ["Function1", "Function2", "Function3"],
+  "managedNFProfile": {
+    "id": "ManagedNFProfile1",
+    "type": "ManagedNFProfile"
+  },
+  "pLMNIdList": {
+    "id": "PLMNId1",
+    "type": "PLMNId",
+    "MCC": "262",
+    "MNC": "01"
+  },
+  "sBIFQDN": "nssffunction.example.com",
+  "sNSSAIList": {
+    "id": "SNssai1",
+    "type": "SNssai",
+    "SST": "1",
+    "SD": "01"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ME123",
+  "type": "ManagedElement",
+  "ManagedElement": [
+    "Telecommunications Equipment 1",
+    "Telecommunications Equipment 2"
+  ],
+  "dnPrefix": "DN123",
+  "locationName": "New York City",
+  "priorityLabel": 1,
+  "swVersion": "1.0.0",
+  "userDefinedState": "Operational",
+  "userLabel": "User Friendly Name",
+  "vendorName": "Vendor 1"
+}

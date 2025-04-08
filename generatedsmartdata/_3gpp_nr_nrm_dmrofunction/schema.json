@@ -20,19 +20,19 @@
       "properties": {
         "dmroControl": {
                 "description": "This attribute determines whether the MRO function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "maximumDeviationHoTrigger": {
                 "description": "This parameter defines the maximum allowed absolute deviation of the Handover Trigger, from the default point of operation.",
-                "type": "integer"
+                "type": "int"
         },
         "minimumTimeBetweenHoTriggerChange": {
                 "description": "This parameter defines the minimum allowed time interval between two Handover Trigger change performed by MRO. This is used to control the stability and convergence of the algorithm.",
-                "type": "integer"
+                "type": "int"
         },
         "tstoreUEcntxt": {
                 "description": "The timer used for detection of too early HO, too late HO and HO to wrong cell.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

@@ -34,27 +34,27 @@
         },
         "configurable5QISetRef": {
                 "description": "DN of the Configurable5QISet that the GNBCUUPFunction supports (is associated to).",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "dynamic5QISetRef": {
                 "description": "DN of the Dynamic5QISet that the GNBCUUPFunction supports (is associated to).",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "gNBCUUPId": {
                 "description": "Identifies the gNB-CU-UP at least within a gNB-CU-CP",
-                "type": "integer"
+                "type": "int"
         },
         "gNBId": {
-                "description": "It identifies a gNB within a PLMN. The gNB ID is part of the NR Cell Identifier (NCI) of the gNB cells.",
-                "type": "integer"
+                "description": "Identifies a gNB within a PLMN. The gNB ID is part of the NR Cell Identifier (NCI) of the gNB cells.",
+                "type": "int"
         },
         "gNBIdLength": {
                 "description": "Indicates the number of bits for encoding the gNB Id.",
-                "type": "integer"
+                "type": "int"
         },
         "idx": {
                 "description": "ID value",
-                "type": "integer"
+                "type": "int"
         },
         "mappingSetIDBackhaulAddressList": {
                 "description": "Specifies a list of mappingSetIDBackhaulAddress used to retrieve the backhaul address of the victim set. Must be present if Remote Interference Management function is supported.",
@@ -65,19 +65,19 @@
         },
         "nRTAC": {
                 "description": "Identity of the common Tracking Area Code for the PLMNs allowedValues: a) It is the TAC or Extended-TAC. b) A cell can only broadcast one TAC or Extended-TAC. See TS 36.300, subclause 10.1.7 (PLMNID and TAC relation). c) TAC is defined in subclause 19.4.2.3 of 3GPP TS 23.003 and Extended-TAC is defined in subclause 9.3.1.29 of 3GPP TS 38.473. d) For a 5G SA (Stand Alone), it has a non-null value.",
-                "type": "integer"
+                "type": "int"
         },
         "pLMNId": {
                 "description": "PLMN IDs for the Tracking area",
-                "type": "string"
+                "type": "PLMNId"
         },
         "pLMNInfoList": {
                 "description": "The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the GNBCUUPFunction and which S-NSSAIs can be supported by the GNBCUUPFunction for corresponding PLMN in case of network slicing feature is supported",
-                "type": "string"
+                "type": "PLMNInfo"
         },
         "setID": {
                 "description": "Indicates the setID of gNB.",
-                "type": "integer"
+                "type": "int"
         },
         "tAI": {
                 "description": "Tracking Area Identity",

@@ -20,8 +20,8 @@
       "properties": {
         "ActionAllowed": {
                 "enum": [
-                        "NO",
-                        "YES"
+                        "YES",
+                        "NO"
                 ],
                 "type": "string"
         },
@@ -34,51 +34,51 @@
         },
         "EnergySavingCoverage": {
                 "enum": [
+                        "PARTIAL",
                         "NO",
-                        "YES",
-                        "PARTIAL"
+                        "YES"
                 ],
                 "type": "string"
         },
         "adjacentCell": {
                 "description": "Reference to an EUtranCellFDD/TDD or ExternalEUtranCellFDD/TDD instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "cellIndividualOffset": {
                 "description": "Offset applicable to a neighbouring cell. It is used for evaluating the neighbouring cell for handover in connected mode. Used by the HandOver parameter Optimization (HOO) function or Load Balancing Optimization (LBO) function.",
-                "type": "string"
+                "type": "QOffsetRange"
         },
         "isENDCAllowed": {
                 "description": "Indicates if EN-DC is allowed or prohibited. If TRUE, the target cell is allowed to be used for EN-DC. The target cell is referenced by the NRCellRelation that contains this isENDCAllowed. If FALSE, EN-DC shall not be allowed.",
-                "type": "string"
+                "type": "str"
         },
         "isESCoveredBy": {
                 "description": "Indicates whether the adjacent cell according to this planning provides no, partial or full coverage for the parent cell instance. Adjacent cells with this attribute equal to YES are recommended to be considered as candidate cells to take over the coverage when the original cell is about to be transferred to energy saving state. The entirety of adjacent cells with this property equal to PARTIAL are recommended to be considered as entirety of candidate cells to take over the coverage when the original cell is about to be transferred to energy saving state.",
-                "type": "string"
+                "type": "str"
         },
         "isHOAllowed": {
                 "description": "Indicates if handover is allowed or prohibited. If YES, handover is allowed from source cell to target cell. Source cell is represented by the parent cell instance. Target cell is the adjacent cell referenced by this EUtranCellRelation instance. If NO, handover shall not be allowed.",
-                "type": "string"
+                "type": "str"
         },
         "isICICInformationSendAllowed": {
                 "description": "Indicates if ICIC (Inter Cell Interference Coordination) load information message sending is allowed or prohibited. If YES, ICIC load information message sending is allowed from source cell to target cell. Source cell is represented by the parent cell instance. Target cell is the adjacent cell referenced by this EUtranCellRelation instance. If NO, ICIC load information message sending shall not be allowed.",
-                "type": "string"
+                "type": "str"
         },
         "isLBAllowed": {
                 "description": "Indicates if load balancing is allowed or prohibited from source cell to target cell. If YES, load balancing is allowed from source cell to target cell. Source cell is represented by the parent cell instance. Target cell is the adjacent cell referenced by this EUtranCellRelation instance. If NO, load balancing shall be prohibited from source cell to target cell.",
-                "type": "string"
+                "type": "str"
         },
         "isRemoveAllowed": {
                 "description": "Indicates if the subject EUtranCellRelation can be removed (deleted) or not. If YES, the subject EUtranCellRelation instance can be removed (deleted). If NO, the subject EUtranCellRelation instance shall not be removed (deleted) by any entity but an IRPManager.",
-                "type": "string"
+                "type": "str"
         },
         "qOffset": {
                 "description": "Offset applicable to a specific neighbouring cell used for evaluating the cell as a candidate for cell re-selection. Corresponds to parameter q-OffsetCell broadcast in SIB4 for intra-frequency cells and in SIB5 for inter-frequency cells. Used for Mobility Robustness Optimization.",
-                "type": "string"
+                "type": "QOffsetRange"
         },
         "tCI": {
                 "description": "Target Cell Identifier. Consists of E-UTRAN Cell Global Identifier (ECGI) and Physical Cell Identifier (PCI) of the target cell. Identifies the target cell from the perspective of the parent cell instance.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

@@ -1,0 +1,20 @@
+{
+  "id": "1234",
+  "type": "SliceProfile",
+  "ResourceSharingLevel": "SHARED",
+  "UeMobilityLevel": "FULLY_MOBILITY",
+  "coverageAreaTAList": "Area1, Area2, Area3",
+  "latency": 10,
+  "maxNumberofUEs": 1000,
+  "mcc": "310",
+  "mnc": "410",
+  "pLMNIdList": "PLMN1, PLMN2, PLMN3",
+  "perfMetric": "Metric1",
+  "perfReq": "Req1",
+  "resourceSharingLevel": "SHARED",
+  "sNSSAIList": "SNSSAI1, SNSSAI2, SNSSAI3",
+  "sd": "SD1",
+  "sliceProfileId": "SP1",
+  "sst": 1,
+  "uEMobilityLevel": "STATIONARY"
+}

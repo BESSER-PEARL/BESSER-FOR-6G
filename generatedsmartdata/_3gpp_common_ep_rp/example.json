@@ -1,0 +1,11 @@
+{
+  "id": "1234",
+  "type": "SmartData",
+  "farEndEntity": "CN=John Doe,OU=Marketing,DC=JSSolutions,DC=com",
+  "localAddress": {
+    "ip": "192.168.1.1",
+    "vlanId": "100"
+  },
+  "remoteAddress": "10.0.0.1",
+  "userLabel": "John's Smart Data"
+}

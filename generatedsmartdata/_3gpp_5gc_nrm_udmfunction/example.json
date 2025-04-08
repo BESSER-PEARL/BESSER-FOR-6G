@@ -1,0 +1,22 @@
+{
+  "id": "UDMFunction1",
+  "type": "UDMFunction",
+  "UDMFunction": ["UDM1", "UDM2"],
+  "commModelList": {
+    "commModelId": "comm1",
+    "commModelType": "type1"
+  },
+  "managedNFProfile": {
+    "profileId": "profile1",
+    "profileType": "type1"
+  },
+  "pLMNIdList": {
+    "mcc": "001",
+    "mnc": "01"
+  },
+  "sBIFQDN": "nfinstance.example.com",
+  "sNSSAIList": {
+    "sst": "1",
+    "sd": "D1"
+  }
+}

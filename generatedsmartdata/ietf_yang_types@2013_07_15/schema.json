@@ -20,11 +20,11 @@
       "properties": {
         "expression": {
                 "description": "Represents an XPATH 1.0 expression.",
-                "type": "string"
+                "type": "str"
         },
         "value": {
-                "description": "Represents a non-negative integer that represents the time, modulo 2^32, in hundredths of a second between two epochs.",
-                "type": "integer"
+                "description": "The mac-address type represents an IEEE 802 MAC address.",
+                "type": "str"
         }
 }
     }

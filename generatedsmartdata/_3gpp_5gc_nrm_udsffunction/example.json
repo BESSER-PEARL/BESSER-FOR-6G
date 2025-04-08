@@ -1,0 +1,31 @@
+{
+  "id": "UDSF001",
+  "type": "UDSFFunction",
+  "UDSFFunction": ["Function1", "Function2", "Function3"],
+  "managedNFProfile": {
+    "profileId": "Profile001",
+    "profileName": "ProfileName",
+    "profileDescription": "This is a managed network function profile"
+  },
+  "pLMNIdList": {
+    "mcc": "001",
+    "mnc": "01"
+  },
+  "sBIFQDN": "nfinstance.example.com",
+  "sNSSAIList": {
+    "sst": "1",
+    "sd": "Differential1"
+  },
+  "location": {
+    "type": "Point",
+    "coordinates": [-3.7037902, 40.4167754]
+  },
+  "address": {
+    "addressCountry": "ES",
+    "addressRegion": "Madrid",
+    "addressLocality": "Madrid",
+    "streetAddress": "Calle de Alcala, 50"
+  },
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z"
+}

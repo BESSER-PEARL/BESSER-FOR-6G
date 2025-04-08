@@ -27,7 +27,7 @@
         },
         "earfcnDL": {
                 "description": "Specifies the channel number for the central DL frequency.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

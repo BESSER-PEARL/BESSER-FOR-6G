@@ -20,11 +20,11 @@
       "properties": {
         "NRPci": {
                 "description": "This attribute determines the NR PCI.",
-                "type": "integer"
+                "type": "int"
         },
         "dPciConfigurationControl": {
                 "description": "This attribute determines whether the Distributed SON or Domain-Centralized SON PCI configuration Function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "nRPciList": {
                 "description": "This holds a list of physical cell identities that can be assigned to the NR cells. This attribute shall be supported if D-SON PCI configuration or domain Centralized SON PCI configuration function is supported.",

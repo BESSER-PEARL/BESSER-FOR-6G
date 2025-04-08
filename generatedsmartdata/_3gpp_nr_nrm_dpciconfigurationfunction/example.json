@@ -1,0 +1,16 @@
+{
+  "id": "dpciconfigurationfunction_001",
+  "type": "DpciConfigurationFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, -74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressLocality": "New York",
+    "streetAddress": "5th Avenue"
+  },
+  "NRPci": 123,
+  "dPciConfigurationControl": true,
+  "nRPciList": ["pci_001", "pci_002", "pci_003"]
+}

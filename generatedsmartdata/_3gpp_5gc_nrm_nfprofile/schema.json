@@ -20,17 +20,17 @@
       "properties": {
         "AccessType": {
                 "enum": [
-                        "3GPP_ACCESS",
-                        "NON_3GPP_ACCESS"
+                        "NON_3GPP_ACCESS",
+                        "3GPP_ACCESS"
                 ],
                 "type": "string"
         },
         "DataSetId": {
                 "enum": [
-                        "APPLICATION",
-                        "SUBSCRIPTION",
                         "POLICY",
-                        "EXPOSURE"
+                        "EXPOSURE",
+                        "APPLICATION",
+                        "SUBSCRIPTION"
                 ],
                 "type": "string"
         },
@@ -43,19 +43,19 @@
         },
         "PduSessionType": {
                 "enum": [
-                        "UNSTRUCTURED",
-                        "IPV6",
                         "IPV4V6",
+                        "ETHERNET",
                         "IPV4",
-                        "ETHERNET"
+                        "IPV6",
+                        "UNSTRUCTURED"
                 ],
                 "type": "string"
         },
         "UPInterfaceType": {
                 "enum": [
-                        "N6",
+                        "N9",
                         "N3",
-                        "N9"
+                        "N6"
                 ],
                 "type": "string"
         },
@@ -68,31 +68,31 @@
         },
         "allowedPlmns": {
                 "description": "PLMNs allowed to access the NF instance. If not provided, any PLMN is allowed to access the NF.",
-                "type": "string"
+                "type": "PLMNId"
         },
         "amfId": {
                 "description": "AMF Identity.",
-                "type": "string"
+                "type": "AmfIdentifier"
         },
         "amfName": {
                 "description": "AMF name.",
-                "type": "string"
+                "type": "str"
         },
         "capacity": {
                 "description": "Static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value.",
-                "type": "integer"
+                "type": "int"
         },
         "customInfo": {
                 "description": "Specific data for custom Network Functions.",
-                "type": "string"
+                "type": "str"
         },
         "defaultNotificationSubscriptions": {
                 "description": "Notification endpoints for different notification types.",
-                "type": "string"
+                "type": "DefaultNotificationSubscription"
         },
         "dnn": {
-                "description": "String representing a Data Network.",
-                "type": "string"
+                "description": "Supported DNN.",
+                "type": "str"
         },
         "dnnSmfInfoList": {
                 "description": "List of parameters supported by the SMF per DNN.",
@@ -110,63 +110,63 @@
         },
         "end": {
                 "description": "Last value identifying the end of a TAC range, to be used when the range of TAC\u0027s can be represented as a hexadecimal range (e.g. TAC ranges).",
-                "type": "string"
+                "type": "str"
         },
         "fqdn": {
                 "description": "FQDN of the Network Function. For AMF, the FQDN registered with the NRF shall be that of the AMF Name.",
-                "type": "string"
+                "type": "domain_name"
         },
         "heartBeatTimer": {
                 "description": "Time in seconds expected between 2 consecutive heart-beat messages from an NF Instance to the NRF. It may be included in the registration request. When present in the request it shall contain the heartbeat time proposed by the NF service consumer.",
-                "type": "integer"
+                "type": "int"
         },
         "interPlmnFqdn": {
                 "description": "If the NF needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter-PLMN routing is specified.",
-                "type": "string"
+                "type": "domain_name"
         },
         "interfaceType": {
                 "description": "User Plane interface type.",
-                "type": "string"
+                "type": "str"
         },
         "load": {
                 "description": "Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF.",
-                "type": "string"
+                "type": "Load"
         },
         "locality": {
                 "description": "Operator defined information about the location of the NF instance (e.g. geographic location, data center).",
-                "type": "string"
+                "type": "str"
         },
         "networkInstance": {
                 "description": "Network Instance associated to the User Plane interface.",
-                "type": "string"
+                "type": "str"
         },
         "nfInstanceID": {
                 "description": "String uniquely identifying a NF instance.",
-                "type": "string"
+                "type": "str"
         },
         "nfProfileChangesInd": {
                 "description": "NF Profile Changes Indicator. This IE shall be absent in the request to the NRF and may be included by the NRF in NFRegister or NFUpdate (NF Profile Complete Replacement) response. true: the NF Profile contains NF Profile changes. false (default): complete NF Profile.",
-                "type": "boolean"
+                "type": "bool"
         },
         "nfProfileChangesSupportInd": {
                 "description": "NF Profile Changes Support Indicator. This IE may be present in the NFRegister or NFUpdate (NF Profile Complete Replacement) request and shall be absent in the response. true: the NF Service Consumer supports receiving NF Profile Changes in the response. false (default): the NF Service Consumer does not support receiving NF Profile Changes in the response.",
-                "type": "boolean"
+                "type": "bool"
         },
         "nfServicePersistence": {
                 "description": "If present, and set to true, it indicates that the different service instances of a same NF Service in this NF instance, supporting a same API version, are capable to persist their resource state in shared storage and therefore these resources are available after a new NF service instance supporting the same API version is selected by a NF Service Consumer (see 3GPP TS 23.527). Otherwise, it indicates that the NF Service Instances of a same NF Service are not capable to share resource state inside the NF Instance.",
-                "type": "boolean"
+                "type": "bool"
         },
         "nfServices": {
                 "description": "List of NF Service Instances. It shall include the services produced by the NF that can be discovered by other NFs.",
-                "type": "string"
+                "type": "NFServiceGrp"
         },
         "nfStatus": {
                 "description": "Status of the NF Instance.",
-                "type": "string"
+                "type": "str"
         },
         "nfType": {
                 "description": "Type of Network Function.",
-                "type": "string"
+                "type": "NfType"
         },
         "nrfInfo": {
                 "description": "Property",
@@ -177,7 +177,7 @@
         },
         "pattern": {
                 "description": "Pattern representing the set of TAC\u0027s belonging to this range.",
-                "type": "string"
+                "type": "str"
         },
         "perPlmnSnssaiList": {
                 "description": "This IE may be included when the list of S-NSSAIs supported by the NF for each PLMN it is supporting is different. When present, this IE shall include the S-NSSAIs supported by the Network Function for each PLMN supported by the Network Function. When present, this IE shall override sNssais IE.",
@@ -187,20 +187,20 @@
                 "type": "array"
         },
         "plmnId": {
-                "description": "PLMN ID for which list of supported S-NSSAI(s) is provided.",
-                "type": "string"
+                "description": "PLMN Identity.",
+                "type": "PLMNId"
         },
         "plmnList": {
                 "description": "PLMN(s) of the Network Function. This IE shall be present if this information is available for the NF. If not provided, PLMN ID(s) of the PLMN of the NRF are assumed for the NF.",
-                "type": "string"
+                "type": "PLMNId"
         },
         "priority": {
                 "description": "Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. The NRF may overwrite the received priority value when exposing an NFProfile with the Nnrf_NFDiscovery service.",
-                "type": "integer"
+                "type": "int"
         },
         "recoveryTime": {
                 "description": "Timestamp when the NF was (re)started.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "sNssai": {
                 "description": "Supported S-NSSAI.",
@@ -225,19 +225,19 @@
         },
         "sd": {
                 "description": "3-octet string, representing the Slice Differentiator, in hexadecimal representation.",
-                "type": "string"
+                "type": "str"
         },
         "sst": {
                 "description": "Unsigned integer, within the range 0 to 255, representing the Slice/Service Type. It indicates the expected Network Slice behaviour in terms of features and services.",
-                "type": "integer"
+                "type": "int"
         },
         "start": {
                 "description": "First value identifying the start of a TAC range, to be used when the range of TAC\u0027s can be represented as a hexadecimal range (e.g., TAC ranges).",
-                "type": "string"
+                "type": "str"
         },
         "tac": {
                 "description": "Property",
-                "type": "string"
+                "type": "Tac"
         },
         "tacRangeList": {
                 "description": "The range of the TACs.",

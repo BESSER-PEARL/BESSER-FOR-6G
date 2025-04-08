@@ -20,46 +20,46 @@
       "properties": {
         "ManagedNFService": {
                 "description": "Represents a Network Function (NF)",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "OperationsemanticsEnum": {
                 "description": "Semantics type of the operation.",
                 "enum": [
-                        "SUBSCRIBE_NOTIFY",
-                        "REQUEST_RESPONSE"
+                        "REQUEST_RESPONSE",
+                        "SUBSCRIBE_NOTIFY"
                 ],
                 "type": "string"
         },
         "RegistrationstateEnum": {
                 "enum": [
-                        "REGISTERED",
-                        "DEREGISTERED"
+                        "DEREGISTERED",
+                        "REGISTERED"
                 ],
                 "type": "string"
         },
         "administrativeState": {
                 "description": "Permission to use or prohibition against using the instance",
-                "type": "string"
+                "type": "AdministrativeState"
         },
         "nFServiceType": {
                 "description": "The type of the managed NF service instance The specifc values allowed are described in clause 7.2 of TS 23.501",
-                "type": "string"
+                "type": "str"
         },
         "name": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "operationSemantics": {
                 "description": "Semantics type of the operation.",
                 "enum": [
-                        "SUBSCRIBE_NOTIFY",
-                        "REQUEST_RESPONSE"
+                        "REQUEST_RESPONSE",
+                        "SUBSCRIBE_NOTIFY"
                 ],
-                "type": "string"
+                "type": "OperationsemanticsEnum"
         },
         "operationalState": {
                 "description": "Describes whether the resource is installed and working",
-                "type": "string"
+                "type": "OperationalState"
         },
         "operations": {
                 "description": "Set of operations supported by the managed NF service instance",
@@ -77,27 +77,27 @@
         },
         "priorityLabel": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "registrationState": {
                 "description": "Property",
                 "enum": [
-                        "REGISTERED",
-                        "DEREGISTERED"
+                        "DEREGISTERED",
+                        "REGISTERED"
                 ],
-                "type": "string"
+                "type": "RegistrationstateEnum"
         },
         "sAP": {
                 "description": "The service access point of the managed NF service instance",
-                "type": "string"
+                "type": "SAP"
         },
         "usageState": {
                 "description": "Describes whether the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users.",
-                "type": "string"
+                "type": "usageState"
         },
         "userLabel": {
                 "description": "A user-friendly (and user assignable) name of this object.",
-                "type": "string"
+                "type": "str"
         },
         "vnfParametersList": {
                 "description": "Contains the parameter set of the VNF instance(s) corresponding to an NE. The presence of this list indicates that the ManagedFunction represented is realized by one or more VNF instance(s). Otherwise it shall be absent. The presence of a vnfParametersList entry, whose vnfInstanceId with a string length of zero, in createMO operation can trigger the instantiation of the related VNF/VNFC instances.",

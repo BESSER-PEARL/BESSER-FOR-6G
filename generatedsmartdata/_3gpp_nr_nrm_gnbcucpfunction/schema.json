@@ -27,27 +27,27 @@
         },
         "configurable5QISetRef": {
                 "description": "DN of the Configurable5QISet that the GNBCUCPFunction supports (is associated to).",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "dynamic5QISetRef": {
                 "description": "DN of the Dynamic5QISet that the GNBCUCPFunction supports (is associated to).",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "gNBCUName": {
                 "description": "Identifies the Central Unit of an gNB.",
-                "type": "string"
+                "type": "str"
         },
         "gNBId": {
                 "description": "Identifies a gNB within a PLMN. The gNB Identifier (gNB ID) is part of the NR Cell Identifier (NCI) of the gNB cells.",
-                "type": "integer"
+                "type": "int"
         },
         "gNBIdLength": {
                 "description": "Indicates the number of bits for encoding the gNB ID.",
-                "type": "integer"
+                "type": "int"
         },
         "pLMNId": {
                 "description": "The PLMN identifier to be used as part of the global RAN node identity.",
-                "type": "string"
+                "type": "PLMNId"
         }
 }
     }

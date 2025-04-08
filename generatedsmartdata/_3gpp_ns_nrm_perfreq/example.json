@@ -1,0 +1,16 @@
+{
+  "id": "smartDataModel1",
+  "type": "3GPP_TS_28.541",
+  "activityFactor": 70,
+  "areaTrafficCapDL": "500 Mbps",
+  "areaTrafficCapUL": "300 Mbps",
+  "cSAvailabilityTarget": 99.99,
+  "cSReliabilityMeanTime": "1000 hours",
+  "expDataRate": "100 Mbps",
+  "expDataRateDL": "60 Mbps",
+  "expDataRateUL": "40 Mbps",
+  "msgSizeByte": "1024 bytes",
+  "overallUserDensity": 1000,
+  "survivalTime": "10 seconds",
+  "transferIntervalTarget": "1 second"
+}

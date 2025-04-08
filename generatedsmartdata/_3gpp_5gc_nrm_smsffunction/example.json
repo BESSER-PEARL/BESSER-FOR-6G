@@ -1,0 +1,27 @@
+{
+  "id": "SMSF001",
+  "type": "5GCoreFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.418889, -3.691944]
+  },
+  "address": {
+    "addressCountry": "ES",
+    "addressRegion": "Madrid",
+    "addressLocality": "Madrid",
+    "streetAddress": "Calle de Alcala, 50"
+  },
+  "SMSFFunction": ["Function1", "Function2", "Function3"],
+  "commModelList": {
+    "commModelId": "Comm001",
+    "commModelType": "Type1"
+  },
+  "managedNFProfile": {
+    "profileId": "Profile001",
+    "profileType": "Type1"
+  },
+  "pLMNIdList": {
+    "mcc": "214",
+    "mnc": "07"
+  }
+}

@@ -34,7 +34,7 @@
         },
         "cesSwitch": {
                 "description": "This attribute determines whether the Cross Domain-Centralized SON energy saving function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "energySavingControl": {
                 "description": "This attribute allows the Cross Domain-Centralized SON energy saving function to initiate energy saving activation or deactivation.",
@@ -42,7 +42,7 @@
                         "toBeEnergySaving",
                         "toBeNotEnergySaving"
                 ],
-                "type": "string"
+                "type": "EnergySavingControl"
         },
         "energySavingState": {
                 "description": "Specifies the status regarding the energy saving in the cell. If the value of energySavingControl is toBeEnergySaving, then it shall be tried to achieve the value isEnergySaving for the energySavingState. If the value of energySavingControl is toBeNotEnergySaving, then it shall be tried to achieve the value isNotEnergySaving for the energySavingState.",
@@ -50,7 +50,7 @@
                         "isNotEnergySaving",
                         "isEnergySaving"
                 ],
-                "type": "string"
+                "type": "EnergySavingState"
         }
 }
     }

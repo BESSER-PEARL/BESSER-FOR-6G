@@ -20,7 +20,7 @@
       "properties": {
         "EP_Common": {
                 "description": "Property",
-                "type": "string"
+                "type": "EP_Common"
         }
 }
     }

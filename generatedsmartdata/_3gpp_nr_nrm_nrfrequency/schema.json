@@ -27,11 +27,11 @@
         },
         "absoluteFrequencySSB": {
                 "description": "The absolute frequency applicable for a downlink NR carrier frequency associated with the SSB, in terms of NR-ARFCN.",
-                "type": "integer"
+                "type": "int"
         },
         "sSBSubCarrierSpacing": {
                 "description": "Sub-carrier spacing of the SSB.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

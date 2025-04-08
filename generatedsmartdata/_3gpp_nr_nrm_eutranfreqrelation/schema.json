@@ -27,63 +27,63 @@
         },
         "cellIndividualOffset": {
                 "description": "Offset applicable to a neighbouring cell. Used for evaluating the neighbouring cell for handover in connected mode. Used by the HandOver parameter Optimization (HOO) function or Load Balancing Optimization (LBO) function.",
-                "type": "string"
+                "type": "QOffsetRange"
         },
         "cellReselectionPriority": {
                 "description": "The absolute priority of the carrier frequency used by the cell reselection procedure. Value 0 means lowest priority. The value must not already used by other RAT, i.e. equal priorities between RATs are not supported. The UE behaviour when no value is entered is specified in subclause 5.2.4.1 of 3GPP TS 38.304.",
-                "type": "integer"
+                "type": "int"
         },
         "cellReselectionSubPriority": {
                 "description": "Indicates a fractional value to be added to the value of cellReselectionPriority to obtain the absolute priority of the concerned carrier frequency for E-UTRA and NR.",
-                "type": "integer"
+                "type": "int"
         },
         "eUtranFrequencyRef": {
                 "description": "Reference to a corresponding EUtranFrequency instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "pMax": {
                 "description": "Used for calculation of the parameter Pcompensation (defined in 3GPP TS 38.304), at cell reselection to a cell.",
-                "type": "integer"
+                "type": "int"
         },
         "qOffsetFreq": {
                 "description": "The frequency specific offset applied when evaluating candidates for cell reselection.",
-                "type": "integer"
+                "type": "int"
         },
         "qQualMin": {
                 "description": "Indicates the minimum required quality level in the cell. Value 0 means that it is not sent and UE applies in such case the (default) value of negative infinity for Qqualmin. Sent in SIB3 or SIB5.",
-                "type": "integer"
+                "type": "int"
         },
         "qRxLevMin": {
                 "description": "Indicates the required minimum received Reference Symbol Received Power (RSRP) level in the (E-UTRA) frequency for cell reselection. Broadcast in SIB3 or SIB5, depending on whether the related frequency is intra- or inter-frequency. Resolution is 2.",
-                "type": "integer"
+                "type": "int"
         },
         "tReselectionEutra": {
                 "description": "Cell reselection timer for intra frequency E-UTRA cell reselection. May be used for Mobility Robustness Optimization.",
-                "type": "integer"
+                "type": "int"
         },
         "tReselectionEutraSfHigh": {
                 "description": "The attribute tReselectionEutra (parameter TreselectionEUTRA in 3GPP TS 38.304) multiplied with this scaling factor if the UE is in high mobility state.",
-                "type": "integer"
+                "type": "int"
         },
         "tReselectionEutraSfMedium": {
                 "description": "The attribute tReselectionEutra (parameter TreselectionEUTRA in 3GPP TS 38.304) multiplied with this scaling factor if the UE is in medium mobility state.",
-                "type": "integer"
+                "type": "int"
         },
         "threshXHighP": {
                 "description": "Specifies the Srxlev threshold used by the UE when reselecting towards a higher priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold. Resolution is 2.",
-                "type": "integer"
+                "type": "int"
         },
         "threshXHighQ": {
                 "description": "Specifies the Squal threshold used by the UE when reselecting towards a higher priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold.",
-                "type": "integer"
+                "type": "int"
         },
         "threshXLowP": {
                 "description": "Specifies the Srxlev threshold used by the UE when reselecting towards a lower priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold. Resolution is 2.",
-                "type": "integer"
+                "type": "int"
         },
         "threshXLowQ": {
                 "description": "Specifies the Squal threshold used by the UE when reselecting towards a lower priority RAT/frequency than the current serving frequency. Each frequency of NR and E-UTRAN might have a specific threshold.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

@@ -1,0 +1,17 @@
+{
+  "id": "cellRelation123",
+  "type": "EUtranCellRelation",
+  "ActionAllowed": "YES",
+  "EUtranCellRelation": ["relation1", "relation2"],
+  "EnergySavingCoverage": "PARTIAL",
+  "adjacentCell": "EUtranCellFDD123",
+  "cellIndividualOffset": "QOffsetRange1",
+  "isENDCAllowed": "TRUE",
+  "isESCoveredBy": "YES",
+  "isHOAllowed": "NO",
+  "isICICInformationSendAllowed": "YES",
+  "isLBAllowed": "NO",
+  "isRemoveAllowed": "YES",
+  "qOffset": "QOffsetRange2",
+  "tCI": 12345
+}

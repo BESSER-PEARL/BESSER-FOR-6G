@@ -1,0 +1,23 @@
+{
+  "id": "cell001",
+  "type": "NRCellCU",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.418889, -3.691944]
+  },
+  "address": {
+    "addressCountry": "ES",
+    "addressLocality": "Madrid",
+    "streetAddress": "Plaza de Cibeles"
+  },
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z",
+  "source": "https://example.com",
+  "dataProvider": "DataProvider1",
+  "entityVersion": "2.0",
+  "ExternalNRCellCU": ["cell002", "cell003"],
+  "cellLocalId": 1,
+  "nRFrequencyRef": "nRFreq001",
+  "nRPCI": 123,
+  "pLMNIdList": "PLMN001"
+}

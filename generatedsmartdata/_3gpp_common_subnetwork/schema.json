@@ -27,19 +27,19 @@
         },
         "dnPrefix": {
                 "description": "Property",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "priorityLabel": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "userDefinedNetworkType": {
                 "description": "Textual information indicating network type, e.g. \u0027UTRAN\u0027.",
-                "type": "string"
+                "type": "str"
         },
         "userLabel": {
                 "description": "A user-friendly (and user assignable) name of this object.",
-                "type": "string"
+                "type": "str"
         }
 }
     }

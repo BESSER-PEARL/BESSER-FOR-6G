@@ -28,8 +28,8 @@
         "BwpContext": {
                 "enum": [
                         "DL",
-                        "UL",
-                        "SUL"
+                        "SUL",
+                        "UL"
                 ],
                 "type": "string"
         },
@@ -42,34 +42,34 @@
         },
         "IsInitialBwp": {
                 "enum": [
-                        "OTHER",
-                        "INITIAL"
+                        "INITIAL",
+                        "OTHER"
                 ],
                 "type": "string"
         },
         "bwpContext": {
                 "description": "Identifies whether the object is used for downlink, uplink or supplementary uplink.",
-                "type": "string"
+                "type": "str"
         },
         "cyclicPrefix": {
                 "description": "Cyclic prefix, which may be normal or extended.",
-                "type": "string"
+                "type": "str"
         },
         "isInitialBwp": {
                 "description": "Identifies whether the object is used for initial or other BWP.",
-                "type": "string"
+                "type": "str"
         },
         "numberOfRBs": {
                 "description": "Number of physical resource blocks for a BWP.",
-                "type": "integer"
+                "type": "int"
         },
         "startRB": {
                 "description": "Offset in common resource blocks to common resource block 0 for the applicable subcarrier spacing for a BWP.",
-                "type": "integer"
+                "type": "int"
         },
         "subCarrierSpacing": {
                 "description": "Subcarrier spacing configuration for a BWP.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

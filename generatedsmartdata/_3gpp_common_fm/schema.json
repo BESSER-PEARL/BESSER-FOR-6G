@@ -20,70 +20,70 @@
       "properties": {
         "AckstateEnum": {
                 "enum": [
-                        "ACKNOWLEDGED",
-                        "UNACKNOWLEDGED"
+                        "UNACKNOWLEDGED",
+                        "ACKNOWLEDGED"
                 ],
                 "type": "string"
         },
         "AlarmList": {
                 "description": "The AlarmList represents the capability to store and manage alarm records. The management scope of an AlarmList is defined by all descendant objects of the base managed object, which is the object name-containing the AlarmList, and the base object itself. AlarmList instances are created by the system or are pre-installed. They cannot be created nor deleted by MnS consumers. When the alarm list is locked or disabled, the existing alarm records are not updated, and new alarm records are not added to the alarm list",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "RootcauseindicatorEnum": {
                 "description": "It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances.",
                 "enum": [
-                        "NO",
-                        "YES"
+                        "YES",
+                        "NO"
                 ],
                 "type": "string"
         },
         "ackState": {
                 "description": "Property",
                 "enum": [
-                        "ACKNOWLEDGED",
-                        "UNACKNOWLEDGED"
+                        "UNACKNOWLEDGED",
+                        "ACKNOWLEDGED"
                 ],
-                "type": "string"
+                "type": "AckstateEnum"
         },
         "ackSystemId": {
                 "description": "It identifies the system (Management System) that last changed the ackState of an alarm, i.e. acknowledged or unacknowledged the alarm.",
-                "type": "string"
+                "type": "str"
         },
         "ackTime": {
                 "description": "It identifies the time when the alarm has been acknowledged or unacknowledged the last time, i.e. it registers the time when ackState changes.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "ackUserId": {
                 "description": "It identifies the last user who has changed the Acknowledgement State.",
-                "type": "string"
+                "type": "str"
         },
         "additionalInformation": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "additionalText": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "administrativeState": {
                 "description": "When set to UNLOCKED, the alarm list is updated. When the set to LOCKED, the existing alarm records are not updated, and new alarm records are not added to the alarm list.",
-                "type": "string"
+                "type": "AdministrativeState"
         },
         "alarmChangedTime": {
                 "description": "not applicable if related alarm has not changed",
-                "type": "string"
+                "type": "date_and_time"
         },
         "alarmClearedTime": {
                 "description": "not applicable if related alarm was not cleared",
-                "type": "string"
+                "type": "date_and_time"
         },
         "alarmId": {
                 "description": "Identifies the alarmRecord",
-                "type": "string"
+                "type": "str"
         },
         "alarmRaisedTime": {
                 "description": "Property",
-                "type": "string"
+                "type": "date_and_time"
         },
         "alarmRecords": {
                 "description": "List of alarmRecords",
@@ -94,115 +94,115 @@
         },
         "alarmType": {
                 "description": "General category for the alarm.",
-                "type": "string"
+                "type": "str"
         },
         "backUpObject": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "backedUpStatus": {
                 "description": "Indicates if an object (the MonitoredEntity) has a back up. See definition in ITU-T Recommendation X.733 clause 8.1.2.4.",
-                "type": "string"
+                "type": "str"
         },
         "clearSystemId": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "clearUserId": {
                 "description": "Carries the identity of the user who invokes the clearAlarms operation.",
-                "type": "string"
+                "type": "str"
         },
         "eventType": {
                 "description": "General category for the alarm.",
                 "enum": [
-                        "EQUIPMENT_ALARM",
-                        "QUALITY_OF_SERVICE_ALARM",
-                        "ENVIRONMENTAL_ALARM",
                         "TIME_DOMAIN_VIOLATION",
-                        "COMMUNICATIONS_ALARM",
-                        "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
-                        "PHYSICAL_VIOLATIONu",
+                        "ENVIRONMENTAL_ALARM",
                         "PROCESSING_ERROR_ALARM",
+                        "PHYSICAL_VIOLATIONu",
+                        "INTEGRITY_VIOLATION",
+                        "QUALITY_OF_SERVICE_ALARM",
+                        "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
                         "OPERATIONAL_VIOLATION",
-                        "INTEGRITY_VIOLATION"
+                        "COMMUNICATIONS_ALARM",
+                        "EQUIPMENT_ALARM"
                 ],
                 "type": "string"
         },
         "lastModification": {
                 "description": "The last time when an alarm record was modified",
-                "type": "string"
+                "type": "date_and_time"
         },
         "monitoredAttributes": {
                 "description": "Indicates MO attributes whose value changes are being monitored. See definition in ITU-T Recommendation X.733 clause 8.1.2.11.",
-                "type": "string"
+                "type": "str"
         },
         "notificationId": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "numOfAlarmRecords": {
                 "description": "The number of alarm records in the AlarmList",
-                "type": "integer"
+                "type": "int"
         },
         "objectInstance": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "operationalState": {
                 "description": "The producer sets this attribute to ENABLED, indicating that it has the resource and ability to record alarm in AlarmList else, it sets the attribute to DISABLED.",
-                "type": "string"
+                "type": "OperationalState"
         },
         "perceivedSeverity": {
                 "description": "This is Writable only if producer supports consumer to set perceivedSeverity to CLEARED",
-                "type": "string"
+                "type": "str"
         },
         "probableCause": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "proposedRepairActions": {
                 "description": "Indicates proposed repair actions. See definition in ITU-T Recommendation X.733 clause 8.1.2.12.",
-                "type": "string"
+                "type": "str"
         },
         "rootCauseIndicator": {
                 "description": "It indicates that this AlarmInformation is the root cause of the events captured by the notifications whose identifiers are in the related CorrelatedNotification instances.",
                 "enum": [
-                        "NO",
-                        "YES"
+                        "YES",
+                        "NO"
                 ],
-                "type": "string"
+                "type": "RootcauseindicatorEnum"
         },
         "securityAlarmDetector": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "serviceProvider": {
                 "description": "It identifies the service-provider whose service is requested by the serviceUser and the service request provokes the generation of the security alarm.",
-                "type": "string"
+                "type": "str"
         },
         "serviceUser": {
                 "description": "It identifies the service-user whose request for service provided by the serviceProvider led to the generation of the security alarm.",
-                "type": "string"
+                "type": "str"
         },
         "severity_level": {
                 "description": "The possible alarm serverities. \tAligned with ERICSSON-ALARM-MIB.",
                 "enum": [
-                        "CLEARED",
-                        "INDETERMINATE",
-                        "WARNING",
-                        "CRITICAL",
                         "MAJOR",
-                        "MINOR"
+                        "CRITICAL",
+                        "MINOR",
+                        "WARNING",
+                        "CLEARED",
+                        "INDETERMINATE"
                 ],
                 "type": "string"
         },
         "specificProblem": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "stateChangeDefinition": {
                 "description": "Indicates MO attribute value changes. See definition in ITU-T Recommendation X.733 clause 8.1.2.11.",
-                "type": "string"
+                "type": "str"
         },
         "thresholdInfo": {
                 "description": "Property",
@@ -213,7 +213,7 @@
         },
         "trendIndication": {
                 "description": "Indicates if some observed condition is getting better, worse, or not changing.",
-                "type": "string"
+                "type": "str"
         }
 }
     }

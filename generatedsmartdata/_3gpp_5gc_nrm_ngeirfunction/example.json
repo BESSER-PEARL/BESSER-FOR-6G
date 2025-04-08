@@ -1,0 +1,34 @@
+{
+  "id": "5GCore_NGEIR_001",
+  "type": "NGEIRFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "5G Core NGEIR Function Street",
+    "postalCode": "10001"
+  },
+  "NGEIRFunction": ["Function1", "Function2", "Function3"],
+  "commModelList": {
+    "commModelId": "CommModel_001",
+    "commModelType": "Type1",
+    "commModelVersion": "1.0"
+  },
+  "managedNFProfile": {
+    "profileId": "Profile_001",
+    "profileType": "Type1",
+    "profileVersion": "1.0"
+  },
+  "pLMNIdList": {
+    "mcc": "310",
+    "mnc": "410"
+  },
+  "sNSSAIList": {
+    "sst": "1",
+    "sd": "01"
+  }
+}

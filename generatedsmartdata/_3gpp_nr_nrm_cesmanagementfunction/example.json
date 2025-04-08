@@ -1,0 +1,18 @@
+{
+  "id": "energySavingModel1",
+  "type": "EnergySavingModel",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressLocality": "New York",
+    "streetAddress": "Broadway"
+  },
+  "EnergySavingControl": "toBeEnergySaving",
+  "EnergySavingState": "isNotEnergySaving",
+  "cesSwitch": true,
+  "energySavingControl": "toBeEnergySaving",
+  "energySavingState": "isNotEnergySaving"
+}

@@ -27,15 +27,15 @@
         },
         "cellLocalId": {
                 "description": "Identifies an NR cell of a gNB. Together with corresponding gNB ID it forms the NR Cell Identifier (NCI).",
-                "type": "integer"
+                "type": "int"
         },
         "nRFrequencyRef": {
                 "description": "Reference to corresponding NRFrequency instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "pLMNInfoList": {
                 "description": "The PLMNInfoList is a list of PLMNInfo data type. It defines which PLMNs that can be served by the NR cell, and which S-NSSAIs that can be supported by the NR cell for corresponding PLMN in case of network slicing feature is supported.",
-                "type": "string"
+                "type": "PLMNInfo"
         }
 }
     }

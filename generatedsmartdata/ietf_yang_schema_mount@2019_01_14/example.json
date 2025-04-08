@@ -1,0 +1,29 @@
+{
+  "id": "1234",
+  "type": "SmartData",
+  "config": true,
+  "description": "This is a test description",
+  "inlineSchema": {
+    "name": "InlineSchema1",
+    "description": "This is a test inline schema"
+  },
+  "label": "Label1",
+  "module": "Module1",
+  "mountPoint": {
+    "name": "MountPoint1",
+    "description": "This is a test mount point"
+  },
+  "namespace": {
+    "name": "Namespace1",
+    "description": "This is a test namespace"
+  },
+  "parentReference": "/parent1/parent2",
+  "prefix": "Prefix1",
+  "presence": true,
+  "schemaType": "inline",
+  "sharedSchema": {
+    "name": "SharedSchema1",
+    "description": "This is a test shared schema"
+  },
+  "uri": "http://example.com/uri1"
+}

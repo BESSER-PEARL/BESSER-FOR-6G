@@ -27,35 +27,35 @@
         },
         "arfcnDL": {
                 "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for downlink. Condition: The sector-carrier has a downlink AND the value differs from the referring cell\u0027s value of arfcnDL.",
-                "type": "integer"
+                "type": "int"
         },
         "arfcnUL": {
                 "description": "NR Absolute Radio Frequency Channel Number (NR-ARFCN) for uplink. Condition: The sector-carrier has an uplink AND the value differs from the referring cell\u0027s value of arfcnUL.",
-                "type": "integer"
+                "type": "int"
         },
         "bSChannelBwDL": {
                 "description": "Base station channel bandwitdth for downlink. Condition: The sector-carrier has a downlink AND the value differs from the referring cell\u0027s value of bSChannelBwDL.",
-                "type": "integer"
+                "type": "int"
         },
         "bSChannelBwUL": {
                 "description": "Base station channel bandwitdth for uplink.",
-                "type": "integer"
+                "type": "int"
         },
         "configuredMaxTxEIRP": {
                 "description": "The maximum emitted isotroptic radiated power (EIRP) in dBm for all downlink channels, used simultaneously in a cell, added together. Condition: the sector-carrier has a downlink and the configuration of emitted isotropic radiated power is supported",
-                "type": "integer"
+                "type": "int"
         },
         "configuredMaxTxPower": {
                 "description": "Maximum transmisssion power at the antenna port for all downlink channels, used simultaneously in a cell, added together. Condition: The sector-carrier has a downlink and the configuration of Tx power at antenna port reference point is supported.",
-                "type": "integer"
+                "type": "int"
         },
         "sectorEquipmentFunctionRef": {
                 "description": "Reference to corresponding SectorEquipmentFunction instance.",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "txDirection": {
                 "description": "Indicates if the transmission direction is downlink, uplink, or both downlink and uplink.",
-                "type": "string"
+                "type": "TxDirection"
         }
 }
     }

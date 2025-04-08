@@ -20,7 +20,7 @@
       "properties": {
         "EUtraNetwork": {
                 "description": "A subnetwork containing gNB external E-UTRAN entities.",
-                "type": "string"
+                "type": "Top_Grp"
         }
 }
     }

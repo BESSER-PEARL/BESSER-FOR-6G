@@ -1,0 +1,16 @@
+{
+  "id": "ExternalServingGWFunction1",
+  "type": "ServingGWFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway",
+    "postalCode": "10007"
+  },
+  "ExternalServingGWFunction": ["Function1", "Function2", "Function3"]
+}

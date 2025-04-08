@@ -1,0 +1,28 @@
+{
+  "id": "GNBCUCPFunction001",
+  "type": "GNBCUCPFunction",
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway",
+    "postalCode": "10027"
+  },
+  "ExternalGNBCUCPFunction": [
+    "Function1",
+    "Function2",
+    "Function3"
+  ],
+  "gNBId": 12345,
+  "gNBIdLength": 32,
+  "pLMNId": {
+    "mcc": "310",
+    "mnc": "410"
+  }
+}

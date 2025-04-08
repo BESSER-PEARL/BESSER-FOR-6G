@@ -20,19 +20,19 @@
       "properties": {
         "CommonBeamformingFunction": {
                 "description": "Represents common beamforming functionality (eg: SSB beams) for the NRSectorCarrier.",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "coverageShape": {
                 "description": "Identifies the sector carrier coverage shape described by the envelope of the contained SSB beams. The coverage shape is implementation dependent.",
-                "type": "integer"
+                "type": "int"
         },
         "digitalAzimuth": {
                 "description": "Digitally-controlled azimuth through beamforming. It represents the horizontal pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical horizontal pan of the selected coverageShape. Positive value gives azimuth to the right and negative value gives an azimuth to the left.",
-                "type": "integer"
+                "type": "int"
         },
         "digitalTilt": {
                 "description": "Digitally-controlled tilt through beamforming. It represents the vertical pointing direction of the antenna relative to the antenna bore sight, representing the total non-mechanical vertical tilt of the selected coverageShape. Positive value gives downwards tilt and negative value gives upwards tilt.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

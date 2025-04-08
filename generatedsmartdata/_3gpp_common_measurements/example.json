@@ -1,0 +1,18 @@
+{
+  "id": "12345",
+  "type": "PerformanceMetric",
+  "PerfMetricJob": "Top_Grp_1",
+  "SupportedPerfMetricGroup": ["MetricGroup1", "MetricGroup2"],
+  "ThresholdMonitor": "Top_Grp_2",
+  "ThresholddirectionEnum": "UP",
+  "administrativeState": "UNLOCKED",
+  "granularityPeriod": 15,
+  "hysteresis": "0.5",
+  "jobId": "Job_1",
+  "monitorGranularityPeriod": 30,
+  "operationalState": "ENABLED",
+  "thresholdDirection": "DOWN",
+  "thresholdInfoList": ["Info1", "Info2"],
+  "thresholdLevel": 2,
+  "thresholdValue": "10"
+}

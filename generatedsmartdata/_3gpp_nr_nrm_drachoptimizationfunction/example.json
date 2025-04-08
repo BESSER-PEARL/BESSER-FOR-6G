@@ -1,0 +1,23 @@
+{
+  "id": "drachOptimizationFunction001",
+  "type": "drachOptimizationFunction",
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T13:00:00Z",
+  "TargetProbability": "50",
+  "accessdelay": "low",
+  "drachOptimizationControl": true,
+  "numberofpreamblessent": "5",
+  "targetProbability": "high",
+  "ueAccDelayProbilityDist": ["low", "medium", "high"],
+  "ueAccProbilityDist": ["low", "medium", "high"],
+  "location": {
+    "type": "Point",
+    "coordinates": [-3.7037902, 40.4167754]
+  },
+  "address": {
+    "addressCountry": "ES",
+    "addressLocality": "Madrid",
+    "postalCode": "28013",
+    "streetAddress": "Plaza de Canalejas"
+  }
+}

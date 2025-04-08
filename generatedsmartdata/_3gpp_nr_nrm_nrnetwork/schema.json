@@ -20,7 +20,7 @@
       "properties": {
         "NRNetwork": {
                 "description": "A subnetwork containing gNB external NR entities.",
-                "type": "string"
+                "type": "Top_Grp"
         }
 }
     }

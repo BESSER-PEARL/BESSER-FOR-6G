@@ -1,0 +1,23 @@
+{
+  "id": "amf123",
+  "type": "AMFFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway"
+  },
+  "ExternalAMFFunction": [
+    "AMF1",
+    "AMF2",
+    "AMF3"
+  ],
+  "pLMNIdList": {
+    "mcc": "310",
+    "mnc": "410"
+  }
+}

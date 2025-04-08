@@ -27,15 +27,15 @@
         },
         "gNBId": {
                 "description": "Identifies a gNB within a PLMN.",
-                "type": "integer"
+                "type": "int"
         },
         "gNBIdLength": {
                 "description": "Indicates the number of bits for encoding the gNB ID.",
-                "type": "integer"
+                "type": "int"
         },
         "pLMNId": {
                 "description": "Specifies the PLMN identifier to be used as part of the global RAN node identity.",
-                "type": "string"
+                "type": "PLMNId"
         }
 }
     }

@@ -1,0 +1,14 @@
+{
+  "id": "bwp123",
+  "type": "3GPP_NR_NRM_BWP",
+  "BWP": ["BWP1", "BWP2", "BWP3"],
+  "BwpContext": "DL",
+  "CyclicPrefix": "NORMAL",
+  "IsInitialBwp": "INITIAL",
+  "bwpContext": "DL",
+  "cyclicPrefix": "NORMAL",
+  "isInitialBwp": "INITIAL",
+  "numberOfRBs": 100,
+  "startRB": 0,
+  "subCarrierSpacing": 30
+}

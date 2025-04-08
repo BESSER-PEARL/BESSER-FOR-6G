@@ -1,0 +1,15 @@
+{
+  "id": "NetworkSliceSubnet001",
+  "type": "NetworkSliceSubnet",
+  "NetworkSliceSubnet": ["Subnet1", "Subnet2"],
+  "administrativeState": "ENABLED",
+  "description": "This is a network slice subnet instance in a 5G network.",
+  "ipAddress": "192.168.1.1",
+  "logicInterfaceId": "VLAN001",
+  "managedFunctionRef": ["Function1", "Function2"],
+  "nSInstanceId": "NSInstance001",
+  "nsInfo": ["Info1", "Info2"],
+  "nsName": "Network Slice Instance 1",
+  "operationalState": "ENABLED",
+  "sliceProfileList": ["Profile1", "Profile2"]
+}

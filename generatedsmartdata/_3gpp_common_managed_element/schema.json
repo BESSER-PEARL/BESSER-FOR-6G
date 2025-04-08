@@ -27,31 +27,31 @@
         },
         "dnPrefix": {
                 "description": "Provides naming context that allows the Managed Elements to be partitioned into logical domains. A Distingushed Name(DN) is defined by 3GPP TS 32.300, which splits the DN into a DN Prefix and Local DN",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "locationName": {
                 "description": "The physical location (e.g. an address) of an entity represented by a (derivative of) ManagedElement_. It may contain no information to support the case where the derivative of ManagedElement_ needs to represent a distributed multi-location NE.",
-                "type": "string"
+                "type": "str"
         },
         "priorityLabel": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "swVersion": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "userDefinedState": {
                 "description": "An operator defined state for operator specific usage",
-                "type": "string"
+                "type": "str"
         },
         "userLabel": {
                 "description": "A user-friendly (and user assignable) name of this object.",
-                "type": "string"
+                "type": "str"
         },
         "vendorName": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         }
 }
     }

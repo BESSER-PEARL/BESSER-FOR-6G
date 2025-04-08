@@ -1,0 +1,34 @@
+{
+  "id": "nef-1234",
+  "type": "5GCoreNEF",
+  "NEFFunction": {
+    "name": "NEF1",
+    "description": "Network Exposure Function 1",
+    "version": "1.0.0"
+  },
+  "isCAPIFSup": true,
+  "isINEF": false,
+  "sBIFQDN": "nef1.example.com",
+  "sNSSAIList": [
+    {
+      "sst": 1,
+      "sd": "01AB"
+    },
+    {
+      "sst": 2,
+      "sd": "01AC"
+    }
+  ],
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York",
+    "streetAddress": "5G Core Network"
+  },
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z"
+}

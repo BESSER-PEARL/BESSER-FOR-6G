@@ -20,23 +20,23 @@
       "properties": {
         "NEFFunction": {
                 "description": "5G Core NEF Function",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "isCAPIFSup": {
                 "description": "Property",
-                "type": "boolean"
+                "type": "bool"
         },
         "isINEF": {
                 "description": "Property",
-                "type": "boolean"
+                "type": "bool"
         },
         "sBIFQDN": {
                 "description": "The FQDN of the registered NF instance in the service-based interface.",
-                "type": "string"
+                "type": "domain_name"
         },
         "sNSSAIList": {
                 "description": "List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.",
-                "type": "string"
+                "type": "SNssai"
         }
 }
     }

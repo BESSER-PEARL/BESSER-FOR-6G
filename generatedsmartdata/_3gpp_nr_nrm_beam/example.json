@@ -1,0 +1,15 @@
+{
+  "id": "Beam1",
+  "type": "SSB-BEAM",
+  "Beam": {
+    "description": "Per-Beam information for performance management",
+    "type": "Top_Grp"
+  },
+  "BeamType": "SSB-BEAM",
+  "beamAzimuth": 30,
+  "beamHorizWidth": 20,
+  "beamIndex": 1,
+  "beamTilt": 10,
+  "beamType": "Main",
+  "beamVertWidth": 15
+}

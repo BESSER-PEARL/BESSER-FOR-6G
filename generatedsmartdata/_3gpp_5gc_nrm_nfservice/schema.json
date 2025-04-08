@@ -21,13 +21,21 @@
         "NFServiceStatus": {
                 "enum": [
                         "SUSPENDED",
-                        "UNDISCOVERABLE",
-                        "REGISTERED"
+                        "REGISTERED",
+                        "UNDISCOVERABLE"
                 ],
                 "type": "string"
         },
         "ServiceName": {
                 "enum": [
+                        "NAUSF_AUTH",
+                        "NSMF_PDUSESSION",
+                        "NAUSF_SORPROTECTION",
+                        "NSMSF_SMS",
+                        "NBSF_MANAGEMENT",
+                        "NUDM_EE",
+                        "NCHF_CONVERGEDCHARGING",
+                        "NUDM_PP",
                         "NCHF_SPENDINGLIMITCONTROL",
                         "NUDM_SDM",
                         "NLMF_LOC",
@@ -52,56 +60,48 @@
                         "NAMF_LOC",
                         "NPCF_UE_POLICY_CONTROL",
                         "NAMF_MT",
-                        "NSMF_EVENT-EXPOSURE",
-                        "NAUSF_AUTH",
-                        "NSMF_PDUSESSION",
-                        "NAUSF_SORPROTECTION",
-                        "NSMSF_SMS",
-                        "NBSF_MANAGEMENT",
-                        "NUDM_EE",
-                        "NCHF_CONVERGEDCHARGING",
-                        "NUDM_PP"
+                        "NSMF_EVENT-EXPOSURE"
                 ],
                 "type": "string"
         },
         "TransportProtocol": {
                 "enum": [
+                        "TCP",
                         "STCP",
-                        "UDP",
-                        "TCP"
+                        "UDP"
                 ],
                 "type": "string"
         },
         "UriScheme": {
                 "enum": [
-                        "HTTP",
-                        "HTTPS"
+                        "HTTPS",
+                        "HTTP"
                 ],
                 "type": "string"
         },
         "allowedNssais": {
                 "description": "S-NSSAI of the allowed slices to access the service instance. The absence of this attribute indicates that any slice is allowed to access the service instance.",
-                "type": "string"
+                "type": "SNssai"
         },
         "allowedPlmns": {
                 "description": "PLMNs allowed to access the service instance. The absence of this attribute indicates that any PLMN is allowed to access the service instance.",
-                "type": "string"
+                "type": "PLMNId"
         },
         "apiFullVersion": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "apiPrefix": {
                 "description": "Optional path segment(s) used to construct the {apiRoot} variable of the different API URIs.",
-                "type": "string"
+                "type": "str"
         },
         "apiVersionInUri": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "capacity": {
                 "description": "Static capacity information in the range of 0-65535, expressed as a weight relative to other services of the same type.",
-                "type": "integer"
+                "type": "int"
         },
         "chfServiceInfo": {
                 "description": "Specific data for a CHF service instance.",
@@ -112,19 +112,19 @@
         },
         "defaultNotificationSubscriptions": {
                 "description": "Notification endpoints for different notification types.",
-                "type": "string"
+                "type": "DefaultNotificationSubscription"
         },
         "expiry": {
                 "description": "Property",
-                "type": "string"
+                "type": "date_and_time"
         },
         "fqdn": {
                 "description": "FQDN of the NF Service Instance.",
-                "type": "string"
+                "type": "domain_name"
         },
         "interPlmnFqdn": {
                 "description": "If the NF service needs to be discoverable by other NFs in a different PLMN, then an FQDN that is used for inter PLMN routing.",
-                "type": "string"
+                "type": "domain_name"
         },
         "ipEndPoints": {
                 "description": "IP address(es) and port information of the Network Function (including IPv4 and/or IPv6 address)where the service is listening for incoming service requests.",
@@ -135,51 +135,51 @@
         },
         "load": {
                 "description": "Dynamic load information, ranged from 0 to 100, indicates the current load percentage of the NF Service.",
-                "type": "string"
+                "type": "Load"
         },
         "nfServiceStatus": {
                 "description": "Status of the NF Service Instance.",
-                "type": "string"
+                "type": "str"
         },
         "port": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "primaryChfServiceInstance": {
                 "description": "Shall be present if the CHF service instance serves as a secondary CHF instance of another primary CHF service instance.",
-                "type": "string"
+                "type": "str"
         },
         "priority": {
                 "description": "Priority (relative to other services of the same type) in the range of 0-65535, to be used for NF Service selection; lower values indicate a higher priority.",
-                "type": "integer"
+                "type": "int"
         },
         "recoveryTime": {
                 "description": "Timestamp when the NF was (re)started.",
-                "type": "string"
+                "type": "date_and_time"
         },
         "scheme": {
                 "description": "URI scheme (e.g. \u0027http\u0027, \u0027https\u0027).",
-                "type": "string"
+                "type": "str"
         },
         "secondaryChfServiceInstance": {
                 "description": "Shall be present if the CHF service instance serves as a primary CHF instance of another secondary CHF service instance.",
-                "type": "string"
+                "type": "str"
         },
         "serviceInstanceID": {
                 "description": "Unique ID of the service instance within a given NF Instance.",
-                "type": "string"
+                "type": "str"
         },
         "serviceName": {
                 "description": "Name of the service instance (e.g. \u0027nudm-sdm\u0027).",
-                "type": "string"
+                "type": "str"
         },
         "supportedFeatures": {
                 "description": "Supported Features of the NF Service instance.",
-                "type": "string"
+                "type": "str"
         },
         "transport": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "versions": {
                 "description": "API versions supported by the NF Service and if available, the corresponding retirement date of the NF Service.",

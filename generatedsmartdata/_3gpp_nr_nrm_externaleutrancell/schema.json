@@ -34,31 +34,31 @@
         },
         "cellLocalId": {
                 "description": "Unambiguously identifies a cell within an eNodeB.",
-                "type": "integer"
+                "type": "int"
         },
         "eNBId": {
                 "description": "Unambiguously identifies an eNodeB within a PLMN.",
-                "type": "integer"
+                "type": "int"
         },
         "earfcn": {
                 "description": "The frequency number for the central frequency.",
-                "type": "integer"
+                "type": "int"
         },
         "earfcnDL": {
                 "description": "The channel number for the central DL frequency.",
-                "type": "integer"
+                "type": "int"
         },
         "earfcnUL": {
                 "description": "The channel number for the central UL frequency. Value 0 means that the UL channel number is N/A for the DL-only bands.",
-                "type": "integer"
+                "type": "int"
         },
         "pci": {
                 "description": "The Physical Cell Identity (PCI) of the cell (for NM-Centralized, EM-Centralized and Distributed PCI assignment cases). In the case of NM-Centralized PCI assignment, see 3GPP TS 36.300.",
-                "type": "integer"
+                "type": "int"
         },
         "plmnIdList": {
                 "description": "List of unique identities for PLMNs. A cell can broadcast up to 6 PLMN IDs. This is to support the case that one cell can be used by up to 6 operator\u0027s core networks. The PLMN(s) included in this list will use the same single tracking area code (TAC) and the same Cell Identity (cellLocalId) for sharing the radio access network resources. One member of plmnIdList is the primary PLMN ID. A PLMN ID included in this list cannot be included in the cellAccessInfoList. The PLMN ID is composed of a Mobile Country Code (MCC) and a Mobile Network Code (MNC).",
-                "type": "string"
+                "type": "PLMNId"
         }
 }
     }

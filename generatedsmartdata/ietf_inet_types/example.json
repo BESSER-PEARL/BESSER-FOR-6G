@@ -1,0 +1,12 @@
+{
+  "id": "1234",
+  "type": "Network",
+  "location": {
+    "type": "Point",
+    "coordinates": [-3.7037902, 40.4167754]
+  },
+  "ip_version": "ipv6",
+  "address": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z"
+}

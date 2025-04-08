@@ -1,0 +1,10 @@
+{
+  "id": "RRMPolicy1",
+  "type": "RRMPolicyRatio",
+  "RRMPolicyRatio": "Top_Grp1",
+  "rRMPolicyDedicatedRatio": 30,
+  "rRMPolicyMaxRatio": 80,
+  "rRMPolicyMemberList": ["Member1", "Member2", "Member3"],
+  "rRMPolicyMinRatio": 20,
+  "resourceType": "PRB"
+}

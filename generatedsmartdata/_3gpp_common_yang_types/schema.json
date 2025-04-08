@@ -20,48 +20,48 @@
       "properties": {
         "AdministrativeState": {
                 "enum": [
-                        "LOCKED",
+                        "SHUTTINGDOWN",
                         "UNLOCKED",
-                        "SHUTTINGDOWN"
+                        "LOCKED"
                 ],
                 "type": "string"
         },
         "AvailabilityStatus": {
                 "enum": [
+                        "DEPENDENCY",
+                        "OFF_LINE",
                         "FAILED",
-                        "DEGRADED",
                         "POWER_OFF",
                         "IN_TEST",
+                        "DEGRADED",
                         "LOG_FULL",
                         "NOT_INSTALLED",
-                        "OFF_DUTY",
-                        "DEPENDENCY",
-                        "OFF_LINE"
+                        "OFF_DUTY"
                 ],
                 "type": "string"
         },
         "CellState": {
                 "enum": [
-                        "ACTIVE",
                         "INACTIVE",
-                        "IDLE"
+                        "IDLE",
+                        "ACTIVE"
                 ],
                 "type": "string"
         },
         "N1MessageClass": {
                 "enum": [
-                        "5GMM",
                         "SMS",
                         "SM",
-                        "LPP"
+                        "LPP",
+                        "5GMM"
                 ],
                 "type": "string"
         },
         "N2InformationClass": {
                 "enum": [
-                        "SM",
                         "NRPPA",
                         "PWS",
+                        "SM",
                         "PWS_BCAL",
                         "PWS_RF"
                 ],
@@ -69,10 +69,6 @@
         },
         "NfType": {
                 "enum": [
-                        "SMF",
-                        "SMSF",
-                        "UDM",
-                        "UDR",
                         "UDSF",
                         "UPF",
                         "5G_EIR",
@@ -88,15 +84,19 @@
                         "NRF",
                         "NSSF",
                         "PCF",
-                        "SEPP"
+                        "SEPP",
+                        "SMF",
+                        "SMSF",
+                        "UDM",
+                        "UDR"
                 ],
                 "type": "string"
         },
         "NotificationType": {
                 "enum": [
-                        "N2_INFORMATION",
                         "N1_MESSAGES",
-                        "LOCATION_NOTIFICATION"
+                        "LOCATION_NOTIFICATION",
+                        "N2_INFORMATION"
                 ],
                 "type": "string"
         },
@@ -116,108 +116,108 @@
         },
         "TxDirection": {
                 "enum": [
-                        "DL",
                         "UL",
-                        "DL_AND_UL"
+                        "DL_AND_UL",
+                        "DL"
                 ],
                 "type": "string"
         },
         "UeMobilityLevel": {
                 "enum": [
-                        "FULLY_MOBILITY",
                         "STATIONARY",
                         "RESTRICTED_MOBILITY",
-                        "NOMADIC"
+                        "NOMADIC",
+                        "FULLY_MOBILITY"
                 ],
                 "type": "string"
         },
         "amfPointer": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "amfRegionId": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "amfSetId": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "authzInfo": {
                 "description": "This parameter defines NF Specific Service authorization information. It shall include the NF type (s) and NF realms/origins allowed to consume NF Service(s) of NF Service Producer.",
-                "type": "string"
+                "type": "str"
         },
         "callbackUri": {
                 "description": "Property",
-                "type": "string"
+                "type": "uri"
         },
         "capacity": {
                 "description": "This parameter defines static capacity information in the range of 0-65535, expressed as a weight relative to other NF instances of the same type; if capacity is also present in the nfServiceList parameters, those will have precedence over this value.",
-                "type": "integer"
+                "type": "int"
         },
         "end": {
                 "description": "Property",
-                "type": "string"
+                "type": "ipv4_address"
         },
         "host": {
                 "description": "Property",
-                "type": "string"
+                "type": "host"
         },
         "hostAddr": {
                 "description": "Host address of a NF",
-                "type": "string"
+                "type": "host"
         },
         "idx": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         },
         "ipAddress": {
                 "description": "Property",
-                "type": "string"
+                "type": "ip_address"
         },
         "location": {
                 "description": "Information about the location of the NF instance (e.g. geographic location, data center) defined by operator",
-                "type": "string"
+                "type": "str"
         },
         "mcc": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "mnc": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "n1MessageClass": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "n2InformationClass": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "nFSrvGroupId": {
                 "description": "This parameter defines identity of the group that is served by the NF instance. May be config false or true depending on the ManagedFunction. Config=true for Udrinfo. Config=false for UdmInfo and AusfInfo. Shall be present if ../nfType = UDM or AUSF or UDR.",
-                "type": "string"
+                "type": "str"
         },
         "nfInstanceID": {
                 "description": "This parameter defines profile for managed NF. The format of the NF Instance ID shall be a Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122",
-                "type": "string"
+                "type": "uuid"
         },
         "notificationType": {
                 "description": "Property",
-                "type": "string"
+                "type": "str"
         },
         "port": {
                 "description": "Property",
-                "type": "string"
+                "type": "port_number"
         },
         "priority": {
                 "description": "This parameter defines Priority (relative to other NFs of the same type) in the range of 0-65535, to be used for NF selection; lower values indicate a higher priority. If priority is also present in the nfServiceList parameters, those will have precedence over this value. Shall be present if ../nfType = AMF",
-                "type": "integer"
+                "type": "int"
         },
         "start": {
                 "description": "Property",
-                "type": "string"
+                "type": "ipv4_address"
         },
         "usageState": {
                 "description": "It describes whether or not the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users at that instant. The value is READ-ONLY.",
@@ -230,7 +230,7 @@
         },
         "vlanId": {
                 "description": "Property",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

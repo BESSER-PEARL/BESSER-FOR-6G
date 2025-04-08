@@ -20,11 +20,11 @@
       "properties": {
         "description": {
                 "description": "Indicates that the value for the data node can only be set when its parent data node is being created. To change the value after that, the parent data node must be deleted and recreated with the data node having the new value.",
-                "type": "string"
+                "type": "str"
         },
         "value": {
                 "description": "The initial value to be used",
-                "type": "string"
+                "type": "str"
         }
 }
     }

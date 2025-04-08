@@ -20,15 +20,15 @@
       "properties": {
         "SCPFunction": {
                 "description": "5G Core SCP Function",
-                "type": "string"
+                "type": "Top_Grp"
         },
         "address": {
                 "description": "The host address of the SCP.",
-                "type": "string"
+                "type": "host"
         },
         "supportedFuncList": {
                 "description": "Property",
-                "type": "string"
+                "type": "SupportedFunc"
         }
 }
     }

@@ -20,11 +20,11 @@
       "properties": {
         "intersystemANRManagementSwitch": {
                 "description": "This attribute determines whether the inter-system ANR function is activated or deactivated.",
-                "type": "boolean"
+                "type": "bool"
         },
         "intrasystemANRManagementSwitch": {
                 "description": "This attribute determines whether the intra-system ANR function is activated or deactivated.",
-                "type": "boolean"
+                "type": "bool"
         }
 }
     }

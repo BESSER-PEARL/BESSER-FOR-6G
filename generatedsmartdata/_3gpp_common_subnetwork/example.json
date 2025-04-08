@@ -1,0 +1,21 @@
+{
+  "id": "subnetwork123",
+  "type": "SubNetworkType",
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T01:00:00Z",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.7128, 74.0060]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "Broadway"
+  },
+  "SubNetwork": ["network1", "network2", "network3"],
+  "dnPrefix": "cn=John Doe,ou=users,dc=example,dc=com",
+  "priorityLabel": 1,
+  "userDefinedNetworkType": "UTRAN",
+  "userLabel": "User Network"
+}

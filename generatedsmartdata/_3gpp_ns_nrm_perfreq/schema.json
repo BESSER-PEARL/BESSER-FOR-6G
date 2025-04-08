@@ -20,51 +20,51 @@
       "properties": {
         "activityFactor": {
                 "description": "Percentage value of the amount of simultaneous active UEs to the total number of UEs where active means the UEs are exchanging data with the network.",
-                "type": "integer"
+                "type": "int"
         },
         "areaTrafficCapDL": {
                 "description": "Area traffic capacity over downlink",
-                "type": "string"
+                "type": "str"
         },
         "areaTrafficCapUL": {
                 "description": "Area traffic capacity over uplink",
-                "type": "string"
+                "type": "str"
         },
         "cSAvailabilityTarget": {
                 "description": "Reliability uptime target",
-                "type": "number"
+                "type": "float"
         },
         "cSReliabilityMeanTime": {
                 "description": "Mean time between failures",
-                "type": "string"
+                "type": "str"
         },
         "expDataRate": {
                 "description": "User experienced data rate",
-                "type": "string"
+                "type": "str"
         },
         "expDataRateDL": {
                 "description": "User experienced data rate over downlink",
-                "type": "string"
+                "type": "str"
         },
         "expDataRateUL": {
                 "description": "User experienced data rate over uplink",
-                "type": "string"
+                "type": "str"
         },
         "msgSizeByte": {
                 "description": "PDU size",
-                "type": "string"
+                "type": "str"
         },
         "overallUserDensity": {
                 "description": "Overall user density",
-                "type": "integer"
+                "type": "int"
         },
         "survivalTime": {
                 "description": "The time that an application consuming a communication service may continue without an anticipated message",
-                "type": "string"
+                "type": "str"
         },
         "transferIntervalTarget": {
                 "description": "Time difference between two consecutive transfers of application data from an application via the service interface to 3GPP system",
-                "type": "string"
+                "type": "str"
         }
 }
     }

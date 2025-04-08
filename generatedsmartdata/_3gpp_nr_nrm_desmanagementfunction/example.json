@@ -1,0 +1,22 @@
+{
+  "id": "cell123",
+  "type": "Cell",
+  "EnergysavingstateEnum": "isEnergySaving",
+  "IsprobingcapableEnum": "yes",
+  "daysOfWeekList": "Monday, Tuesday, Wednesday",
+  "desSwitch": true,
+  "energySavingState": "isEnergySaving",
+  "esNotAllowedTimePeriod": ["12:00-13:00", "18:00-19:00"],
+  "interRatEsActivationCandidateCellParameters": ["parameter1", "parameter2"],
+  "interRatEsActivationOriginalCellParameters": ["parameter3", "parameter4"],
+  "interRatEsDeactivationCandidateCellParameters": ["parameter5", "parameter6"],
+  "intraRatEsActivationCandidateCellsLoadParameters": ["parameter7", "parameter8"],
+  "intraRatEsActivationOriginalCellLoadParameters": ["parameter9", "parameter10"],
+  "intraRatEsDeactivationCandidateCellsLoadParameters": ["parameter11", "parameter12"],
+  "isProbingCapable": "yes",
+  "listoftimeperiods": "08:00-10:00, 14:00-16:00",
+  "loadThreshold": 50,
+  "periodOfDay": "Morning",
+  "startTimeandendTime": "08:00-16:00",
+  "timeDuration": 60
+}

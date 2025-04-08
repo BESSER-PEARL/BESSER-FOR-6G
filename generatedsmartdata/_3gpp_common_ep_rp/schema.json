@@ -20,19 +20,19 @@
       "properties": {
         "farEndEntity": {
                 "description": "Property",
-                "type": "string"
+                "type": "DistinguishedName"
         },
         "localAddress": {
                 "description": "Local IP address and VLAN ID.",
-                "type": "string"
+                "type": "AddressWithVlan"
         },
         "remoteAddress": {
                 "description": "Remote IP address.",
-                "type": "string"
+                "type": "ip_address"
         },
         "userLabel": {
                 "description": "A user-friendly (and user assignable) name of this object.",
-                "type": "string"
+                "type": "str"
         }
 }
     }

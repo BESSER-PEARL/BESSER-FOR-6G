@@ -1,0 +1,22 @@
+{
+  "id": "afFunction1",
+  "type": "5GC_AFFunction",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.712776, -74.005974]
+  },
+  "address": {
+    "addressCountry": "US",
+    "addressRegion": "New York",
+    "addressLocality": "New York City",
+    "streetAddress": "5th Avenue",
+    "postalCode": "10011"
+  },
+  "dateCreated": "2020-01-01T01:00:00Z",
+  "dateModified": "2020-05-01T13:00:00Z",
+  "AFFunction": {
+    "description": "5G Core AF Function",
+    "type": "Top_Grp",
+    "value": "AF1"
+  }
+}

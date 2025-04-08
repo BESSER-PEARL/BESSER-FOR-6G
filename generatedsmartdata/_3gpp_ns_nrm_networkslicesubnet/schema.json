@@ -27,19 +27,19 @@
         },
         "administrativeState": {
                 "description": "The administrative state of the network slice instance. It describes the permission to use or prohibition against using the instance, imposed through the OAM services.",
-                "type": "string"
+                "type": "AdministrativeState"
         },
         "description": {
                 "description": "Human readable description of the NS instance.",
-                "type": "string"
+                "type": "str"
         },
         "ipAddress": {
                 "description": "This parameter specifies the IP address assigned to a logical transport interface/endpoint. It can be an IPv4 address (See RFC 791) or an IPv6 address (See RFC 2373).",
-                "type": "string"
+                "type": "str"
         },
         "logicInterfaceId": {
                 "description": "This parameter specifies the identify of a logical transport interface. It could be VLAN ID (See IEEE 802.1Q), MPLS Tag or Segment ID.",
-                "type": "string"
+                "type": "str"
         },
         "managedFunctionRef": {
                 "description": "The managed functions that the NetworkSliceSubnet is associated with.",
@@ -50,7 +50,7 @@
         },
         "nSInstanceId": {
                 "description": "Uniquely identifies the NS instance.",
-                "type": "string"
+                "type": "str"
         },
         "nsInfo": {
                 "description": "This list represents the properties of network service information corresponding to the network slice subnet instance.",
@@ -61,11 +61,11 @@
         },
         "nsName": {
                 "description": "Human readable name of the NS instance.",
-                "type": "string"
+                "type": "str"
         },
         "operationalState": {
                 "description": "The operational state of the network slice instance. It describes whether or not the resource is physically installed and working.",
-                "type": "string"
+                "type": "OperationalState"
         },
         "sliceProfileList": {
                 "description": "List of SliceProfiles supported by the network slice subnet instance",

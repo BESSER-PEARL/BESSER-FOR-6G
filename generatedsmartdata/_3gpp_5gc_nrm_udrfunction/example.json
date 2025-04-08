@@ -1,0 +1,18 @@
+{
+  "id": "UDRFunction1",
+  "type": "UDRFunctionType",
+  "UDRFunction": ["Function1", "Function2"],
+  "managedNFProfile": {
+    "id": "Profile1",
+    "type": "ProfileType"
+  },
+  "pLMNIdList": {
+    "id": "PLMNId1",
+    "type": "PLMNIdType"
+  },
+  "sBIFQDN": "nfinstance.example.com",
+  "sNSSAIList": {
+    "id": "SNssai1",
+    "type": "SNssaiType"
+  }
+}

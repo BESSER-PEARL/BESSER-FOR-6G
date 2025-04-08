@@ -1,0 +1,19 @@
+{
+  "id": "nrfreqrelation1",
+  "type": "NRFreqRelation",
+  "NRFreqRelation": ["relation1", "relation2"],
+  "cellReselectionPriority": 1,
+  "cellReselectionSubPriority": 2,
+  "nRFrequencyRef": "nrfrequency1",
+  "pMax": 3,
+  "qOffsetFreq": "qoffsetrange1",
+  "qQualMin": 4,
+  "qRxLevMin": 5,
+  "tReselectionNR": 6,
+  "tReselectionNRSfHigh": 7,
+  "tReselectionNRSfMedium": 8,
+  "threshXHighP": 9,
+  "threshXHighQ": 10,
+  "threshXLowP": 11,
+  "threshXLowQ": 12
+}

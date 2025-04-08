@@ -20,28 +20,28 @@
       "properties": {
         "TargetProbability": {
                 "enum": [
-                        "50",
-                        "90",
                         "25",
-                        "75"
+                        "90",
+                        "75",
+                        "50"
                 ],
                 "type": "string"
         },
         "accessdelay": {
                 "description": "This attribute determines the access delay.",
-                "type": "string"
+                "type": "str"
         },
         "drachOptimizationControl": {
                 "description": "This attribute determines whether the RACH Optimization function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "numberofpreamblessent": {
                 "description": "This attribute determines the number of preambles sent.",
-                "type": "string"
+                "type": "str"
         },
         "targetProbability": {
                 "description": "This attribute determines the target Probability.",
-                "type": "string"
+                "type": "str"
         },
         "ueAccDelayProbilityDist": {
                 "description": "This is a list of target Access Delay probability (ADP) for the RACH optimization function.",

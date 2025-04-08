@@ -36,11 +36,11 @@
         },
         "daysOfWeekList": {
                 "description": "This field indicate the list of weekday.",
-                "type": "string"
+                "type": "str"
         },
         "desSwitch": {
                 "description": "This attribute determines whether the Distributed SON or Domain-Centralized SON energy saving function is enabled or disabled.",
-                "type": "boolean"
+                "type": "bool"
         },
         "energySavingState": {
                 "description": "Specifies the status regarding the energy saving in the cell.",
@@ -48,7 +48,7 @@
                         "isEnergySaving",
                         "isNotEnergySaving"
                 ],
-                "type": "string"
+                "type": "EnergysavingstateEnum"
         },
         "esNotAllowedTimePeriod": {
                 "description": "This attribute indicates a list of time periods during which inter-RAT energy saving is not allowed.",
@@ -105,27 +105,27 @@
                         "yes",
                         "no"
                 ],
-                "type": "string"
+                "type": "IsprobingcapableEnum"
         },
         "listoftimeperiods": {
                 "description": "This field indicate the list of time periods.",
-                "type": "string"
+                "type": "str"
         },
         "loadThreshold": {
                 "description": "This attribute is used by distributed ES algorithms to allow a cell to enter the energySaving state.",
-                "type": "integer"
+                "type": "int"
         },
         "periodOfDay": {
                 "description": "This field indicate the period of day.",
-                "type": "string"
+                "type": "str"
         },
         "startTimeandendTime": {
                 "description": "This field indicate valid UTC time.",
-                "type": "string"
+                "type": "str"
         },
         "timeDuration": {
                 "description": "The time duration indicates how long the traffic load (both for UL and DL) in the candidate cell needs to have been below the threshold before any original cells which will be provided backup coverage by the candidate cell enters energySaving state.",
-                "type": "integer"
+                "type": "int"
         }
 }
     }

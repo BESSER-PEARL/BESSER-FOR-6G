@@ -1,0 +1,28 @@
+{
+  "id": "NWDAF_001",
+  "type": "5GC_NRM_NWDAFFunction",
+  "dateCreated": "2021-10-01T10:00:00Z",
+  "dateModified": "2021-10-01T10:00:00Z",
+  "location": {
+    "type": "Point",
+    "coordinates": [40.418889, -3.691944]
+  },
+  "NWDAFFunction": ["Function1", "Function2", "Function3"],
+  "commModelList": {
+    "commModelId": "CM_001",
+    "commModelVersion": "1.0"
+  },
+  "managedNFProfile": {
+    "profileId": "MNF_001",
+    "profileVersion": "1.0"
+  },
+  "pLMNIdList": {
+    "mcc": "262",
+    "mnc": "01"
+  },
+  "sBIFQDN": "nwdaf.example.com",
+  "sNSSAIList": {
+    "sst": "1",
+    "sd": "010203"
+  }
+}

@@ -27,15 +27,15 @@
         },
         "managedNFProfile": {
                 "description": "Property",
-                "type": "string"
+                "type": "ManagedNFProfile"
         },
         "pLMNIdList": {
                 "description": "A list of PLMN identifiers (Mobile Country Code and Mobile Network Code).",
-                "type": "string"
+                "type": "PLMNId"
         },
         "sNSSAIList": {
                 "description": "List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.",
-                "type": "string"
+                "type": "SNssai"
         }
 }
     }
