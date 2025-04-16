@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-nfservice/_3gpp-5gc-nrm-nfservice/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-nfservice schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "NF service class.",
   "required": [
     "id",
     "type"
@@ -20,55 +20,55 @@
       "properties": {
         "NFServiceStatus": {
                 "enum": [
-                        "SUSPENDED",
                         "REGISTERED",
+                        "SUSPENDED",
                         "UNDISCOVERABLE"
                 ],
                 "type": "string"
         },
         "ServiceName": {
                 "enum": [
-                        "NAUSF_AUTH",
                         "NSMF_PDUSESSION",
-                        "NAUSF_SORPROTECTION",
-                        "NSMSF_SMS",
-                        "NBSF_MANAGEMENT",
-                        "NUDM_EE",
-                        "NCHF_CONVERGEDCHARGING",
-                        "NUDM_PP",
-                        "NCHF_SPENDINGLIMITCONTROL",
-                        "NUDM_SDM",
-                        "NLMF_LOC",
-                        "NUDM_UEAU",
-                        "NNEF_PFDMANAGEMENT",
-                        "NUDM_UECM",
-                        "NNRF_DISC",
-                        "NUDR_DR",
-                        "NNRF_NFM",
-                        "NNSSF_NSSAIAVAILABILITY",
-                        "NNSSF_NSSELECTION",
-                        "NNWDAF_ANALYTICSINFO",
-                        "NNWDAF_EVENTSSUBSCRIPTION",
-                        "NPCF_AM-POLICY-CONTROL",
                         "NPCF_BDTPOLICYCONTROL",
-                        "N5G_EIR_EIC",
-                        "NPCF_EVENTEXPOSURE",
-                        "NPCF_POLICYAUTHORIZATION",
-                        "NAMF_COMM",
-                        "NAMF_EVTS",
+                        "NSMSF_SMS",
+                        "NUDM_PP",
+                        "NUDM_UECM",
+                        "NUDR_DR",
+                        "NAUSF_SORPROTECTION",
                         "NPCF_SMPOLICYCONTROL",
-                        "NAMF_LOC",
-                        "NPCF_UE_POLICY_CONTROL",
                         "NAMF_MT",
-                        "NSMF_EVENT-EXPOSURE"
+                        "NAMF_LOC",
+                        "NPCF_EVENTEXPOSURE",
+                        "NNRF_NFM",
+                        "NNWDAF_EVENTSSUBSCRIPTION",
+                        "NUDM_EE",
+                        "NPCF_POLICYAUTHORIZATION",
+                        "NNWDAF_ANALYTICSINFO",
+                        "NLMF_LOC",
+                        "NCHF_SPENDINGLIMITCONTROL",
+                        "NUDM_UEAU",
+                        "N5G_EIR_EIC",
+                        "NNSSF_NSSAIAVAILABILITY",
+                        "NAUSF_AUTH",
+                        "NPCF_UE_POLICY_CONTROL",
+                        "NAMF_EVTS",
+                        "NNSSF_NSSELECTION",
+                        "NCHF_CONVERGEDCHARGING",
+                        "NNRF_DISC",
+                        "NUDM_SDM",
+                        "NPCF_AM-POLICY-CONTROL",
+                        "NSMF_EVENT-EXPOSURE",
+                        "NBSF_MANAGEMENT",
+                        "NNEF_PFDMANAGEMENT",
+                        "NAMF_COMM"
                 ],
                 "type": "string"
         },
         "TransportProtocol": {
                 "enum": [
-                        "TCP",
+                        "UDP",
                         "STCP",
-                        "UDP"
+                        "TCP"
                 ],
                 "type": "string"
         },

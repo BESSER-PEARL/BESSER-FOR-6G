@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-nrffunction/_3gpp-5gc-nrm-nrffunction/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-nrffunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the NRF function in 5GC. For more information about the NRF, see 3GPP TS 23.501 [2].",
   "required": [
     "id",
     "type"

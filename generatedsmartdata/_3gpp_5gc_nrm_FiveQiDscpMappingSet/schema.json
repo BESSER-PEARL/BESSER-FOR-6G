@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-FiveQiDscpMappingSet/_3gpp-5gc-nrm-FiveQiDscpMappingSet/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-FiveQiDscpMappingSet schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the set of mapping between 5QIs and DSCP.",
   "required": [
     "id",
     "type"

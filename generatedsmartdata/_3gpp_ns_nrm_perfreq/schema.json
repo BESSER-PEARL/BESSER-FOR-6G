@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-ns-nrm-perfreq/_3gpp-ns-nrm-perfreq/schema.json",
+  "title": "Smart Data models - _3gpp-ns-nrm-perfreq schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "The performance requirements for the NSI in terms of the scenarios defined in the 3GPP TS 22.261, such as experienced data rate, area traffic capacity (density) information of UE density.",
   "required": [
     "id",
     "type"

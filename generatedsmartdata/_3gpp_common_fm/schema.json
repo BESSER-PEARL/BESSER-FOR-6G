@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-fm/_3gpp-common-fm/schema.json",
+  "title": "Smart Data models - _3gpp-common-fm schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines a Fault Management model",
   "required": [
     "id",
     "type"
@@ -20,8 +20,8 @@
       "properties": {
         "AckstateEnum": {
                 "enum": [
-                        "UNACKNOWLEDGED",
-                        "ACKNOWLEDGED"
+                        "ACKNOWLEDGED",
+                        "UNACKNOWLEDGED"
                 ],
                 "type": "string"
         },
@@ -40,8 +40,8 @@
         "ackState": {
                 "description": "Property",
                 "enum": [
-                        "UNACKNOWLEDGED",
-                        "ACKNOWLEDGED"
+                        "ACKNOWLEDGED",
+                        "UNACKNOWLEDGED"
                 ],
                 "type": "AckstateEnum"
         },
@@ -115,16 +115,16 @@
         "eventType": {
                 "description": "General category for the alarm.",
                 "enum": [
-                        "TIME_DOMAIN_VIOLATION",
-                        "ENVIRONMENTAL_ALARM",
-                        "PROCESSING_ERROR_ALARM",
-                        "PHYSICAL_VIOLATIONu",
-                        "INTEGRITY_VIOLATION",
-                        "QUALITY_OF_SERVICE_ALARM",
                         "SECURITY_SERVICE_OR_MECHANISM_VIOLATION",
+                        "INTEGRITY_VIOLATION",
                         "OPERATIONAL_VIOLATION",
+                        "EQUIPMENT_ALARM",
                         "COMMUNICATIONS_ALARM",
-                        "EQUIPMENT_ALARM"
+                        "ENVIRONMENTAL_ALARM",
+                        "TIME_DOMAIN_VIOLATION",
+                        "QUALITY_OF_SERVICE_ALARM",
+                        "PROCESSING_ERROR_ALARM",
+                        "PHYSICAL_VIOLATIONu"
                 ],
                 "type": "string"
         },
@@ -187,12 +187,12 @@
         "severity_level": {
                 "description": "The possible alarm serverities. \tAligned with ERICSSON-ALARM-MIB.",
                 "enum": [
-                        "MAJOR",
-                        "CRITICAL",
-                        "MINOR",
                         "WARNING",
                         "CLEARED",
-                        "INDETERMINATE"
+                        "INDETERMINATE",
+                        "CRITICAL",
+                        "MAJOR",
+                        "MINOR"
                 ],
                 "type": "string"
         },

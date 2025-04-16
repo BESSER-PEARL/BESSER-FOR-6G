@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-nfprofile/_3gpp-5gc-nrm-nfprofile/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-nfprofile schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "NF profile class.",
   "required": [
     "id",
     "type"
@@ -27,10 +27,10 @@
         },
         "DataSetId": {
                 "enum": [
+                        "SUBSCRIPTION",
                         "POLICY",
                         "EXPOSURE",
-                        "APPLICATION",
-                        "SUBSCRIPTION"
+                        "APPLICATION"
                 ],
                 "type": "string"
         },
@@ -43,19 +43,19 @@
         },
         "PduSessionType": {
                 "enum": [
-                        "IPV4V6",
+                        "IPV6",
+                        "UNSTRUCTURED",
                         "ETHERNET",
                         "IPV4",
-                        "IPV6",
-                        "UNSTRUCTURED"
+                        "IPV4V6"
                 ],
                 "type": "string"
         },
         "UPInterfaceType": {
                 "enum": [
                         "N9",
-                        "N3",
-                        "N6"
+                        "N6",
+                        "N3"
                 ],
                 "type": "string"
         },
@@ -91,7 +91,7 @@
                 "type": "DefaultNotificationSubscription"
         },
         "dnn": {
-                "description": "Supported DNN.",
+                "description": "String representing a Data Network.",
                 "type": "str"
         },
         "dnnSmfInfoList": {
@@ -187,7 +187,7 @@
                 "type": "array"
         },
         "plmnId": {
-                "description": "PLMN Identity.",
+                "description": "PLMN ID related to the TacRange.",
                 "type": "PLMNId"
         },
         "plmnList": {

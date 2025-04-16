@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel.ietf-yang-schema-mount/ietf-yang-schema-mount/schema.json",
+  "title": "Smart Data models - ietf-yang-schema-mount schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This module defines a YANG extension statement that can be used to incorporate data models defined in other YANG modules in a module.",
   "required": [
     "id",
     "type"
@@ -23,7 +23,7 @@
                 "type": "bool"
         },
         "description": {
-                "description": "This node indicates that the server has mounted at least the module \u0027ietf-yang-library\u0027 at the mount point, and its instantiation provides the information about the mounted schema. Different instances of the mount point may have different schemas mounted.",
+                "description": "This node indicates that the server has mounted at least the module \u0027ietf-yang-library\u0027 at the mount point, and its instantiation provides the information about the mounted schema. When XPath expressions in the mounted schema are evaluated, the \u0027parent-reference\u0027 leaf-list is taken into account. Different instances of the mount point MUST have the same schema mounted.",
                 "type": "str"
         },
         "inlineSchema": {
@@ -55,7 +55,7 @@
                 "type": "str"
         },
         "presence": {
-                "description": "A complete self-contained schema is mounted at the mount point.",
+                "description": "The mounted schema together with the \u0027parent-reference\u0027 make up the schema for this mount point.",
                 "type": "bool"
         },
         "schemaType": {

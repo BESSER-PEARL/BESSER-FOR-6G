@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-n3iwffunction/_3gpp-5gc-nrm-n3iwffunction/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-n3iwffunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the N3IWF function which is used to enable non-3GPP access networks connected to the 5GC. For more information about the N3IWF, see 3GPP TS 23.501.",
   "required": [
     "id",
     "type"

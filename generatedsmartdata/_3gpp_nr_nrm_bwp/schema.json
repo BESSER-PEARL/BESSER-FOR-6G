@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-nr-nrm-bwp/_3gpp-nr-nrm-bwp/schema.json",
+  "title": "Smart Data models - _3gpp-nr-nrm-bwp schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines the YANG mapping of the BWP Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
   "required": [
     "id",
     "type"
@@ -27,23 +27,23 @@
         },
         "BwpContext": {
                 "enum": [
-                        "DL",
                         "SUL",
+                        "DL",
                         "UL"
                 ],
                 "type": "string"
         },
         "CyclicPrefix": {
                 "enum": [
-                        "NORMAL",
-                        "EXTENDED"
+                        "EXTENDED",
+                        "NORMAL"
                 ],
                 "type": "string"
         },
         "IsInitialBwp": {
                 "enum": [
-                        "INITIAL",
-                        "OTHER"
+                        "OTHER",
+                        "INITIAL"
                 ],
                 "type": "string"
         },

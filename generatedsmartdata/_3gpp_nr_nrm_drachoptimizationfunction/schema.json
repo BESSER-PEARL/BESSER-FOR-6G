@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-nr-nrm-drachoptimizationfunction/_3gpp-nr-nrm-drachoptimizationfunction/schema.json",
+  "title": "Smart Data models - _3gpp-nr-nrm-drachoptimizationfunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines the YANG mapping of the DRACHOptimizationFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
   "required": [
     "id",
     "type"
@@ -20,10 +20,10 @@
       "properties": {
         "TargetProbability": {
                 "enum": [
-                        "25",
-                        "90",
                         "75",
-                        "50"
+                        "50",
+                        "25",
+                        "90"
                 ],
                 "type": "string"
         },

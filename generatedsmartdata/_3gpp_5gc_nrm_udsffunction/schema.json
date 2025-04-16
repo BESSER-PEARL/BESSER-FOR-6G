@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-udsffunction/_3gpp-5gc-nrm-udsffunction/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-udsffunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the UDSF function which can be interacted with any other 5GC NF defined in 3GPP TS 23.501.",
   "required": [
     "id",
     "type"

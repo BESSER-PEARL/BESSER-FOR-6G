@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-ep/_3gpp-5gc-nrm-ep/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-ep schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines the YANG mapping of the 5GC related endpoint Information Object Classes (IOCs) that are part of the 5G Core Network Resource Model.",
   "required": [
     "id",
     "type"

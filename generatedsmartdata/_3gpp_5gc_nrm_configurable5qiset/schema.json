@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-configurable5qiset/_3gpp-5gc-nrm-configurable5qiset/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-configurable5qiset schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the non-standardized 5QIs, including their QoS characteristics, that need to be pre-configured (and configurable) to the 5G NFs.",
   "required": [
     "id",
     "type"

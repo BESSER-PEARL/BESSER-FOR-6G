@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-measurements/_3gpp-common-measurements/schema.json",
+  "title": "Smart Data models - _3gpp-common-measurements schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines Measurement and KPI related groupings Any list/class intending to use this should include 2 or 3 uses statements controlled by a feature: A) +++ feature MeasurementsUnderMyClass { +++ description 'Indicates whether measurements and/or KPIs are supported +++ for this class.'; +++ } B) include the attribute measurementsList and/or kPIsList indicating the supported measurment and KPI types and GPs. Note that for classes inheriting from ManagedFunction, EP_RP or SubNetwork these attributes are already inherited, so there is no need to include them once more. E.g. +++ grouping MyClassGrp { +++ uses meas3gpp:SupportedPerfMetricGroup; +++ } C) include the class PerfmetricJob to control the measurements/KPIs. E.g. list MyClass { container attributes { uses MyClassGrp; } +++ uses meas3gpp:MeasurementSubtree { +++ if-feature MeasurementsUnderMyClass ; +++ } } Measurements can be contained under ManagedElement, SubNetwork, or any list representing a class inheriting from Subnetwork or ManagedFunction. Note: KPIs will only be supported under SubNetwork",
   "required": [
     "id",
     "type"
@@ -36,9 +36,9 @@
         "ThresholddirectionEnum": {
                 "description": "Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to \u0027UP\u0027, the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to \u0027DOWN\u0027, the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to \u0027UP_AND_DOWN\u0027 the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to \u0027UP_AND_DOWN\u0027.",
                 "enum": [
+                        "DOWN",
                         "UP_AND_DOWN",
-                        "UP",
-                        "DOWN"
+                        "UP"
                 ],
                 "type": "string"
         },
@@ -69,9 +69,9 @@
         "thresholdDirection": {
                 "description": "Direction of a threshold indicating the direction for which a threshold crossing triggers a threshold. When the threshold direction is configured to \u0027UP\u0027, the associated treshold is triggered only when the performance metric value is going up upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going down upon reaching or crossing the threshold value. Vice versa, when the threshold direction is configured to \u0027DOWN\u0027, the associated treshold is triggered only when the performance metric is going down upon reaching or crossing the threshold value. The treshold is not triggered, when the performance metric is going up upon reaching or crossing the threshold value. When the threshold direction is set to \u0027UP_AND_DOWN\u0027 the treshold is active in both direcions. In case a threshold with hysteresis is configured, the threshold direction attribute shall be set to \u0027UP_AND_DOWN\u0027.",
                 "enum": [
+                        "DOWN",
                         "UP_AND_DOWN",
-                        "UP",
-                        "DOWN"
+                        "UP"
                 ],
                 "type": "ThresholddirectionEnum"
         },

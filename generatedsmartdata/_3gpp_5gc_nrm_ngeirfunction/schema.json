@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-5gc-nrm-ngeirfunction/_3gpp-5gc-nrm-ngeirfunction/schema.json",
+  "title": "Smart Data models - _3gpp-5gc-nrm-ngeirfunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the 5G-EIR function in 5GC. For more information about the 5G-EIR, see 3GPP TS 23.501.",
   "required": [
     "id",
     "type"

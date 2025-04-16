@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel.ietf-yang-types/ietf-yang-types/schema.json",
+  "title": "Smart Data models - ietf-yang-types schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This module contains a collection of generally useful derived YANG data types.",
   "required": [
     "id",
     "type"
@@ -23,8 +23,8 @@
                 "type": "str"
         },
         "value": {
-                "description": "The mac-address type represents an IEEE 802 MAC address.",
-                "type": "str"
+                "description": "A non-negative integer that may increase or decrease, but shall never exceed 2^64-1 or fall below 0.",
+                "type": "int"
         }
 }
     }

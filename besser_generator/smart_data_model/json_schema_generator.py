@@ -31,13 +31,14 @@ class JSONSchemaGenerator(GeneratorInterface):
         schema_data = {
             "type": "object",
             "properties": {},
-            "required": []
+            "required": [],
+            "class_name": self.model.name if hasattr(self.model, 'name') else "DefaultClass"
         }
 
         # Add model description
         if hasattr(self.model, 'synonyms') and self.model.synonyms:
-            schema_data["description"] = ". ".join(self.model.synonyms) if isinstance(self.model.synonyms, list) else self.model.synonyms
-
+            description = ". ".join(self.model.synonyms) if isinstance(self.model.synonyms, list) else self.model.synonyms
+            schema_data["model_description"] = description
         # Process all types in the model
         for type_def in self.model.types:
             if isinstance(type_def, Enumeration):
@@ -79,7 +80,6 @@ class JSONSchemaGenerator(GeneratorInterface):
         templates_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
         env = Environment(loader=FileSystemLoader(templates_path))
         template = env.get_template('json_schema_template.json.j2')
-
         file_path = self.build_generation_path(file_name="schema.json")
         with open(file_path, mode="w", encoding='utf-8') as f:
             generated_schema = template.render(schema=schema_data)

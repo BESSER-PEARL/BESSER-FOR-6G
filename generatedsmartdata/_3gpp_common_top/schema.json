@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-top/_3gpp-common-top/schema.json",
+  "title": "Smart Data models - _3gpp-common-top schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "The model defines a YANG mapping of the top level information classes used for management of 5G networks and network slicing.",
   "required": [
     "id",
     "type"

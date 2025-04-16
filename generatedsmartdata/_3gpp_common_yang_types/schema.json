@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-yang-types/_3gpp-common-yang-types/schema.json",
+  "title": "Smart Data models - _3gpp-common-yang-types schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "The model defines a YANG mapping of the top level information classes used for management of 5G networks and network slicing.",
   "required": [
     "id",
     "type"
@@ -20,9 +20,9 @@
       "properties": {
         "AdministrativeState": {
                 "enum": [
-                        "SHUTTINGDOWN",
+                        "LOCKED",
                         "UNLOCKED",
-                        "LOCKED"
+                        "SHUTTINGDOWN"
                 ],
                 "type": "string"
         },
@@ -33,8 +33,8 @@
                         "FAILED",
                         "POWER_OFF",
                         "IN_TEST",
-                        "DEGRADED",
                         "LOG_FULL",
+                        "DEGRADED",
                         "NOT_INSTALLED",
                         "OFF_DUTY"
                 ],
@@ -59,16 +59,21 @@
         },
         "N2InformationClass": {
                 "enum": [
+                        "PWS_RF",
+                        "SM",
                         "NRPPA",
                         "PWS",
-                        "SM",
-                        "PWS_BCAL",
-                        "PWS_RF"
+                        "PWS_BCAL"
                 ],
                 "type": "string"
         },
         "NfType": {
                 "enum": [
+                        "SEPP",
+                        "SMF",
+                        "SMSF",
+                        "UDM",
+                        "UDR",
                         "UDSF",
                         "UPF",
                         "5G_EIR",
@@ -83,12 +88,7 @@
                         "NEF",
                         "NRF",
                         "NSSF",
-                        "PCF",
-                        "SEPP",
-                        "SMF",
-                        "SMSF",
-                        "UDM",
-                        "UDR"
+                        "PCF"
                 ],
                 "type": "string"
         },
@@ -102,8 +102,8 @@
         },
         "OperationalState": {
                 "enum": [
-                        "ENABLED",
-                        "DISABLED"
+                        "DISABLED",
+                        "ENABLED"
                 ],
                 "type": "string"
         },
@@ -157,7 +157,7 @@
         },
         "end": {
                 "description": "Property",
-                "type": "ipv4_address"
+                "type": "ipv6_prefix"
         },
         "host": {
                 "description": "Property",
@@ -217,7 +217,7 @@
         },
         "start": {
                 "description": "Property",
-                "type": "ipv4_address"
+                "type": "ipv6_prefix"
         },
         "usageState": {
                 "description": "It describes whether or not the resource is actively in use at a specific instant, and if so, whether or not it has spare capacity for additional users at that instant. The value is READ-ONLY.",

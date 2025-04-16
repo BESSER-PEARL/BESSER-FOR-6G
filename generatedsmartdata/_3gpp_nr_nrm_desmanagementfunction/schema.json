@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-nr-nrm-desmanagementfunction/_3gpp-nr-nrm-desmanagementfunction/schema.json",
+  "title": "Smart Data models - _3gpp-nr-nrm-desmanagementfunction schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Defines the YANG mapping of the DESManagementFunction Information Object Class (IOC) that is part of the NR Network Resource Model (NRM).",
   "required": [
     "id",
     "type"
@@ -124,7 +124,7 @@
                 "type": "str"
         },
         "timeDuration": {
-                "description": "The time duration indicates how long the traffic load (both for UL and DL) in the candidate cell needs to have been below the threshold before any original cells which will be provided backup coverage by the candidate cell enters energySaving state.",
+                "description": "The time duration indicates how long the load needs to have been below the threshold.",
                 "type": "int"
         }
 }

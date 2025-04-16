@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp_5gc_nrm_predefinedpccruleset/_3gpp_5gc_nrm_predefinedpccruleset/schema.json",
+  "title": "Smart Data models - _3gpp_5gc_nrm_predefinedpccruleset schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "This IOC represents the predefined PCC rules, which are configured to SMF and referenced by PCF.",
   "required": [
     "id",
     "type"
@@ -46,37 +46,37 @@
                 "description": "It indicates the type of DNAI change, see TS 29.512",
                 "enum": [
                         "LATE",
-                        "EARLY",
-                        "EARLY_LATE"
+                        "EARLY_LATE",
+                        "EARLY"
                 ],
                 "type": "string"
         },
         "FdirEnum": {
                 "description": "It indicates the packet filter direction.",
                 "enum": [
-                        "UPLINK",
-                        "DOWNLINK"
+                        "DOWNLINK",
+                        "UPLINK"
                 ],
                 "type": "string"
         },
         "FlowdirectionEnum": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "DOWNLINK",
                         "BIDIRECTIONAL",
                         "UPLINK",
-                        "UNSPECIFIED"
+                        "UNSPECIFIED",
+                        "DOWNLINK"
                 ],
                 "type": "string"
         },
         "FlowstatusEnum": {
                 "description": "It represents whether the service data flow(s) are enabled or disabled.",
                 "enum": [
+                        "ENABLED",
+                        "ENABLED_DOWNLINK",
                         "ENABLED_UPLINK",
                         "REMOVED",
-                        "DISABLED",
-                        "ENABLED",
-                        "ENABLED_DOWNLINK"
+                        "DISABLED"
                 ],
                 "type": "string"
         },
@@ -118,14 +118,16 @@
         "PrioaccEnum": {
                 "description": "It indicates the high priority access.",
                 "enum": [
-                        "NON_3GPP_ACCESS",
-                        "3GPP_ACCESS"
+                        "3GPP_ACCESS",
+                        "NON_3GPP_ACCESS"
                 ],
                 "type": "string"
         },
         "RattypeEnum": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
+                        "UTRA",
+                        "NBIOT",
                         "VIRTUAL",
                         "NR",
                         "EUTRA",
@@ -138,19 +140,17 @@
                         "WIRELINE_CABLE",
                         "TRUSTED_WLAN",
                         "WLAN",
-                        "LTE_M",
-                        "UTRA",
-                        "NBIOT"
+                        "LTE_M"
                 ],
                 "type": "string"
         },
         "RedirectaddresstypeEnum": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "URL",
                         "SIP_URI",
                         "IPV6_ADDR",
-                        "IPV4_ADDR"
+                        "IPV4_ADDR",
+                        "URL"
                 ],
                 "type": "string"
         },
@@ -165,18 +165,18 @@
         "SteerfunEnum": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "ATSSS_LL",
-                        "MPTCP"
+                        "MPTCP",
+                        "ATSSS_LL"
                 ],
                 "type": "string"
         },
         "SteermodevalueEnum": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "LOAD_BALANCING",
-                        "ACTIVE_STANDBY",
                         "SMALLEST_DELAY",
-                        "PRIORITY_BASED"
+                        "PRIORITY_BASED",
+                        "LOAD_BALANCING",
+                        "ACTIVE_STANDBY"
                 ],
                 "type": "string"
         },
@@ -252,8 +252,8 @@
                 "description": "It indicates the type of DNAI change, see TS 29.512",
                 "enum": [
                         "LATE",
-                        "EARLY",
-                        "EARLY_LATE"
+                        "EARLY_LATE",
+                        "EARLY"
                 ],
                 "type": "DnaichgtypeEnum"
         },
@@ -272,8 +272,8 @@
         "fDir": {
                 "description": "It indicates the packet filter direction.",
                 "enum": [
-                        "UPLINK",
-                        "DOWNLINK"
+                        "DOWNLINK",
+                        "UPLINK"
                 ],
                 "type": "FdirEnum"
         },
@@ -288,10 +288,10 @@
         "flowDirection": {
                 "description": "It indicates the direction/directions that a filter is applicable.",
                 "enum": [
-                        "DOWNLINK",
                         "BIDIRECTIONAL",
                         "UPLINK",
-                        "UNSPECIFIED"
+                        "UNSPECIFIED",
+                        "DOWNLINK"
                 ],
                 "type": "FlowdirectionEnum"
         },
@@ -302,11 +302,11 @@
         "flowStatus": {
                 "description": "It represents whether the service data flow(s) are enabled or disabled.",
                 "enum": [
+                        "ENABLED",
+                        "ENABLED_DOWNLINK",
                         "ENABLED_UPLINK",
                         "REMOVED",
-                        "DISABLED",
-                        "ENABLED",
-                        "ENABLED_DOWNLINK"
+                        "DISABLED"
                 ],
                 "type": "FlowstatusEnum"
         },
@@ -413,8 +413,8 @@
         "prioAcc": {
                 "description": "It indicates the high priority access.",
                 "enum": [
-                        "NON_3GPP_ACCESS",
-                        "3GPP_ACCESS"
+                        "3GPP_ACCESS",
+                        "NON_3GPP_ACCESS"
                 ],
                 "type": "PrioaccEnum"
         },
@@ -433,6 +433,8 @@
         "ratType": {
                 "description": "It provides the condition of RAT type of the UE when the session AMBR shall be enforced.",
                 "enum": [
+                        "UTRA",
+                        "NBIOT",
                         "VIRTUAL",
                         "NR",
                         "EUTRA",
@@ -445,19 +447,17 @@
                         "WIRELINE_CABLE",
                         "TRUSTED_WLAN",
                         "WLAN",
-                        "LTE_M",
-                        "UTRA",
-                        "NBIOT"
+                        "LTE_M"
                 ],
                 "type": "RattypeEnum"
         },
         "redirectAddressType": {
                 "description": "It indicates the type of redirect address.",
                 "enum": [
-                        "URL",
                         "SIP_URI",
                         "IPV6_ADDR",
-                        "IPV4_ADDR"
+                        "IPV4_ADDR",
+                        "URL"
                 ],
                 "type": "RedirectaddresstypeEnum"
         },
@@ -508,18 +508,18 @@
         "steerFun": {
                 "description": "It indicates the applicable traffic steering functionality.",
                 "enum": [
-                        "ATSSS_LL",
-                        "MPTCP"
+                        "MPTCP",
+                        "ATSSS_LL"
                 ],
                 "type": "SteerfunEnum"
         },
         "steerModeValue": {
                 "description": "It indicates the value of the steering mode, see TS 29.512.",
                 "enum": [
-                        "LOAD_BALANCING",
-                        "ACTIVE_STANDBY",
                         "SMALLEST_DELAY",
-                        "PRIORITY_BASED"
+                        "PRIORITY_BASED",
+                        "LOAD_BALANCING",
+                        "ACTIVE_STANDBY"
                 ],
                 "type": "SteermodevalueEnum"
         },

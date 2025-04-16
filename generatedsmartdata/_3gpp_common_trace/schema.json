@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-trace/_3gpp-common-trace/schema.json",
+  "title": "Smart Data models - _3gpp-common-trace schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Trace handling",
   "required": [
     "id",
     "type"
@@ -21,12 +21,12 @@
         "TjjobtypeEnum": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
+                        "RLF_REPORT_ONLY",
+                        "LOGGED_MBSFN_MDT",
+                        "TRACE_ONLY",
+                        "IMMEDIATE_MDT_ONLY",
                         "RCEF_REPORT_ONLY",
                         "IMMEDIATE_MDT_AND_TRACE",
-                        "LOGGED_MBSFN_MDT",
-                        "IMMEDIATE_MDT_ONLY",
-                        "TRACE_ONLY",
-                        "RLF_REPORT_ONLY",
                         "LOGGED_MDT_ONLY"
                 ],
                 "type": "string"
@@ -42,57 +42,57 @@
         "TjmdteventlistfortriggeredmeasurementEnum": {
                 "description": "Specifies event types for event triggered measurement in the case of logged NR MDT. Each trace session may configure at most one event. The UE shall perform logging of measurements only upon certain condition being fulfilled: - Out of coverage. - A2 event.",
                 "enum": [
-                        "OUT_OF_COVERAGE",
-                        "A2_EVENT"
+                        "A2_EVENT",
+                        "OUT_OF_COVERAGE"
                 ],
                 "type": "string"
         },
         "TjmdtpositioningmethodEnum": {
                 "description": "It specifies what positioning method should be used in the MDT job.",
                 "enum": [
-                        "E_CELL_ID",
-                        "GNSS"
+                        "GNSS",
+                        "E_CELL_ID"
                 ],
                 "type": "string"
         },
         "TjmdtreportingtriggerEnum": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "ALL_CONFIGURED_RRM_FOR_UMTS",
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
                         "1F_FOR_UMTS",
+                        "ALL_CONFIGURED_RRM_FOR_UMTS",
                         "A2_TRIGGERED_PERIODIC_FOR_LTE",
                         "PERIODICAL",
-                        "A2_FOR_LTE",
                         "1I_FOR_UMTS_MCPS_TDD",
-                        "ALL_CONFIGURED_RRM_FOR_LTE"
+                        "A2_FOR_LTE"
                 ],
                 "type": "string"
         },
         "TjmdtreporttypeEnum": {
                 "description": "It specifies report type for logged NR MDT",
                 "enum": [
-                        "EVENT_TRIGGERED",
-                        "PERIODICAL"
+                        "PERIODICAL",
+                        "EVENT_TRIGGERED"
                 ],
                 "type": "string"
         },
         "TjtracedepthEnum": {
                 "description": "Specifies how detailed information should be recorded in the Network Element. The Trace Depth is a paremeter for Trace Session level, i.e., the Trace Depth is the same for all of the NEs to be traced in the same Trace Session. The attribute is applicable only for Trace, otherwise it carries a null semantic.",
                 "enum": [
+                        "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
                         "VENDORMINIMUM",
                         "MAXIMUM",
-                        "MEDIUM",
-                        "MINIMUM"
+                        "MEDIUM"
                 ],
                 "type": "string"
         },
         "TjtracereportingformatEnum": {
                 "description": "Specifies the trace reporting format - streaming trace reporting or file-based trace reporting",
                 "enum": [
-                        "STREAMING",
-                        "FILE_BASED"
+                        "FILE_BASED",
+                        "STREAMING"
                 ],
                 "type": "string"
         },
@@ -103,12 +103,12 @@
         "tjJobType": {
                 "description": "Specifies the MDT mode and it specifies also whether the TraceJob represents only MDT, Logged MBSFN MDT, Trace or a combined Trace and MDT job. The attribute is applicable for Trace, MDT, RCEF and RLF reporting.",
                 "enum": [
+                        "RLF_REPORT_ONLY",
+                        "LOGGED_MBSFN_MDT",
+                        "TRACE_ONLY",
+                        "IMMEDIATE_MDT_ONLY",
                         "RCEF_REPORT_ONLY",
                         "IMMEDIATE_MDT_AND_TRACE",
-                        "LOGGED_MBSFN_MDT",
-                        "IMMEDIATE_MDT_ONLY",
-                        "TRACE_ONLY",
-                        "RLF_REPORT_ONLY",
                         "LOGGED_MDT_ONLY"
                 ],
                 "type": "TjjobtypeEnum"
@@ -150,8 +150,8 @@
         "tjMDTEventListForTriggeredMeasurement": {
                 "description": "Specifies event types for event triggered measurement in the case of logged NR MDT. Each trace session may configure at most one event. The UE shall perform logging of measurements only upon certain condition being fulfilled: - Out of coverage. - A2 event.",
                 "enum": [
-                        "OUT_OF_COVERAGE",
-                        "A2_EVENT"
+                        "A2_EVENT",
+                        "OUT_OF_COVERAGE"
                 ],
                 "type": "TjmdteventlistfortriggeredmeasurementEnum"
         },
@@ -190,8 +190,8 @@
         "tjMDTPositioningMethod": {
                 "description": "It specifies what positioning method should be used in the MDT job.",
                 "enum": [
-                        "E_CELL_ID",
-                        "GNSS"
+                        "GNSS",
+                        "E_CELL_ID"
                 ],
                 "type": "TjmdtpositioningmethodEnum"
         },
@@ -206,21 +206,21 @@
         "tjMDTReportType": {
                 "description": "It specifies report type for logged NR MDT",
                 "enum": [
-                        "EVENT_TRIGGERED",
-                        "PERIODICAL"
+                        "PERIODICAL",
+                        "EVENT_TRIGGERED"
                 ],
                 "type": "TjmdtreporttypeEnum"
         },
         "tjMDTReportingTrigger": {
                 "description": "It specifies whether periodic or event based measurements should be collected. The attribute is applicable only for Immediate MDT and when the tjMDTListOfMeasurements is configured for M1 (for both UMTS and LTE) or M2 (only for UMTS). In case this attribute is not used, it carries a null semantic.",
                 "enum": [
-                        "ALL_CONFIGURED_RRM_FOR_UMTS",
+                        "ALL_CONFIGURED_RRM_FOR_LTE",
                         "1F_FOR_UMTS",
+                        "ALL_CONFIGURED_RRM_FOR_UMTS",
                         "A2_TRIGGERED_PERIODIC_FOR_LTE",
                         "PERIODICAL",
-                        "A2_FOR_LTE",
                         "1I_FOR_UMTS_MCPS_TDD",
-                        "ALL_CONFIGURED_RRM_FOR_LTE"
+                        "A2_FOR_LTE"
                 ],
                 "type": "TjmdtreportingtriggerEnum"
         },
@@ -247,12 +247,12 @@
         "tjTraceDepth": {
                 "description": "Specifies how detailed information should be recorded in the Network Element. The Trace Depth is a paremeter for Trace Session level, i.e., the Trace Depth is the same for all of the NEs to be traced in the same Trace Session. The attribute is applicable only for Trace, otherwise it carries a null semantic.",
                 "enum": [
+                        "MINIMUM",
                         "VENDORMAXIMUM",
                         "VENDORMEDIUM",
                         "VENDORMINIMUM",
                         "MAXIMUM",
-                        "MEDIUM",
-                        "MINIMUM"
+                        "MEDIUM"
                 ],
                 "type": "TjtracedepthEnum"
         },
@@ -263,8 +263,8 @@
         "tjTraceReportingFormat": {
                 "description": "Specifies the trace reporting format - streaming trace reporting or file-based trace reporting",
                 "enum": [
-                        "STREAMING",
-                        "FILE_BASED"
+                        "FILE_BASED",
+                        "STREAMING"
                 ],
                 "type": "TjtracereportingformatEnum"
         },

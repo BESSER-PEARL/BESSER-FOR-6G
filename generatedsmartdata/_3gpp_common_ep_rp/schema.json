@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-ep-rp/_3gpp-common-ep-rp/schema.json",
+  "title": "Smart Data models - _3gpp-common-ep-rp schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "Common/basic class/grouping to be inherited/reused. This IOC represents an end point of a link used across a reference point between two network entities.",
   "required": [
     "id",
     "type"

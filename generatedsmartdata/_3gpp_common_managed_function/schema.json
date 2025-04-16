@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$schemaVersion": "0.0.1",
-  "$id": "https://smart-data-models.github.io/dataModel.//schema.json",
-  "title": "Smart Data models -  schema",
+  "$id": "https://smart-data-models.github.io/dataModel._3gpp-common-managed-function/_3gpp-common-managed-function/schema.json",
+  "title": "Smart Data models - _3gpp-common-managed-function schema",
   "modelTags": "",
-  "description": "This class represents ",
+  "description": "The module defines a base class/grouping for major 3GPP functions.",
   "required": [
     "id",
     "type"
@@ -25,8 +25,8 @@
         "OperationsemanticsEnum": {
                 "description": "Semantics type of the operation.",
                 "enum": [
-                        "REQUEST_RESPONSE",
-                        "SUBSCRIBE_NOTIFY"
+                        "SUBSCRIBE_NOTIFY",
+                        "REQUEST_RESPONSE"
                 ],
                 "type": "string"
         },
@@ -52,8 +52,8 @@
         "operationSemantics": {
                 "description": "Semantics type of the operation.",
                 "enum": [
-                        "REQUEST_RESPONSE",
-                        "SUBSCRIBE_NOTIFY"
+                        "SUBSCRIBE_NOTIFY",
+                        "REQUEST_RESPONSE"
                 ],
                 "type": "OperationsemanticsEnum"
         },
