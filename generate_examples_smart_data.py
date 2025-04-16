@@ -18,7 +18,7 @@ def load_all_schemas():
                 content = json.load(f)
                 schemas[file] = content
         except Exception as e:
-            print(f"❌ Erreur lecture {file}: {e}")
+            print(f"❌ Error Reading {file}: {e}")
     return schemas
 
 # Resolves custom types (by name)
@@ -87,16 +87,16 @@ Donne uniquement le JSON d'exemple, sans aucune explication.
 def generate_examples():
     all_schemas = load_all_schemas()
     for schema_path, schema_content in all_schemas.items():
-        print(f"📄 Traitement : {schema_path}")
+        print(f"📄 Processing: {schema_path}")
         try:
             custom_defs = enrich_schema_with_known_types(schema_content, all_schemas)
             example = ask_gpt_to_generate_example(schema_content, custom_defs, str(schema_path))
             output_path = schema_path.parent / "example.json"
             with open(output_path, "w") as f:
                 f.write(example)
-            print(f"✅ Exemple généré : {output_path}")
+            print(f"✅ Example generated: {output_path}")
         except Exception as e:
-            print(f"❌ Erreur génération pour {schema_path}: {e}")
+            print(f"❌ Error generating for {schema_path}: {e}")
 
 if __name__ == "__main__":
     generate_examples()
