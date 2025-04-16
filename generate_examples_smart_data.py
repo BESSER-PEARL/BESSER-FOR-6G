@@ -3,8 +3,10 @@ import json
 from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
+
 # Load environment variables from .env file
 load_dotenv()
+
 # Config
 SCHEMA_ROOT = Path("generatedsmartdata")
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -72,7 +74,7 @@ Donne uniquement le JSON d'exemple, sans aucune explication.
         temperature=0.2
     )
     content = response.choices[0].message.content
-    
+
     # Clean output from markdown code block markers
     content = content.strip()
     if content.startswith("```json"):
@@ -80,17 +82,27 @@ Donne uniquement le JSON d'exemple, sans aucune explication.
     if content.endswith("```"):
         content = content[:-3]
     content = content.strip()
-    
+
     return content
 
-# globale function to generate examples for all schemas
+# Global function to generate examples for all schemas
 def generate_examples():
     all_schemas = load_all_schemas()
     for schema_path, schema_content in all_schemas.items():
         print(f"📄 Processing: {schema_path}")
         try:
+            # Remove GSMA-Commons and Location-Commons from allOf
+            filtered_all_of = []
+            for part in schema_content.get("allOf", []):
+                if "$ref" in part:
+                    if "GSMA-Commons" in part["$ref"] or "Location-Commons" in part["$ref"]:
+                        continue
+                filtered_all_of.append(part)
+            schema_content["allOf"] = filtered_all_of
+
             custom_defs = enrich_schema_with_known_types(schema_content, all_schemas)
             example = ask_gpt_to_generate_example(schema_content, custom_defs, str(schema_path))
+
             output_path = schema_path.parent / "example.json"
             with open(output_path, "w") as f:
                 f.write(example)

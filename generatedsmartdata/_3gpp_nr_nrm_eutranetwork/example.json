@@ -1,14 +1,8 @@
 {
-  "id": "eutraNetwork001",
-  "type": "EUtraNetwork",
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.7037902, 40.4167754]
-  },
+  "id": "12345",
+  "type": "Network",
   "EUtraNetwork": {
-    "description": "Subnetwork 1",
+    "description": "Subnetwork A",
     "type": "Top_Grp"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+  }
 }

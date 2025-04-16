@@ -1,16 +1,20 @@
 {
-  "id": "QFQoSMonitoringControl_1",
+  "id": "1234",
   "type": "QFQoSMonitoringControl",
-  "QFQoSMonitoringControl": "Top_Grp1",
+  "QFQoSMonitoringControl": {
+    "Top_Grp": "Group1"
+  },
   "QfqosmonitoringstateEnum": "ENABLED",
   "isEventTriggeredQFMonitoringSupported": true,
   "isPeriodicQFMonitoringSupported": false,
   "isSessionReleasedQFMonitoringSupported": true,
-  "qFMeasurementPeriod": 10,
-  "qFMinimumWaitTime": 5,
-  "qFMonitoredSNSSAIs": "SNssai1",
+  "qFMeasurementPeriod": 60,
+  "qFMinimumWaitTime": 30,
+  "qFMonitoredSNSSAIs": {
+    "SNssai": "SNssai1"
+  },
   "qFPacketDelayThresholds": ["Threshold1", "Threshold2"],
-  "qFQoSMonitoringState": "DISABLED",
+  "qFQoSMonitoringState": "ENABLED",
   "thresholdDl": 100,
   "thresholdRtt": 200,
   "thresholdUl": 300

@@ -1,18 +1,6 @@
 {
   "id": "1234",
-  "type": "Device",
-  "expression": "/device[1]/mac-address",
-  "value": "00:0a:95:9d:68:16",
-  "location": {
-    "type": "Point",
-    "coordinates": [-73.856077, 40.848447]
-  },
-  "address": {
-    "streetAddress": "21 2nd Street",
-    "postalCode": "10021-3100",
-    "addressLocality": "New York",
-    "addressCountry": "US"
-  },
-  "dateModified": "2022-01-01T00:00:00Z",
-  "dataProvider": "Provider Name"
+  "type": "MAC",
+  "expression": "/bookstore/book[1]/title",
+  "value": "00:0a:95:9d:68:16"
 }

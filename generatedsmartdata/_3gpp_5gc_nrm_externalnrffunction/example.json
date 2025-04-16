@@ -1,24 +1,9 @@
 {
   "id": "1",
-  "type": "5GCore",
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.7037902, 40.4167754]
-  },
-  "address": {
-    "addressCountry": "ES",
-    "addressLocality": "Madrid",
-    "postalCode": "28013",
-    "streetAddress": "Plaza de Canalejas 1"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "source": "https://source.example.com",
-  "dataProvider": "DataProvider1",
-  "entityVersion": "2.0",
+  "type": "5GC_NRF",
   "ExternalNRFFunction": ["Function1", "Function2", "Function3"],
   "pLMNIdList": {
-    "mcc": "262",
-    "mnc": "01"
+    "MCC": "310",
+    "MNC": "410"
   }
 }

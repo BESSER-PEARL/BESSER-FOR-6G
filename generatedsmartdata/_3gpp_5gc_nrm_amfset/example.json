@@ -1,5 +1,5 @@
 {
-  "id": "AMFSet001",
+  "id": "AMFSet1",
   "type": "AMFSet",
   "AMFSet": [
     "AMF1",
@@ -8,23 +8,11 @@
   ],
   "aMFRegion": "Region1",
   "pLMNIdList": {
-    "mcc": "001",
-    "mnc": "01"
+    "mcc": "310",
+    "mnc": "410"
   },
   "sNSSAIList": {
     "sst": "1",
     "sd": "01"
-  },
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
-  "address": {
-    "addressCountry": "Spain",
-    "addressRegion": "Madrid",
-    "addressLocality": "Madrid",
-    "streetAddress": "Calle de Alcala, 50"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T13:00:00Z"
+  }
 }

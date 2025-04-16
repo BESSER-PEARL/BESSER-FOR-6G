@@ -1,18 +1,38 @@
 {
-  "id": "12345",
-  "type": "PerformanceMetric",
-  "PerfMetricJob": "Top_Grp_1",
-  "SupportedPerfMetricGroup": ["MetricGroup1", "MetricGroup2"],
-  "ThresholdMonitor": "Top_Grp_2",
-  "ThresholddirectionEnum": "UP",
-  "administrativeState": "UNLOCKED",
-  "granularityPeriod": 15,
-  "hysteresis": "0.5",
-  "jobId": "Job_1",
-  "monitorGranularityPeriod": 30,
-  "operationalState": "ENABLED",
-  "thresholdDirection": "DOWN",
-  "thresholdInfoList": ["Info1", "Info2"],
-  "thresholdLevel": 2,
+  "id": "1",
+  "type": "SmartData",
+  "PerfMetricJob": {
+    "description": "Performance metric job description",
+    "type": "Top_Grp"
+  },
+  "SupportedPerfMetricGroup": [
+    "Metric1",
+    "Metric2",
+    "Metric3"
+  ],
+  "ThresholdMonitor": {
+    "description": "Threshold monitor description",
+    "type": "Top_Grp"
+  },
+  "ThresholddirectionEnum": "UP_AND_DOWN",
+  "administrativeState": {
+    "description": "Enable production of the metrics",
+    "type": "AdministrativeState"
+  },
+  "granularityPeriod": 30,
+  "hysteresis": "5",
+  "jobId": "Job1",
+  "monitorGranularityPeriod": 15,
+  "operationalState": {
+    "description": "PerfMetricJob is working",
+    "type": "OperationalState"
+  },
+  "thresholdDirection": "UP",
+  "thresholdInfoList": [
+    "Info1",
+    "Info2",
+    "Info3"
+  ],
+  "thresholdLevel": 1,
   "thresholdValue": "10"
 }

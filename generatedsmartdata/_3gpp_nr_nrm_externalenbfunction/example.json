@@ -1,18 +1,6 @@
 {
-  "id": "enb123",
+  "id": "1",
   "type": "ExternalENBFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
-  "dateCreated": "2020-01-01T01:01:01Z",
-  "dateModified": "2020-05-01T01:01:01Z",
   "ExternalENBFunction": ["Function1", "Function2", "Function3"],
-  "eNBId": 123456
+  "eNBId": 12345
 }

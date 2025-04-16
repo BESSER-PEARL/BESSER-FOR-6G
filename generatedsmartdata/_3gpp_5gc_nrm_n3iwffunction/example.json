@@ -1,28 +1,13 @@
 {
-  "id": "N3IWF_001",
-  "type": "N3IWFFunction",
-  "N3IWFFunction": [
-    "N3IWF1",
-    "N3IWF2"
-  ],
+  "id": "1",
+  "type": "5GCoreN3IWF",
+  "N3IWFFunction": ["Function1", "Function2", "Function3"],
   "commModelList": {
-    "commModelId": "Comm_001",
-    "commModelType": "LTE"
+    "CommModel1": {},
+    "CommModel2": {}
   },
   "pLMNIdList": {
-    "mcc": "310",
-    "mnc": "410"
-  },
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.7037902, 40.4167754]
-  },
-  "address": {
-    "addressCountry": "ES",
-    "addressRegion": "Madrid",
-    "addressLocality": "Madrid",
-    "streetAddress": "Plaza de Canalejas 1"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+    "MCC": "001",
+    "MNC": "01"
+  }
 }

@@ -1,19 +1,8 @@
 {
-  "id": "network123",
-  "type": "NRNetwork",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, -74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
+  "id": "123",
+  "type": "Network",
   "NRNetwork": {
-    "description": "A subnetwork containing gNB external NR entities.",
-    "type": "Top_Grp",
-    "value": "Subnetwork1"
+    "description": "Subnetwork 1",
+    "type": "Top_Grp"
   }
 }

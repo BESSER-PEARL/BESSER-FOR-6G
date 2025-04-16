@@ -1,15 +1,15 @@
 {
-  "id": "1234",
-  "type": "SmartData",
+  "id": "123456",
+  "type": "5G Network Resource Model",
   "EP_Common": {
-    "description": "Common Endpoint",
-    "type": "EP_Common"
+    "property1": "value1",
+    "property2": "value2"
   },
   "n32cParas": "n32c parameters",
   "n32fPolicy": "n32f policy",
-  "remotePlmnId": "remote PLMN ID",
+  "remotePlmnId": "plmn123",
   "remoteSeppAddress": "192.168.1.1",
-  "remoteSeppId": 5678,
-  "sBIService": "SBI service",
+  "remoteSeppId": 1,
+  "sBIService": "service1",
   "withIPX": true
 }

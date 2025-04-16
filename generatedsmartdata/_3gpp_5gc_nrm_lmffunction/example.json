@@ -1,34 +1,17 @@
 {
   "id": "LMF001",
-  "type": "5GCoreFunction",
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "location": {
-    "type": "Point",
-    "coordinates": [-4.4832, 48.3908]
-  },
-  "address": {
-    "addressCountry": "FR",
-    "addressLocality": "Brest",
-    "postalCode": "29200"
-  },
-  "LMFFunction": [
-    "Function1",
-    "Function2",
-    "Function3"
-  ],
+  "type": "5GC_LMF",
+  "LMFFunction": ["Function1", "Function2", "Function3"],
   "commModelList": {
-    "commModelId": "CM001",
-    "commModelType": "Type1",
-    "commModelVersion": "1.0"
+    "commModelId": "Comm001",
+    "commModelType": "Type1"
   },
   "managedNFProfile": {
-    "profileId": "MNP001",
-    "profileType": "Type1",
-    "profileVersion": "1.0"
+    "profileId": "Profile001",
+    "profileType": "Type2"
   },
   "pLMNIdList": {
-    "mcc": "208",
-    "mnc": "20"
+    "mcc": "001",
+    "mnc": "01"
   }
 }

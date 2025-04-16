@@ -1,18 +1,20 @@
 {
-  "id": "UDRFunction1",
-  "type": "UDRFunctionType",
-  "UDRFunction": ["Function1", "Function2"],
+  "id": "UDR001",
+  "type": "UDRFunction",
+  "UDRFunction": ["UDR1", "UDR2", "UDR3"],
   "managedNFProfile": {
-    "id": "Profile1",
-    "type": "ProfileType"
+    "nfProfileId": "NFP001",
+    "nfType": "UDR",
+    "nfStatus": "REGISTERED",
+    "nfInstanceId": "UDR001"
   },
   "pLMNIdList": {
-    "id": "PLMNId1",
-    "type": "PLMNIdType"
+    "mcc": "310",
+    "mnc": "410"
   },
-  "sBIFQDN": "nfinstance.example.com",
+  "sBIFQDN": "udr.example.com",
   "sNSSAIList": {
-    "id": "SNssai1",
-    "type": "SNssaiType"
+    "sst": "1",
+    "sd": "010203"
   }
 }

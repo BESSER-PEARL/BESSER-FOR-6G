@@ -1,17 +1,11 @@
 {
-  "id": "cellRelation001",
+  "id": "cellRelation1",
   "type": "NRCellRelation",
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.703, 40.416]
-  },
-  "NRCellRelation": ["cell001", "cell002", "cell003"],
-  "adjacentNRCellRef": "adjacentCell001",
+  "NRCellRelation": ["cell1", "cell2", "cell3"],
+  "adjacentNRCellRef": "adjacentCell1",
   "isESCoveredBy": "FULL",
   "isHOAllowed": true,
   "isRemoveAllowed": false,
-  "nRFreqRelationRef": "freqRelation001",
+  "nRFreqRelationRef": "freqRelation1",
   "nRTCI": 12345
 }

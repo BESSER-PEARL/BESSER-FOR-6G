@@ -1,25 +1,15 @@
 {
   "id": "SCP123",
-  "type": "5G_Core_SCP_Function",
+  "type": "5G_SCP",
   "SCPFunction": {
-    "description": "5G Core SCP Function",
-    "type": "Top_Grp",
-    "value": "SCP_Function_1"
+    "name": "5G Core SCP Function",
+    "version": "1.0"
   },
   "address": {
-    "description": "The host address of the SCP.",
-    "type": "host",
-    "value": "192.168.1.1"
+    "ip": "192.168.1.1",
+    "port": "8080"
   },
   "supportedFuncList": {
-    "description": "Property",
-    "type": "SupportedFunc",
-    "value": ["Func1", "Func2", "Func3"]
-  },
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.7037902, 40.4167754]
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+    "functions": ["Func1", "Func2", "Func3"]
+  }
 }

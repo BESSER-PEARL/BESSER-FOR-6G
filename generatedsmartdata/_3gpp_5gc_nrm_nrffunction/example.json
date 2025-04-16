@@ -1,19 +1,17 @@
 {
-  "id": "nrf-1234",
+  "id": "nrf1",
   "type": "5GC_NRF",
-  "NRFFunction": ["Function1", "Function2", "Function3"],
+  "NRFFunction": ["Function1", "Function2"],
   "nFProfileList": {
     "NFProfile1": {
-      "nfInstanceId": "nf-1234",
+      "nfInstanceId": "nf1",
       "nfType": "AMF",
-      "nfStatus": "REGISTERED",
-      "nfServices": ["Service1", "Service2"]
+      "nfStatus": "REGISTERED"
     },
     "NFProfile2": {
-      "nfInstanceId": "nf-5678",
+      "nfInstanceId": "nf2",
       "nfType": "SMF",
-      "nfStatus": "REGISTERED",
-      "nfServices": ["Service3", "Service4"]
+      "nfStatus": "REGISTERED"
     }
   },
   "pLMNIdList": {
@@ -22,21 +20,19 @@
       "mnc": "410"
     },
     "PLMN2": {
-      "mcc": "311",
-      "mnc": "411"
+      "mcc": "208",
+      "mnc": "01"
     }
   },
   "sBIFQDN": "nrf.example.com",
   "sNSSAIList": {
     "SNssai1": {
       "sst": "1",
-      "sd": "01"
+      "sd": "010203"
     },
     "SNssai2": {
       "sst": "2",
-      "sd": "02"
+      "sd": "040506"
     }
   }
 }
-```
-Notez que ce JSON est un exemple plausible basé sur le schéma, mais certains types de données (comme "NFProfileGrp", "PLMNId", "domain_name" et "SNssai") ne sont pas définis dans le schéma fourni, donc j'ai fait des suppositions sur leur structure.

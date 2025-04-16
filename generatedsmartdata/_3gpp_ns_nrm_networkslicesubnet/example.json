@@ -1,15 +1,15 @@
 {
-  "id": "NetworkSliceSubnet001",
+  "id": "123",
   "type": "NetworkSliceSubnet",
-  "NetworkSliceSubnet": ["Subnet1", "Subnet2"],
+  "NetworkSliceSubnet": ["subnet1", "subnet2"],
   "administrativeState": "ENABLED",
-  "description": "This is a network slice subnet instance in a 5G network.",
+  "description": "This is a network slice subnet instance",
   "ipAddress": "192.168.1.1",
-  "logicInterfaceId": "VLAN001",
-  "managedFunctionRef": ["Function1", "Function2"],
-  "nSInstanceId": "NSInstance001",
-  "nsInfo": ["Info1", "Info2"],
+  "logicInterfaceId": "VLAN123",
+  "managedFunctionRef": ["function1", "function2"],
+  "nSInstanceId": "ns123",
+  "nsInfo": ["info1", "info2"],
   "nsName": "Network Slice Instance 1",
   "operationalState": "ENABLED",
-  "sliceProfileList": ["Profile1", "Profile2"]
+  "sliceProfileList": ["profile1", "profile2"]
 }

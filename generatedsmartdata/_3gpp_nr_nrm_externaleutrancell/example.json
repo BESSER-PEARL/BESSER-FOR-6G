@@ -1,27 +1,16 @@
 {
   "id": "cell001",
-  "type": "3GPP_TS_28.541",
+  "type": "Cell",
   "ExternalEUtranCellFDD": ["cellFDD1", "cellFDD2"],
   "ExternalEUtranCellTDD": ["cellTDD1", "cellTDD2"],
   "cellLocalId": 123,
   "eNBId": 456,
   "earfcn": 789,
-  "earfcnDL": 1011,
-  "earfcnUL": 1213,
-  "pci": 1415,
+  "earfcnDL": 321,
+  "earfcnUL": 654,
+  "pci": 987,
   "plmnIdList": {
-    "mcc": "310",
-    "mnc": "410"
-  },
-  "location": {
-    "type": "Point",
-    "coordinates": [-73.856077, 40.848447]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "Bronx",
-    "streetAddress": "East 161st Street",
-    "postalCode": "10451"
+    "mcc": "001",
+    "mnc": "01"
   }
 }

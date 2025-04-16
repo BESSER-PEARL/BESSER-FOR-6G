@@ -2,28 +2,28 @@
   "id": "1234",
   "type": "SmartData",
   "config": true,
-  "description": "This is a test description",
+  "description": "This is a test server with mounted schema",
   "inlineSchema": {
     "name": "InlineSchema1",
-    "description": "This is a test inline schema"
+    "version": "1.0.0"
   },
-  "label": "Label1",
-  "module": "Module1",
+  "label": "TestLabel",
+  "module": "TestModule",
   "mountPoint": {
     "name": "MountPoint1",
-    "description": "This is a test mount point"
+    "location": "Location1"
   },
   "namespace": {
-    "name": "Namespace1",
-    "description": "This is a test namespace"
+    "prefix": "ns",
+    "uri": "http://example.com/ns"
   },
-  "parentReference": "/parent1/parent2",
-  "prefix": "Prefix1",
+  "parentReference": "/parent/node",
+  "prefix": "pr",
   "presence": true,
   "schemaType": "inline",
   "sharedSchema": {
     "name": "SharedSchema1",
-    "description": "This is a test shared schema"
+    "version": "1.0.0"
   },
-  "uri": "http://example.com/uri1"
+  "uri": "http://example.com/uri"
 }

@@ -1,29 +1,8 @@
 {
-  "id": "cell1234",
-  "type": "NRCellCU",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressLocality": "New York",
-    "streetAddress": "5th Avenue"
-  },
-  "NRCellCU": ["cell1", "cell2", "cell3"],
-  "cellLocalId": 1234,
-  "nRFrequencyRef": "nRFreq123",
-  "pLMNInfoList": {
-    "pLMNId": "310410",
-    "sNSSAIList": [
-      {
-        "sST": 1,
-        "sD": "01"
-      },
-      {
-        "sST": 2,
-        "sD": "02"
-      }
-    ]
-  }
+  "id": "1234",
+  "type": "SmartData",
+  "NRCellCU": ["Cell1", "Cell2", "Cell3"],
+  "cellLocalId": 5678,
+  "nRFrequencyRef": "NRFrequency1",
+  "pLMNInfoList": "PLMNInfo1"
 }

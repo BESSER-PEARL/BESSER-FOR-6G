@@ -1,32 +1,22 @@
 {
   "id": "UPF001",
   "type": "UPFFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
-  "UPFFunction": ["UPF1", "UPF2", "UPF3"],
+  "UPFFunction": ["Function1", "Function2", "Function3"],
   "managedNFProfile": {
-    "id": "MNF001",
+    "id": "Profile001",
     "type": "ManagedNFProfile",
     "NFProfile": "Profile1"
   },
   "pLMNIdList": {
     "id": "PLMN001",
     "type": "PLMNId",
-    "MCC": "310",
-    "MNC": "410"
+    "MCC": "001",
+    "MNC": "01"
   },
   "sNSSAIList": {
     "id": "SNSSAI001",
     "type": "SNssai",
     "SST": "1",
-    "SD": "01"
+    "SD": "D1"
   }
 }

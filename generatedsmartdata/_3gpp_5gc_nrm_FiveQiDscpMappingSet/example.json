@@ -1,24 +1,11 @@
 {
-  "id": "mappingSet1",
+  "id": "1",
   "type": "MappingSet",
-  "FiveQiDscpMappingList": ["5Qi1", "5Qi2", "5Qi3"],
+  "FiveQiDscpMappingList": ["5QI1", "5QI2", "5QI3"],
   "FiveQiDscpMappingSet": {
-    "5Qi1": "DSCP1",
-    "5Qi2": "DSCP2",
-    "5Qi3": "DSCP3"
+    "5QI1": "DSCP1",
+    "5QI2": "DSCP2",
+    "5QI3": "DSCP3"
   },
-  "dscp": 5,
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressLocality": "New York",
-    "streetAddress": "Broadway"
-  },
-  "dateModified": "2022-01-01T00:00:00Z",
-  "dataProvider": "DataProvider1"
+  "dscp": 3
 }
-```
-Note: Le schéma JSON fourni ne définit pas le type "Top_Grp" pour la propriété "FiveQiDscpMappingSet". J'ai supposé qu'il s'agit d'un objet avec des clés et des valeurs de type string. De plus, j'ai ajouté des propriétés supplémentaires comme "location", "address", "dateModified", et "dataProvider" qui sont généralement incluses dans les définitions "GSMA-Commons" et "Location-Commons" référencées dans le schéma.

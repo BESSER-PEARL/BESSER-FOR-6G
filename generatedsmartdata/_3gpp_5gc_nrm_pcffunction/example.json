@@ -1,5 +1,5 @@
 {
-  "id": "pcf123",
+  "id": "pcffunction1",
   "type": "PCFFunction",
   "PCFFunction": ["Function1", "Function2"],
   "commModelList": {
@@ -13,12 +13,12 @@
     "profile2": "Profile2"
   },
   "pLMNIdList": {
-    "MCC": "001",
-    "MNC": "01"
+    "mcc": "001",
+    "mnc": "01"
   },
-  "sBIFQDN": "pcf.example.com",
+  "sBIFQDN": "nfinstance.example.com",
   "sNSSAIList": {
-    "SST": "1",
-    "SD": "D1"
+    "sst": "1",
+    "sd": "D1"
   }
 }

@@ -1,27 +1,17 @@
 {
-  "id": "amfRegion1",
-  "type": "AMFRegion",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
-  "AMFRegion": ["Region1", "Region2"],
+  "id": "AMFRegion1",
+  "type": "AMFRegionType",
+  "AMFRegion": ["Region1", "Region2", "Region3"],
   "aMFRegionId": {
     "type": "AmfRegionId",
-    "value": "12345"
+    "value": "123456"
   },
   "pLMNIdList": {
     "type": "PLMNId",
-    "value": ["310150", "310410"]
+    "value": ["00101", "00202", "00303"]
   },
   "sNSSAIList": {
     "type": "SNssai",
-    "value": ["1-010203", "2-040506"]
+    "value": ["1-001", "2-002", "3-003"]
   }
 }

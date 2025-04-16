@@ -1,22 +1,9 @@
 {
-  "id": "externalNSSFFunction1",
-  "type": "5GCNRM",
-  "dateCreated": "2021-09-01T00:00:00Z",
-  "dateModified": "2021-09-01T00:00:00Z",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "postalCode": "10000",
-    "streetAddress": "5th Avenue"
-  },
+  "id": "1",
+  "type": "5GC_NRM_ExternalNSSFFunction",
   "ExternalNSSFFunction": ["Function1", "Function2", "Function3"],
   "pLMNIdList": {
-    "mcc": "310",
-    "mnc": "410"
+    "MCC": "310",
+    "MNC": "410"
   }
 }

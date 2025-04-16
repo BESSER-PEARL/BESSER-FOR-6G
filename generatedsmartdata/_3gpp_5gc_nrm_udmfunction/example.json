@@ -1,22 +1,22 @@
 {
-  "id": "UDMFunction1",
+  "id": "UDM123",
   "type": "UDMFunction",
-  "UDMFunction": ["UDM1", "UDM2"],
+  "UDMFunction": ["UDM1", "UDM2", "UDM3"],
   "commModelList": {
-    "commModelId": "comm1",
-    "commModelType": "type1"
+    "commModel1": "Model1",
+    "commModel2": "Model2"
   },
   "managedNFProfile": {
-    "profileId": "profile1",
-    "profileType": "type1"
+    "profileName": "Profile1",
+    "profileDetails": "Details1"
   },
   "pLMNIdList": {
-    "mcc": "001",
-    "mnc": "01"
+    "MCC": "001",
+    "MNC": "01"
   },
-  "sBIFQDN": "nfinstance.example.com",
+  "sBIFQDN": "udm.example.com",
   "sNSSAIList": {
-    "sst": "1",
-    "sd": "D1"
+    "SST": "1",
+    "SD": "D1"
   }
 }

@@ -1,16 +1,6 @@
 {
-  "id": "EP_12345",
-  "type": "EP_Common",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, -74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
+  "id": "1234",
+  "type": "ExampleType",
   "EP_Common": {
     "property1": "value1",
     "property2": "value2"

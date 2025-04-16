@@ -1,18 +1,7 @@
 {
-  "id": "1234",
-  "type": "CpciConfigurationFunction",
-  "NRPci": 10,
+  "id": "1",
+  "type": "CPCIconfiguration",
+  "NRPci": 123,
   "cPciConfigurationControl": true,
-  "cSonPciList": ["pci1", "pci2", "pci3"],
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, -74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "5th Avenue",
-    "postalCode": "10011"
-  }
+  "cSonPciList": ["pci1", "pci2", "pci3"]
 }

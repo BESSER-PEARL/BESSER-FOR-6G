@@ -1,27 +1,14 @@
 {
-  "id": "5GCore_NGEIR_001",
-  "type": "NGEIRFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "5G Core NGEIR Function Street",
-    "postalCode": "10001"
-  },
+  "id": "1234",
+  "type": "5G_Core_Network",
   "NGEIRFunction": ["Function1", "Function2", "Function3"],
   "commModelList": {
-    "commModelId": "CommModel_001",
-    "commModelType": "Type1",
-    "commModelVersion": "1.0"
+    "commModelId": "commModel1",
+    "description": "Communication Model for NF services"
   },
   "managedNFProfile": {
-    "profileId": "Profile_001",
-    "profileType": "Type1",
-    "profileVersion": "1.0"
+    "profileId": "profile1",
+    "description": "Managed NF Profile"
   },
   "pLMNIdList": {
     "mcc": "310",
@@ -29,6 +16,6 @@
   },
   "sNSSAIList": {
     "sst": "1",
-    "sd": "01"
+    "sd": "DNN1"
   }
 }

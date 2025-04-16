@@ -1,22 +1,11 @@
 {
-  "id": "BeamformingFunction1",
+  "id": "1",
   "type": "BeamformingFunction",
   "CommonBeamformingFunction": {
     "description": "SSB beams for NRSectorCarrier",
     "type": "Top_Grp"
   },
-  "coverageShape": 5,
-  "digitalAzimuth": 10,
-  "digitalTilt": -5,
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
-  "address": {
-    "addressCountry": "ES",
-    "addressLocality": "Madrid",
-    "streetAddress": "Plaza de Canalejas 1"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+  "coverageShape": 3,
+  "digitalAzimuth": 45,
+  "digitalTilt": -10
 }

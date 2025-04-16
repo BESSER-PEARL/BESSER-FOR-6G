@@ -1,16 +1,20 @@
 {
   "id": "SMF001",
   "type": "SMFFunction",
-  "SMFFunction": ["SMF1", "SMF2", "SMF3"],
+  "SMFFunction": ["SMF1", "SMF2"],
   "commModelList": {
-    "commModel1": "Model1",
-    "commModel2": "Model2"
+    "commModelId": "CM001",
+    "commModelType": "Type1"
   },
-  "configurable5QISetRef": "DN001",
-  "dynamic5QISetRef": "DN002",
+  "configurable5QISetRef": {
+    "DN": "DN001"
+  },
+  "dynamic5QISetRef": {
+    "DN": "DN002"
+  },
   "managedNFProfile": {
-    "profile1": "Profile1",
-    "profile2": "Profile2"
+    "profileId": "Profile001",
+    "profileType": "Type1"
   },
   "pLMNIdList": {
     "MCC": "001",

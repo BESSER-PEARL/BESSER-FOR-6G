@@ -1,43 +1,40 @@
 {
-  "id": "ausfFunction1",
-  "type": "5GC_NRM_AUSFFunction",
-  "AUSFFunction": [
-    "ausf1",
-    "ausf2"
-  ],
+  "id": "ausf1",
+  "type": "5G_Core_AUSF_Function",
+  "AUSFFunction": ["Function1", "Function2", "Function3"],
   "commModelList": {
     "commModel1": {
-      "id": "commModel1",
-      "type": "CommModel"
+      "id": "cm1",
+      "type": "CommModelType1"
     },
     "commModel2": {
-      "id": "commModel2",
-      "type": "CommModel"
+      "id": "cm2",
+      "type": "CommModelType2"
     }
   },
   "managedNFProfile": {
-    "id": "managedNFProfile1",
-    "type": "ManagedNFProfile"
+    "id": "mnp1",
+    "type": "ManagedNFProfileType1"
   },
   "pLMNIdList": {
     "plmnId1": {
-      "id": "plmnId1",
-      "type": "PLMNId"
+      "mcc": "001",
+      "mnc": "01"
     },
     "plmnId2": {
-      "id": "plmnId2",
-      "type": "PLMNId"
+      "mcc": "002",
+      "mnc": "02"
     }
   },
   "sBIFQDN": "ausf.example.com",
   "sNSSAIList": {
     "sNssai1": {
-      "id": "sNssai1",
-      "type": "SNssai"
+      "sst": "1",
+      "sd": "D1"
     },
     "sNssai2": {
-      "id": "sNssai2",
-      "type": "SNssai"
+      "sst": "2",
+      "sd": "D2"
     }
   }
 }

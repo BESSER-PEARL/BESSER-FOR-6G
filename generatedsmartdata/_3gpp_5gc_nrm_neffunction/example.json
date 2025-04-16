@@ -1,34 +1,15 @@
 {
-  "id": "nef-1234",
-  "type": "5GCoreNEF",
+  "id": "NEF_001",
+  "type": "5GC_NRM_NEFFunction",
   "NEFFunction": {
-    "name": "NEF1",
-    "description": "Network Exposure Function 1",
-    "version": "1.0.0"
+    "description": "5G Core NEF Function",
+    "type": "Top_Grp"
   },
   "isCAPIFSup": true,
   "isINEF": false,
-  "sBIFQDN": "nef1.example.com",
-  "sNSSAIList": [
-    {
-      "sst": 1,
-      "sd": "01AB"
-    },
-    {
-      "sst": 2,
-      "sd": "01AC"
-    }
-  ],
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York",
-    "streetAddress": "5G Core Network"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+  "sBIFQDN": "nef.example.com",
+  "sNSSAIList": {
+    "description": "List of S-NSSAIs the managed object is capable of supporting. (Single Network Slice Selection Assistance Information) An S-NSSAI has an SST (Slice/Service type) and an optional SD (Slice Differentiator) field.",
+    "type": "SNssai"
+  }
 }

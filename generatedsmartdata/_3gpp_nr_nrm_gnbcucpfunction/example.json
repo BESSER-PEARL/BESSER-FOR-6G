@@ -1,21 +1,11 @@
 {
-  "id": "GNBCUCPFunction1",
+  "id": "1",
   "type": "GNBCUCPFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
-  "address": {
-    "addressCountry": "ES",
-    "addressRegion": "Madrid",
-    "addressLocality": "Madrid",
-    "streetAddress": "Plaza de Canalejas 1"
-  },
-  "GNBCUCPFunction": ["CU-CP1", "CU-CP2"],
-  "configurable5QISetRef": "Configurable5QISet1",
-  "dynamic5QISetRef": "Dynamic5QISet1",
-  "gNBCUName": "Central Unit 1",
-  "gNBId": 12345,
-  "gNBIdLength": 5,
+  "GNBCUCPFunction": ["Function1", "Function2"],
+  "configurable5QISetRef": "DN1",
+  "dynamic5QISetRef": "DN2",
+  "gNBCUName": "CentralUnit1",
+  "gNBId": 123,
+  "gNBIdLength": 3,
   "pLMNId": "PLMN123"
 }

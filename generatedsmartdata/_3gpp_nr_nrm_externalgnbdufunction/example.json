@@ -1,14 +1,8 @@
 {
-  "id": "GNBDUFunction001",
+  "id": "1",
   "type": "GNBDUFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "ExternalGNBDUFunction": ["GNBDUFunction002", "GNBDUFunction003"],
+  "ExternalGNBDUFunction": ["Function1", "Function2", "Function3"],
   "gNBId": 12345,
-  "gNBIdLength": 32,
-  "pLMNId": "001-01"
+  "gNBIdLength": 5,
+  "pLMNId": "PLMN123"
 }

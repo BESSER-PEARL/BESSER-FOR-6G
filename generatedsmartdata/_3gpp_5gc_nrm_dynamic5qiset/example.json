@@ -3,28 +3,27 @@
   "type": "Dynamic5QISet",
   "Dynamic5QISet": {
     "priorityLevel": 2,
-    "packetDelayBudget": 10,
+    "packetDelayBudget": 100,
     "packetErrorRate": 0.01,
-    "averagingWindow": 10,
-    "maxDataBurstVolume": 2000
+    "maxDataBurstVolume": 2000,
+    "arp": {
+      "priorityLevel": 1,
+      "preemptionCapability": true,
+      "preemptionVulnerability": false
+    }
   },
   "dynamic5QIs": {
-    "qosIdentifier": 1,
-    "priorityLevel": 1,
-    "packetDelayBudget": 10,
+    "fiveQI": 9,
+    "priorityLevel": 2,
+    "packetDelayBudget": 100,
     "packetErrorRate": 0.01,
-    "averagingWindow": 10,
-    "maxDataBurstVolume": 2000
-  },
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, -74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway",
-    "postalCode": "10007"
+    "maxDataBurstVolume": 2000,
+    "arp": {
+      "priorityLevel": 1,
+      "preemptionCapability": true,
+      "preemptionVulnerability": false
+    }
   }
 }
+```
+Note: Les valeurs spécifiques dans cet exemple sont arbitraires et peuvent ne pas refléter les valeurs réelles utilisées dans un contexte de réseau 5G.

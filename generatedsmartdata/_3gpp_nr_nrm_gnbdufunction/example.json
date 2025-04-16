@@ -1,21 +1,11 @@
 {
-  "id": "gnbdu001",
+  "id": "1234",
   "type": "GNBDUFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
   "GNBDUFunction": ["Function1", "Function2"],
-  "aggressorSetID": 123,
-  "gNBDUId": 456,
-  "gNBDUName": "DU1",
-  "gNBId": 789,
-  "gNBIdLength": 24,
-  "victimSetID": 321
+  "aggressorSetID": 5678,
+  "gNBDUId": 91011,
+  "gNBDUName": "Distributed Unit 1",
+  "gNBId": 121314,
+  "gNBIdLength": 15,
+  "victimSetID": 161718
 }

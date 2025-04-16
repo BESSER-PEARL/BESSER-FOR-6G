@@ -1,12 +1,12 @@
 {
-  "id": "1234",
+  "id": "1",
   "type": "SubscriptionControl",
   "NtfSubscriptionControl": {
-    "description": "Notification Subscription for User 1234",
+    "description": "Notification subscription for recipient A",
     "type": "Top_Grp"
   },
   "heartbeatNtfPeriod": 30,
-  "notificationFilter": "error",
-  "notificationRecipientAddress": "user1234@example.com",
-  "scope": ["object1", "object2", "object3"]
+  "notificationFilter": "filterA",
+  "notificationRecipientAddress": "recipientA@example.com",
+  "scope": ["objectA", "objectB"]
 }

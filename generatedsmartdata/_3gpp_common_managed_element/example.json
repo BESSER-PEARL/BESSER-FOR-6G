@@ -1,15 +1,12 @@
 {
-  "id": "ME123",
+  "id": "123",
   "type": "ManagedElement",
-  "ManagedElement": [
-    "Telecommunications Equipment 1",
-    "Telecommunications Equipment 2"
-  ],
-  "dnPrefix": "DN123",
-  "locationName": "New York City",
+  "ManagedElement": ["Telecommunications Equipment", "TMN Entities"],
+  "dnPrefix": "CN=ManagedElement,DC=example,DC=com",
+  "locationName": "123 Main St, Anytown, USA",
   "priorityLabel": 1,
   "swVersion": "1.0.0",
-  "userDefinedState": "Operational",
+  "userDefinedState": "Active",
   "userLabel": "User Friendly Name",
-  "vendorName": "Vendor 1"
+  "vendorName": "Vendor Name"
 }

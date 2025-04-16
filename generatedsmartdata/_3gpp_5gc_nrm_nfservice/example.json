@@ -1,8 +1,8 @@
 {
   "id": "1234",
-  "type": "NFService",
+  "type": "ServiceType",
   "NFServiceStatus": "REGISTERED",
-  "ServiceName": "NAMF_COMM",
+  "ServiceName": "NAUSF_AUTH",
   "TransportProtocol": "TCP",
   "UriScheme": "HTTPS",
   "allowedNssais": "SNssai1",
@@ -14,8 +14,8 @@
   "chfServiceInfo": ["info1", "info2"],
   "defaultNotificationSubscriptions": "DefaultNotificationSubscription1",
   "expiry": "2022-12-31T23:59:59Z",
-  "fqdn": "example.com",
-  "interPlmnFqdn": "inter.example.com",
+  "fqdn": "www.example.com",
+  "interPlmnFqdn": "www.interplmn.com",
   "ipEndPoints": ["192.0.2.1", "192.0.2.2"],
   "load": "Load1",
   "nfServiceStatus": "active",
@@ -29,5 +29,5 @@
   "serviceName": "nudm-sdm",
   "supportedFeatures": "Feature1",
   "transport": "TCP",
-  "versions": ["1.0.0", "2.0.0"]
+  "versions": ["1.0", "2.0"]
 }

@@ -1,20 +1,5 @@
 {
   "id": "UPF001",
-  "type": "ExternalUPFFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York",
-    "streetAddress": "5th Avenue"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "source": "3GPP TS 28.541",
-  "dataProvider": "GSMA",
-  "entityVersion": "0.0.1",
+  "type": "UPFFunction",
   "ExternalUPFFunction": ["UPF002", "UPF003", "UPF004"]
 }

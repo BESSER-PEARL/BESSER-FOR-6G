@@ -1,6 +1,6 @@
 {
   "id": "RRMPolicy1",
-  "type": "RRMPolicyRatio",
+  "type": "RRMPolicy",
   "RRMPolicyRatio": "Top_Grp1",
   "rRMPolicyDedicatedRatio": 30,
   "rRMPolicyMaxRatio": 80,

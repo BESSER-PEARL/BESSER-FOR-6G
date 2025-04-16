@@ -1,22 +1,7 @@
 {
-  "id": "gnb123",
+  "id": "123",
   "type": "GNBCUUPFunction",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "New York",
-    "addressLocality": "New York City",
-    "streetAddress": "Broadway"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
-  "source": "https://example.com",
-  "dataProvider": "Provider Name",
-  "entityVersion": "2.0",
   "ExternalGNBCUUPFunction": ["Function1", "Function2", "Function3"],
-  "gNBId": 12345,
-  "gNBIdLength": 5
+  "gNBId": 456,
+  "gNBIdLength": 32
 }

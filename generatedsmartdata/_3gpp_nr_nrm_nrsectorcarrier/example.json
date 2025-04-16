@@ -1,13 +1,13 @@
 {
   "id": "sectorCarrier001",
   "type": "NRSectorCarrier",
-  "NRSectorCarrier": ["resource1", "resource2", "resource3"],
+  "NRSectorCarrier": ["transmissionPoint1", "transmissionPoint2"],
   "arfcnDL": 12345,
   "arfcnUL": 67890,
-  "bSChannelBwDL": 200,
-  "bSChannelBwUL": 200,
+  "bSChannelBwDL": 20,
+  "bSChannelBwUL": 20,
   "configuredMaxTxEIRP": 30,
-  "configuredMaxTxPower": 30,
+  "configuredMaxTxPower": 40,
   "sectorEquipmentFunctionRef": "sectorEquipmentFunction001",
   "txDirection": "downlink"
 }

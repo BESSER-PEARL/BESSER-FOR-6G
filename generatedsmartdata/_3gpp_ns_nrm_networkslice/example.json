@@ -1,31 +1,19 @@
 {
   "id": "NetworkSlice1",
   "type": "5GNetworkSlice",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z",
   "NetworkSlice": {
-    "description": "Network slice for IoT devices",
-    "type": "Top_Grp"
+    "Top_Grp": "Group1"
   },
   "administrativeState": {
-    "description": "The network slice is currently in use",
-    "type": "AdministrativeState"
+    "AdministrativeState": "Enabled"
   },
-  "networkSliceSubnetRef": {
-    "description": "Subnet1",
-    "type": "str"
-  },
+  "networkSliceSubnetRef": "Subnet1",
   "operationalState": {
-    "description": "The network slice is currently operational",
-    "type": "OperationalState"
+    "OperationalState": "Installed"
   },
   "serviceProfileList": [
-    "IoT",
-    "LowLatency",
-    "HighBandwidth"
+    "Profile1",
+    "Profile2",
+    "Profile3"
   ]
 }

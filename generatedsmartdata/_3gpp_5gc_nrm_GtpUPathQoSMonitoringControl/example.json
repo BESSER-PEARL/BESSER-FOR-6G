@@ -1,13 +1,19 @@
 {
   "id": "1",
   "type": "GtpUPathQoSMonitoringControl",
-  "GtpUPathQoSMonitoringControl": "Top_Grp",
+  "GtpUPathQoSMonitoringControl": {
+    "description": "GTP-U path QoS monitoring control capabilities and properties",
+    "type": "Top_Grp"
+  },
   "GtpupathqosmonitoringstateEnum": "ENABLED",
   "gtpUPathDelayThresholds": ["10ms", "20ms", "30ms"],
   "gtpUPathMeasurementPeriod": 60,
   "gtpUPathMinimumWaitTime": 10,
-  "gtpUPathMonitoredSNSSAIs": "SNssai",
-  "gtpUPathQoSMonitoringState": "DISABLED",
+  "gtpUPathMonitoredSNSSAIs": {
+    "description": "S-NSSAIs for GTP-U path QoS monitoring",
+    "type": "SNssai"
+  },
+  "gtpUPathQoSMonitoringState": "ENABLED",
   "isEventTriggeredGtpUPathMonitoringSupported": true,
   "isImmediateGtpUMonitoringSupported": false,
   "isPeriodicGtpUMonitoringSupported": true,

@@ -1,17 +1,4 @@
 {
   "id": "1234",
-  "type": "ExampleType",
-  "location": {
-    "latitude": 40.712776,
-    "longitude": -74.005974
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressRegion": "NY",
-    "addressLocality": "New York",
-    "streetAddress": "5th Avenue",
-    "postalCode": "10011"
-  },
-  "dateCreated": "2022-01-01T00:00:00Z",
-  "dateModified": "2022-01-02T00:00:00Z"
+  "type": "ExampleType"
 }

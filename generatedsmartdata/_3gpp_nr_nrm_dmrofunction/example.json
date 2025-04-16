@@ -1,20 +1,8 @@
 {
-  "id": "dmroFunction001",
+  "id": "dmroFunction1",
   "type": "dmroFunction",
   "dmroControl": true,
-  "maximumDeviationHoTrigger": 10,
-  "minimumTimeBetweenHoTriggerChange": 5,
-  "tstoreUEcntxt": 30,
-  "location": {
-    "type": "Point",
-    "coordinates": [-3.7037902, 40.4167754]
-  },
-  "address": {
-    "addressCountry": "ES",
-    "addressRegion": "Madrid",
-    "addressLocality": "Madrid",
-    "streetAddress": "Plaza de Canalejas 1"
-  },
-  "dateCreated": "2020-01-01T01:00:00Z",
-  "dateModified": "2020-05-01T01:00:00Z"
+  "maximumDeviationHoTrigger": 5,
+  "minimumTimeBetweenHoTriggerChange": 10,
+  "tstoreUEcntxt": 15
 }

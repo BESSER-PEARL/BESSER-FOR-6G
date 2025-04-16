@@ -1,28 +1,22 @@
 {
-  "id": "NWDAF_001",
-  "type": "5GC_NRM_NWDAFFunction",
-  "dateCreated": "2021-10-01T10:00:00Z",
-  "dateModified": "2021-10-01T10:00:00Z",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.418889, -3.691944]
-  },
+  "id": "1234",
+  "type": "5G_Core_Network",
   "NWDAFFunction": ["Function1", "Function2", "Function3"],
   "commModelList": {
-    "commModelId": "CM_001",
-    "commModelVersion": "1.0"
+    "model1": "Model1",
+    "model2": "Model2"
   },
   "managedNFProfile": {
-    "profileId": "MNF_001",
-    "profileVersion": "1.0"
+    "profileName": "Profile1",
+    "profileDescription": "This is a managed NF profile"
   },
   "pLMNIdList": {
-    "mcc": "262",
-    "mnc": "01"
+    "MCC": "123",
+    "MNC": "456"
   },
-  "sBIFQDN": "nwdaf.example.com",
+  "sBIFQDN": "nfinstance.example.com",
   "sNSSAIList": {
-    "sst": "1",
-    "sd": "010203"
+    "SST": "1",
+    "SD": "D1"
   }
 }

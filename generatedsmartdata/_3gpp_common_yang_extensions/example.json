@@ -2,16 +2,5 @@
   "id": "1234",
   "type": "ExampleType",
   "description": "This is a test description",
-  "value": "Initial value",
-  "location": {
-    "type": "Point",
-    "coordinates": [40.7128, 74.0060]
-  },
-  "address": {
-    "addressCountry": "US",
-    "addressLocality": "New York",
-    "addressRegion": "NY"
-  },
-  "dateModified": "2021-10-01T10:00:00Z",
-  "dateCreated": "2021-10-01T10:00:00Z"
+  "value": "Initial value"
 }
