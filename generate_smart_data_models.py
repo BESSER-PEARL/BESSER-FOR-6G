@@ -48,7 +48,7 @@ def create_smart_data_models():
         '_3gpp_5g_common_yang_types.py'
     ]
 
-    model_files = [f for f in os.listdir(models_dir) 
+    model_files = [f for f in os.listdir(models_dir)
                   if f.endswith('.py') and not f.startswith('__')]
 
     # Process core modules first
